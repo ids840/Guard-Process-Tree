@@ -1,0 +1,3109 @@
+case ID,activity,timestamp
+1,open bank,1700-12-30
+1,get into bank,1701-12-30
+1,get into bank,1702-12-30
+1,get into bank,1703-12-30
+1,get in line a,1704-12-30
+1,get into bank,1705-12-30
+1,get into bank,1706-12-30
+1,get service in a,1707-12-30
+1,get in line a,1708-12-30
+1,get in line b,1709-12-30
+1,get out from a,1710-12-30
+1,get into bank,1711-12-30
+1,get service in a,1712-12-30
+1,get in line a,1713-12-30
+1,get in line a,1714-12-30
+1,get in line b,1715-12-30
+1,get service in b,1716-12-30
+1,get out from b,1717-12-30
+1,get out from a,1718-12-30
+1,get service in b,1719-12-30
+1,get service in a,1720-12-30
+1,get out from b,1721-12-30
+1,get into bank,1722-12-30
+1,get out from a,1723-12-30
+1,get service in a,1724-12-30
+1,get into bank,1725-12-30
+1,get into bank,1726-12-30
+1,get out from a,1727-12-30
+1,get into bank,1728-12-30
+1,get in line a,1729-12-30
+1,get service in a,1730-12-30
+1,get in line a,1731-12-30
+1,get in line b,1732-12-30
+1,get out from a,1733-12-30
+1,get service in b,1734-12-30
+1,get service in a,1735-12-30
+1,get in line a,1736-12-30
+1,get out from b,1737-12-30
+1,get out from a,1738-12-30
+1,get service in a,1739-12-30
+1,get out from a,1740-12-30
+1,close bank,1741-12-30
+2,open bank,1700-12-30
+2,get into bank,1701-12-30
+2,get in line a,1702-12-30
+2,get into bank,1703-12-30
+2,get in line b,1704-12-30
+2,get into bank,1705-12-30
+2,get service in a,1706-12-30
+2,get into bank,1707-12-30
+2,get into bank,1708-12-30
+2,get service in b,1709-12-30
+2,get in line a,1710-12-30
+2,get into bank,1711-12-30
+2,get in line b,1712-12-30
+2,get into bank,1713-12-30
+2,get out from b,1714-12-30
+2,get into bank,1715-12-30
+2,get service in b,1716-12-30
+2,get into bank,1717-12-30
+2,get in line b,1718-12-30
+2,get out from b,1719-12-30
+2,get in line a,1720-12-30
+2,get service in b,1721-12-30
+2,get into bank,1722-12-30
+2,get out from b,1723-12-30
+2,get out from a,1724-12-30
+2,get in line b,1725-12-30
+2,get in line b,1726-12-30
+2,get service in b,1727-12-30
+2,get out from b,1728-12-30
+2,get service in a,1729-12-30
+2,get in line a,1730-12-30
+2,get out from a,1731-12-30
+2,get service in a,1732-12-30
+2,get service in b,1733-12-30
+2,get out from b,1734-12-30
+2,get out from a,1735-12-30
+2,get in line b,1736-12-30
+2,get service in a,1737-12-30
+2,get out from a,1738-12-30
+2,get service in b,1739-12-30
+2,get out from b,1740-12-30
+2,close bank,1741-12-30
+3,open bank,1700-12-30
+3,get into bank,1701-12-30
+3,get into bank,1702-12-30
+3,get in line a,1703-12-30
+3,get service in a,1704-12-30
+3,get out from a,1705-12-30
+3,get in line a,1706-12-30
+3,get into bank,1707-12-30
+3,get service in a,1708-12-30
+3,get out from a,1709-12-30
+3,get in line a,1710-12-30
+3,get service in a,1711-12-30
+3,get into bank,1712-12-30
+3,get into bank,1713-12-30
+3,get out from a,1714-12-30
+3,get into bank,1715-12-30
+3,get into bank,1716-12-30
+3,get into bank,1717-12-30
+3,get into bank,1718-12-30
+3,get into bank,1719-12-30
+3,get in line a,1720-12-30
+3,get in line b,1721-12-30
+3,get service in b,1722-12-30
+3,get out from b,1723-12-30
+3,get in line b,1724-12-30
+3,get service in a,1725-12-30
+3,get out from a,1726-12-30
+3,get service in b,1727-12-30
+3,get in line a,1728-12-30
+3,get service in a,1729-12-30
+3,get in line a,1730-12-30
+3,get out from a,1731-12-30
+3,get service in a,1732-12-30
+3,get out from a,1733-12-30
+3,get in line a,1734-12-30
+3,get out from b,1735-12-30
+3,get service in a,1736-12-30
+3,get in line a,1737-12-30
+3,get out from a,1738-12-30
+3,get service in a,1739-12-30
+3,get out from a,1740-12-30
+3,close bank,1741-12-30
+4,open bank,1700-12-30
+4,get into bank,1701-12-30
+4,get in line a,1702-12-30
+4,get service in a,1703-12-30
+4,get into bank,1704-12-30
+4,get into bank,1705-12-30
+4,get into bank,1706-12-30
+4,get in line a,1707-12-30
+4,get into bank,1708-12-30
+4,get in line b,1709-12-30
+4,get in line a,1710-12-30
+4,get out from a,1711-12-30
+4,get in line b,1712-12-30
+4,get service in a,1713-12-30
+4,get out from a,1714-12-30
+4,get into bank,1715-12-30
+4,get into bank,1716-12-30
+4,get service in a,1717-12-30
+4,get into bank,1718-12-30
+4,get out from a,1719-12-30
+4,get in line a,1720-12-30
+4,get service in b,1721-12-30
+4,get into bank,1722-12-30
+4,get into bank,1723-12-30
+4,get service in a,1724-12-30
+4,get out from a,1725-12-30
+4,get out from b,1726-12-30
+4,get in line a,1727-12-30
+4,get service in a,1728-12-30
+4,get service in b,1729-12-30
+4,get out from a,1730-12-30
+4,get out from b,1731-12-30
+4,get in line a,1732-12-30
+4,get service in a,1733-12-30
+4,get in line a,1734-12-30
+4,get in line b,1735-12-30
+4,get service in b,1736-12-30
+4,get out from b,1737-12-30
+4,get out from a,1738-12-30
+4,get service in a,1739-12-30
+4,get out from a,1740-12-30
+4,close bank,1741-12-30
+5,open bank,1700-12-30
+5,get into bank,1701-12-30
+5,get in line a,1702-12-30
+5,get into bank,1703-12-30
+5,get into bank,1704-12-30
+5,get service in a,1705-12-30
+5,get into bank,1706-12-30
+5,get in line a,1707-12-30
+5,get into bank,1708-12-30
+5,get in line b,1709-12-30
+5,get in line a,1710-12-30
+5,get into bank,1711-12-30
+5,get service in b,1712-12-30
+5,get out from a,1713-12-30
+5,get into bank,1714-12-30
+5,get service in a,1715-12-30
+5,get out from a,1716-12-30
+5,get service in a,1717-12-30
+5,get into bank,1718-12-30
+5,get in line a,1719-12-30
+5,get out from b,1720-12-30
+5,get into bank,1721-12-30
+5,get into bank,1722-12-30
+5,get out from a,1723-12-30
+5,get in line b,1724-12-30
+5,get in line a,1725-12-30
+5,get service in a,1726-12-30
+5,get in line a,1727-12-30
+5,get service in b,1728-12-30
+5,get in line b,1729-12-30
+5,get out from a,1730-12-30
+5,get in line b,1731-12-30
+5,get service in a,1732-12-30
+5,get out from b,1733-12-30
+5,get out from a,1734-12-30
+5,get service in a,1735-12-30
+5,get out from a,1736-12-30
+5,get service in b,1737-12-30
+5,get out from b,1738-12-30
+5,get service in b,1739-12-30
+5,get out from b,1740-12-30
+5,close bank,1741-12-30
+6,open bank,1700-12-30
+6,get into bank,1701-12-30
+6,get into bank,1702-12-30
+6,get into bank,1703-12-30
+6,get in line a,1704-12-30
+6,get into bank,1705-12-30
+6,get into bank,1706-12-30
+6,get in line b,1707-12-30
+6,get into bank,1708-12-30
+6,get service in a,1709-12-30
+6,get service in b,1710-12-30
+6,get in line a,1711-12-30
+6,get in line b,1712-12-30
+6,get out from a,1713-12-30
+6,get into bank,1714-12-30
+6,get into bank,1715-12-30
+6,get out from b,1716-12-30
+6,get service in a,1717-12-30
+6,get service in b,1718-12-30
+6,get into bank,1719-12-30
+6,get in line a,1720-12-30
+6,get into bank,1721-12-30
+6,get out from a,1722-12-30
+6,get service in a,1723-12-30
+6,get in line a,1724-12-30
+6,get out from a,1725-12-30
+6,get service in a,1726-12-30
+6,get out from a,1727-12-30
+6,get in line a,1728-12-30
+6,get service in a,1729-12-30
+6,get in line a,1730-12-30
+6,get out from a,1731-12-30
+6,get out from b,1732-12-30
+6,get service in a,1733-12-30
+6,get out from a,1734-12-30
+6,get in line a,1735-12-30
+6,get service in a,1736-12-30
+6,get in line a,1737-12-30
+6,get out from a,1738-12-30
+6,get service in a,1739-12-30
+6,get out from a,1740-12-30
+6,close bank,1741-12-30
+7,open bank,1700-12-30
+7,get into bank,1701-12-30
+7,get in line a,1702-12-30
+7,get service in a,1703-12-30
+7,get out from a,1704-12-30
+7,get into bank,1705-12-30
+7,get in line a,1706-12-30
+7,get service in a,1707-12-30
+7,get into bank,1708-12-30
+7,get in line a,1709-12-30
+7,get into bank,1710-12-30
+7,get out from a,1711-12-30
+7,get into bank,1712-12-30
+7,get into bank,1713-12-30
+7,get into bank,1714-12-30
+7,get into bank,1715-12-30
+7,get into bank,1716-12-30
+7,get in line b,1717-12-30
+7,get in line a,1718-12-30
+7,get in line b,1719-12-30
+7,get service in a,1720-12-30
+7,get in line a,1721-12-30
+7,get out from a,1722-12-30
+7,get in line a,1723-12-30
+7,get in line b,1724-12-30
+7,get service in a,1725-12-30
+7,get into bank,1726-12-30
+7,get service in b,1727-12-30
+7,get out from b,1728-12-30
+7,get service in b,1729-12-30
+7,get out from b,1730-12-30
+7,get out from a,1731-12-30
+7,get service in a,1732-12-30
+7,get service in b,1733-12-30
+7,get out from b,1734-12-30
+7,get out from a,1735-12-30
+7,get in line b,1736-12-30
+7,get service in a,1737-12-30
+7,get service in b,1738-12-30
+7,get out from a,1739-12-30
+7,get out from b,1740-12-30
+7,close bank,1741-12-30
+8,open bank,1700-12-30
+8,get into bank,1701-12-30
+8,get in line a,1702-12-30
+8,get service in a,1703-12-30
+8,get into bank,1704-12-30
+8,get in line a,1705-12-30
+8,get out from a,1706-12-30
+8,get into bank,1707-12-30
+8,get into bank,1708-12-30
+8,get in line b,1709-12-30
+8,get service in b,1710-12-30
+8,get in line b,1711-12-30
+8,get into bank,1712-12-30
+8,get in line a,1713-12-30
+8,get into bank,1714-12-30
+8,get service in a,1715-12-30
+8,get into bank,1716-12-30
+8,get in line a,1717-12-30
+8,get out from a,1718-12-30
+8,get out from b,1719-12-30
+8,get service in b,1720-12-30
+8,get out from b,1721-12-30
+8,get into bank,1722-12-30
+8,get service in a,1723-12-30
+8,get out from a,1724-12-30
+8,get into bank,1725-12-30
+8,get in line b,1726-12-30
+8,get in line a,1727-12-30
+8,get into bank,1728-12-30
+8,get in line b,1729-12-30
+8,get service in a,1730-12-30
+8,get in line a,1731-12-30
+8,get service in b,1732-12-30
+8,get out from b,1733-12-30
+8,get out from a,1734-12-30
+8,get service in b,1735-12-30
+8,get service in a,1736-12-30
+8,get out from b,1737-12-30
+8,get out from a,1738-12-30
+8,get service in a,1739-12-30
+8,get out from a,1740-12-30
+8,close bank,1741-12-30
+9,open bank,1700-12-30
+9,get into bank,1701-12-30
+9,get in line a,1702-12-30
+9,get into bank,1703-12-30
+9,get into bank,1704-12-30
+9,get in line b,1705-12-30
+9,get service in b,1706-12-30
+9,get out from b,1707-12-30
+9,get service in a,1708-12-30
+9,get into bank,1709-12-30
+9,get into bank,1710-12-30
+9,get in line a,1711-12-30
+9,get out from a,1712-12-30
+9,get into bank,1713-12-30
+9,get in line b,1714-12-30
+9,get service in b,1715-12-30
+9,get in line b,1716-12-30
+9,get service in a,1717-12-30
+9,get out from b,1718-12-30
+9,get into bank,1719-12-30
+9,get out from a,1720-12-30
+9,get into bank,1721-12-30
+9,get in line a,1722-12-30
+9,get service in a,1723-12-30
+9,get into bank,1724-12-30
+9,get service in b,1725-12-30
+9,get out from a,1726-12-30
+9,get in line a,1727-12-30
+9,get in line b,1728-12-30
+9,get out from b,1729-12-30
+9,get service in a,1730-12-30
+9,get into bank,1731-12-30
+9,get service in b,1732-12-30
+9,get in line a,1733-12-30
+9,get in line b,1734-12-30
+9,get out from a,1735-12-30
+9,get out from b,1736-12-30
+9,get service in b,1737-12-30
+9,get service in a,1738-12-30
+9,get out from b,1739-12-30
+9,get out from a,1740-12-30
+9,close bank,1741-12-30
+10,open bank,1700-12-30
+10,get into bank,1701-12-30
+10,get into bank,1702-12-30
+10,get in line a,1703-12-30
+10,get in line b,1704-12-30
+10,get service in b,1705-12-30
+10,get service in a,1706-12-30
+10,get out from b,1707-12-30
+10,get out from a,1708-12-30
+10,get into bank,1709-12-30
+10,get into bank,1710-12-30
+10,get into bank,1711-12-30
+10,get into bank,1712-12-30
+10,get in line a,1713-12-30
+10,get service in a,1714-12-30
+10,get in line a,1715-12-30
+10,get out from a,1716-12-30
+10,get into bank,1717-12-30
+10,get in line b,1718-12-30
+10,get service in b,1719-12-30
+10,get into bank,1720-12-30
+10,get out from b,1721-12-30
+10,get in line b,1722-12-30
+10,get in line a,1723-12-30
+10,get into bank,1724-12-30
+10,get into bank,1725-12-30
+10,get service in b,1726-12-30
+10,get in line b,1727-12-30
+10,get out from b,1728-12-30
+10,get in line b,1729-12-30
+10,get service in a,1730-12-30
+10,get in line a,1731-12-30
+10,get service in b,1732-12-30
+10,get out from a,1733-12-30
+10,get service in a,1734-12-30
+10,get out from a,1735-12-30
+10,get out from b,1736-12-30
+10,get service in a,1737-12-30
+10,get service in b,1738-12-30
+10,get out from b,1739-12-30
+10,get out from a,1740-12-30
+10,close bank,1741-12-30
+11,open bank,1700-12-30
+11,get into bank,1701-12-30
+11,get in line a,1702-12-30
+11,get service in a,1703-12-30
+11,get out from a,1704-12-30
+11,get into bank,1705-12-30
+11,get in line a,1706-12-30
+11,get into bank,1707-12-30
+11,get service in a,1708-12-30
+11,get into bank,1709-12-30
+11,get out from a,1710-12-30
+11,get in line a,1711-12-30
+11,get in line b,1712-12-30
+11,get into bank,1713-12-30
+11,get service in a,1714-12-30
+11,get in line a,1715-12-30
+11,get service in b,1716-12-30
+11,get out from b,1717-12-30
+11,get out from a,1718-12-30
+11,get into bank,1719-12-30
+11,get in line b,1720-12-30
+11,get service in b,1721-12-30
+11,get into bank,1722-12-30
+11,get service in a,1723-12-30
+11,get into bank,1724-12-30
+11,get out from a,1725-12-30
+11,get in line a,1726-12-30
+11,get service in a,1727-12-30
+11,get into bank,1728-12-30
+11,get out from a,1729-12-30
+11,get in line a,1730-12-30
+11,get in line b,1731-12-30
+11,get out from b,1732-12-30
+11,get service in b,1733-12-30
+11,get into bank,1734-12-30
+11,get out from b,1735-12-30
+11,get service in a,1736-12-30
+11,get in line a,1737-12-30
+11,get out from a,1738-12-30
+11,get service in a,1739-12-30
+11,get out from a,1740-12-30
+11,close bank,1741-12-30
+12,open bank,1700-12-30
+12,get into bank,1701-12-30
+12,get in line a,1702-12-30
+12,get into bank,1703-12-30
+12,get into bank,1704-12-30
+12,get in line b,1705-12-30
+12,get service in b,1706-12-30
+12,get into bank,1707-12-30
+12,get out from b,1708-12-30
+12,get service in a,1709-12-30
+12,get out from a,1710-12-30
+12,get in line a,1711-12-30
+12,get in line b,1712-12-30
+12,get service in b,1713-12-30
+12,get into bank,1714-12-30
+12,get into bank,1715-12-30
+12,get service in a,1716-12-30
+12,get out from b,1717-12-30
+12,get out from a,1718-12-30
+12,get in line a,1719-12-30
+12,get service in a,1720-12-30
+12,get out from a,1721-12-30
+12,get in line a,1722-12-30
+12,get service in a,1723-12-30
+12,get into bank,1724-12-30
+12,get into bank,1725-12-30
+12,get into bank,1726-12-30
+12,get in line a,1727-12-30
+12,get in line b,1728-12-30
+12,get in line a,1729-12-30
+12,get service in b,1730-12-30
+12,get into bank,1731-12-30
+12,get out from a,1732-12-30
+12,get in line b,1733-12-30
+12,get service in a,1734-12-30
+12,get out from a,1735-12-30
+12,get out from b,1736-12-30
+12,get service in a,1737-12-30
+12,get out from a,1738-12-30
+12,get service in b,1739-12-30
+12,get out from b,1740-12-30
+12,close bank,1741-12-30
+13,open bank,1700-12-30
+13,get into bank,1701-12-30
+13,get in line a,1702-12-30
+13,get into bank,1703-12-30
+13,get in line b,1704-12-30
+13,get into bank,1705-12-30
+13,get service in a,1706-12-30
+13,get into bank,1707-12-30
+13,get service in b,1708-12-30
+13,get in line a,1709-12-30
+13,get out from a,1710-12-30
+13,get service in a,1711-12-30
+13,get out from b,1712-12-30
+13,get into bank,1713-12-30
+13,get in line a,1714-12-30
+13,get into bank,1715-12-30
+13,get into bank,1716-12-30
+13,get into bank,1717-12-30
+13,get into bank,1718-12-30
+13,get into bank,1719-12-30
+13,get in line b,1720-12-30
+13,get out from a,1721-12-30
+13,get service in a,1722-12-30
+13,get in line a,1723-12-30
+13,get service in b,1724-12-30
+13,get out from b,1725-12-30
+13,get out from a,1726-12-30
+13,get service in a,1727-12-30
+13,get out from a,1728-12-30
+13,get in line a,1729-12-30
+13,get service in a,1730-12-30
+13,get out from a,1731-12-30
+13,get in line a,1732-12-30
+13,get in line b,1733-12-30
+13,get service in a,1734-12-30
+13,get out from a,1735-12-30
+13,get in line a,1736-12-30
+13,get service in b,1737-12-30
+13,get out from b,1738-12-30
+13,get service in a,1739-12-30
+13,get out from a,1740-12-30
+13,close bank,1741-12-30
+14,open bank,1700-12-30
+14,get into bank,1701-12-30
+14,get into bank,1702-12-30
+14,get in line a,1703-12-30
+14,get into bank,1704-12-30
+14,get into bank,1705-12-30
+14,get in line b,1706-12-30
+14,get service in b,1707-12-30
+14,get out from b,1708-12-30
+14,get service in a,1709-12-30
+14,get out from a,1710-12-30
+14,get in line a,1711-12-30
+14,get service in a,1712-12-30
+14,get out from a,1713-12-30
+14,get into bank,1714-12-30
+14,get into bank,1715-12-30
+14,get into bank,1716-12-30
+14,get in line a,1717-12-30
+14,get into bank,1718-12-30
+14,get into bank,1719-12-30
+14,get service in a,1720-12-30
+14,get into bank,1721-12-30
+14,get out from a,1722-12-30
+14,get in line a,1723-12-30
+14,get service in a,1724-12-30
+14,get out from a,1725-12-30
+14,get in line a,1726-12-30
+14,get in line b,1727-12-30
+14,get in line a,1728-12-30
+14,get service in b,1729-12-30
+14,get in line b,1730-12-30
+14,get in line b,1731-12-30
+14,get service in a,1732-12-30
+14,get out from b,1733-12-30
+14,get service in b,1734-12-30
+14,get out from b,1735-12-30
+14,get service in b,1736-12-30
+14,get out from a,1737-12-30
+14,get service in a,1738-12-30
+14,get out from b,1739-12-30
+14,get out from a,1740-12-30
+14,close bank,1741-12-30
+15,open bank,1700-12-30
+15,get into bank,1701-12-30
+15,get in line a,1702-12-30
+15,get service in a,1703-12-30
+15,get into bank,1704-12-30
+15,get out from a,1705-12-30
+15,get into bank,1706-12-30
+15,get into bank,1707-12-30
+15,get into bank,1708-12-30
+15,get into bank,1709-12-30
+15,get in line a,1710-12-30
+15,get service in a,1711-12-30
+15,get in line a,1712-12-30
+15,get in line b,1713-12-30
+15,get out from a,1714-12-30
+15,get service in b,1715-12-30
+15,get in line b,1716-12-30
+15,get into bank,1717-12-30
+15,get in line a,1718-12-30
+15,get service in a,1719-12-30
+15,get out from b,1720-12-30
+15,get in line a,1721-12-30
+15,get into bank,1722-12-30
+15,get service in b,1723-12-30
+15,get into bank,1724-12-30
+15,get out from b,1725-12-30
+15,get into bank,1726-12-30
+15,get out from a,1727-12-30
+15,get service in a,1728-12-30
+15,get out from a,1729-12-30
+15,get service in a,1730-12-30
+15,get out from a,1731-12-30
+15,get in line a,1732-12-30
+15,get in line b,1733-12-30
+15,get service in b,1734-12-30
+15,get out from b,1735-12-30
+15,get in line b,1736-12-30
+15,get service in b,1737-12-30
+15,get out from b,1738-12-30
+15,get service in a,1739-12-30
+15,get out from a,1740-12-30
+15,close bank,1741-12-30
+16,open bank,1700-12-30
+16,get into bank,1701-12-30
+16,get in line a,1702-12-30
+16,get into bank,1703-12-30
+16,get service in a,1704-12-30
+16,get out from a,1705-12-30
+16,get in line a,1706-12-30
+16,get service in a,1707-12-30
+16,get into bank,1708-12-30
+16,get in line a,1709-12-30
+16,get out from a,1710-12-30
+16,get service in a,1711-12-30
+16,get into bank,1712-12-30
+16,get out from a,1713-12-30
+16,get in line a,1714-12-30
+16,get service in a,1715-12-30
+16,get into bank,1716-12-30
+16,get in line a,1717-12-30
+16,get out from a,1718-12-30
+16,get into bank,1719-12-30
+16,get into bank,1720-12-30
+16,get into bank,1721-12-30
+16,get into bank,1722-12-30
+16,get in line b,1723-12-30
+16,get into bank,1724-12-30
+16,get in line a,1725-12-30
+16,get in line b,1726-12-30
+16,get service in b,1727-12-30
+16,get out from b,1728-12-30
+16,get in line b,1729-12-30
+16,get service in b,1730-12-30
+16,get service in a,1731-12-30
+16,get out from a,1732-12-30
+16,get service in a,1733-12-30
+16,get out from b,1734-12-30
+16,get service in b,1735-12-30
+16,get out from b,1736-12-30
+16,get out from a,1737-12-30
+16,get in line a,1738-12-30
+16,get service in a,1739-12-30
+16,get out from a,1740-12-30
+16,close bank,1741-12-30
+17,open bank,1700-12-30
+17,get into bank,1701-12-30
+17,get in line a,1702-12-30
+17,get into bank,1703-12-30
+17,get service in a,1704-12-30
+17,get into bank,1705-12-30
+17,get in line a,1706-12-30
+17,get out from a,1707-12-30
+17,get in line b,1708-12-30
+17,get into bank,1709-12-30
+17,get service in a,1710-12-30
+17,get into bank,1711-12-30
+17,get service in b,1712-12-30
+17,get out from a,1713-12-30
+17,get in line a,1714-12-30
+17,get service in a,1715-12-30
+17,get in line a,1716-12-30
+17,get out from b,1717-12-30
+17,get into bank,1718-12-30
+17,get in line b,1719-12-30
+17,get into bank,1720-12-30
+17,get service in b,1721-12-30
+17,get out from a,1722-12-30
+17,get in line b,1723-12-30
+17,get service in a,1724-12-30
+17,get out from b,1725-12-30
+17,get into bank,1726-12-30
+17,get in line a,1727-12-30
+17,get out from a,1728-12-30
+17,get into bank,1729-12-30
+17,get service in a,1730-12-30
+17,get service in b,1731-12-30
+17,get into bank,1732-12-30
+17,get out from a,1733-12-30
+17,get in line a,1734-12-30
+17,get out from b,1735-12-30
+17,get service in a,1736-12-30
+17,get out from a,1737-12-30
+17,get in line a,1738-12-30
+17,get service in a,1739-12-30
+17,get out from a,1740-12-30
+17,close bank,1741-12-30
+18,open bank,1700-12-30
+18,get into bank,1701-12-30
+18,get into bank,1702-12-30
+18,get in line a,1703-12-30
+18,get service in a,1704-12-30
+18,get out from a,1705-12-30
+18,get in line a,1706-12-30
+18,get into bank,1707-12-30
+18,get into bank,1708-12-30
+18,get into bank,1709-12-30
+18,get in line b,1710-12-30
+18,get in line a,1711-12-30
+18,get service in b,1712-12-30
+18,get out from b,1713-12-30
+18,get service in a,1714-12-30
+18,get out from a,1715-12-30
+18,get in line b,1716-12-30
+18,get into bank,1717-12-30
+18,get service in b,1718-12-30
+18,get out from b,1719-12-30
+18,get service in a,1720-12-30
+18,get into bank,1721-12-30
+18,get in line a,1722-12-30
+18,get into bank,1723-12-30
+18,get in line b,1724-12-30
+18,get out from a,1725-12-30
+18,get into bank,1726-12-30
+18,get into bank,1727-12-30
+18,get service in b,1728-12-30
+18,get service in a,1729-12-30
+18,get in line a,1730-12-30
+18,get out from b,1731-12-30
+18,get out from a,1732-12-30
+18,get in line b,1733-12-30
+18,get service in b,1734-12-30
+18,get out from b,1735-12-30
+18,get service in a,1736-12-30
+18,get out from a,1737-12-30
+18,get in line a,1738-12-30
+18,get service in a,1739-12-30
+18,get out from a,1740-12-30
+18,close bank,1741-12-30
+19,open bank,1700-12-30
+19,get into bank,1701-12-30
+19,get into bank,1702-12-30
+19,get in line a,1703-12-30
+19,get service in a,1704-12-30
+19,get into bank,1705-12-30
+19,get out from a,1706-12-30
+19,get into bank,1707-12-30
+19,get in line a,1708-12-30
+19,get in line b,1709-12-30
+19,get in line a,1710-12-30
+19,get service in b,1711-12-30
+19,get out from b,1712-12-30
+19,get into bank,1713-12-30
+19,get service in a,1714-12-30
+19,get in line b,1715-12-30
+19,get service in b,1716-12-30
+19,get out from a,1717-12-30
+19,get service in a,1718-12-30
+19,get into bank,1719-12-30
+19,get out from a,1720-12-30
+19,get into bank,1721-12-30
+19,get out from b,1722-12-30
+19,get in line a,1723-12-30
+19,get in line b,1724-12-30
+19,get service in b,1725-12-30
+19,get out from b,1726-12-30
+19,get into bank,1727-12-30
+19,get in line b,1728-12-30
+19,get service in b,1729-12-30
+19,get service in a,1730-12-30
+19,get into bank,1731-12-30
+19,get out from a,1732-12-30
+19,get into bank,1733-12-30
+19,get out from b,1734-12-30
+19,get in line a,1735-12-30
+19,get service in a,1736-12-30
+19,get in line a,1737-12-30
+19,get out from a,1738-12-30
+19,get service in a,1739-12-30
+19,get out from a,1740-12-30
+19,close bank,1741-12-30
+20,open bank,1700-12-30
+20,get into bank,1701-12-30
+20,get in line a,1702-12-30
+20,get into bank,1703-12-30
+20,get in line b,1704-12-30
+20,get service in a,1705-12-30
+20,get out from a,1706-12-30
+20,get into bank,1707-12-30
+20,get into bank,1708-12-30
+20,get service in b,1709-12-30
+20,get in line a,1710-12-30
+20,get out from b,1711-12-30
+20,get into bank,1712-12-30
+20,get into bank,1713-12-30
+20,get into bank,1714-12-30
+20,get in line b,1715-12-30
+20,get service in a,1716-12-30
+20,get out from a,1717-12-30
+20,get service in b,1718-12-30
+20,get out from b,1719-12-30
+20,get into bank,1720-12-30
+20,get in line a,1721-12-30
+20,get in line b,1722-12-30
+20,get service in b,1723-12-30
+20,get out from b,1724-12-30
+20,get service in a,1725-12-30
+20,get into bank,1726-12-30
+20,get in line a,1727-12-30
+20,get out from a,1728-12-30
+20,get into bank,1729-12-30
+20,get service in a,1730-12-30
+20,get in line a,1731-12-30
+20,get in line b,1732-12-30
+20,get service in b,1733-12-30
+20,get out from a,1734-12-30
+20,get out from b,1735-12-30
+20,get in line b,1736-12-30
+20,get service in a,1737-12-30
+20,get out from a,1738-12-30
+20,get service in b,1739-12-30
+20,get out from b,1740-12-30
+20,close bank,1741-12-30
+21,open bank,1700-12-30
+21,get into bank,1701-12-30
+21,get into bank,1702-12-30
+21,get into bank,1703-12-30
+21,get in line a,1704-12-30
+21,get into bank,1705-12-30
+21,get service in a,1706-12-30
+21,get into bank,1707-12-30
+21,get out from a,1708-12-30
+21,get into bank,1709-12-30
+21,get into bank,1710-12-30
+21,get in line a,1711-12-30
+21,get in line b,1712-12-30
+21,get service in a,1713-12-30
+21,get into bank,1714-12-30
+21,get in line a,1715-12-30
+21,get in line a,1716-12-30
+21,get into bank,1717-12-30
+21,get out from a,1718-12-30
+21,get service in b,1719-12-30
+21,get in line b,1720-12-30
+21,get service in a,1721-12-30
+21,get out from a,1722-12-30
+21,get service in a,1723-12-30
+21,get out from b,1724-12-30
+21,get out from a,1725-12-30
+21,get service in b,1726-12-30
+21,get into bank,1727-12-30
+21,get in line a,1728-12-30
+21,get service in a,1729-12-30
+21,get out from a,1730-12-30
+21,get out from b,1731-12-30
+21,get in line a,1732-12-30
+21,get in line b,1733-12-30
+21,get service in b,1734-12-30
+21,get in line b,1735-12-30
+21,get service in a,1736-12-30
+21,get out from b,1737-12-30
+21,get service in b,1738-12-30
+21,get out from b,1739-12-30
+21,get out from a,1740-12-30
+21,close bank,1741-12-30
+22,open bank,1700-12-30
+22,get into bank,1701-12-30
+22,get in line a,1702-12-30
+22,get into bank,1703-12-30
+22,get in line b,1704-12-30
+22,get into bank,1705-12-30
+22,get into bank,1706-12-30
+22,get in line a,1707-12-30
+22,get in line b,1708-12-30
+22,get service in b,1709-12-30
+22,get service in a,1710-12-30
+22,get out from b,1711-12-30
+22,get into bank,1712-12-30
+22,get out from a,1713-12-30
+22,get into bank,1714-12-30
+22,get service in a,1715-12-30
+22,get out from a,1716-12-30
+22,get into bank,1717-12-30
+22,get service in b,1718-12-30
+22,get into bank,1719-12-30
+22,get in line a,1720-12-30
+22,get in line b,1721-12-30
+22,get into bank,1722-12-30
+22,get in line a,1723-12-30
+22,get in line b,1724-12-30
+22,get service in a,1725-12-30
+22,get out from b,1726-12-30
+22,get service in b,1727-12-30
+22,get in line a,1728-12-30
+22,get into bank,1729-12-30
+22,get out from b,1730-12-30
+22,get service in b,1731-12-30
+22,get out from b,1732-12-30
+22,get in line b,1733-12-30
+22,get out from a,1734-12-30
+22,get service in b,1735-12-30
+22,get service in a,1736-12-30
+22,get out from a,1737-12-30
+22,get out from b,1738-12-30
+22,get service in a,1739-12-30
+22,get out from a,1740-12-30
+22,close bank,1741-12-30
+23,open bank,1700-12-30
+23,get into bank,1701-12-30
+23,get in line a,1702-12-30
+23,get service in a,1703-12-30
+23,get into bank,1704-12-30
+23,get in line a,1705-12-30
+23,get out from a,1706-12-30
+23,get service in a,1707-12-30
+23,get into bank,1708-12-30
+23,get in line a,1709-12-30
+23,get into bank,1710-12-30
+23,get in line b,1711-12-30
+23,get service in b,1712-12-30
+23,get out from a,1713-12-30
+23,get into bank,1714-12-30
+23,get into bank,1715-12-30
+23,get into bank,1716-12-30
+23,get in line b,1717-12-30
+23,get out from b,1718-12-30
+23,get in line a,1719-12-30
+23,get service in b,1720-12-30
+23,get in line b,1721-12-30
+23,get out from b,1722-12-30
+23,get service in a,1723-12-30
+23,get into bank,1724-12-30
+23,get in line a,1725-12-30
+23,get out from a,1726-12-30
+23,get service in b,1727-12-30
+23,get into bank,1728-12-30
+23,get into bank,1729-12-30
+23,get out from b,1730-12-30
+23,get in line b,1731-12-30
+23,get in line b,1732-12-30
+23,get service in b,1733-12-30
+23,get service in a,1734-12-30
+23,get out from a,1735-12-30
+23,get out from b,1736-12-30
+23,get service in b,1737-12-30
+23,get out from b,1738-12-30
+23,get service in a,1739-12-30
+23,get out from a,1740-12-30
+23,close bank,1741-12-30
+24,open bank,1700-12-30
+24,get into bank,1701-12-30
+24,get into bank,1702-12-30
+24,get into bank,1703-12-30
+24,get in line a,1704-12-30
+24,get in line b,1705-12-30
+24,get into bank,1706-12-30
+24,get service in b,1707-12-30
+24,get into bank,1708-12-30
+24,get out from b,1709-12-30
+24,get into bank,1710-12-30
+24,get service in a,1711-12-30
+24,get into bank,1712-12-30
+24,get out from a,1713-12-30
+24,get into bank,1714-12-30
+24,get in line a,1715-12-30
+24,get into bank,1716-12-30
+24,get in line b,1717-12-30
+24,get service in a,1718-12-30
+24,get in line a,1719-12-30
+24,get into bank,1720-12-30
+24,get out from a,1721-12-30
+24,get service in a,1722-12-30
+24,get out from a,1723-12-30
+24,get in line a,1724-12-30
+24,get service in b,1725-12-30
+24,get out from b,1726-12-30
+24,get service in a,1727-12-30
+24,get in line a,1728-12-30
+24,get in line b,1729-12-30
+24,get service in b,1730-12-30
+24,get out from a,1731-12-30
+24,get service in a,1732-12-30
+24,get out from a,1733-12-30
+24,get in line a,1734-12-30
+24,get service in a,1735-12-30
+24,get out from b,1736-12-30
+24,get out from a,1737-12-30
+24,get in line a,1738-12-30
+24,get service in a,1739-12-30
+24,get out from a,1740-12-30
+24,close bank,1741-12-30
+25,open bank,1700-12-30
+25,get into bank,1701-12-30
+25,get into bank,1702-12-30
+25,get in line a,1703-12-30
+25,get in line b,1704-12-30
+25,get service in a,1705-12-30
+25,get service in b,1706-12-30
+25,get into bank,1707-12-30
+25,get out from b,1708-12-30
+25,get into bank,1709-12-30
+25,get into bank,1710-12-30
+25,get out from a,1711-12-30
+25,get into bank,1712-12-30
+25,get in line a,1713-12-30
+25,get service in a,1714-12-30
+25,get out from a,1715-12-30
+25,get in line a,1716-12-30
+25,get in line b,1717-12-30
+25,get into bank,1718-12-30
+25,get into bank,1719-12-30
+25,get in line a,1720-12-30
+25,get service in a,1721-12-30
+25,get in line a,1722-12-30
+25,get into bank,1723-12-30
+25,get in line b,1724-12-30
+25,get into bank,1725-12-30
+25,get service in b,1726-12-30
+25,get out from b,1727-12-30
+25,get service in b,1728-12-30
+25,get out from a,1729-12-30
+25,get in line b,1730-12-30
+25,get out from b,1731-12-30
+25,get service in b,1732-12-30
+25,get service in a,1733-12-30
+25,get in line b,1734-12-30
+25,get out from a,1735-12-30
+25,get service in a,1736-12-30
+25,get out from b,1737-12-30
+25,get service in b,1738-12-30
+25,get out from b,1739-12-30
+25,get out from a,1740-12-30
+25,close bank,1741-12-30
+26,open bank,1700-12-30
+26,get into bank,1701-12-30
+26,get in line a,1702-12-30
+26,get into bank,1703-12-30
+26,get into bank,1704-12-30
+26,get into bank,1705-12-30
+26,get in line b,1706-12-30
+26,get in line a,1707-12-30
+26,get in line b,1708-12-30
+26,get service in a,1709-12-30
+26,get service in b,1710-12-30
+26,get out from a,1711-12-30
+26,get service in a,1712-12-30
+26,get out from a,1713-12-30
+26,get out from b,1714-12-30
+26,get service in b,1715-12-30
+26,get out from b,1716-12-30
+26,get into bank,1717-12-30
+26,get in line a,1718-12-30
+26,get service in a,1719-12-30
+26,get into bank,1720-12-30
+26,get into bank,1721-12-30
+26,get into bank,1722-12-30
+26,get out from a,1723-12-30
+26,get in line a,1724-12-30
+26,get in line b,1725-12-30
+26,get into bank,1726-12-30
+26,get service in b,1727-12-30
+26,get in line b,1728-12-30
+26,get in line a,1729-12-30
+26,get into bank,1730-12-30
+26,get service in a,1731-12-30
+26,get out from a,1732-12-30
+26,get in line a,1733-12-30
+26,get out from b,1734-12-30
+26,get service in a,1735-12-30
+26,get service in b,1736-12-30
+26,get out from a,1737-12-30
+26,get service in a,1738-12-30
+26,get out from a,1739-12-30
+26,get out from b,1740-12-30
+26,close bank,1741-12-30
+27,open bank,1700-12-30
+27,get into bank,1701-12-30
+27,get into bank,1702-12-30
+27,get in line a,1703-12-30
+27,get into bank,1704-12-30
+27,get service in a,1705-12-30
+27,get out from a,1706-12-30
+27,get in line a,1707-12-30
+27,get into bank,1708-12-30
+27,get into bank,1709-12-30
+27,get into bank,1710-12-30
+27,get into bank,1711-12-30
+27,get in line b,1712-12-30
+27,get service in b,1713-12-30
+27,get in line b,1714-12-30
+27,get out from b,1715-12-30
+27,get in line a,1716-12-30
+27,get into bank,1717-12-30
+27,get in line b,1718-12-30
+27,get in line a,1719-12-30
+27,get into bank,1720-12-30
+27,get in line b,1721-12-30
+27,get in line a,1722-12-30
+27,get service in a,1723-12-30
+27,get service in b,1724-12-30
+27,get out from a,1725-12-30
+27,get into bank,1726-12-30
+27,get service in a,1727-12-30
+27,get in line a,1728-12-30
+27,get out from b,1729-12-30
+27,get service in b,1730-12-30
+27,get out from b,1731-12-30
+27,get out from a,1732-12-30
+27,get service in b,1733-12-30
+27,get out from b,1734-12-30
+27,get service in a,1735-12-30
+27,get out from a,1736-12-30
+27,get service in a,1737-12-30
+27,get out from a,1738-12-30
+27,get service in a,1739-12-30
+27,get out from a,1740-12-30
+27,close bank,1741-12-30
+28,open bank,1700-12-30
+28,get into bank,1701-12-30
+28,get into bank,1702-12-30
+28,get in line a,1703-12-30
+28,get service in a,1704-12-30
+28,get in line a,1705-12-30
+28,get out from a,1706-12-30
+28,get service in a,1707-12-30
+28,get into bank,1708-12-30
+28,get in line a,1709-12-30
+28,get out from a,1710-12-30
+28,get service in a,1711-12-30
+28,get out from a,1712-12-30
+28,get into bank,1713-12-30
+28,get in line a,1714-12-30
+28,get into bank,1715-12-30
+28,get in line b,1716-12-30
+28,get service in a,1717-12-30
+28,get service in b,1718-12-30
+28,get into bank,1719-12-30
+28,get out from a,1720-12-30
+28,get into bank,1721-12-30
+28,get in line a,1722-12-30
+28,get in line b,1723-12-30
+28,get service in a,1724-12-30
+28,get out from a,1725-12-30
+28,get into bank,1726-12-30
+28,get out from b,1727-12-30
+28,get in line a,1728-12-30
+28,get service in b,1729-12-30
+28,get service in a,1730-12-30
+28,get into bank,1731-12-30
+28,get out from a,1732-12-30
+28,get in line a,1733-12-30
+28,get service in a,1734-12-30
+28,get out from b,1735-12-30
+28,get into bank,1736-12-30
+28,get out from a,1737-12-30
+28,get in line a,1738-12-30
+28,get service in a,1739-12-30
+28,get out from a,1740-12-30
+28,close bank,1741-12-30
+29,open bank,1700-12-30
+29,get into bank,1701-12-30
+29,get into bank,1702-12-30
+29,get into bank,1703-12-30
+29,get in line a,1704-12-30
+29,get into bank,1705-12-30
+29,get service in a,1706-12-30
+29,get out from a,1707-12-30
+29,get in line a,1708-12-30
+29,get into bank,1709-12-30
+29,get service in a,1710-12-30
+29,get into bank,1711-12-30
+29,get into bank,1712-12-30
+29,get in line a,1713-12-30
+29,get into bank,1714-12-30
+29,get out from a,1715-12-30
+29,get into bank,1716-12-30
+29,get service in a,1717-12-30
+29,get into bank,1718-12-30
+29,get in line a,1719-12-30
+29,get in line b,1720-12-30
+29,get in line a,1721-12-30
+29,get service in b,1722-12-30
+29,get in line b,1723-12-30
+29,get in line b,1724-12-30
+29,get out from a,1725-12-30
+29,get service in a,1726-12-30
+29,get out from a,1727-12-30
+29,get in line a,1728-12-30
+29,get service in a,1729-12-30
+29,get out from a,1730-12-30
+29,get in line a,1731-12-30
+29,get service in a,1732-12-30
+29,get out from b,1733-12-30
+29,get service in b,1734-12-30
+29,get out from a,1735-12-30
+29,get service in a,1736-12-30
+29,get out from a,1737-12-30
+29,get out from b,1738-12-30
+29,get service in b,1739-12-30
+29,get out from b,1740-12-30
+29,close bank,1741-12-30
+30,open bank,1700-12-30
+30,get into bank,1701-12-30
+30,get in line a,1702-12-30
+30,get service in a,1703-12-30
+30,get out from a,1704-12-30
+30,get into bank,1705-12-30
+30,get in line a,1706-12-30
+30,get service in a,1707-12-30
+30,get out from a,1708-12-30
+30,get into bank,1709-12-30
+30,get in line a,1710-12-30
+30,get into bank,1711-12-30
+30,get service in a,1712-12-30
+30,get out from a,1713-12-30
+30,get in line a,1714-12-30
+30,get service in a,1715-12-30
+30,get into bank,1716-12-30
+30,get out from a,1717-12-30
+30,get in line a,1718-12-30
+30,get into bank,1719-12-30
+30,get service in a,1720-12-30
+30,get into bank,1721-12-30
+30,get into bank,1722-12-30
+30,get out from a,1723-12-30
+30,get in line a,1724-12-30
+30,get into bank,1725-12-30
+30,get in line b,1726-12-30
+30,get service in a,1727-12-30
+30,get into bank,1728-12-30
+30,get in line a,1729-12-30
+30,get in line a,1730-12-30
+30,get out from a,1731-12-30
+30,get service in a,1732-12-30
+30,get out from a,1733-12-30
+30,get service in b,1734-12-30
+30,get service in a,1735-12-30
+30,get out from b,1736-12-30
+30,get out from a,1737-12-30
+30,get in line a,1738-12-30
+30,get service in a,1739-12-30
+30,get out from a,1740-12-30
+30,close bank,1741-12-30
+31,open bank,1700-12-30
+31,get into bank,1701-12-30
+31,get into bank,1702-12-30
+31,get into bank,1703-12-30
+31,get into bank,1704-12-30
+31,get into bank,1705-12-30
+31,get into bank,1706-12-30
+31,get into bank,1707-12-30
+31,get into bank,1708-12-30
+31,get into bank,1709-12-30
+31,get in line a,1710-12-30
+31,get into bank,1711-12-30
+31,get in line b,1712-12-30
+31,get in line a,1713-12-30
+31,get service in b,1714-12-30
+31,get out from b,1715-12-30
+31,get service in a,1716-12-30
+31,get out from a,1717-12-30
+31,get service in a,1718-12-30
+31,get out from a,1719-12-30
+31,get in line a,1720-12-30
+31,get service in a,1721-12-30
+31,get out from a,1722-12-30
+31,get in line a,1723-12-30
+31,get service in a,1724-12-30
+31,get out from a,1725-12-30
+31,get in line a,1726-12-30
+31,get service in a,1727-12-30
+31,get out from a,1728-12-30
+31,get in line a,1729-12-30
+31,get in line b,1730-12-30
+31,get service in b,1731-12-30
+31,get out from b,1732-12-30
+31,get in line b,1733-12-30
+31,get in line a,1734-12-30
+31,get service in a,1735-12-30
+31,get out from a,1736-12-30
+31,get service in a,1737-12-30
+31,get out from a,1738-12-30
+31,get service in b,1739-12-30
+31,get out from b,1740-12-30
+31,close bank,1741-12-30
+32,open bank,1700-12-30
+32,get into bank,1701-12-30
+32,get into bank,1702-12-30
+32,get into bank,1703-12-30
+32,get in line a,1704-12-30
+32,get in line b,1705-12-30
+32,get into bank,1706-12-30
+32,get service in a,1707-12-30
+32,get in line a,1708-12-30
+32,get out from a,1709-12-30
+32,get service in b,1710-12-30
+32,get service in a,1711-12-30
+32,get into bank,1712-12-30
+32,get out from a,1713-12-30
+32,get out from b,1714-12-30
+32,get in line a,1715-12-30
+32,get in line b,1716-12-30
+32,get into bank,1717-12-30
+32,get service in b,1718-12-30
+32,get service in a,1719-12-30
+32,get out from b,1720-12-30
+32,get in line a,1721-12-30
+32,get out from a,1722-12-30
+32,get into bank,1723-12-30
+32,get service in a,1724-12-30
+32,get in line a,1725-12-30
+32,get into bank,1726-12-30
+32,get into bank,1727-12-30
+32,get out from a,1728-12-30
+32,get service in a,1729-12-30
+32,get in line a,1730-12-30
+32,get out from a,1731-12-30
+32,get in line b,1732-12-30
+32,get into bank,1733-12-30
+32,get in line a,1734-12-30
+32,get service in b,1735-12-30
+32,get service in a,1736-12-30
+32,get out from a,1737-12-30
+32,get service in a,1738-12-30
+32,get out from b,1739-12-30
+32,get out from a,1740-12-30
+32,close bank,1741-12-30
+33,open bank,1700-12-30
+33,get into bank,1701-12-30
+33,get in line a,1702-12-30
+33,get service in a,1703-12-30
+33,get out from a,1704-12-30
+33,get into bank,1705-12-30
+33,get into bank,1706-12-30
+33,get in line a,1707-12-30
+33,get service in a,1708-12-30
+33,get into bank,1709-12-30
+33,get into bank,1710-12-30
+33,get into bank,1711-12-30
+33,get in line a,1712-12-30
+33,get in line b,1713-12-30
+33,get service in b,1714-12-30
+33,get out from b,1715-12-30
+33,get out from a,1716-12-30
+33,get service in a,1717-12-30
+33,get into bank,1718-12-30
+33,get into bank,1719-12-30
+33,get in line a,1720-12-30
+33,get out from a,1721-12-30
+33,get into bank,1722-12-30
+33,get service in a,1723-12-30
+33,get out from a,1724-12-30
+33,get into bank,1725-12-30
+33,get in line a,1726-12-30
+33,get service in a,1727-12-30
+33,get in line a,1728-12-30
+33,get out from a,1729-12-30
+33,get in line b,1730-12-30
+33,get service in b,1731-12-30
+33,get service in a,1732-12-30
+33,get in line a,1733-12-30
+33,get out from b,1734-12-30
+33,get out from a,1735-12-30
+33,get service in a,1736-12-30
+33,get in line a,1737-12-30
+33,get out from a,1738-12-30
+33,get service in a,1739-12-30
+33,get out from a,1740-12-30
+33,close bank,1741-12-30
+34,open bank,1700-12-30
+34,get into bank,1701-12-30
+34,get in line a,1702-12-30
+34,get into bank,1703-12-30
+34,get into bank,1704-12-30
+34,get service in a,1705-12-30
+34,get in line a,1706-12-30
+34,get into bank,1707-12-30
+34,get in line b,1708-12-30
+34,get in line a,1709-12-30
+34,get into bank,1710-12-30
+34,get into bank,1711-12-30
+34,get service in b,1712-12-30
+34,get in line b,1713-12-30
+34,get in line b,1714-12-30
+34,get out from a,1715-12-30
+34,get service in a,1716-12-30
+34,get out from b,1717-12-30
+34,get out from a,1718-12-30
+34,get service in a,1719-12-30
+34,get into bank,1720-12-30
+34,get service in b,1721-12-30
+34,get in line a,1722-12-30
+34,get into bank,1723-12-30
+34,get into bank,1724-12-30
+34,get into bank,1725-12-30
+34,get in line a,1726-12-30
+34,get out from b,1727-12-30
+34,get out from a,1728-12-30
+34,get service in b,1729-12-30
+34,get in line b,1730-12-30
+34,get service in a,1731-12-30
+34,get in line a,1732-12-30
+34,get out from a,1733-12-30
+34,get out from b,1734-12-30
+34,get service in a,1735-12-30
+34,get service in b,1736-12-30
+34,get out from a,1737-12-30
+34,get out from b,1738-12-30
+34,get service in a,1739-12-30
+34,get out from a,1740-12-30
+34,close bank,1741-12-30
+35,open bank,1700-12-30
+35,get into bank,1701-12-30
+35,get in line a,1702-12-30
+35,get into bank,1703-12-30
+35,get service in a,1704-12-30
+35,get in line a,1705-12-30
+35,get into bank,1706-12-30
+35,get out from a,1707-12-30
+35,get in line b,1708-12-30
+35,get service in a,1709-12-30
+35,get service in b,1710-12-30
+35,get out from a,1711-12-30
+35,get into bank,1712-12-30
+35,get in line a,1713-12-30
+35,get out from b,1714-12-30
+35,get service in a,1715-12-30
+35,get into bank,1716-12-30
+35,get out from a,1717-12-30
+35,get in line a,1718-12-30
+35,get into bank,1719-12-30
+35,get service in a,1720-12-30
+35,get into bank,1721-12-30
+35,get in line a,1722-12-30
+35,get in line b,1723-12-30
+35,get into bank,1724-12-30
+35,get service in b,1725-12-30
+35,get into bank,1726-12-30
+35,get into bank,1727-12-30
+35,get in line b,1728-12-30
+35,get in line a,1729-12-30
+35,get in line b,1730-12-30
+35,get out from a,1731-12-30
+35,get service in a,1732-12-30
+35,get out from a,1733-12-30
+35,get out from b,1734-12-30
+35,get service in a,1735-12-30
+35,get service in b,1736-12-30
+35,get out from b,1737-12-30
+35,get out from a,1738-12-30
+35,get service in b,1739-12-30
+35,get out from b,1740-12-30
+35,close bank,1741-12-30
+36,open bank,1700-12-30
+36,get into bank,1701-12-30
+36,get into bank,1702-12-30
+36,get in line a,1703-12-30
+36,get service in a,1704-12-30
+36,get in line a,1705-12-30
+36,get out from a,1706-12-30
+36,get into bank,1707-12-30
+36,get into bank,1708-12-30
+36,get service in a,1709-12-30
+36,get into bank,1710-12-30
+36,get into bank,1711-12-30
+36,get into bank,1712-12-30
+36,get into bank,1713-12-30
+36,get out from a,1714-12-30
+36,get in line a,1715-12-30
+36,get into bank,1716-12-30
+36,get in line b,1717-12-30
+36,get into bank,1718-12-30
+36,get service in b,1719-12-30
+36,get out from b,1720-12-30
+36,get in line b,1721-12-30
+36,get in line a,1722-12-30
+36,get in line b,1723-12-30
+36,get service in a,1724-12-30
+36,get service in b,1725-12-30
+36,get out from b,1726-12-30
+36,get in line a,1727-12-30
+36,get service in b,1728-12-30
+36,get in line b,1729-12-30
+36,get in line b,1730-12-30
+36,get out from a,1731-12-30
+36,get out from b,1732-12-30
+36,get service in b,1733-12-30
+36,get service in a,1734-12-30
+36,get out from a,1735-12-30
+36,get out from b,1736-12-30
+36,get service in a,1737-12-30
+36,get service in b,1738-12-30
+36,get out from b,1739-12-30
+36,get out from a,1740-12-30
+36,close bank,1741-12-30
+37,open bank,1700-12-30
+37,get into bank,1701-12-30
+37,get into bank,1702-12-30
+37,get in line a,1703-12-30
+37,get into bank,1704-12-30
+37,get in line b,1705-12-30
+37,get service in b,1706-12-30
+37,get service in a,1707-12-30
+37,get into bank,1708-12-30
+37,get in line a,1709-12-30
+37,get into bank,1710-12-30
+37,get out from b,1711-12-30
+37,get into bank,1712-12-30
+37,get in line b,1713-12-30
+37,get in line a,1714-12-30
+37,get out from a,1715-12-30
+37,get in line b,1716-12-30
+37,get service in b,1717-12-30
+37,get into bank,1718-12-30
+37,get into bank,1719-12-30
+37,get service in a,1720-12-30
+37,get out from a,1721-12-30
+37,get in line a,1722-12-30
+37,get service in a,1723-12-30
+37,get out from b,1724-12-30
+37,get into bank,1725-12-30
+37,get out from a,1726-12-30
+37,get in line a,1727-12-30
+37,get into bank,1728-12-30
+37,get service in b,1729-12-30
+37,get service in a,1730-12-30
+37,get out from b,1731-12-30
+37,get out from a,1732-12-30
+37,get service in a,1733-12-30
+37,get out from a,1734-12-30
+37,get in line a,1735-12-30
+37,get service in a,1736-12-30
+37,get out from a,1737-12-30
+37,get in line a,1738-12-30
+37,get service in a,1739-12-30
+37,get out from a,1740-12-30
+37,close bank,1741-12-30
+38,open bank,1700-12-30
+38,get into bank,1701-12-30
+38,get in line a,1702-12-30
+38,get into bank,1703-12-30
+38,get in line b,1704-12-30
+38,get service in b,1705-12-30
+38,get out from b,1706-12-30
+38,get into bank,1707-12-30
+38,get in line b,1708-12-30
+38,get service in b,1709-12-30
+38,get into bank,1710-12-30
+38,get in line b,1711-12-30
+38,get service in a,1712-12-30
+38,get out from a,1713-12-30
+38,get out from b,1714-12-30
+38,get service in b,1715-12-30
+38,get out from b,1716-12-30
+38,get into bank,1717-12-30
+38,get in line a,1718-12-30
+38,get service in a,1719-12-30
+38,get out from a,1720-12-30
+38,get into bank,1721-12-30
+38,get into bank,1722-12-30
+38,get into bank,1723-12-30
+38,get into bank,1724-12-30
+38,get in line a,1725-12-30
+38,get into bank,1726-12-30
+38,get in line b,1727-12-30
+38,get service in a,1728-12-30
+38,get service in b,1729-12-30
+38,get in line a,1730-12-30
+38,get out from a,1731-12-30
+38,get service in a,1732-12-30
+38,get out from b,1733-12-30
+38,get in line a,1734-12-30
+38,get out from a,1735-12-30
+38,get service in a,1736-12-30
+38,get out from a,1737-12-30
+38,get in line a,1738-12-30
+38,get service in a,1739-12-30
+38,get out from a,1740-12-30
+38,close bank,1741-12-30
+39,open bank,1700-12-30
+39,get into bank,1701-12-30
+39,get into bank,1702-12-30
+39,get in line a,1703-12-30
+39,get into bank,1704-12-30
+39,get into bank,1705-12-30
+39,get service in a,1706-12-30
+39,get in line a,1707-12-30
+39,get into bank,1708-12-30
+39,get into bank,1709-12-30
+39,get in line b,1710-12-30
+39,get into bank,1711-12-30
+39,get in line a,1712-12-30
+39,get out from a,1713-12-30
+39,get in line b,1714-12-30
+39,get service in b,1715-12-30
+39,get service in a,1716-12-30
+39,get into bank,1717-12-30
+39,get out from b,1718-12-30
+39,get out from a,1719-12-30
+39,get service in b,1720-12-30
+39,get into bank,1721-12-30
+39,get in line b,1722-12-30
+39,get service in a,1723-12-30
+39,get out from b,1724-12-30
+39,get service in b,1725-12-30
+39,get out from a,1726-12-30
+39,get into bank,1727-12-30
+39,get in line a,1728-12-30
+39,get service in a,1729-12-30
+39,get in line a,1730-12-30
+39,get out from a,1731-12-30
+39,get out from b,1732-12-30
+39,get service in a,1733-12-30
+39,get in line a,1734-12-30
+39,get out from a,1735-12-30
+39,get service in a,1736-12-30
+39,get out from a,1737-12-30
+39,get in line a,1738-12-30
+39,get service in a,1739-12-30
+39,get out from a,1740-12-30
+39,close bank,1741-12-30
+40,open bank,1700-12-30
+40,get into bank,1701-12-30
+40,get in line a,1702-12-30
+40,get service in a,1703-12-30
+40,get out from a,1704-12-30
+40,get into bank,1705-12-30
+40,get in line a,1706-12-30
+40,get into bank,1707-12-30
+40,get in line b,1708-12-30
+40,get service in a,1709-12-30
+40,get service in b,1710-12-30
+40,get out from b,1711-12-30
+40,get out from a,1712-12-30
+40,get into bank,1713-12-30
+40,get into bank,1714-12-30
+40,get into bank,1715-12-30
+40,get in line a,1716-12-30
+40,get in line b,1717-12-30
+40,get in line a,1718-12-30
+40,get service in b,1719-12-30
+40,get out from b,1720-12-30
+40,get service in a,1721-12-30
+40,get into bank,1722-12-30
+40,get into bank,1723-12-30
+40,get into bank,1724-12-30
+40,get into bank,1725-12-30
+40,get in line b,1726-12-30
+40,get out from a,1727-12-30
+40,get in line a,1728-12-30
+40,get service in b,1729-12-30
+40,get in line b,1730-12-30
+40,get in line b,1731-12-30
+40,get out from b,1732-12-30
+40,get service in a,1733-12-30
+40,get service in b,1734-12-30
+40,get out from b,1735-12-30
+40,get out from a,1736-12-30
+40,get service in b,1737-12-30
+40,get service in a,1738-12-30
+40,get out from a,1739-12-30
+40,get out from b,1740-12-30
+40,close bank,1741-12-30
+41,open bank,1700-12-30
+41,get into bank,1701-12-30
+41,get into bank,1702-12-30
+41,get into bank,1703-12-30
+41,get in line a,1704-12-30
+41,get service in a,1705-12-30
+41,get out from a,1706-12-30
+41,get in line a,1707-12-30
+41,get service in a,1708-12-30
+41,get into bank,1709-12-30
+41,get out from a,1710-12-30
+41,get into bank,1711-12-30
+41,get into bank,1712-12-30
+41,get in line a,1713-12-30
+41,get in line b,1714-12-30
+41,get into bank,1715-12-30
+41,get into bank,1716-12-30
+41,get in line a,1717-12-30
+41,get in line b,1718-12-30
+41,get service in b,1719-12-30
+41,get into bank,1720-12-30
+41,get in line b,1721-12-30
+41,get service in a,1722-12-30
+41,get into bank,1723-12-30
+41,get in line a,1724-12-30
+41,get out from b,1725-12-30
+41,get service in b,1726-12-30
+41,get in line b,1727-12-30
+41,get out from b,1728-12-30
+41,get out from a,1729-12-30
+41,get service in a,1730-12-30
+41,get out from a,1731-12-30
+41,get service in a,1732-12-30
+41,get service in b,1733-12-30
+41,get out from a,1734-12-30
+41,get in line a,1735-12-30
+41,get out from b,1736-12-30
+41,get service in a,1737-12-30
+41,get service in b,1738-12-30
+41,get out from a,1739-12-30
+41,get out from b,1740-12-30
+41,close bank,1741-12-30
+42,open bank,1700-12-30
+42,get into bank,1701-12-30
+42,get in line a,1702-12-30
+42,get service in a,1703-12-30
+42,get out from a,1704-12-30
+42,get into bank,1705-12-30
+42,get in line a,1706-12-30
+42,get service in a,1707-12-30
+42,get out from a,1708-12-30
+42,get into bank,1709-12-30
+42,get into bank,1710-12-30
+42,get in line a,1711-12-30
+42,get in line b,1712-12-30
+42,get service in a,1713-12-30
+42,get into bank,1714-12-30
+42,get into bank,1715-12-30
+42,get in line a,1716-12-30
+42,get service in b,1717-12-30
+42,get in line b,1718-12-30
+42,get into bank,1719-12-30
+42,get out from a,1720-12-30
+42,get in line a,1721-12-30
+42,get out from b,1722-12-30
+42,get service in a,1723-12-30
+42,get out from a,1724-12-30
+42,get into bank,1725-12-30
+42,get service in a,1726-12-30
+42,get into bank,1727-12-30
+42,get out from a,1728-12-30
+42,get service in b,1729-12-30
+42,get in line a,1730-12-30
+42,get out from b,1731-12-30
+42,get service in a,1732-12-30
+42,get into bank,1733-12-30
+42,get in line a,1734-12-30
+42,get in line b,1735-12-30
+42,get out from a,1736-12-30
+42,get service in b,1737-12-30
+42,get out from b,1738-12-30
+42,get service in a,1739-12-30
+42,get out from a,1740-12-30
+42,close bank,1741-12-30
+43,open bank,1700-12-30
+43,get into bank,1701-12-30
+43,get into bank,1702-12-30
+43,get into bank,1703-12-30
+43,get into bank,1704-12-30
+43,get in line a,1705-12-30
+43,get into bank,1706-12-30
+43,get in line b,1707-12-30
+43,get into bank,1708-12-30
+43,get service in a,1709-12-30
+43,get out from a,1710-12-30
+43,get into bank,1711-12-30
+43,get in line a,1712-12-30
+43,get in line a,1713-12-30
+43,get service in a,1714-12-30
+43,get in line a,1715-12-30
+43,get in line b,1716-12-30
+43,get in line a,1717-12-30
+43,get into bank,1718-12-30
+43,get into bank,1719-12-30
+43,get out from a,1720-12-30
+43,get in line b,1721-12-30
+43,get service in b,1722-12-30
+43,get into bank,1723-12-30
+43,get service in a,1724-12-30
+43,get in line a,1725-12-30
+43,get out from b,1726-12-30
+43,get service in b,1727-12-30
+43,get out from a,1728-12-30
+43,get service in a,1729-12-30
+43,get out from b,1730-12-30
+43,get in line b,1731-12-30
+43,get out from a,1732-12-30
+43,get service in a,1733-12-30
+43,get service in b,1734-12-30
+43,get out from b,1735-12-30
+43,get service in b,1736-12-30
+43,get out from a,1737-12-30
+43,get service in a,1738-12-30
+43,get out from a,1739-12-30
+43,get out from b,1740-12-30
+43,close bank,1741-12-30
+44,open bank,1700-12-30
+44,get into bank,1701-12-30
+44,get in line a,1702-12-30
+44,get service in a,1703-12-30
+44,get into bank,1704-12-30
+44,get into bank,1705-12-30
+44,get into bank,1706-12-30
+44,get in line a,1707-12-30
+44,get out from a,1708-12-30
+44,get service in a,1709-12-30
+44,get in line a,1710-12-30
+44,get into bank,1711-12-30
+44,get in line b,1712-12-30
+44,get service in b,1713-12-30
+44,get out from b,1714-12-30
+44,get into bank,1715-12-30
+44,get out from a,1716-12-30
+44,get into bank,1717-12-30
+44,get service in a,1718-12-30
+44,get out from a,1719-12-30
+44,get into bank,1720-12-30
+44,get into bank,1721-12-30
+44,get into bank,1722-12-30
+44,get in line a,1723-12-30
+44,get service in a,1724-12-30
+44,get out from a,1725-12-30
+44,get in line a,1726-12-30
+44,get service in a,1727-12-30
+44,get in line a,1728-12-30
+44,get in line b,1729-12-30
+44,get out from a,1730-12-30
+44,get service in a,1731-12-30
+44,get in line a,1732-12-30
+44,get in line a,1733-12-30
+44,get out from a,1734-12-30
+44,get service in a,1735-12-30
+44,get service in b,1736-12-30
+44,get out from b,1737-12-30
+44,get out from a,1738-12-30
+44,get service in a,1739-12-30
+44,get out from a,1740-12-30
+44,close bank,1741-12-30
+45,open bank,1700-12-30
+45,get into bank,1701-12-30
+45,get into bank,1702-12-30
+45,get in line a,1703-12-30
+45,get service in a,1704-12-30
+45,get in line a,1705-12-30
+45,get out from a,1706-12-30
+45,get service in a,1707-12-30
+45,get into bank,1708-12-30
+45,get out from a,1709-12-30
+45,get in line a,1710-12-30
+45,get service in a,1711-12-30
+45,get into bank,1712-12-30
+45,get out from a,1713-12-30
+45,get into bank,1714-12-30
+45,get into bank,1715-12-30
+45,get into bank,1716-12-30
+45,get into bank,1717-12-30
+45,get in line a,1718-12-30
+45,get service in a,1719-12-30
+45,get out from a,1720-12-30
+45,get into bank,1721-12-30
+45,get into bank,1722-12-30
+45,get in line a,1723-12-30
+45,get service in a,1724-12-30
+45,get out from a,1725-12-30
+45,get in line a,1726-12-30
+45,get service in a,1727-12-30
+45,get in line a,1728-12-30
+45,get out from a,1729-12-30
+45,get service in a,1730-12-30
+45,get out from a,1731-12-30
+45,get in line a,1732-12-30
+45,get in line b,1733-12-30
+45,get service in a,1734-12-30
+45,get in line a,1735-12-30
+45,get out from a,1736-12-30
+45,get service in b,1737-12-30
+45,get service in a,1738-12-30
+45,get out from a,1739-12-30
+45,get out from b,1740-12-30
+45,close bank,1741-12-30
+46,open bank,1700-12-30
+46,get into bank,1701-12-30
+46,get into bank,1702-12-30
+46,get into bank,1703-12-30
+46,get into bank,1704-12-30
+46,get in line a,1705-12-30
+46,get in line b,1706-12-30
+46,get service in b,1707-12-30
+46,get out from b,1708-12-30
+46,get service in a,1709-12-30
+46,get into bank,1710-12-30
+46,get in line a,1711-12-30
+46,get in line b,1712-12-30
+46,get into bank,1713-12-30
+46,get out from a,1714-12-30
+46,get into bank,1715-12-30
+46,get into bank,1716-12-30
+46,get in line a,1717-12-30
+46,get service in a,1718-12-30
+46,get out from a,1719-12-30
+46,get service in b,1720-12-30
+46,get into bank,1721-12-30
+46,get out from b,1722-12-30
+46,get service in a,1723-12-30
+46,get out from a,1724-12-30
+46,get in line a,1725-12-30
+46,get in line b,1726-12-30
+46,get in line a,1727-12-30
+46,get service in a,1728-12-30
+46,get out from a,1729-12-30
+46,get into bank,1730-12-30
+46,get in line a,1731-12-30
+46,get in line b,1732-12-30
+46,get service in b,1733-12-30
+46,get out from b,1734-12-30
+46,get service in a,1735-12-30
+46,get out from a,1736-12-30
+46,get service in a,1737-12-30
+46,get service in b,1738-12-30
+46,get out from b,1739-12-30
+46,get out from a,1740-12-30
+46,close bank,1741-12-30
+47,open bank,1700-12-30
+47,get into bank,1701-12-30
+47,get into bank,1702-12-30
+47,get in line a,1703-12-30
+47,get service in a,1704-12-30
+47,get in line a,1705-12-30
+47,get out from a,1706-12-30
+47,get into bank,1707-12-30
+47,get into bank,1708-12-30
+47,get into bank,1709-12-30
+47,get into bank,1710-12-30
+47,get into bank,1711-12-30
+47,get into bank,1712-12-30
+47,get into bank,1713-12-30
+47,get into bank,1714-12-30
+47,get in line b,1715-12-30
+47,get service in b,1716-12-30
+47,get in line b,1717-12-30
+47,get out from b,1718-12-30
+47,get in line a,1719-12-30
+47,get in line b,1720-12-30
+47,get in line a,1721-12-30
+47,get service in b,1722-12-30
+47,get out from b,1723-12-30
+47,get service in b,1724-12-30
+47,get service in a,1725-12-30
+47,get out from a,1726-12-30
+47,get out from b,1727-12-30
+47,get in line b,1728-12-30
+47,get service in a,1729-12-30
+47,get service in b,1730-12-30
+47,get in line b,1731-12-30
+47,get out from b,1732-12-30
+47,get out from a,1733-12-30
+47,get service in b,1734-12-30
+47,get in line b,1735-12-30
+47,get service in a,1736-12-30
+47,get out from b,1737-12-30
+47,get service in b,1738-12-30
+47,get out from b,1739-12-30
+47,get out from a,1740-12-30
+47,close bank,1741-12-30
+48,open bank,1700-12-30
+48,get into bank,1701-12-30
+48,get into bank,1702-12-30
+48,get into bank,1703-12-30
+48,get in line a,1704-12-30
+48,get in line b,1705-12-30
+48,get service in a,1706-12-30
+48,get service in b,1707-12-30
+48,get out from b,1708-12-30
+48,get into bank,1709-12-30
+48,get in line a,1710-12-30
+48,get in line b,1711-12-30
+48,get service in b,1712-12-30
+48,get into bank,1713-12-30
+48,get in line b,1714-12-30
+48,get into bank,1715-12-30
+48,get in line a,1716-12-30
+48,get out from b,1717-12-30
+48,get service in b,1718-12-30
+48,get out from b,1719-12-30
+48,get into bank,1720-12-30
+48,get out from a,1721-12-30
+48,get into bank,1722-12-30
+48,get service in a,1723-12-30
+48,get into bank,1724-12-30
+48,get out from a,1725-12-30
+48,get service in a,1726-12-30
+48,get out from a,1727-12-30
+48,get into bank,1728-12-30
+48,get in line a,1729-12-30
+48,get service in a,1730-12-30
+48,get out from a,1731-12-30
+48,get in line a,1732-12-30
+48,get service in a,1733-12-30
+48,get in line a,1734-12-30
+48,get out from a,1735-12-30
+48,get in line b,1736-12-30
+48,get service in b,1737-12-30
+48,get service in a,1738-12-30
+48,get out from b,1739-12-30
+48,get out from a,1740-12-30
+48,close bank,1741-12-30
+49,open bank,1700-12-30
+49,get into bank,1701-12-30
+49,get into bank,1702-12-30
+49,get in line a,1703-12-30
+49,get service in a,1704-12-30
+49,get out from a,1705-12-30
+49,get into bank,1706-12-30
+49,get into bank,1707-12-30
+49,get into bank,1708-12-30
+49,get in line a,1709-12-30
+49,get in line b,1710-12-30
+49,get into bank,1711-12-30
+49,get in line a,1712-12-30
+49,get into bank,1713-12-30
+49,get in line b,1714-12-30
+49,get service in b,1715-12-30
+49,get into bank,1716-12-30
+49,get in line b,1717-12-30
+49,get service in a,1718-12-30
+49,get in line a,1719-12-30
+49,get into bank,1720-12-30
+49,get into bank,1721-12-30
+49,get out from b,1722-12-30
+49,get service in b,1723-12-30
+49,get out from a,1724-12-30
+49,get out from b,1725-12-30
+49,get in line b,1726-12-30
+49,get service in a,1727-12-30
+49,get out from a,1728-12-30
+49,get service in b,1729-12-30
+49,get out from b,1730-12-30
+49,get service in a,1731-12-30
+49,get service in b,1732-12-30
+49,get in line a,1733-12-30
+49,get in line b,1734-12-30
+49,get out from a,1735-12-30
+49,get out from b,1736-12-30
+49,get service in a,1737-12-30
+49,get out from a,1738-12-30
+49,get service in b,1739-12-30
+49,get out from b,1740-12-30
+49,close bank,1741-12-30
+50,open bank,1700-12-30
+50,get into bank,1701-12-30
+50,get into bank,1702-12-30
+50,get into bank,1703-12-30
+50,get into bank,1704-12-30
+50,get in line a,1705-12-30
+50,get service in a,1706-12-30
+50,get out from a,1707-12-30
+50,get into bank,1708-12-30
+50,get in line a,1709-12-30
+50,get service in a,1710-12-30
+50,get out from a,1711-12-30
+50,get into bank,1712-12-30
+50,get in line a,1713-12-30
+50,get service in a,1714-12-30
+50,get into bank,1715-12-30
+50,get out from a,1716-12-30
+50,get in line a,1717-12-30
+50,get into bank,1718-12-30
+50,get service in a,1719-12-30
+50,get in line a,1720-12-30
+50,get in line b,1721-12-30
+50,get service in b,1722-12-30
+50,get out from b,1723-12-30
+50,get into bank,1724-12-30
+50,get into bank,1725-12-30
+50,get out from a,1726-12-30
+50,get service in a,1727-12-30
+50,get out from a,1728-12-30
+50,get in line a,1729-12-30
+50,get in line b,1730-12-30
+50,get in line a,1731-12-30
+50,get in line b,1732-12-30
+50,get service in b,1733-12-30
+50,get service in a,1734-12-30
+50,get out from a,1735-12-30
+50,get out from b,1736-12-30
+50,get service in b,1737-12-30
+50,get out from b,1738-12-30
+50,get service in a,1739-12-30
+50,get out from a,1740-12-30
+50,close bank,1741-12-30
+51,open bank,1700-12-30
+51,get into bank,1701-12-30
+51,get in line a,1702-12-30
+51,get into bank,1703-12-30
+51,get service in a,1704-12-30
+51,get out from a,1705-12-30
+51,get into bank,1706-12-30
+51,get into bank,1707-12-30
+51,get into bank,1708-12-30
+51,get into bank,1709-12-30
+51,get in line a,1710-12-30
+51,get service in a,1711-12-30
+51,get in line a,1712-12-30
+51,get in line b,1713-12-30
+51,get into bank,1714-12-30
+51,get into bank,1715-12-30
+51,get out from a,1716-12-30
+51,get in line a,1717-12-30
+51,get into bank,1718-12-30
+51,get service in a,1719-12-30
+51,get out from a,1720-12-30
+51,get service in a,1721-12-30
+51,get service in b,1722-12-30
+51,get in line a,1723-12-30
+51,get in line b,1724-12-30
+51,get out from a,1725-12-30
+51,get service in a,1726-12-30
+51,get out from a,1727-12-30
+51,get in line a,1728-12-30
+51,get into bank,1729-12-30
+51,get service in a,1730-12-30
+51,get out from a,1731-12-30
+51,get out from b,1732-12-30
+51,get service in b,1733-12-30
+51,get out from b,1734-12-30
+51,get in line a,1735-12-30
+51,get service in a,1736-12-30
+51,get in line a,1737-12-30
+51,get out from a,1738-12-30
+51,get service in a,1739-12-30
+51,get out from a,1740-12-30
+51,close bank,1741-12-30
+52,open bank,1700-12-30
+52,get into bank,1701-12-30
+52,get in line a,1702-12-30
+52,get into bank,1703-12-30
+52,get service in a,1704-12-30
+52,get out from a,1705-12-30
+52,get in line a,1706-12-30
+52,get service in a,1707-12-30
+52,get into bank,1708-12-30
+52,get out from a,1709-12-30
+52,get in line a,1710-12-30
+52,get into bank,1711-12-30
+52,get into bank,1712-12-30
+52,get in line b,1713-12-30
+52,get into bank,1714-12-30
+52,get service in b,1715-12-30
+52,get in line b,1716-12-30
+52,get service in a,1717-12-30
+52,get into bank,1718-12-30
+52,get out from b,1719-12-30
+52,get into bank,1720-12-30
+52,get out from a,1721-12-30
+52,get in line a,1722-12-30
+52,get into bank,1723-12-30
+52,get in line a,1724-12-30
+52,get service in a,1725-12-30
+52,get into bank,1726-12-30
+52,get out from a,1727-12-30
+52,get in line a,1728-12-30
+52,get in line b,1729-12-30
+52,get service in b,1730-12-30
+52,get service in a,1731-12-30
+52,get in line a,1732-12-30
+52,get out from a,1733-12-30
+52,get service in a,1734-12-30
+52,get out from b,1735-12-30
+52,get out from a,1736-12-30
+52,get service in b,1737-12-30
+52,get out from b,1738-12-30
+52,get service in a,1739-12-30
+52,get out from a,1740-12-30
+52,close bank,1741-12-30
+53,open bank,1700-12-30
+53,get into bank,1701-12-30
+53,get into bank,1702-12-30
+53,get into bank,1703-12-30
+53,get into bank,1704-12-30
+53,get into bank,1705-12-30
+53,get in line a,1706-12-30
+53,get in line b,1707-12-30
+53,get into bank,1708-12-30
+53,get in line a,1709-12-30
+53,get service in a,1710-12-30
+53,get service in b,1711-12-30
+53,get into bank,1712-12-30
+53,get in line b,1713-12-30
+53,get in line a,1714-12-30
+53,get out from a,1715-12-30
+53,get out from b,1716-12-30
+53,get into bank,1717-12-30
+53,get in line b,1718-12-30
+53,get in line a,1719-12-30
+53,get service in a,1720-12-30
+53,get into bank,1721-12-30
+53,get service in b,1722-12-30
+53,get out from a,1723-12-30
+53,get service in a,1724-12-30
+53,get out from a,1725-12-30
+53,get service in a,1726-12-30
+53,get in line a,1727-12-30
+53,get in line a,1728-12-30
+53,get out from b,1729-12-30
+53,get out from a,1730-12-30
+53,get service in b,1731-12-30
+53,get out from b,1732-12-30
+53,get service in a,1733-12-30
+53,get out from a,1734-12-30
+53,get into bank,1735-12-30
+53,get in line b,1736-12-30
+53,get service in a,1737-12-30
+53,get service in b,1738-12-30
+53,get out from b,1739-12-30
+53,get out from a,1740-12-30
+53,close bank,1741-12-30
+54,open bank,1700-12-30
+54,get into bank,1701-12-30
+54,get in line a,1702-12-30
+54,get into bank,1703-12-30
+54,get into bank,1704-12-30
+54,get into bank,1705-12-30
+54,get into bank,1706-12-30
+54,get into bank,1707-12-30
+54,get in line b,1708-12-30
+54,get service in b,1709-12-30
+54,get into bank,1710-12-30
+54,get service in a,1711-12-30
+54,get in line a,1712-12-30
+54,get out from a,1713-12-30
+54,get into bank,1714-12-30
+54,get out from b,1715-12-30
+54,get service in a,1716-12-30
+54,get in line a,1717-12-30
+54,get in line b,1718-12-30
+54,get into bank,1719-12-30
+54,get into bank,1720-12-30
+54,get in line a,1721-12-30
+54,get in line b,1722-12-30
+54,get service in b,1723-12-30
+54,get out from a,1724-12-30
+54,get out from b,1725-12-30
+54,get service in a,1726-12-30
+54,get in line a,1727-12-30
+54,get out from a,1728-12-30
+54,get service in b,1729-12-30
+54,get in line b,1730-12-30
+54,get out from b,1731-12-30
+54,get service in a,1732-12-30
+54,get in line a,1733-12-30
+54,get service in b,1734-12-30
+54,get out from b,1735-12-30
+54,get out from a,1736-12-30
+54,get service in a,1737-12-30
+54,get out from a,1738-12-30
+54,get service in a,1739-12-30
+54,get out from a,1740-12-30
+54,close bank,1741-12-30
+55,open bank,1700-12-30
+55,get into bank,1701-12-30
+55,get in line a,1702-12-30
+55,get into bank,1703-12-30
+55,get service in a,1704-12-30
+55,get in line a,1705-12-30
+55,get out from a,1706-12-30
+55,get service in a,1707-12-30
+55,get into bank,1708-12-30
+55,get into bank,1709-12-30
+55,get out from a,1710-12-30
+55,get in line a,1711-12-30
+55,get in line b,1712-12-30
+55,get into bank,1713-12-30
+55,get into bank,1714-12-30
+55,get service in a,1715-12-30
+55,get service in b,1716-12-30
+55,get in line a,1717-12-30
+55,get in line b,1718-12-30
+55,get out from b,1719-12-30
+55,get into bank,1720-12-30
+55,get service in b,1721-12-30
+55,get in line b,1722-12-30
+55,get into bank,1723-12-30
+55,get out from b,1724-12-30
+55,get service in b,1725-12-30
+55,get out from a,1726-12-30
+55,get in line b,1727-12-30
+55,get out from b,1728-12-30
+55,get service in a,1729-12-30
+55,get service in b,1730-12-30
+55,get into bank,1731-12-30
+55,get out from b,1732-12-30
+55,get into bank,1733-12-30
+55,get out from a,1734-12-30
+55,get in line a,1735-12-30
+55,get service in a,1736-12-30
+55,get in line a,1737-12-30
+55,get out from a,1738-12-30
+55,get service in a,1739-12-30
+55,get out from a,1740-12-30
+55,close bank,1741-12-30
+56,open bank,1700-12-30
+56,get into bank,1701-12-30
+56,get into bank,1702-12-30
+56,get into bank,1703-12-30
+56,get in line a,1704-12-30
+56,get into bank,1705-12-30
+56,get service in a,1706-12-30
+56,get out from a,1707-12-30
+56,get in line a,1708-12-30
+56,get service in a,1709-12-30
+56,get in line a,1710-12-30
+56,get into bank,1711-12-30
+56,get out from a,1712-12-30
+56,get in line b,1713-12-30
+56,get in line a,1714-12-30
+56,get service in a,1715-12-30
+56,get service in b,1716-12-30
+56,get out from b,1717-12-30
+56,get out from a,1718-12-30
+56,get into bank,1719-12-30
+56,get in line b,1720-12-30
+56,get service in b,1721-12-30
+56,get out from b,1722-12-30
+56,get service in a,1723-12-30
+56,get out from a,1724-12-30
+56,get into bank,1725-12-30
+56,get into bank,1726-12-30
+56,get in line a,1727-12-30
+56,get into bank,1728-12-30
+56,get service in a,1729-12-30
+56,get into bank,1730-12-30
+56,get in line a,1731-12-30
+56,get out from a,1732-12-30
+56,get service in a,1733-12-30
+56,get out from a,1734-12-30
+56,get in line a,1735-12-30
+56,get service in a,1736-12-30
+56,get out from a,1737-12-30
+56,get in line a,1738-12-30
+56,get service in a,1739-12-30
+56,get out from a,1740-12-30
+56,close bank,1741-12-30
+57,open bank,1700-12-30
+57,get into bank,1701-12-30
+57,get into bank,1702-12-30
+57,get into bank,1703-12-30
+57,get into bank,1704-12-30
+57,get into bank,1705-12-30
+57,get into bank,1706-12-30
+57,get into bank,1707-12-30
+57,get into bank,1708-12-30
+57,get into bank,1709-12-30
+57,get in line a,1710-12-30
+57,get into bank,1711-12-30
+57,get service in a,1712-12-30
+57,get out from a,1713-12-30
+57,get in line a,1714-12-30
+57,get in line b,1715-12-30
+57,get service in a,1716-12-30
+57,get out from a,1717-12-30
+57,get in line a,1718-12-30
+57,get service in a,1719-12-30
+57,get service in b,1720-12-30
+57,get out from b,1721-12-30
+57,get out from a,1722-12-30
+57,get in line a,1723-12-30
+57,get in line b,1724-12-30
+57,get service in a,1725-12-30
+57,get in line a,1726-12-30
+57,get in line a,1727-12-30
+57,get out from a,1728-12-30
+57,get service in a,1729-12-30
+57,get in line a,1730-12-30
+57,get service in b,1731-12-30
+57,get out from a,1732-12-30
+57,get service in a,1733-12-30
+57,get out from b,1734-12-30
+57,get out from a,1735-12-30
+57,get service in a,1736-12-30
+57,get in line a,1737-12-30
+57,get out from a,1738-12-30
+57,get service in a,1739-12-30
+57,get out from a,1740-12-30
+57,close bank,1741-12-30
+58,open bank,1700-12-30
+58,get into bank,1701-12-30
+58,get into bank,1702-12-30
+58,get into bank,1703-12-30
+58,get in line a,1704-12-30
+58,get service in a,1705-12-30
+58,get into bank,1706-12-30
+58,get out from a,1707-12-30
+58,get in line a,1708-12-30
+58,get in line b,1709-12-30
+58,get into bank,1710-12-30
+58,get service in b,1711-12-30
+58,get out from b,1712-12-30
+58,get into bank,1713-12-30
+58,get service in a,1714-12-30
+58,get into bank,1715-12-30
+58,get in line a,1716-12-30
+58,get out from a,1717-12-30
+58,get into bank,1718-12-30
+58,get into bank,1719-12-30
+58,get in line b,1720-12-30
+58,get in line a,1721-12-30
+58,get service in a,1722-12-30
+58,get service in b,1723-12-30
+58,get out from a,1724-12-30
+58,get out from b,1725-12-30
+58,get in line b,1726-12-30
+58,get service in b,1727-12-30
+58,get out from b,1728-12-30
+58,get service in a,1729-12-30
+58,get into bank,1730-12-30
+58,get out from a,1731-12-30
+58,get in line a,1732-12-30
+58,get in line b,1733-12-30
+58,get in line a,1734-12-30
+58,get service in b,1735-12-30
+58,get out from b,1736-12-30
+58,get service in a,1737-12-30
+58,get out from a,1738-12-30
+58,get service in a,1739-12-30
+58,get out from a,1740-12-30
+58,close bank,1741-12-30
+59,open bank,1700-12-30
+59,get into bank,1701-12-30
+59,get into bank,1702-12-30
+59,get in line a,1703-12-30
+59,get into bank,1704-12-30
+59,get service in a,1705-12-30
+59,get out from a,1706-12-30
+59,get in line a,1707-12-30
+59,get in line b,1708-12-30
+59,get service in a,1709-12-30
+59,get service in b,1710-12-30
+59,get out from b,1711-12-30
+59,get out from a,1712-12-30
+59,get into bank,1713-12-30
+59,get in line a,1714-12-30
+59,get service in a,1715-12-30
+59,get into bank,1716-12-30
+59,get out from a,1717-12-30
+59,get into bank,1718-12-30
+59,get in line a,1719-12-30
+59,get service in a,1720-12-30
+59,get into bank,1721-12-30
+59,get out from a,1722-12-30
+59,get in line a,1723-12-30
+59,get into bank,1724-12-30
+59,get service in a,1725-12-30
+59,get out from a,1726-12-30
+59,get in line a,1727-12-30
+59,get service in a,1728-12-30
+59,get into bank,1729-12-30
+59,get in line a,1730-12-30
+59,get in line b,1731-12-30
+59,get service in b,1732-12-30
+59,get out from b,1733-12-30
+59,get out from a,1734-12-30
+59,get into bank,1735-12-30
+59,get in line b,1736-12-30
+59,get service in a,1737-12-30
+59,get out from a,1738-12-30
+59,get service in b,1739-12-30
+59,get out from b,1740-12-30
+59,close bank,1741-12-30
+60,open bank,1700-12-30
+60,get into bank,1701-12-30
+60,get into bank,1702-12-30
+60,get into bank,1703-12-30
+60,get into bank,1704-12-30
+60,get in line a,1705-12-30
+60,get service in a,1706-12-30
+60,get into bank,1707-12-30
+60,get out from a,1708-12-30
+60,get into bank,1709-12-30
+60,get in line a,1710-12-30
+60,get into bank,1711-12-30
+60,get into bank,1712-12-30
+60,get in line b,1713-12-30
+60,get service in b,1714-12-30
+60,get into bank,1715-12-30
+60,get into bank,1716-12-30
+60,get in line b,1717-12-30
+60,get out from b,1718-12-30
+60,get service in a,1719-12-30
+60,get in line a,1720-12-30
+60,get service in b,1721-12-30
+60,get out from b,1722-12-30
+60,get in line b,1723-12-30
+60,get in line a,1724-12-30
+60,get service in b,1725-12-30
+60,get out from a,1726-12-30
+60,get service in a,1727-12-30
+60,get in line b,1728-12-30
+60,get in line a,1729-12-30
+60,get out from b,1730-12-30
+60,get out from a,1731-12-30
+60,get service in b,1732-12-30
+60,get out from b,1733-12-30
+60,get service in a,1734-12-30
+60,get in line b,1735-12-30
+60,get service in b,1736-12-30
+60,get out from b,1737-12-30
+60,get out from a,1738-12-30
+60,get service in a,1739-12-30
+60,get out from a,1740-12-30
+60,close bank,1741-12-30
+61,open bank,1700-12-30
+61,get into bank,1701-12-30
+61,get in line a,1702-12-30
+61,get service in a,1703-12-30
+61,get into bank,1704-12-30
+61,get into bank,1705-12-30
+61,get out from a,1706-12-30
+61,get into bank,1707-12-30
+61,get in line a,1708-12-30
+61,get in line b,1709-12-30
+61,get service in b,1710-12-30
+61,get service in a,1711-12-30
+61,get into bank,1712-12-30
+61,get out from a,1713-12-30
+61,get in line a,1714-12-30
+61,get out from b,1715-12-30
+61,get into bank,1716-12-30
+61,get service in a,1717-12-30
+61,get into bank,1718-12-30
+61,get in line a,1719-12-30
+61,get into bank,1720-12-30
+61,get into bank,1721-12-30
+61,get into bank,1722-12-30
+61,get out from a,1723-12-30
+61,get in line b,1724-12-30
+61,get service in a,1725-12-30
+61,get out from a,1726-12-30
+61,get service in b,1727-12-30
+61,get in line a,1728-12-30
+61,get service in a,1729-12-30
+61,get out from b,1730-12-30
+61,get out from a,1731-12-30
+61,get in line a,1732-12-30
+61,get service in a,1733-12-30
+61,get in line a,1734-12-30
+61,get in line b,1735-12-30
+61,get service in b,1736-12-30
+61,get out from b,1737-12-30
+61,get out from a,1738-12-30
+61,get service in a,1739-12-30
+61,get out from a,1740-12-30
+61,close bank,1741-12-30
+62,open bank,1700-12-30
+62,get into bank,1701-12-30
+62,get in line a,1702-12-30
+62,get service in a,1703-12-30
+62,get out from a,1704-12-30
+62,get into bank,1705-12-30
+62,get in line a,1706-12-30
+62,get service in a,1707-12-30
+62,get into bank,1708-12-30
+62,get out from a,1709-12-30
+62,get into bank,1710-12-30
+62,get in line a,1711-12-30
+62,get into bank,1712-12-30
+62,get into bank,1713-12-30
+62,get into bank,1714-12-30
+62,get into bank,1715-12-30
+62,get into bank,1716-12-30
+62,get into bank,1717-12-30
+62,get service in a,1718-12-30
+62,get in line a,1719-12-30
+62,get out from a,1720-12-30
+62,get in line b,1721-12-30
+62,get in line a,1722-12-30
+62,get service in a,1723-12-30
+62,get out from a,1724-12-30
+62,get in line a,1725-12-30
+62,get service in b,1726-12-30
+62,get service in a,1727-12-30
+62,get out from a,1728-12-30
+62,get out from b,1729-12-30
+62,get service in a,1730-12-30
+62,get out from a,1731-12-30
+62,get in line a,1732-12-30
+62,get service in a,1733-12-30
+62,get in line a,1734-12-30
+62,get in line b,1735-12-30
+62,get service in b,1736-12-30
+62,get out from b,1737-12-30
+62,get out from a,1738-12-30
+62,get service in a,1739-12-30
+62,get out from a,1740-12-30
+62,close bank,1741-12-30
+63,open bank,1700-12-30
+63,get into bank,1701-12-30
+63,get into bank,1702-12-30
+63,get in line a,1703-12-30
+63,get service in a,1704-12-30
+63,get in line a,1705-12-30
+63,get out from a,1706-12-30
+63,get into bank,1707-12-30
+63,get in line b,1708-12-30
+63,get service in b,1709-12-30
+63,get service in a,1710-12-30
+63,get out from b,1711-12-30
+63,get into bank,1712-12-30
+63,get out from a,1713-12-30
+63,get in line a,1714-12-30
+63,get into bank,1715-12-30
+63,get into bank,1716-12-30
+63,get in line b,1717-12-30
+63,get service in a,1718-12-30
+63,get out from a,1719-12-30
+63,get service in b,1720-12-30
+63,get out from b,1721-12-30
+63,get in line a,1722-12-30
+63,get service in a,1723-12-30
+63,get out from a,1724-12-30
+63,get into bank,1725-12-30
+63,get in line a,1726-12-30
+63,get into bank,1727-12-30
+63,get service in a,1728-12-30
+63,get in line a,1729-12-30
+63,get into bank,1730-12-30
+63,get into bank,1731-12-30
+63,get out from a,1732-12-30
+63,get in line b,1733-12-30
+63,get in line a,1734-12-30
+63,get service in b,1735-12-30
+63,get service in a,1736-12-30
+63,get out from a,1737-12-30
+63,get service in a,1738-12-30
+63,get out from b,1739-12-30
+63,get out from a,1740-12-30
+63,close bank,1741-12-30
+64,open bank,1700-12-30
+64,get into bank,1701-12-30
+64,get into bank,1702-12-30
+64,get into bank,1703-12-30
+64,get in line a,1704-12-30
+64,get service in a,1705-12-30
+64,get out from a,1706-12-30
+64,get into bank,1707-12-30
+64,get in line a,1708-12-30
+64,get in line b,1709-12-30
+64,get service in b,1710-12-30
+64,get service in a,1711-12-30
+64,get in line a,1712-12-30
+64,get out from a,1713-12-30
+64,get into bank,1714-12-30
+64,get into bank,1715-12-30
+64,get service in a,1716-12-30
+64,get out from b,1717-12-30
+64,get in line a,1718-12-30
+64,get in line b,1719-12-30
+64,get into bank,1720-12-30
+64,get service in b,1721-12-30
+64,get out from b,1722-12-30
+64,get into bank,1723-12-30
+64,get in line b,1724-12-30
+64,get into bank,1725-12-30
+64,get out from a,1726-12-30
+64,get service in b,1727-12-30
+64,get into bank,1728-12-30
+64,get in line b,1729-12-30
+64,get out from b,1730-12-30
+64,get service in a,1731-12-30
+64,get service in b,1732-12-30
+64,get out from b,1733-12-30
+64,get in line a,1734-12-30
+64,get in line b,1735-12-30
+64,get service in b,1736-12-30
+64,get out from b,1737-12-30
+64,get out from a,1738-12-30
+64,get service in a,1739-12-30
+64,get out from a,1740-12-30
+64,close bank,1741-12-30
+65,open bank,1700-12-30
+65,get into bank,1701-12-30
+65,get in line a,1702-12-30
+65,get service in a,1703-12-30
+65,get out from a,1704-12-30
+65,get into bank,1705-12-30
+65,get in line a,1706-12-30
+65,get service in a,1707-12-30
+65,get into bank,1708-12-30
+65,get in line a,1709-12-30
+65,get into bank,1710-12-30
+65,get into bank,1711-12-30
+65,get into bank,1712-12-30
+65,get in line b,1713-12-30
+65,get in line a,1714-12-30
+65,get out from a,1715-12-30
+65,get in line b,1716-12-30
+65,get into bank,1717-12-30
+65,get in line a,1718-12-30
+65,get into bank,1719-12-30
+65,get service in a,1720-12-30
+65,get out from a,1721-12-30
+65,get in line a,1722-12-30
+65,get into bank,1723-12-30
+65,get service in b,1724-12-30
+65,get out from b,1725-12-30
+65,get into bank,1726-12-30
+65,get in line b,1727-12-30
+65,get in line b,1728-12-30
+65,get service in a,1729-12-30
+65,get out from a,1730-12-30
+65,get service in b,1731-12-30
+65,get out from b,1732-12-30
+65,get service in a,1733-12-30
+65,get out from a,1734-12-30
+65,get service in b,1735-12-30
+65,get service in a,1736-12-30
+65,get out from a,1737-12-30
+65,get out from b,1738-12-30
+65,get service in b,1739-12-30
+65,get out from b,1740-12-30
+65,close bank,1741-12-30
+66,open bank,1700-12-30
+66,get into bank,1701-12-30
+66,get into bank,1702-12-30
+66,get into bank,1703-12-30
+66,get in line a,1704-12-30
+66,get service in a,1705-12-30
+66,get into bank,1706-12-30
+66,get out from a,1707-12-30
+66,get in line a,1708-12-30
+66,get into bank,1709-12-30
+66,get in line b,1710-12-30
+66,get service in b,1711-12-30
+66,get into bank,1712-12-30
+66,get out from b,1713-12-30
+66,get into bank,1714-12-30
+66,get into bank,1715-12-30
+66,get service in a,1716-12-30
+66,get in line a,1717-12-30
+66,get in line b,1718-12-30
+66,get in line a,1719-12-30
+66,get into bank,1720-12-30
+66,get out from a,1721-12-30
+66,get in line b,1722-12-30
+66,get in line a,1723-12-30
+66,get service in a,1724-12-30
+66,get in line a,1725-12-30
+66,get service in b,1726-12-30
+66,get out from b,1727-12-30
+66,get service in b,1728-12-30
+66,get out from a,1729-12-30
+66,get out from b,1730-12-30
+66,get service in a,1731-12-30
+66,get out from a,1732-12-30
+66,get service in a,1733-12-30
+66,get out from a,1734-12-30
+66,get into bank,1735-12-30
+66,get in line b,1736-12-30
+66,get service in a,1737-12-30
+66,get out from a,1738-12-30
+66,get service in b,1739-12-30
+66,get out from b,1740-12-30
+66,close bank,1741-12-30
+67,open bank,1700-12-30
+67,get into bank,1701-12-30
+67,get in line a,1702-12-30
+67,get into bank,1703-12-30
+67,get service in a,1704-12-30
+67,get into bank,1705-12-30
+67,get out from a,1706-12-30
+67,get in line a,1707-12-30
+67,get service in a,1708-12-30
+67,get into bank,1709-12-30
+67,get in line a,1710-12-30
+67,get in line b,1711-12-30
+67,get service in b,1712-12-30
+67,get into bank,1713-12-30
+67,get in line b,1714-12-30
+67,get out from a,1715-12-30
+67,get service in a,1716-12-30
+67,get out from a,1717-12-30
+67,get into bank,1718-12-30
+67,get into bank,1719-12-30
+67,get out from b,1720-12-30
+67,get in line a,1721-12-30
+67,get in line a,1722-12-30
+67,get service in a,1723-12-30
+67,get out from a,1724-12-30
+67,get service in a,1725-12-30
+67,get out from a,1726-12-30
+67,get into bank,1727-12-30
+67,get in line a,1728-12-30
+67,get service in a,1729-12-30
+67,get out from a,1730-12-30
+67,get service in b,1731-12-30
+67,get out from b,1732-12-30
+67,get into bank,1733-12-30
+67,get into bank,1734-12-30
+67,get in line a,1735-12-30
+67,get in line b,1736-12-30
+67,get service in b,1737-12-30
+67,get out from b,1738-12-30
+67,get service in a,1739-12-30
+67,get out from a,1740-12-30
+67,close bank,1741-12-30
+68,open bank,1700-12-30
+68,get into bank,1701-12-30
+68,get in line a,1702-12-30
+68,get service in a,1703-12-30
+68,get into bank,1704-12-30
+68,get in line a,1705-12-30
+68,get out from a,1706-12-30
+68,get into bank,1707-12-30
+68,get in line b,1708-12-30
+68,get service in b,1709-12-30
+68,get out from b,1710-12-30
+68,get service in a,1711-12-30
+68,get into bank,1712-12-30
+68,get in line a,1713-12-30
+68,get into bank,1714-12-30
+68,get out from a,1715-12-30
+68,get service in a,1716-12-30
+68,get into bank,1717-12-30
+68,get in line a,1718-12-30
+68,get out from a,1719-12-30
+68,get in line b,1720-12-30
+68,get into bank,1721-12-30
+68,get service in b,1722-12-30
+68,get into bank,1723-12-30
+68,get into bank,1724-12-30
+68,get into bank,1725-12-30
+68,get in line b,1726-12-30
+68,get out from b,1727-12-30
+68,get service in a,1728-12-30
+68,get service in b,1729-12-30
+68,get in line a,1730-12-30
+68,get in line b,1731-12-30
+68,get in line a,1732-12-30
+68,get out from a,1733-12-30
+68,get out from b,1734-12-30
+68,get service in a,1735-12-30
+68,get out from a,1736-12-30
+68,get service in a,1737-12-30
+68,get out from a,1738-12-30
+68,get service in b,1739-12-30
+68,get out from b,1740-12-30
+68,close bank,1741-12-30
+69,open bank,1700-12-30
+69,get into bank,1701-12-30
+69,get in line a,1702-12-30
+69,get into bank,1703-12-30
+69,get in line b,1704-12-30
+69,get service in a,1705-12-30
+69,get into bank,1706-12-30
+69,get into bank,1707-12-30
+69,get into bank,1708-12-30
+69,get into bank,1709-12-30
+69,get into bank,1710-12-30
+69,get in line a,1711-12-30
+69,get out from a,1712-12-30
+69,get service in b,1713-12-30
+69,get into bank,1714-12-30
+69,get in line b,1715-12-30
+69,get in line a,1716-12-30
+69,get in line b,1717-12-30
+69,get service in a,1718-12-30
+69,get into bank,1719-12-30
+69,get out from a,1720-12-30
+69,get out from b,1721-12-30
+69,get in line a,1722-12-30
+69,get service in a,1723-12-30
+69,get service in b,1724-12-30
+69,get in line a,1725-12-30
+69,get in line b,1726-12-30
+69,get out from a,1727-12-30
+69,get service in a,1728-12-30
+69,get out from b,1729-12-30
+69,get service in b,1730-12-30
+69,get into bank,1731-12-30
+69,get out from a,1732-12-30
+69,get in line a,1733-12-30
+69,get service in a,1734-12-30
+69,get out from b,1735-12-30
+69,get service in b,1736-12-30
+69,get out from b,1737-12-30
+69,get out from a,1738-12-30
+69,get service in a,1739-12-30
+69,get out from a,1740-12-30
+69,close bank,1741-12-30
+70,open bank,1700-12-30
+70,get into bank,1701-12-30
+70,get in line a,1702-12-30
+70,get into bank,1703-12-30
+70,get in line b,1704-12-30
+70,get service in a,1705-12-30
+70,get service in b,1706-12-30
+70,get out from b,1707-12-30
+70,get into bank,1708-12-30
+70,get in line a,1709-12-30
+70,get out from a,1710-12-30
+70,get service in a,1711-12-30
+70,get into bank,1712-12-30
+70,get out from a,1713-12-30
+70,get into bank,1714-12-30
+70,get into bank,1715-12-30
+70,get into bank,1716-12-30
+70,get into bank,1717-12-30
+70,get into bank,1718-12-30
+70,get into bank,1719-12-30
+70,get in line a,1720-12-30
+70,get service in a,1721-12-30
+70,get in line a,1722-12-30
+70,get out from a,1723-12-30
+70,get service in a,1724-12-30
+70,get in line a,1725-12-30
+70,get in line b,1726-12-30
+70,get service in b,1727-12-30
+70,get in line b,1728-12-30
+70,get in line a,1729-12-30
+70,get out from b,1730-12-30
+70,get out from a,1731-12-30
+70,get service in b,1732-12-30
+70,get out from b,1733-12-30
+70,get in line b,1734-12-30
+70,get service in b,1735-12-30
+70,get service in a,1736-12-30
+70,get out from b,1737-12-30
+70,get out from a,1738-12-30
+70,get service in a,1739-12-30
+70,get out from a,1740-12-30
+70,close bank,1741-12-30
+71,open bank,1700-12-30
+71,get into bank,1701-12-30
+71,get in line a,1702-12-30
+71,get service in a,1703-12-30
+71,get into bank,1704-12-30
+71,get in line a,1705-12-30
+71,get into bank,1706-12-30
+71,get into bank,1707-12-30
+71,get into bank,1708-12-30
+71,get into bank,1709-12-30
+71,get in line b,1710-12-30
+71,get service in b,1711-12-30
+71,get into bank,1712-12-30
+71,get into bank,1713-12-30
+71,get out from a,1714-12-30
+71,get service in a,1715-12-30
+71,get in line a,1716-12-30
+71,get into bank,1717-12-30
+71,get out from a,1718-12-30
+71,get into bank,1719-12-30
+71,get service in a,1720-12-30
+71,get out from b,1721-12-30
+71,get out from a,1722-12-30
+71,get in line a,1723-12-30
+71,get in line b,1724-12-30
+71,get service in a,1725-12-30
+71,get service in b,1726-12-30
+71,get out from a,1727-12-30
+71,get out from b,1728-12-30
+71,get in line a,1729-12-30
+71,get in line b,1730-12-30
+71,get service in a,1731-12-30
+71,get service in b,1732-12-30
+71,get in line a,1733-12-30
+71,get out from b,1734-12-30
+71,get out from a,1735-12-30
+71,get service in a,1736-12-30
+71,get out from a,1737-12-30
+71,get in line a,1738-12-30
+71,get service in a,1739-12-30
+71,get out from a,1740-12-30
+71,close bank,1741-12-30
+72,open bank,1700-12-30
+72,get into bank,1701-12-30
+72,get in line a,1702-12-30
+72,get service in a,1703-12-30
+72,get into bank,1704-12-30
+72,get into bank,1705-12-30
+72,get in line a,1706-12-30
+72,get out from a,1707-12-30
+72,get service in a,1708-12-30
+72,get in line a,1709-12-30
+72,get into bank,1710-12-30
+72,get into bank,1711-12-30
+72,get out from a,1712-12-30
+72,get service in a,1713-12-30
+72,get out from a,1714-12-30
+72,get into bank,1715-12-30
+72,get into bank,1716-12-30
+72,get into bank,1717-12-30
+72,get into bank,1718-12-30
+72,get into bank,1719-12-30
+72,get in line a,1720-12-30
+72,get in line b,1721-12-30
+72,get in line a,1722-12-30
+72,get service in b,1723-12-30
+72,get out from b,1724-12-30
+72,get in line b,1725-12-30
+72,get service in a,1726-12-30
+72,get out from a,1727-12-30
+72,get in line a,1728-12-30
+72,get service in a,1729-12-30
+72,get in line a,1730-12-30
+72,get in line b,1731-12-30
+72,get out from a,1732-12-30
+72,get service in a,1733-12-30
+72,get out from a,1734-12-30
+72,get service in a,1735-12-30
+72,get service in b,1736-12-30
+72,get out from b,1737-12-30
+72,get out from a,1738-12-30
+72,get service in b,1739-12-30
+72,get out from b,1740-12-30
+72,close bank,1741-12-30
+73,open bank,1700-12-30
+73,get into bank,1701-12-30
+73,get in line a,1702-12-30
+73,get into bank,1703-12-30
+73,get into bank,1704-12-30
+73,get into bank,1705-12-30
+73,get into bank,1706-12-30
+73,get service in a,1707-12-30
+73,get into bank,1708-12-30
+73,get into bank,1709-12-30
+73,get in line a,1710-12-30
+73,get out from a,1711-12-30
+73,get service in a,1712-12-30
+73,get out from a,1713-12-30
+73,get in line a,1714-12-30
+73,get into bank,1715-12-30
+73,get into bank,1716-12-30
+73,get into bank,1717-12-30
+73,get service in a,1718-12-30
+73,get in line a,1719-12-30
+73,get in line b,1720-12-30
+73,get service in b,1721-12-30
+73,get in line b,1722-12-30
+73,get out from b,1723-12-30
+73,get service in b,1724-12-30
+73,get out from b,1725-12-30
+73,get in line b,1726-12-30
+73,get out from a,1727-12-30
+73,get in line a,1728-12-30
+73,get in line b,1729-12-30
+73,get service in a,1730-12-30
+73,get in line a,1731-12-30
+73,get service in b,1732-12-30
+73,get out from a,1733-12-30
+73,get out from b,1734-12-30
+73,get service in a,1735-12-30
+73,get out from a,1736-12-30
+73,get service in a,1737-12-30
+73,get service in b,1738-12-30
+73,get out from a,1739-12-30
+73,get out from b,1740-12-30
+73,close bank,1741-12-30
+74,open bank,1700-12-30
+74,get into bank,1701-12-30
+74,get in line a,1702-12-30
+74,get into bank,1703-12-30
+74,get service in a,1704-12-30
+74,get into bank,1705-12-30
+74,get in line a,1706-12-30
+74,get out from a,1707-12-30
+74,get service in a,1708-12-30
+74,get into bank,1709-12-30
+74,get out from a,1710-12-30
+74,get in line a,1711-12-30
+74,get service in a,1712-12-30
+74,get in line a,1713-12-30
+74,get out from a,1714-12-30
+74,get service in a,1715-12-30
+74,get out from a,1716-12-30
+74,get into bank,1717-12-30
+74,get in line a,1718-12-30
+74,get into bank,1719-12-30
+74,get into bank,1720-12-30
+74,get service in a,1721-12-30
+74,get in line a,1722-12-30
+74,get into bank,1723-12-30
+74,get in line b,1724-12-30
+74,get into bank,1725-12-30
+74,get into bank,1726-12-30
+74,get in line a,1727-12-30
+74,get in line b,1728-12-30
+74,get in line a,1729-12-30
+74,get service in b,1730-12-30
+74,get out from a,1731-12-30
+74,get service in a,1732-12-30
+74,get out from b,1733-12-30
+74,get service in b,1734-12-30
+74,get out from a,1735-12-30
+74,get out from b,1736-12-30
+74,get service in a,1737-12-30
+74,get out from a,1738-12-30
+74,get service in a,1739-12-30
+74,get out from a,1740-12-30
+74,close bank,1741-12-30

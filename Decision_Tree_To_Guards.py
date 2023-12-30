@@ -1,0 +1,982 @@
+import csv
+from datetime import datetime
+
+import clf as clf
+import numpy as np
+import pandas as pd
+import pm4py
+from matplotlib import pyplot as plt
+from pm4py import PetriNet
+from pm4py.objects.dfg.retrieval import pandas
+from pm4py.objects.petri_net import semantics
+from pm4py.objects.petri_net.utils import petri_utils
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.model_selection import train_test_split # Import train_test_split function
+from sklearn import metrics, __all__  # Import scikit-learn metrics module for accuracy calculation
+from sklearn.tree import DecisionTreeClassifier
+
+import EC_KITTY
+import EC_KITTY_SKL
+
+
+def add_arcs_from_place_to_transitions(net, place, transitions):
+    for transition in transitions:
+        petri_utils.add_arc_from_to(place, transition, net, 1)
+def found_transition(net, transition_name):
+    for transition in net.transitions:
+        if (transition.label == None and transition.name == transition_name) or transition.label == transition_name:
+            return transition
+def found_place(net, place_name):
+    for place in net.places:
+        if place.name == place_name:
+            return place
+
+def found_start_transitions(net, source):
+    start_transitions = []
+    for arc in net.arcs:
+        if arc.source == source:
+            start_transitions.append(arc.target)
+    return start_transitions
+
+def guard_min_x_times(net, transition, list_of_transitions, times,index_for_transition):
+    place = PetriNet.Place("happened " +list_of_transitions[0].label + " as pre condition to " + transition.label)
+    net.places.add(place)
+    for transition_in_list in list_of_transitions:
+        petri_utils.add_arc_from_to(transition_in_list, place, net)
+    petri_utils.add_arc_from_to(place, transition, net,times)
+
+def guard_min_x_times_must_happen(net, transition, list_of_transitions, times,index_for_transition):
+    place = PetriNet.Place("happened " +list_of_transitions[0].label + " as pre condition to " + transition.label)
+    net.places.add(place)
+    for transition_in_list in list_of_transitions:
+        petri_utils.add_arc_from_to(transition_in_list, place, net)
+    petri_utils.add_arc_from_to(place, transition, net,times)
+    petri_utils.add_arc_from_to(transition, place, net,times)
+
+
+def create_max_guard_place(net, transition, times,index_of_guard):
+    max_guard_place = PetriNet.Place(transition.label + " guard " + str(index_of_guard))
+    net.places.add(max_guard_place)
+    start_transitions = found_start_transitions(net,found_place(net,"source"))
+    for start_transition in start_transitions:
+        petri_utils.add_arc_from_to(start_transition, max_guard_place, net, times + 1)
+    return max_guard_place
+
+
+def minus_one_from_transitions(net,max_guard_place,list_of_transitions):
+    for transition in list_of_transitions:
+        petri_utils.add_arc_from_to(transition, max_guard_place, net,-1)
+
+def minus_counter_to_list_of_activites(net, list_of_transitions, max_guard_place):
+    minus_one_from_transitions(net,max_guard_place,list_of_transitions)
+
+def guard_of_max_times(net,transition, list_of_transitions, times,index_of_guard):
+    max_guard_place = create_max_guard_place(net, transition, times,index_of_guard)
+    minus_counter_to_list_of_activites(net, list_of_transitions, max_guard_place)
+    add_arcs_from_place_to_transitions(net, max_guard_place, [transition])
+
+def guard_of_max_times_must_happen(net,transition, list_of_transitions, times,index_of_guard):
+    max_guard_place = create_max_guard_place(net, transition, times,index_of_guard)
+    minus_counter_to_list_of_activites(net, list_of_transitions, max_guard_place)
+    add_arcs_from_place_to_transitions(net, max_guard_place, [transition])
+    petri_utils.add_arc_from_to(transition, max_guard_place, net, 1)
+
+def replace_element_with_last(original_list, index):
+    last_element = original_list[-1]
+    original_list[len(original_list)-1] = original_list[index]
+    original_list[index] = last_element
+    return original_list
+
+def builds_all_target(column):
+    targets = [column]
+    for index in range(len(column)-1):
+        copy_column = column.copy()
+        copy_column = replace_element_with_last(copy_column,index)
+        targets.append(copy_column)
+    return targets
+
+
+def build_class_names(labeled):
+    values = []
+    for row in labeled.iterrows():
+        value = row[1].iloc[0]
+        values.append(value)
+    set_of_values = set(values)
+    sorted_list = sorted(set_of_values)
+    classs_names = []
+    for item in sorted_list:
+        classs_names.append(str(item))
+    return classs_names
+
+def build_linear_regression(csv_file,col_names):
+    from sklearn import linear_model
+    feature_columns = col_names[:-1]
+    labeled_column = col_names[len(col_names) - 1:]
+    features = csv_file[feature_columns][1:]
+    label = csv_file[labeled_column][1:]
+    regr = linear_model.LinearRegression()
+    regr.fit(features, label)
+    print(regr.coef_)
+
+def build_decision_tree(csv_file, col_names):
+    feature_columns = col_names[:-1]
+    labeled_column = col_names[len(col_names) - 1:]
+    features = csv_file[feature_columns][1:]
+    labeled = csv_file[labeled_column][1:]
+    # Split dataset into training set and test set
+    X_train, X_test, y_train, y_test = train_test_split(features, labeled, test_size=0.3,train_size=0.7,
+                                                        random_state=1)
+    # Create Decision Tree classifer object
+    clf = DecisionTreeClassifier()
+
+    # Train Decision Tree Classifer
+    clf = clf.fit(X_train, y_train)
+
+    class_names = build_class_names(labeled)
+    # Predict the response for test dataset
+    y_pred = clf.predict(X_test)
+    # Model Accuracy, how often is the classifier correct?
+    #print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
+
+    clf = clf.fit(features, labeled)
+    #
+    # plt.figure(figsize=(20, 10))  # You can adjust the figure size as needed
+    # plot_tree(clf, feature_names=feature_columns, class_names=class_names, filled=True, rounded=True,
+    #           precision=2)
+    # plt.show()
+
+    return clf.tree_
+
+
+def list_are_zero_except_one(list):
+    counter_of_not_zero = 0
+    index = -1
+    curr_index = 0
+    for item in list:
+        if item != 0:
+            index = curr_index
+            counter_of_not_zero = counter_of_not_zero + 1
+        curr_index = curr_index + 1
+    if counter_of_not_zero != 1:
+        index = -1
+    return index
+
+
+def build_values_list(node_id, traces_list, tree):
+    if node_id!=0:
+        traces_list.append(tree.value[node_id][0])
+    is_split_node = tree.children_left[node_id] != tree.children_right[node_id]
+    if is_split_node:
+        build_values_list(tree.children_left[node_id], traces_list, tree)
+        build_values_list(tree.children_right[node_id], traces_list, tree)
+    return traces_list
+
+
+def build_is_leaves_list(node_id, traces_list, tree):
+    is_split_node = tree.children_left[node_id] != tree.children_right[node_id]
+    if is_split_node:
+        if node_id!=0:
+            traces_list.append("no")
+        build_is_leaves_list(tree.children_left[node_id], traces_list, tree)
+        build_is_leaves_list(tree.children_right[node_id], traces_list, tree)
+    else:
+        traces_list.append("yes")
+    return traces_list
+
+
+def build_features_list(node_id, traces_list, current_trace, tree):
+    if len(current_trace) > 0:
+        traces_list.append(current_trace.copy())
+    is_split_node = tree.children_left[node_id] != tree.children_right[node_id]
+    if is_split_node:
+        current_trace.append(tree.feature[node_id])
+        build_features_list(tree.children_left[node_id], traces_list, current_trace.copy(), tree)
+        build_features_list(tree.children_right[node_id], traces_list, current_trace.copy(), tree)
+    return traces_list
+
+def build_therashold_list(node_id, traces_list, current_trace, tree):
+    if len(current_trace) > 0:
+        traces_list.append(current_trace.copy())
+    is_split_node = tree.children_left[node_id] != tree.children_right[node_id]
+    if is_split_node:
+        current_trace.append(tree.threshold[node_id])
+        build_therashold_list(tree.children_left[node_id], traces_list, current_trace.copy(), tree)
+        build_therashold_list(tree.children_right[node_id], traces_list, current_trace.copy(), tree)
+    return traces_list
+
+def build_traces_list(node_id, traces_list, current_trace, tree):
+    if len(current_trace) > 0:
+        traces_list.append(current_trace)
+    is_split_node = tree.children_left[node_id] != tree.children_right[node_id]
+    if is_split_node:
+        trace_for_left = current_trace.copy()
+        trace_for_left.append("left")
+        trace_for_right = current_trace.copy()
+        trace_for_right.append("right")
+        build_traces_list(tree.children_left[node_id], traces_list, trace_for_left, tree)
+        build_traces_list(tree.children_right[node_id], traces_list, trace_for_right, tree)
+    return traces_list
+
+
+def build_guard(trace,threasholds, features):
+    traces = []
+    for i in range (len(threasholds)):
+        traces.append((features[i], trace[i],threasholds[i]))
+    return traces
+
+def build_guard_for_counter(traces, threasholds, leaves, features, values, counter):
+    list_of_guards = []
+    for i in range(len(traces)):
+        if leaves[i] == "yes" and list_are_zero_except_one(values[i])==counter:
+            list_of_guards.append(build_guard(traces[i],threasholds[i],features[i]))
+    return list_of_guards
+
+def find_must_guards(tree,features):
+    # traces = build_traces_list(0, [], [], tree)
+    # threasholds = build_therashold_list(0,[],[],tree)
+    # leaves = build_is_leaves_list(0,[],tree)
+    # features = build_features_list(0,[],[],tree)
+    # values = build_values_list(0,[],tree)
+    # dictionary_of_classes = {}
+    list_of_guards = []
+    stack = [0]
+    direction = "start"
+    while len(stack) > 0 :
+        node_id = stack.pop(0)
+        left_node_id = tree.children_left[node_id]
+        right_node_id = tree.children_right[node_id]
+        is_split_node = left_node_id != right_node_id
+        if is_split_node:
+            value_of_curr = tree.value[node_id][0]
+            value_of_left = tree.value[left_node_id][0]
+            value_of_right = tree.value[right_node_id][0]
+            threshold = int(tree.threshold[node_id])
+            if direction == "start" or direction == "left":
+                if value_of_curr[0] == value_of_left[0]:
+                    list_of_guards.append((features[tree.feature[node_id]], "bigger", threshold))
+                    stack.append(left_node_id)
+                    direction = "left"
+                if value_of_curr[0] == value_of_right[0]:
+                    list_of_guards.append((features[tree.feature[node_id]], "smaller", threshold))
+                    stack.append(right_node_id)
+                    direction = "left"
+            if direction == "start" or direction == "right":
+                if value_of_curr[1] == value_of_left[1]:
+                    list_of_guards.append((features[tree.feature[node_id]], "smaller", threshold))
+                    stack.append(left_node_id)
+                if value_of_curr[1] == value_of_right[1]:
+                    list_of_guards.append((features[tree.feature[node_id]], "bigger", threshold))
+                    stack.append(right_node_id)
+                direction = "right"
+    return list_of_guards, direction
+
+
+def find_must_guards(tree,features):
+    # traces = build_traces_list(0, [], [], tree)
+    # threasholds = build_therashold_list(0,[],[],tree)
+    # leaves = build_is_leaves_list(0,[],tree)
+    # features = build_features_list(0,[],[],tree)
+    # values = build_values_list(0,[],tree)
+    # dictionary_of_classes = {}
+    list_of_or_guards = []
+    list_of_and_guard = []
+    stack = [0]
+    last_was_and =False
+    while len(stack) > 0 :
+        node_id = stack.pop(0)
+        left_node_id = tree.children_left[node_id]
+        right_node_id = tree.children_right[node_id]
+        is_split_node = left_node_id != right_node_id
+        if is_split_node:
+            value_of_curr = tree.value[node_id][0]
+            value_of_left = tree.value[left_node_id][0]
+            value_of_right = tree.value[right_node_id][0]
+            threshold = int(tree.threshold[node_id])
+            if value_of_curr[0] == value_of_left[0]:
+                list_of_and_guard.append((features[tree.feature[node_id]], "bigger", threshold+1))
+                list_of_or_guards.append(list_of_and_guard)
+                stack.append(left_node_id)
+                last_was_and = False
+            if value_of_curr[0] == value_of_right[0]:
+                list_of_and_guard.append((features[tree.feature[node_id]], "smaller", threshold))
+                list_of_or_guards.append(list_of_and_guard)
+                stack.append(right_node_id)
+                last_was_and = False
+            if value_of_curr[1] == value_of_left[1]:
+                list_of_and_guard.append((features[tree.feature[node_id]], "smaller", threshold))
+                stack.append(left_node_id)
+                last_was_and = True
+            if value_of_curr[1] == value_of_right[1]:
+                list_of_and_guard.append((features[tree.feature[node_id]], "bigger", threshold+1))
+                stack.append(right_node_id)
+                last_was_and = True
+    if last_was_and:
+        list_of_or_guards.append(list_of_and_guard)
+    return list_of_or_guards
+
+
+def find_features_counter(tree):
+    traces = build_traces_list(0, [], [], tree)
+    threasholds = build_therashold_list(0,[],[],tree)
+    leaves = build_is_leaves_list(0,[],tree)
+    features = build_features_list(0,[],[],tree)
+    values = build_values_list(0,[],tree)
+    dictionary_of_classes = {}
+    for counter in range(len(tree.value[0][0])):
+        dictionary_of_classes[counter] = build_guard_for_counter(traces,threasholds,leaves,features,values,counter)
+    return dictionary_of_classes
+
+def counter_guard_depend_on_features(tree, features):
+    dictionary_of_classes = find_features_counter(tree)
+    list_of_guards=find_features_guards_for_target_special_case(features,dictionary_of_classes)
+    return list_of_guards
+
+
+def find_features_guards_for_target(features, dictionary_of_features_counter):
+    list_of_list_of_guards = []
+    for i in range(len(dictionary_of_features_counter)):
+        cases = dictionary_of_features_counter.get(i)
+        list_of_or_guards = []
+        if cases != None:
+            for case in cases:
+                list_of_and_guards = []
+                for guard in case:
+                    feature_index, direction, threashold = guard[0], guard[1], guard[2]
+                    feature = features[feature_index]
+                    threashold = int(threashold)
+                    if direction == "left":
+                        direction = "smaller"
+                    else:
+                        direction = "bigger"
+                        threashold = threashold + 1
+                    list_of_and_guards.append((feature, direction, threashold))
+                list_of_or_guards.append(list_of_and_guards)
+        list_of_list_of_guards.append(list_of_or_guards)
+    return list_of_list_of_guards
+
+
+def find_features_guards_for_target_special_case(features, dictionary_of_features_counter):
+    cases = dictionary_of_features_counter.get(1)
+    list_of_or_guards = []
+    if cases != None:
+        for case in cases:
+            list_of_and_guards = []
+            for guard in case:
+                feature_index, direction, threashold = guard[0], guard[1], guard[2]
+                feature = features[feature_index]
+                threashold = int(threashold)
+                if direction == "left":
+                    direction = "smaller"
+                else:
+                    direction = "bigger"
+                    threashold = threashold + 1
+                list_of_and_guards.append((feature, direction, threashold))
+            # if len(list_of_and_guards)<3:
+            #     list_of_or_guards.append(list_of_and_guards)
+    return list_of_or_guards
+
+
+def build_guard_for_target_special_case(net, list_of_or_guards,empty_transitions):
+    guards_parameters_list= []
+    guards_functions_list = []
+    index = 0
+    for list_of_guards in list_of_or_guards:
+        index_of_internal = 1
+        parameters_list = []
+        functions_list_internal = []
+        #functions_list = []
+        for guard in list_of_guards:
+            feature, smaller_or_bigger, threashold = guard[0], guard[1], guard[2]
+            parameters_list_internal = [net, found_transition(net,empty_transitions[index]), [found_transition(net,feature)], threashold, index_of_internal]
+            if smaller_or_bigger == "smaller":
+                functions_list_internal.append(guard_of_max_times)
+                index_of_internal = index_of_internal + 1
+            else:
+                functions_list_internal.append(guard_min_x_times)
+                index_of_internal = index_of_internal + 1
+            parameters_list.append(parameters_list_internal)
+            # functions_list.append(functions_list_internal)
+        guards_parameters_list.append(parameters_list)
+        guards_functions_list.append(functions_list_internal)
+        index = index + 1
+    return guards_parameters_list,guards_functions_list
+
+
+def build_guard_for_target_must_happen(net, list_of_guards,transition_name):
+    guards_parameters_list_general = []
+    guards_functions_list_general = []
+    index = 0
+    for and_guards in list_of_guards:
+        guards_parameters_list = []
+        guards_functions_list = []
+        for guard in and_guards:
+            feature, smaller_or_bigger, threashold = guard[0], guard[1], guard[2]
+            if smaller_or_bigger == "bigger":
+                threashold = threashold + 1
+            parameters_list_internal = [net, found_transition(net, transition_name), [found_transition(net, feature)],
+                                        threashold, index]
+            if smaller_or_bigger == "smaller":
+                guards_functions_list.append(guard_of_max_times_must_happen)
+                index = index + 1
+            else:
+                guards_functions_list.append(guard_min_x_times_must_happen)
+                index = index + 1
+            guards_parameters_list.append(parameters_list_internal)
+        guards_functions_list_general.append(guards_functions_list)
+        guards_parameters_list_general.append(guards_parameters_list)
+    return guards_functions_list_general,guards_parameters_list_general
+
+def or_guard_special(net,transition_name, list_of_guards):
+    transition = found_transition(net, transition_name)
+    pre_places = found_pre_places(transition)
+    #pre_places = transition.pre_places
+    empty_transitions = create_empty_transitions_for_or_guards(net, len(list_of_guards), pre_places, transition_name)
+    remove_xor_edge_from_option_with_xor(net, pre_places, transition_name)
+    place_of_or = PetriNet.Place("or place " + transition_name)
+    net.places.add(place_of_or)
+    guards_parameters_list, guards_functions_list = build_guard_for_target_special_case(net,list_of_guards[1],empty_transitions)
+    apply_or_guards(guards_parameters_list, guards_functions_list)
+    add_arcs_from_transition_to_place_of_or(net, empty_transitions, place_of_or)
+    transition = found_transition(net, transition_name)
+    add_arc_from_place_to_transition(net, place_of_or, transition)
+
+def apply_must_happen(net,transition_name,must_happen):
+    functions, parameters = build_guard_for_target_must_happen(net, must_happen, transition_name)
+    or_guard_of_and_guards(net,transition_name,functions, parameters)
+
+
+def build_empty_transition_for_and(net, list_of_functions, list_of_parameters, empty_transition):
+    for index in range(len(list_of_functions)):
+        function = list_of_functions[index]
+        parameter_list = list_of_parameters[index]
+        parameter_list[1] = empty_transition
+        function(*parameter_list)
+
+
+def or_guard_of_and_guards(net,transition_name, functions, parameters):
+    transition = found_transition(net, transition_name)
+    pre_places = found_pre_places(transition)
+    #pre_places = transition.pre_places
+    empty_transitions = create_empty_transitions_for_or_guards(net, len(functions), pre_places, transition_name)
+    remove_xor_edge_from_option_with_xor(net, pre_places, transition_name)
+    place_of_or = PetriNet.Place("or place " + transition_name)
+    net.places.add(place_of_or)
+    for index in range(len(functions)):
+        build_empty_transition_for_and(net,functions[index],parameters[index],found_transition(net,empty_transitions[index]))
+    add_arcs_from_transition_to_place_of_or(net, empty_transitions, place_of_or)
+    transition = found_transition(net, transition_name)
+    add_arc_from_place_to_transition(net, place_of_or, transition)
+
+
+def build_places_for_target_counter(net, transition_name, max_times):
+    places = []
+    for i in range(max_times-1):
+        place = PetriNet.Place(transition_name + " happened " + str(i) + " times")
+        net.places.add(place)
+        places.append(place)
+    return places
+
+
+def add_arc_to_counter_places(net, transition, places_for_target_counter):
+    start_transitions = found_start_transitions(net,found_place(net,"source"))
+    for start_transition in start_transitions:
+        petri_utils.add_arc_from_to(start_transition, places_for_target_counter[0], net, 1)
+    for i in range(len(places_for_target_counter)-1):
+        petri_utils.add_arc_from_to(places_for_target_counter[i],transition, net, 1)
+        petri_utils.add_arc_from_to(transition, places_for_target_counter[i+1], net, 1)
+
+
+# def or_guard_every_target(net,transition_name, list_of_guards):
+#     transition = found_transition(net, transition_name)
+#     pre_places = found_pre_places(transition)
+#     #pre_places = transition.pre_places
+#     places_for_target_counter = build_places_for_target_counter(net,transition_name,len(list_of_guards))
+#     add_arc_to_counter_places(net,transition,places_for_target_counter)
+#     remove_xor_edge_from_option_with_xor(net, pre_places, transition_name)
+#     place_of_or = PetriNet.Place("or place " + transition_name)
+#     net.places.add(place_of_or)
+#     empty_transitions = create_empty_transitions_for_or_guards(net, len(list_of_guards), pre_places, transition_name)
+#     guards_parameters_list, guards_functions_list = build_guard_for_target_special_case(net,list_of_guards,empty_transitions)
+#     apply_or_guards(guards_parameters_list, guards_functions_list)
+#     add_arcs_from_transition_to_place_of_or(net, empty_transitions, place_of_or)
+#     transition = found_transition(net, transition_name)
+#     add_arc_from_place_to_transition(net, place_of_or, transition)
+
+
+def found_pre_places(transition):
+    places = []
+    for arc in transition.in_arcs:
+        places.append(arc.source)
+    return places
+
+
+
+
+def create_empty_transitions_for_or_guards(net,number_of_or_guards, places, transition_name):
+    list_of_empty_transitions = []
+    for index in range(number_of_or_guards):
+        empty_transition_name =transition_name + " empty transition " + str(index+1)
+        empty_transition = PetriNet.Transition(empty_transition_name, empty_transition_name)
+        net.transitions.add(empty_transition)
+        list_of_empty_transitions.append(empty_transition_name)
+        for place in places:
+            add_arc_from_place_to_transition(net, place, empty_transition)
+    return list_of_empty_transitions
+
+def remove_xor_edge_from_option_with_xor(net,places, transition_name):
+    transition = found_transition(net,transition_name)
+    for place in places:
+        arc = found_arc(net, place, transition)
+        net.arcs.remove(arc)
+        transition.in_arcs.remove(arc)
+        place.out_arcs.remove(arc)
+
+def found_arc(net, xor_place, transition):
+    for arc in net.arcs:
+        if arc.target == transition and arc.source == xor_place:
+            return arc
+
+def add_arc_from_place_to_transition(net,place_of_or, transition):
+    petri_utils.add_arc_from_to(place_of_or, transition, net, 1)
+
+def apply_or_guards(guards_parameters_list, guards_functions_list):
+    for index_in_or in range (len(guards_functions_list)):
+        # functions = guards_functions_list[index_in_or]
+        # functions_paramater_list = guards_parameters_list[index_in_or]
+        # for index_of_function in range(len(functions)):
+        function = guards_functions_list[index_in_or]
+        parameter_list = guards_parameters_list[index_in_or]
+        function(*parameter_list)
+
+def apply_or_guards_must_happen(guards_parameters_list, guards_functions_list):
+    for index_of_function in range(len(guards_functions_list)):
+        function = guards_functions_list[index_of_function]
+        parameter_list = guards_parameters_list[index_of_function]
+        function(*parameter_list)
+
+
+def add_arcs_from_transition_to_place_of_or(net, empty_transitions_names, place_of_or):
+    for empty_transitions_name in empty_transitions_names:
+        empty_transition = found_transition(net, empty_transitions_name)
+        petri_utils.add_arc_from_to(empty_transition, place_of_or, net, 1)
+        empty_transition.label = None
+
+def or_guard(net, guards_parameters_list, guards_functions_list, transition_name,number_of_or_guards):
+    transition = found_transition(net,transition_name)
+    pre_places = found_pre_places(transition)
+    empty_transitions = create_empty_transitions_for_or_guards(net,number_of_or_guards,pre_places,transition_name)
+    remove_xor_edge_from_option_with_xor(net,pre_places,transition_name)
+    place_of_or = PetriNet.Place("or place " + transition_name)
+    net.places.add(place_of_or)
+    apply_or_guards(guards_parameters_list,guards_functions_list)
+    add_arcs_from_transition_to_place_of_or(net, empty_transitions, place_of_or)
+    transition = found_transition(net, transition_name)
+    add_arc_from_place_to_transition(net, place_of_or, transition)
+
+
+def create_csv_event_log(log, csv_name):
+    timestamp = ''
+    last_case_id = 0
+    list_of_events_for_log = []
+    for event in log:
+        case_id = event.get("case_id")[5:]
+        activity = event.get("activity")
+        if int(case_id) != last_case_id:
+            timestamp = '1700-12-30'
+            last_case_id = int(case_id)
+        else:
+            timestamp = add_one_year(timestamp)
+        event_for_log = []
+        event_for_log.append(case_id)
+        event_for_log.append(activity)
+        event_for_log.append(timestamp)
+        list_of_events_for_log.append(event_for_log)
+    create_csv_file(['case ID','activity', 'timestamp'], list_of_events_for_log, csv_name)
+
+def build_log(traces):
+    log = []
+    for i in range(len(traces)):
+        trace_log = build_events(traces[i],i+1)
+        log.extend(trace_log)
+    return log
+
+def split_csv_to_train_test(csv):
+    traces = build_traces_from_csv(csv)
+    train_length =int(0.75 * len(traces))
+    train_log = build_log(traces[0:train_length+1])
+    test_log = build_log(traces[train_length+1:])
+    create_csv_event_log(train_log,"train_log.csv")
+    create_csv_event_log(test_log,"test_log.csv")
+
+def build_traces_from_csv(csv):
+    traces = []
+    last_case_id = ""
+    trace = []
+    for row in csv.iterrows():
+        case_id = row[1]["case ID"]
+        activity = row[1]["activity"]
+        if case_id!="UNKNOWN":
+            if case_id == last_case_id:
+                trace.append(activity)
+            else:
+                traces.append(trace.copy())
+                trace = [activity]
+                last_case_id = case_id
+
+    return traces[1:]
+
+
+def count_transition(trace, transition):
+    counter = 0
+    for action in trace:
+        if action == transition:
+            counter = counter+1
+    return counter
+
+def create_csv_file(headlines, data, csv_name):
+    with open(csv_name, 'w', newline='') as file:
+        writer = csv.writer(file)
+
+        writer.writerow(headlines)
+
+        for row in data:
+            writer.writerow(row)
+
+
+def count_transition_until_feature(trace, feature,target):
+    if trace.__contains__(target):
+        index_of_first = trace.index(target)
+        trace = trace[0:index_of_first+1]
+    return count_transition(trace,feature)
+
+
+
+def build_csv_for_column_first_occurance(csv, column):
+    traces = build_traces_from_csv(csv)
+    rows = []
+    target = column[len(column)-1]
+    for trace in traces:
+        row = []
+        for feature in column:
+            number_of_occurances = count_transition_until_feature(trace,feature,target)
+            row.append(number_of_occurances)
+        rows.append(row.copy())
+    create_csv_file(column,rows,"decision_tree.csv")
+
+def find_next_index_of_target(trace,target,index):
+    next_index = -1
+    copy_trace = trace.copy()
+    copy_trace = copy_trace[index:]
+    if copy_trace.__contains__(target):
+        index_of_target = copy_trace.index(target)
+        next_index = index + index_of_target
+    return next_index
+
+def build_row(trace,column):
+    row = []
+    for feature in column:
+        number_of_occurances = count_transition(trace,feature)
+        row.append(number_of_occurances)
+    return row
+
+def build_csv_for_column_every_time_target_happen(csv, column):
+    traces = build_traces_from_csv(csv)
+    rows = []
+    target = column[len(column)-1]
+    for trace in traces:
+        index_of_prev = 0
+        if trace.__contains__(target):
+            index_of_next = find_next_index_of_target(trace,target, index_of_prev)
+            while index_of_next != -1:
+                trace_for_row = trace.copy()[0: index_of_next+1]
+                row = build_row(trace_for_row,column)
+                index_of_prev = index_of_next
+                rows.append(row)
+                index_of_next = find_next_index_of_target(trace,target,index_of_prev+1)
+        else:
+            row = build_row(trace,column)
+            rows.append(row)
+    create_csv_file(column,rows,"decision_tree.csv")
+    return len(rows)
+
+def build_prefixes(traces):
+    list_of_prefixes = []
+    list_of_prefixes.append([])
+    for trace in traces:
+        for length_of_prefix in range(len(trace)):
+            prefix = trace[0:length_of_prefix+1]
+            list_of_prefixes.append(prefix.copy())
+    return list_of_prefixes
+
+
+def build_csv_for_prefixes(net,csv, column,initial_marking,final_marking):
+    traces = build_traces_from_csv(csv)
+    prefixes = build_prefixes(traces)
+    rows = []
+    target = column[len(column)-1]
+    features = column[:-1]
+    good_prefixes, bad_prefixes = build_good_and_bad_prefixes_for_transition(net, prefixes, target,initial_marking,final_marking)
+    for good_prefix in good_prefixes:
+        row = build_row(good_prefix,features)
+        row.append(1)
+        rows.append(row)
+    for bad_prefix in bad_prefixes:
+        row = build_row(bad_prefix, features)
+        row.append(0)
+        rows.append(row)
+    create_csv_file(column,rows,"decision_tree.csv")
+    return len(rows)
+
+def build_all_decision_trees_first_occurance(net,csv,col_name):
+    columns = builds_all_target(col_name)
+    for column in columns:
+        # if column[len(column)-1] == "Send Purchase Order Update":
+        #     print("f")
+        build_csv_for_column_every_time_target_happen(csv,column)
+        csv_decision = pd.read_csv("decision_tree.csv", header=None, names=column)
+        tree = build_decision_tree(csv_decision, column)
+        list_of_guards = counter_guard_depend_on_features(tree,column)
+        # if len(list_of_guards)>0:
+        #     or_guard_special(net, column[len(column) - 1:][0], list_of_guards)
+
+def list_of_guards_must_happen(tree, features):
+    list_of_guards = find_must_guards(tree,features)
+    return list_of_guards
+
+def counter_guard_depend_on_features_every_time_target_happen(tree, features):
+    dictionary_of_classes = find_features_counter(tree)
+    list_of_guards = find_features_guards_for_target(features, dictionary_of_classes)
+    return list_of_guards
+
+
+def transitions_must_happen(list_of_guards):
+    list_of_guards_for_transition_to_happen = list_of_guards[1]
+    set_of_intersection = set(list_of_guards_for_transition_to_happen[0])
+    for list_of_g in list_of_guards_for_transition_to_happen[1:]:
+        set_of_intersection = set_of_intersection.intersection(list_of_g)
+    list_of_intersection = list(set_of_intersection)
+    for i in range(len(list_of_guards_for_transition_to_happen)):
+        list_of_guards_for_transition_to_happen[i] = list(set(list_of_guards_for_transition_to_happen[i]).difference(list_of_intersection))
+    return list_of_intersection
+
+
+def features_must_happen_for_target(must_happen):
+    features_must_happen = []
+    for guard in must_happen:
+        feature = guard[0]
+        features_must_happen.append(feature)
+    return features_must_happen
+
+
+def get_features_of_class(list_of_guards):
+    features = []
+    for or_guard in list_of_guards:
+        for guard in or_guard:
+            feature = guard[0]
+            features.append(feature)
+    return features
+
+
+def get_features_appears_in_every_class(list_of_guards):
+    list_of_features_for_every_class = []
+    for class_of_target in range (len(list_of_guards)-1):
+        features_in_class = get_features_of_class(list_of_guards[class_of_target+1])
+        list_of_features_for_every_class.append(features_in_class)
+    set_of_intersection = set(list_of_features_for_every_class[0])
+    for list_of_features in list_of_features_for_every_class[1:]:
+        set_of_intersection = set_of_intersection.intersection(list_of_features)
+    list_of_intersection = list(set_of_intersection)
+    return list_of_intersection
+
+
+def find_connection(features_appears_in_every_class, target):
+    pass
+
+
+def build_all_decision_trees_every_time_target_happen(net,csv,col_name,initial_marking,final_marking):
+    copy_net = net.__deepcopy__()
+    columns = builds_all_target(col_name)
+    for column in columns:
+        target_name = column[len(column) - 1:][0]
+        # if target_name == "Change Price":
+        #     x=5
+        rows_number = build_csv_for_prefixes(copy_net,csv,column,initial_marking,final_marking)
+        #build_csv_for_column_every_time_target_happen(csv,column)
+        if rows_number>9:
+            csv_decision = pd.read_csv("decision_tree.csv", header=None, names=column)
+            tree = build_decision_tree(csv_decision, column)
+            list_of_guards= list_of_guards_must_happen(tree,column)
+            print(target_name)
+            print(list_of_guards)
+            if len(list_of_guards)>0:
+                apply_must_happen(net, target_name, list_of_guards)
+            # list_of_guards = counter_guard_depend_on_features_every_time_target_happen(tree, column)
+            # apply_must_happen(net, column[len(column) - 1:][0], list_of_guards)
+            # if len(list_of_guards) > 1 and len(list_of_guards[1]) > 0:
+            #     must_happen = transitions_must_happen(list_of_guards)
+            #     apply_must_happen(net, column[len(column) - 1:][0], must_happen)
+            #     if list_of_guards[1] != [[]]:
+            #         or_guard_depend_on_features_every_time_target_happen(net, column[len(column) - 1:][0], list_of_guards)
+            # features_must_happen = features_must_happen_for_target(must_happen)
+            # column = list(set(column).difference(features_must_happen))
+            # build_csv_for_column_every_time_target_happen(csv,column)
+            # csv_decision = pd.read_csv("decision_tree.csv", header=None, names=column)
+            # tree = build_decision_tree(csv_decision, column)
+            # list_of_guards = counter_guard_depend_on_features_every_time_target_happen(tree, column)
+            # features_appears_in_every_class = get_features_appears_in_every_class(list_of_guards)
+            # connection_between_features_to_target = find_connection(features_appears_in_every_class, column[len(column) - 1:][0])
+
+
+def create_ec_kitty_tree(net,csv,col_name):
+    columns = builds_all_target(col_name)
+    for column in columns:
+        target_name = column[len(column) - 1:][0]
+        rows_number = build_csv_for_column_every_time_target_happen(csv, column)
+        if rows_number > 9:
+            csv_decision = pd.read_csv("decision_tree.csv", header=None, names=column)
+            regression = EC_KITTY_SKL.ec_kitty_tree(csv_decision,column)
+            tree = regression.algorithm.best_of_run_.tree
+            for node in tree:
+                print_node = ""
+                if type(node) is str:
+                    print_node = column[int(node[1:])]
+                if type(node) is int:
+                    print_node = node
+                if callable(node):
+                    print_node = getattr(node, "__name__", None)
+                print(print_node)
+def transition_enabled(transition,marking):
+    for arc in transition.in_arcs:
+        if marking[arc.source] < arc.weight:
+            return False
+    return True
+
+def build_initial_marking(net):
+    marking = {}
+    for place in net.places:
+        if place.name != 'source':
+            marking[place] = 0
+        else:
+            marking[place] = 1
+    return marking
+
+# Function that return set of the None transitions that we can do
+def group_of_can_do_transitions(transitions, dict_of_tokens):
+    set_of_None_can_do_transitions = set()
+    for transition in transitions:
+        if transition.label == None:
+            if transition_enabled(transition, dict_of_tokens):
+                set_of_None_can_do_transitions.add(transition)
+    return set_of_None_can_do_transitions
+
+
+def activate_transition(transition: PetriNet.Transition, dictionary_of_tokens_copy):
+    arcs_in = transition.in_arcs
+    for arc in arcs_in:
+        dictionary_of_tokens_copy[arc.source] = dictionary_of_tokens_copy[arc.source] - arc.weight
+    arcs_out = transition.out_arcs
+    for arc in arcs_out:
+        dictionary_of_tokens_copy[arc.target] = dictionary_of_tokens_copy[arc.target] + arc.weight
+
+# Function that return if a trace is in the net
+def check_if_trace_in_net(net, trace, final_marking, dict_of_tokens):
+    trace_in_net = False
+    set_of_activate_None_transitions = group_of_can_do_transitions(net.transitions, dict_of_tokens)
+    for None_activate_transition in set_of_activate_None_transitions:
+        dictionary_of_tokens_copy = dict_of_tokens.copy()
+        activate_transition(None_activate_transition, dictionary_of_tokens_copy)
+        trace_in_net = trace_in_net or check_if_trace_in_net(net, trace, final_marking, dictionary_of_tokens_copy)
+    if len(trace) == 0:
+        trace_in_net = True
+    else:
+        label_transition = found_transition(net, trace[0])
+        if transition_enabled(label_transition, dict_of_tokens):
+            dictionary_of_tokens_copy = dict_of_tokens.copy()
+            activate_transition(label_transition, dictionary_of_tokens_copy)
+            trace_in_net = trace_in_net or check_if_trace_in_net(net, trace[1:], final_marking,
+                                                                 dictionary_of_tokens_copy)
+    return trace_in_net
+
+def import_csv(file_path):
+    event_log = pd.read_csv(file_path, sep=';')
+    event_log['case ID'] = event_log['case ID'].astype(str)
+    event_log['activity'] = event_log['activity'].astype(str)
+    event_log['timestamp'] = pd.to_datetime(event_log['timestamp'], format='mixed')
+    return event_log
+
+def build_good_and_bad_prefixes_for_transition(net,prefixes,transition,initial_marking,final_marking):
+    list_of_good_prefixes = []
+    list_of_bad_prefixes = []
+    prefixes_in_net = []
+    prefixes_original = []
+    for prefix in prefixes:
+        prefixes_original.append(prefix.copy())
+        prefix.append(transition)
+    log = build_log(prefixes)
+    create_train_log(log)
+    train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv")
+    replayed_traces = pm4py.conformance_diagnostics_token_based_replay(train_log, net, initial_marking, final_marking,
+                                                                       "activity", "timestamp",
+                                                                       "case ID")
+    index_of_prefix = 0
+    for trace in replayed_traces:
+        if trace['missing_tokens'] == 1:
+            trace_with_transition = prefixes[index_of_prefix]
+            trace_without_transition = prefixes_original[index_of_prefix]
+            if prefixes_original.__contains__(trace_with_transition) and list_of_good_prefixes.__contains__(trace_without_transition) == False:
+                list_of_good_prefixes.append(trace_without_transition)
+            if prefixes_original.__contains__(trace_with_transition)==False and list_of_bad_prefixes.__contains__(
+                    trace_without_transition) == False:
+                list_of_bad_prefixes.append(trace_without_transition)
+        index_of_prefix = index_of_prefix + 1
+
+    return list_of_good_prefixes, list_of_bad_prefixes
+
+
+def build_events(trace, case_id):
+    case_id_str = f"Case_{case_id}"
+    trace_log = []
+    for activity in trace:
+        event = {
+            "case_id": case_id_str,
+            "activity": activity,
+            "timestamp": datetime.now().isoformat(),
+        }
+        trace_log.append(event)
+    return trace_log
+
+def build_log(traces):
+    log = []
+    trace_number=0
+    for trace in traces:
+        trace_log = build_events(trace, trace_number + 1)
+        trace_number = trace_number + 1
+        log.extend(trace_log)
+    return log
+
+def year_plus_one(year):
+    int_year = int(year)
+    int_year = int_year + 1
+    return str(int_year)
+
+
+def add_one_year(timestamp):
+    year = timestamp[:4]
+    year = year_plus_one(year)
+    return year + timestamp[4:]
+
+def create_train_log(log):
+    timestamp = ''
+    last_case_id = 0
+    list_of_events_for_log = []
+    for event in log:
+        case_id = event.get("case_id")[5:]
+        activity = event.get("activity")
+        if int(case_id) != last_case_id:
+            timestamp = '1700-12-30'
+            last_case_id = int(case_id)
+        else:
+            timestamp = add_one_year(timestamp)
+        event_for_log = case_id + ';' + activity + ';' + timestamp
+        list_of_events_for_log.append([event_for_log])
+    create_csv_file(['case ID;activity;timestamp'], list_of_events_for_log, 'train_log.csv')
