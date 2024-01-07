@@ -154,10 +154,10 @@ def build_decision_tree(csv_file, col_names):
 
     clf = clf.fit(features, labeled)
 
-    # plt.figure(figsize=(20, 10))  # You can adjust the figure size as needed
-    # plot_tree(clf, feature_names=feature_columns, class_names=class_names, filled=True, rounded=True,
-    #           precision=2)
-    # plt.show()
+    plt.figure(figsize=(20, 10))  # You can adjust the figure size as needed
+    plot_tree(clf, feature_names=feature_columns, class_names=class_names, filled=True, rounded=True,
+              precision=2)
+    plt.show()
 
     return clf.tree_
 
@@ -1320,8 +1320,6 @@ def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, activiti
                 pointers = [process_tree]
                 seq_loop = []
                 indexes_seq_loop = []
-            if index>17:
-                debug = True
             pref = trace[0:index + 1]
             row = build_row(pref[:-1], column)
             transitions_enabled = []
@@ -1453,8 +1451,8 @@ def add_xor_guards(tree, net, train_log, col_name):
                 print(list_of_guards)
                 if len(list_of_guards) > 0:
                     apply_must_happen(net, target_name, list_of_guards)
-        col_name.remove(target_name)
-        col_name.insert(index_of_target, target_name)
+        col_name_copy.remove(target_name)
+        col_name_copy.insert(index_of_target, target_name)
 
 
 def transition_enabled(transition, marking):

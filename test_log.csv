@@ -1,330 +1,1293 @@
 case ID,activity,timestamp
-1,Book Invoice,1700-12-30
-1,Create Purchase Order Item,1701-12-30
-1,Receive Goods,1702-12-30
-1,Scan Invoice,1703-12-30
-1,Send Purchase Order,1704-12-30
-2,Book Invoice,1700-12-30
-2,Create Purchase Order Item,1701-12-30
-2,Receive Goods,1702-12-30
-2,Scan Invoice,1703-12-30
-2,Send Purchase Order,1704-12-30
-3,Book Invoice,1700-12-30
-3,Create Purchase Order Item,1701-12-30
-3,Receive Goods,1702-12-30
-3,Scan Invoice,1703-12-30
-3,Send Purchase Order,1704-12-30
-4,Book Invoice,1700-12-30
-4,Create Purchase Order Item,1701-12-30
-4,Receive Goods,1702-12-30
-4,Scan Invoice,1703-12-30
-4,Send Purchase Order,1704-12-30
-5,Book Invoice,1700-12-30
-5,Create Purchase Order Item,1701-12-30
-5,Receive Goods,1702-12-30
-5,Scan Invoice,1703-12-30
-5,Send Purchase Order,1704-12-30
-6,Book Invoice,1700-12-30
-6,Create Purchase Order Item,1701-12-30
-6,Receive Goods,1702-12-30
-6,Scan Invoice,1703-12-30
-6,Send Purchase Order,1704-12-30
-7,Book Invoice,1700-12-30
-7,Create Purchase Order Item,1701-12-30
-7,Receive Goods,1702-12-30
-7,Scan Invoice,1703-12-30
-7,Send Purchase Order,1704-12-30
-8,Book Invoice,1700-12-30
-8,Create Purchase Order Item,1701-12-30
-8,Receive Goods,1702-12-30
-8,Scan Invoice,1703-12-30
-8,Send Purchase Order,1704-12-30
-9,Book Invoice,1700-12-30
-9,Create Purchase Order Item,1701-12-30
-9,Receive Goods,1702-12-30
-9,Scan Invoice,1703-12-30
-9,Send Purchase Order,1704-12-30
-10,Book Invoice,1700-12-30
-10,Create Purchase Order Item,1701-12-30
-10,Receive Goods,1702-12-30
-10,Scan Invoice,1703-12-30
-10,Send Purchase Order,1704-12-30
-11,Book Invoice,1700-12-30
-11,Create Purchase Order Item,1701-12-30
-11,Receive Goods,1702-12-30
-11,Scan Invoice,1703-12-30
-11,Send Purchase Order,1704-12-30
-12,Book Invoice,1700-12-30
-12,Create Purchase Order Item,1701-12-30
-12,Receive Goods,1702-12-30
-12,Scan Invoice,1703-12-30
-12,Send Purchase Order,1704-12-30
-13,Book Invoice,1700-12-30
-13,Create Purchase Order Item,1701-12-30
-13,Receive Goods,1702-12-30
-13,Scan Invoice,1703-12-30
-13,Send Purchase Order,1704-12-30
-14,Book Invoice,1700-12-30
-14,Change Price,1701-12-30
-14,Create Purchase Order Item,1702-12-30
-14,Receive Goods,1703-12-30
-14,Scan Invoice,1704-12-30
-14,Send Purchase Order,1705-12-30
-15,Book Invoice,1700-12-30
-15,Change Price,1701-12-30
-15,Create Purchase Order Item,1702-12-30
-15,Receive Goods,1703-12-30
-15,Scan Invoice,1704-12-30
-15,Send Purchase Order,1705-12-30
-16,Book Invoice,1700-12-30
-16,Change Price,1701-12-30
-16,Create Purchase Order Item,1702-12-30
-16,Receive Goods,1703-12-30
-16,Scan Invoice,1704-12-30
-16,Send Purchase Order,1705-12-30
-17,Book Invoice,1700-12-30
-17,Change Price,1701-12-30
-17,Create Purchase Order Item,1702-12-30
-17,Receive Goods,1703-12-30
-17,Scan Invoice,1704-12-30
-17,Send Purchase Order,1705-12-30
-18,Book Invoice,1700-12-30
-18,Create Purchase Order Item,1701-12-30
-18,Receive Goods,1702-12-30
-18,Scan Invoice,1703-12-30
-18,Send Purchase Order,1704-12-30
-19,Book Invoice,1700-12-30
-19,Create Purchase Order Item,1701-12-30
-19,Receive Goods,1702-12-30
-19,Scan Invoice,1703-12-30
-19,Send Purchase Order,1704-12-30
-20,Book Invoice,1700-12-30
-20,Create Purchase Order Item,1701-12-30
-20,Receive Goods,1702-12-30
-20,Scan Invoice,1703-12-30
-20,Send Purchase Order,1704-12-30
-21,Book Invoice,1700-12-30
-21,Create Purchase Order Item,1701-12-30
-21,Receive Goods,1702-12-30
-21,Scan Invoice,1703-12-30
-21,Send Purchase Order,1704-12-30
-22,Book Invoice,1700-12-30
-22,Create Purchase Order Item,1701-12-30
-22,Receive Goods,1702-12-30
-22,Scan Invoice,1703-12-30
-22,Send Purchase Order,1704-12-30
-23,Book Invoice,1700-12-30
-23,Create Purchase Order Item,1701-12-30
-23,Receive Goods,1702-12-30
-23,Scan Invoice,1703-12-30
-23,Send Purchase Order,1704-12-30
-24,Book Invoice,1700-12-30
-24,Create Purchase Order Item,1701-12-30
-24,Receive Goods,1702-12-30
-24,Receive Order Confirmation,1703-12-30
-24,Scan Invoice,1704-12-30
-24,Send Purchase Order,1705-12-30
-25,Book Invoice,1700-12-30
-25,Create Purchase Order Item,1701-12-30
-25,Receive Goods,1702-12-30
-25,Receive Order Confirmation,1703-12-30
-25,Scan Invoice,1704-12-30
-25,Send Purchase Order,1705-12-30
-26,Book Invoice,1700-12-30
-26,Create Purchase Order Item,1701-12-30
-26,Dun Order Confirmation,1702-12-30
-26,Receive Goods,1703-12-30
-26,Receive Order Confirmation,1704-12-30
-26,Scan Invoice,1705-12-30
-26,Send Purchase Order,1706-12-30
-27,Book Invoice,1700-12-30
-27,Create Purchase Order Item,1701-12-30
-27,Dun Order Confirmation,1702-12-30
-27,Receive Goods,1703-12-30
-27,Receive Order Confirmation,1704-12-30
-27,Scan Invoice,1705-12-30
-27,Send Purchase Order,1706-12-30
-28,Book Invoice,1700-12-30
-28,Create Purchase Order Item,1701-12-30
-28,Receive Goods,1702-12-30
-28,Remove Payment Block,1703-12-30
-28,Scan Invoice,1704-12-30
-28,Send Purchase Order,1705-12-30
-28,Set Payment Block,1706-12-30
-29,Book Invoice,1700-12-30
-29,Create Purchase Order Item,1701-12-30
-29,Receive Goods,1702-12-30
-29,Scan Invoice,1703-12-30
-29,Send Purchase Order,1704-12-30
-29,Send Purchase Order Update,1705-12-30
-30,Book Invoice,1700-12-30
-30,Change Currency,1701-12-30
-30,Create Purchase Order Item,1702-12-30
-30,Receive Goods,1703-12-30
-30,Scan Invoice,1704-12-30
-30,Send Purchase Order,1705-12-30
-31,Create Purchase Order Item,1700-12-30
-31,Delete Purchase Order Item,1701-12-30
-31,Send Purchase Order,1702-12-30
-32,Block Purchase Order Item,1700-12-30
-32,Create Purchase Order Item,1701-12-30
-32,Send Purchase Order,1702-12-30
-33,Block Purchase Order Item,1700-12-30
-33,Book Invoice,1701-12-30
-33,Create Purchase Order Item,1702-12-30
-33,Receive Goods,1703-12-30
-33,Release Purchase Order,1704-12-30
-33,Scan Invoice,1705-12-30
-33,Send Purchase Order,1706-12-30
-34,Create Purchase Order Item,1700-12-30
-34,Refuse Purchase Order Item,1701-12-30
-35,Book Invoice,1700-12-30
-35,Create Purchase Order Item,1701-12-30
-35,Receive Goods,1702-12-30
-35,Scan Invoice,1703-12-30
-35,Send Purchase Order,1704-12-30
-36,Book Invoice,1700-12-30
-36,Create Purchase Order Item,1701-12-30
-36,Receive Goods,1702-12-30
-36,Scan Invoice,1703-12-30
-36,Send Purchase Order,1704-12-30
-37,Book Invoice,1700-12-30
-37,Create Purchase Order Item,1701-12-30
-37,Receive Goods,1702-12-30
-37,Scan Invoice,1703-12-30
-37,Send Purchase Order,1704-12-30
-38,Book Invoice,1700-12-30
-38,Create Purchase Order Item,1701-12-30
-38,Receive Goods,1702-12-30
-38,Scan Invoice,1703-12-30
-38,Send Purchase Order,1704-12-30
-39,Book Invoice,1700-12-30
-39,Create Purchase Order Item,1701-12-30
-39,Receive Goods,1702-12-30
-39,Scan Invoice,1703-12-30
-39,Send Purchase Order,1704-12-30
-40,Book Invoice,1700-12-30
-40,Create Purchase Order Item,1701-12-30
-40,Receive Goods,1702-12-30
-40,Scan Invoice,1703-12-30
-40,Send Purchase Order,1704-12-30
-41,Book Invoice,1700-12-30
-41,Create Purchase Order Item,1701-12-30
-41,Receive Goods,1702-12-30
-41,Scan Invoice,1703-12-30
-41,Send Purchase Order,1704-12-30
-42,Book Invoice,1700-12-30
-42,Create Purchase Order Item,1701-12-30
-42,Receive Goods,1702-12-30
-42,Scan Invoice,1703-12-30
-42,Send Purchase Order,1704-12-30
-43,Book Invoice,1700-12-30
-43,Create Purchase Order Item,1701-12-30
-43,Receive Goods,1702-12-30
-43,Scan Invoice,1703-12-30
-43,Send Purchase Order,1704-12-30
-44,Book Invoice,1700-12-30
-44,Create Purchase Order Item,1701-12-30
-44,Receive Goods,1702-12-30
-44,Scan Invoice,1703-12-30
-44,Send Purchase Order,1704-12-30
-45,Book Invoice,1700-12-30
-45,Create Purchase Order Item,1701-12-30
-45,Receive Goods,1702-12-30
-45,Scan Invoice,1703-12-30
-45,Send Purchase Order,1704-12-30
-46,Book Invoice,1700-12-30
-46,Create Purchase Order Item,1701-12-30
-46,Receive Goods,1702-12-30
-46,Scan Invoice,1703-12-30
-46,Send Purchase Order,1704-12-30
-47,Book Invoice,1700-12-30
-47,Create Purchase Order Item,1701-12-30
-47,Receive Goods,1702-12-30
-47,Scan Invoice,1703-12-30
-47,Send Purchase Order,1704-12-30
-48,Book Invoice,1700-12-30
-48,Create Purchase Order Item,1701-12-30
-48,Receive Goods,1702-12-30
-48,Scan Invoice,1703-12-30
-48,Send Purchase Order,1704-12-30
-49,Book Invoice,1700-12-30
-49,Create Purchase Order Item,1701-12-30
-49,Receive Goods,1702-12-30
-49,Scan Invoice,1703-12-30
-49,Send Purchase Order,1704-12-30
-50,Book Invoice,1700-12-30
-50,Change Price,1701-12-30
-50,Create Purchase Order Item,1702-12-30
-50,Receive Goods,1703-12-30
-50,Scan Invoice,1704-12-30
-50,Send Purchase Order,1705-12-30
-51,Book Invoice,1700-12-30
-51,Create Purchase Order Item,1701-12-30
-51,Receive Goods,1702-12-30
-51,Scan Invoice,1703-12-30
-51,Send Purchase Order,1704-12-30
-52,Book Invoice,1700-12-30
-52,Change Price,1701-12-30
-52,Create Purchase Order Item,1702-12-30
-52,Receive Goods,1703-12-30
-52,Scan Invoice,1704-12-30
-52,Send Purchase Order,1705-12-30
-53,Book Invoice,1700-12-30
-53,Change Price,1701-12-30
-53,Create Purchase Order Item,1702-12-30
-53,Receive Goods,1703-12-30
-53,Scan Invoice,1704-12-30
-53,Send Purchase Order,1705-12-30
-54,Book Invoice,1700-12-30
-54,Create Purchase Order Item,1701-12-30
-54,Receive Goods,1702-12-30
-54,Scan Invoice,1703-12-30
-54,Send Purchase Order,1704-12-30
-55,Book Invoice,1700-12-30
-55,Change Price,1701-12-30
-55,Create Purchase Order Item,1702-12-30
-55,Receive Goods,1703-12-30
-55,Scan Invoice,1704-12-30
-55,Send Purchase Order,1705-12-30
-56,Book Invoice,1700-12-30
-56,Change Price,1701-12-30
-56,Create Purchase Order Item,1702-12-30
-56,Receive Goods,1703-12-30
-56,Scan Invoice,1704-12-30
-56,Send Purchase Order,1705-12-30
-57,Book Invoice,1700-12-30
-57,Change Price,1701-12-30
-57,Create Purchase Order Item,1702-12-30
-57,Receive Goods,1703-12-30
-57,Scan Invoice,1704-12-30
-57,Send Purchase Order,1705-12-30
-58,Book Invoice,1700-12-30
-58,Change Price,1701-12-30
-58,Create Purchase Order Item,1702-12-30
-58,Receive Goods,1703-12-30
-58,Scan Invoice,1704-12-30
-58,Send Purchase Order,1705-12-30
-59,Book Invoice,1700-12-30
-59,Change Price,1701-12-30
-59,Create Purchase Order Item,1702-12-30
-59,Receive Goods,1703-12-30
-59,Scan Invoice,1704-12-30
-59,Send Purchase Order,1705-12-30
-60,Book Invoice,1700-12-30
-60,Create Purchase Order Item,1701-12-30
-60,Receive Goods,1702-12-30
-60,Scan Invoice,1703-12-30
-60,Send Purchase Order,1704-12-30
-61,Book Invoice,1700-12-30
-61,Change Price,1701-12-30
-61,Create Purchase Order Item,1702-12-30
-61,Receive Goods,1703-12-30
-61,Scan Invoice,1704-12-30
-61,Send Purchase Order,1705-12-30
-62,Book Invoice,1700-12-30
-62,Change Price,1701-12-30
-62,Create Purchase Order Item,1702-12-30
-62,Receive Goods,1703-12-30
-62,Scan Invoice,1704-12-30
-62,Send Purchase Order,1705-12-30
+1,breakfast,1700-12-30
+1,dress for ski,1701-12-30
+1,black,1702-12-30
+1,red,1703-12-30
+1,black,1704-12-30
+1,black,1705-12-30
+1,red,1706-12-30
+1,black,1707-12-30
+1,red,1708-12-30
+1,green,1709-12-30
+1,vegetarian dinner,1710-12-30
+2,dress for ski,1700-12-30
+2,blue,1701-12-30
+2,blue,1702-12-30
+2,green,1703-12-30
+2,blue,1704-12-30
+2,blue,1705-12-30
+2,blue,1706-12-30
+2,black,1707-12-30
+2,blue,1708-12-30
+2,gym,1709-12-30
+2,meat dinner,1710-12-30
+3,dress for ski,1700-12-30
+3,breakfast,1701-12-30
+3,black,1702-12-30
+3,green,1703-12-30
+3,black,1704-12-30
+3,blue,1705-12-30
+3,black,1706-12-30
+3,green,1707-12-30
+3,black,1708-12-30
+3,blue,1709-12-30
+3,red,1710-12-30
+3,red,1711-12-30
+3,blue,1712-12-30
+3,black,1713-12-30
+3,green,1714-12-30
+3,green,1715-12-30
+3,vegetarian dinner,1716-12-30
+4,dress for ski,1700-12-30
+4,green,1701-12-30
+4,blue,1702-12-30
+4,green,1703-12-30
+4,black,1704-12-30
+4,black,1705-12-30
+4,green,1706-12-30
+4,blue,1707-12-30
+4,green,1708-12-30
+4,blue,1709-12-30
+4,green,1710-12-30
+4,blue,1711-12-30
+4,black,1712-12-30
+4,red,1713-12-30
+4,red,1714-12-30
+4,red,1715-12-30
+4,red,1716-12-30
+4,green,1717-12-30
+4,red,1718-12-30
+4,green,1719-12-30
+4,black,1720-12-30
+4,vegetarian dinner,1721-12-30
+5,dress for ski,1700-12-30
+5,black,1701-12-30
+5,blue,1702-12-30
+5,red,1703-12-30
+5,green,1704-12-30
+5,red,1705-12-30
+5,red,1706-12-30
+5,green,1707-12-30
+5,black,1708-12-30
+5,blue,1709-12-30
+5,green,1710-12-30
+5,blue,1711-12-30
+5,red,1712-12-30
+5,green,1713-12-30
+5,black,1714-12-30
+5,green,1715-12-30
+5,green,1716-12-30
+5,black,1717-12-30
+5,green,1718-12-30
+5,vegetarian dinner,1719-12-30
+6,dress for ski,1700-12-30
+6,green,1701-12-30
+6,gym,1702-12-30
+6,meat dinner,1703-12-30
+7,dress for ski,1700-12-30
+7,blue,1701-12-30
+7,black,1702-12-30
+7,blue,1703-12-30
+7,green,1704-12-30
+7,black,1705-12-30
+7,red,1706-12-30
+7,blue,1707-12-30
+7,blue,1708-12-30
+7,black,1709-12-30
+7,black,1710-12-30
+7,green,1711-12-30
+7,blue,1712-12-30
+7,red,1713-12-30
+7,red,1714-12-30
+7,blue,1715-12-30
+7,red,1716-12-30
+7,green,1717-12-30
+7,black,1718-12-30
+7,blue,1719-12-30
+7,black,1720-12-30
+7,vegetarian dinner,1721-12-30
+8,dress for ski,1700-12-30
+8,black,1701-12-30
+8,gym,1702-12-30
+8,meat dinner,1703-12-30
+9,dress for ski,1700-12-30
+9,breakfast,1701-12-30
+9,blue,1702-12-30
+9,blue,1703-12-30
+9,green,1704-12-30
+9,blue,1705-12-30
+9,blue,1706-12-30
+9,green,1707-12-30
+9,black,1708-12-30
+9,red,1709-12-30
+9,green,1710-12-30
+9,green,1711-12-30
+9,black,1712-12-30
+9,green,1713-12-30
+9,black,1714-12-30
+9,red,1715-12-30
+9,black,1716-12-30
+9,blue,1717-12-30
+9,blue,1718-12-30
+9,red,1719-12-30
+9,blue,1720-12-30
+9,blue,1721-12-30
+9,vegetarian dinner,1722-12-30
+10,dress for ski,1700-12-30
+10,black,1701-12-30
+10,red,1702-12-30
+10,red,1703-12-30
+10,gym,1704-12-30
+10,meat dinner,1705-12-30
+11,breakfast,1700-12-30
+11,dress for ski,1701-12-30
+11,green,1702-12-30
+11,blue,1703-12-30
+11,blue,1704-12-30
+11,green,1705-12-30
+11,blue,1706-12-30
+11,blue,1707-12-30
+11,blue,1708-12-30
+11,red,1709-12-30
+11,blue,1710-12-30
+11,gym,1711-12-30
+11,vegetarian dinner,1712-12-30
+12,breakfast,1700-12-30
+12,dress for ski,1701-12-30
+12,red,1702-12-30
+12,blue,1703-12-30
+12,blue,1704-12-30
+12,blue,1705-12-30
+12,black,1706-12-30
+12,blue,1707-12-30
+12,blue,1708-12-30
+12,red,1709-12-30
+12,green,1710-12-30
+12,red,1711-12-30
+12,black,1712-12-30
+12,blue,1713-12-30
+12,green,1714-12-30
+12,black,1715-12-30
+12,green,1716-12-30
+12,black,1717-12-30
+12,blue,1718-12-30
+12,red,1719-12-30
+12,vegetarian dinner,1720-12-30
+13,dress for ski,1700-12-30
+13,green,1701-12-30
+13,blue,1702-12-30
+13,green,1703-12-30
+13,blue,1704-12-30
+13,red,1705-12-30
+13,red,1706-12-30
+13,green,1707-12-30
+13,black,1708-12-30
+13,green,1709-12-30
+13,blue,1710-12-30
+13,black,1711-12-30
+13,blue,1712-12-30
+13,gym,1713-12-30
+13,meat dinner,1714-12-30
+14,dress for ski,1700-12-30
+14,green,1701-12-30
+14,green,1702-12-30
+14,blue,1703-12-30
+14,blue,1704-12-30
+14,red,1705-12-30
+14,black,1706-12-30
+14,green,1707-12-30
+14,gym,1708-12-30
+14,meat dinner,1709-12-30
+15,dress for ski,1700-12-30
+15,blue,1701-12-30
+15,black,1702-12-30
+15,red,1703-12-30
+15,green,1704-12-30
+15,red,1705-12-30
+15,red,1706-12-30
+15,red,1707-12-30
+15,black,1708-12-30
+15,black,1709-12-30
+15,red,1710-12-30
+15,blue,1711-12-30
+15,green,1712-12-30
+15,blue,1713-12-30
+15,red,1714-12-30
+15,red,1715-12-30
+15,black,1716-12-30
+15,vegetarian dinner,1717-12-30
+16,breakfast,1700-12-30
+16,dress for ski,1701-12-30
+16,black,1702-12-30
+16,green,1703-12-30
+16,red,1704-12-30
+16,red,1705-12-30
+16,green,1706-12-30
+16,black,1707-12-30
+16,green,1708-12-30
+16,blue,1709-12-30
+16,red,1710-12-30
+16,blue,1711-12-30
+16,black,1712-12-30
+16,black,1713-12-30
+16,vegetarian dinner,1714-12-30
+17,dress for ski,1700-12-30
+17,black,1701-12-30
+17,black,1702-12-30
+17,red,1703-12-30
+17,red,1704-12-30
+17,black,1705-12-30
+17,black,1706-12-30
+17,green,1707-12-30
+17,green,1708-12-30
+17,green,1709-12-30
+17,blue,1710-12-30
+17,red,1711-12-30
+17,blue,1712-12-30
+17,blue,1713-12-30
+17,vegetarian dinner,1714-12-30
+18,dress for ski,1700-12-30
+18,black,1701-12-30
+18,red,1702-12-30
+18,black,1703-12-30
+18,green,1704-12-30
+18,blue,1705-12-30
+18,gym,1706-12-30
+18,meat dinner,1707-12-30
+19,breakfast,1700-12-30
+19,dress for ski,1701-12-30
+19,red,1702-12-30
+19,blue,1703-12-30
+19,red,1704-12-30
+19,black,1705-12-30
+19,blue,1706-12-30
+19,red,1707-12-30
+19,black,1708-12-30
+19,green,1709-12-30
+19,red,1710-12-30
+19,blue,1711-12-30
+19,blue,1712-12-30
+19,black,1713-12-30
+19,black,1714-12-30
+19,green,1715-12-30
+19,blue,1716-12-30
+19,vegetarian dinner,1717-12-30
+20,dress for ski,1700-12-30
+20,black,1701-12-30
+20,red,1702-12-30
+20,green,1703-12-30
+20,black,1704-12-30
+20,blue,1705-12-30
+20,black,1706-12-30
+20,green,1707-12-30
+20,black,1708-12-30
+20,black,1709-12-30
+20,blue,1710-12-30
+20,blue,1711-12-30
+20,vegetarian dinner,1712-12-30
+21,dress for ski,1700-12-30
+21,blue,1701-12-30
+21,blue,1702-12-30
+21,blue,1703-12-30
+21,blue,1704-12-30
+21,red,1705-12-30
+21,blue,1706-12-30
+21,red,1707-12-30
+21,blue,1708-12-30
+21,black,1709-12-30
+21,red,1710-12-30
+21,gym,1711-12-30
+21,meat dinner,1712-12-30
+22,breakfast,1700-12-30
+22,dress for ski,1701-12-30
+22,black,1702-12-30
+22,black,1703-12-30
+22,black,1704-12-30
+22,blue,1705-12-30
+22,vegetarian dinner,1706-12-30
+23,dress for ski,1700-12-30
+23,black,1701-12-30
+23,green,1702-12-30
+23,black,1703-12-30
+23,black,1704-12-30
+23,blue,1705-12-30
+23,blue,1706-12-30
+23,blue,1707-12-30
+23,red,1708-12-30
+23,green,1709-12-30
+23,blue,1710-12-30
+23,black,1711-12-30
+23,blue,1712-12-30
+23,black,1713-12-30
+23,red,1714-12-30
+23,vegetarian dinner,1715-12-30
+24,dress for ski,1700-12-30
+24,red,1701-12-30
+24,green,1702-12-30
+24,green,1703-12-30
+24,green,1704-12-30
+24,black,1705-12-30
+24,red,1706-12-30
+24,black,1707-12-30
+24,black,1708-12-30
+24,blue,1709-12-30
+24,green,1710-12-30
+24,blue,1711-12-30
+24,vegetarian dinner,1712-12-30
+25,dress for ski,1700-12-30
+25,blue,1701-12-30
+25,blue,1702-12-30
+25,blue,1703-12-30
+25,gym,1704-12-30
+25,meat dinner,1705-12-30
+26,breakfast,1700-12-30
+26,dress for ski,1701-12-30
+26,green,1702-12-30
+26,black,1703-12-30
+26,blue,1704-12-30
+26,blue,1705-12-30
+26,green,1706-12-30
+26,green,1707-12-30
+26,green,1708-12-30
+26,green,1709-12-30
+26,red,1710-12-30
+26,green,1711-12-30
+26,red,1712-12-30
+26,green,1713-12-30
+26,black,1714-12-30
+26,red,1715-12-30
+26,black,1716-12-30
+26,black,1717-12-30
+26,vegetarian dinner,1718-12-30
+27,dress for ski,1700-12-30
+27,breakfast,1701-12-30
+27,black,1702-12-30
+27,blue,1703-12-30
+27,red,1704-12-30
+27,gym,1705-12-30
+27,vegetarian dinner,1706-12-30
+28,dress for ski,1700-12-30
+28,red,1701-12-30
+28,green,1702-12-30
+28,green,1703-12-30
+28,green,1704-12-30
+28,red,1705-12-30
+28,red,1706-12-30
+28,black,1707-12-30
+28,black,1708-12-30
+28,green,1709-12-30
+28,red,1710-12-30
+28,green,1711-12-30
+28,blue,1712-12-30
+28,green,1713-12-30
+28,black,1714-12-30
+28,red,1715-12-30
+28,red,1716-12-30
+28,red,1717-12-30
+28,red,1718-12-30
+28,green,1719-12-30
+28,vegetarian dinner,1720-12-30
+29,breakfast,1700-12-30
+29,dress for ski,1701-12-30
+29,green,1702-12-30
+29,red,1703-12-30
+29,red,1704-12-30
+29,green,1705-12-30
+29,green,1706-12-30
+29,black,1707-12-30
+29,green,1708-12-30
+29,green,1709-12-30
+29,blue,1710-12-30
+29,red,1711-12-30
+29,red,1712-12-30
+29,green,1713-12-30
+29,green,1714-12-30
+29,gym,1715-12-30
+29,vegetarian dinner,1716-12-30
+30,dress for ski,1700-12-30
+30,black,1701-12-30
+30,gym,1702-12-30
+30,meat dinner,1703-12-30
+31,dress for ski,1700-12-30
+31,green,1701-12-30
+31,red,1702-12-30
+31,black,1703-12-30
+31,black,1704-12-30
+31,blue,1705-12-30
+31,blue,1706-12-30
+31,blue,1707-12-30
+31,red,1708-12-30
+31,red,1709-12-30
+31,gym,1710-12-30
+31,meat dinner,1711-12-30
+32,dress for ski,1700-12-30
+32,blue,1701-12-30
+32,red,1702-12-30
+32,green,1703-12-30
+32,blue,1704-12-30
+32,blue,1705-12-30
+32,black,1706-12-30
+32,gym,1707-12-30
+32,meat dinner,1708-12-30
+33,dress for ski,1700-12-30
+33,breakfast,1701-12-30
+33,blue,1702-12-30
+33,black,1703-12-30
+33,green,1704-12-30
+33,blue,1705-12-30
+33,black,1706-12-30
+33,blue,1707-12-30
+33,red,1708-12-30
+33,red,1709-12-30
+33,green,1710-12-30
+33,green,1711-12-30
+33,red,1712-12-30
+33,red,1713-12-30
+33,green,1714-12-30
+33,blue,1715-12-30
+33,blue,1716-12-30
+33,blue,1717-12-30
+33,red,1718-12-30
+33,red,1719-12-30
+33,black,1720-12-30
+33,red,1721-12-30
+33,vegetarian dinner,1722-12-30
+34,dress for ski,1700-12-30
+34,breakfast,1701-12-30
+34,blue,1702-12-30
+34,red,1703-12-30
+34,green,1704-12-30
+34,black,1705-12-30
+34,blue,1706-12-30
+34,black,1707-12-30
+34,black,1708-12-30
+34,red,1709-12-30
+34,blue,1710-12-30
+34,red,1711-12-30
+34,green,1712-12-30
+34,blue,1713-12-30
+34,red,1714-12-30
+34,black,1715-12-30
+34,green,1716-12-30
+34,green,1717-12-30
+34,green,1718-12-30
+34,black,1719-12-30
+34,vegetarian dinner,1720-12-30
+35,breakfast,1700-12-30
+35,dress for ski,1701-12-30
+35,red,1702-12-30
+35,red,1703-12-30
+35,blue,1704-12-30
+35,red,1705-12-30
+35,blue,1706-12-30
+35,black,1707-12-30
+35,black,1708-12-30
+35,blue,1709-12-30
+35,red,1710-12-30
+35,red,1711-12-30
+35,blue,1712-12-30
+35,gym,1713-12-30
+35,vegetarian dinner,1714-12-30
+36,dress for ski,1700-12-30
+36,breakfast,1701-12-30
+36,blue,1702-12-30
+36,blue,1703-12-30
+36,blue,1704-12-30
+36,black,1705-12-30
+36,green,1706-12-30
+36,blue,1707-12-30
+36,blue,1708-12-30
+36,green,1709-12-30
+36,green,1710-12-30
+36,green,1711-12-30
+36,gym,1712-12-30
+36,vegetarian dinner,1713-12-30
+37,dress for ski,1700-12-30
+37,red,1701-12-30
+37,blue,1702-12-30
+37,red,1703-12-30
+37,black,1704-12-30
+37,green,1705-12-30
+37,blue,1706-12-30
+37,gym,1707-12-30
+37,meat dinner,1708-12-30
+38,breakfast,1700-12-30
+38,dress for ski,1701-12-30
+38,red,1702-12-30
+38,black,1703-12-30
+38,red,1704-12-30
+38,red,1705-12-30
+38,green,1706-12-30
+38,black,1707-12-30
+38,green,1708-12-30
+38,blue,1709-12-30
+38,gym,1710-12-30
+38,vegetarian dinner,1711-12-30
+39,dress for ski,1700-12-30
+39,black,1701-12-30
+39,black,1702-12-30
+39,blue,1703-12-30
+39,blue,1704-12-30
+39,black,1705-12-30
+39,black,1706-12-30
+39,black,1707-12-30
+39,blue,1708-12-30
+39,green,1709-12-30
+39,black,1710-12-30
+39,red,1711-12-30
+39,vegetarian dinner,1712-12-30
+40,breakfast,1700-12-30
+40,dress for ski,1701-12-30
+40,red,1702-12-30
+40,green,1703-12-30
+40,black,1704-12-30
+40,blue,1705-12-30
+40,black,1706-12-30
+40,gym,1707-12-30
+40,vegetarian dinner,1708-12-30
+41,dress for ski,1700-12-30
+41,black,1701-12-30
+41,red,1702-12-30
+41,black,1703-12-30
+41,blue,1704-12-30
+41,black,1705-12-30
+41,blue,1706-12-30
+41,black,1707-12-30
+41,black,1708-12-30
+41,black,1709-12-30
+41,red,1710-12-30
+41,red,1711-12-30
+41,blue,1712-12-30
+41,blue,1713-12-30
+41,green,1714-12-30
+41,red,1715-12-30
+41,red,1716-12-30
+41,red,1717-12-30
+41,green,1718-12-30
+41,blue,1719-12-30
+41,vegetarian dinner,1720-12-30
+42,dress for ski,1700-12-30
+42,breakfast,1701-12-30
+42,blue,1702-12-30
+42,blue,1703-12-30
+42,red,1704-12-30
+42,green,1705-12-30
+42,gym,1706-12-30
+42,vegetarian dinner,1707-12-30
+43,dress for ski,1700-12-30
+43,breakfast,1701-12-30
+43,black,1702-12-30
+43,red,1703-12-30
+43,blue,1704-12-30
+43,green,1705-12-30
+43,black,1706-12-30
+43,blue,1707-12-30
+43,red,1708-12-30
+43,red,1709-12-30
+43,black,1710-12-30
+43,vegetarian dinner,1711-12-30
+44,dress for ski,1700-12-30
+44,blue,1701-12-30
+44,green,1702-12-30
+44,green,1703-12-30
+44,green,1704-12-30
+44,green,1705-12-30
+44,gym,1706-12-30
+44,meat dinner,1707-12-30
+45,dress for ski,1700-12-30
+45,breakfast,1701-12-30
+45,green,1702-12-30
+45,red,1703-12-30
+45,green,1704-12-30
+45,black,1705-12-30
+45,black,1706-12-30
+45,black,1707-12-30
+45,vegetarian dinner,1708-12-30
+46,dress for ski,1700-12-30
+46,red,1701-12-30
+46,green,1702-12-30
+46,red,1703-12-30
+46,green,1704-12-30
+46,red,1705-12-30
+46,blue,1706-12-30
+46,black,1707-12-30
+46,red,1708-12-30
+46,black,1709-12-30
+46,red,1710-12-30
+46,black,1711-12-30
+46,blue,1712-12-30
+46,blue,1713-12-30
+46,green,1714-12-30
+46,vegetarian dinner,1715-12-30
+47,dress for ski,1700-12-30
+47,blue,1701-12-30
+47,green,1702-12-30
+47,red,1703-12-30
+47,black,1704-12-30
+47,blue,1705-12-30
+47,black,1706-12-30
+47,blue,1707-12-30
+47,red,1708-12-30
+47,green,1709-12-30
+47,black,1710-12-30
+47,red,1711-12-30
+47,green,1712-12-30
+47,black,1713-12-30
+47,green,1714-12-30
+47,vegetarian dinner,1715-12-30
+48,dress for ski,1700-12-30
+48,red,1701-12-30
+48,blue,1702-12-30
+48,blue,1703-12-30
+48,green,1704-12-30
+48,black,1705-12-30
+48,blue,1706-12-30
+48,black,1707-12-30
+48,red,1708-12-30
+48,red,1709-12-30
+48,blue,1710-12-30
+48,red,1711-12-30
+48,green,1712-12-30
+48,black,1713-12-30
+48,green,1714-12-30
+48,red,1715-12-30
+48,red,1716-12-30
+48,vegetarian dinner,1717-12-30
+49,dress for ski,1700-12-30
+49,breakfast,1701-12-30
+49,red,1702-12-30
+49,blue,1703-12-30
+49,green,1704-12-30
+49,green,1705-12-30
+49,green,1706-12-30
+49,blue,1707-12-30
+49,green,1708-12-30
+49,green,1709-12-30
+49,green,1710-12-30
+49,black,1711-12-30
+49,black,1712-12-30
+49,blue,1713-12-30
+49,gym,1714-12-30
+49,vegetarian dinner,1715-12-30
+50,dress for ski,1700-12-30
+50,green,1701-12-30
+50,black,1702-12-30
+50,blue,1703-12-30
+50,blue,1704-12-30
+50,blue,1705-12-30
+50,gym,1706-12-30
+50,meat dinner,1707-12-30
+51,dress for ski,1700-12-30
+51,black,1701-12-30
+51,green,1702-12-30
+51,green,1703-12-30
+51,green,1704-12-30
+51,red,1705-12-30
+51,red,1706-12-30
+51,blue,1707-12-30
+51,black,1708-12-30
+51,green,1709-12-30
+51,red,1710-12-30
+51,blue,1711-12-30
+51,green,1712-12-30
+51,black,1713-12-30
+51,blue,1714-12-30
+51,vegetarian dinner,1715-12-30
+52,breakfast,1700-12-30
+52,dress for ski,1701-12-30
+52,blue,1702-12-30
+52,black,1703-12-30
+52,green,1704-12-30
+52,black,1705-12-30
+52,blue,1706-12-30
+52,red,1707-12-30
+52,blue,1708-12-30
+52,black,1709-12-30
+52,red,1710-12-30
+52,vegetarian dinner,1711-12-30
+53,breakfast,1700-12-30
+53,dress for ski,1701-12-30
+53,blue,1702-12-30
+53,black,1703-12-30
+53,blue,1704-12-30
+53,red,1705-12-30
+53,black,1706-12-30
+53,red,1707-12-30
+53,blue,1708-12-30
+53,blue,1709-12-30
+53,blue,1710-12-30
+53,blue,1711-12-30
+53,red,1712-12-30
+53,green,1713-12-30
+53,black,1714-12-30
+53,vegetarian dinner,1715-12-30
+54,dress for ski,1700-12-30
+54,black,1701-12-30
+54,red,1702-12-30
+54,gym,1703-12-30
+54,meat dinner,1704-12-30
+55,dress for ski,1700-12-30
+55,red,1701-12-30
+55,red,1702-12-30
+55,blue,1703-12-30
+55,red,1704-12-30
+55,blue,1705-12-30
+55,green,1706-12-30
+55,black,1707-12-30
+55,green,1708-12-30
+55,red,1709-12-30
+55,blue,1710-12-30
+55,blue,1711-12-30
+55,green,1712-12-30
+55,green,1713-12-30
+55,gym,1714-12-30
+55,meat dinner,1715-12-30
+56,breakfast,1700-12-30
+56,dress for ski,1701-12-30
+56,green,1702-12-30
+56,blue,1703-12-30
+56,black,1704-12-30
+56,green,1705-12-30
+56,red,1706-12-30
+56,green,1707-12-30
+56,red,1708-12-30
+56,blue,1709-12-30
+56,black,1710-12-30
+56,gym,1711-12-30
+56,vegetarian dinner,1712-12-30
+57,dress for ski,1700-12-30
+57,blue,1701-12-30
+57,blue,1702-12-30
+57,green,1703-12-30
+57,black,1704-12-30
+57,red,1705-12-30
+57,black,1706-12-30
+57,black,1707-12-30
+57,red,1708-12-30
+57,green,1709-12-30
+57,vegetarian dinner,1710-12-30
+58,dress for ski,1700-12-30
+58,blue,1701-12-30
+58,blue,1702-12-30
+58,gym,1703-12-30
+58,meat dinner,1704-12-30
+59,dress for ski,1700-12-30
+59,green,1701-12-30
+59,red,1702-12-30
+59,black,1703-12-30
+59,green,1704-12-30
+59,green,1705-12-30
+59,black,1706-12-30
+59,green,1707-12-30
+59,gym,1708-12-30
+59,meat dinner,1709-12-30
+60,dress for ski,1700-12-30
+60,green,1701-12-30
+60,blue,1702-12-30
+60,green,1703-12-30
+60,red,1704-12-30
+60,red,1705-12-30
+60,blue,1706-12-30
+60,blue,1707-12-30
+60,black,1708-12-30
+60,gym,1709-12-30
+60,meat dinner,1710-12-30
+61,dress for ski,1700-12-30
+61,blue,1701-12-30
+61,red,1702-12-30
+61,red,1703-12-30
+61,black,1704-12-30
+61,black,1705-12-30
+61,black,1706-12-30
+61,green,1707-12-30
+61,blue,1708-12-30
+61,blue,1709-12-30
+61,green,1710-12-30
+61,blue,1711-12-30
+61,black,1712-12-30
+61,blue,1713-12-30
+61,blue,1714-12-30
+61,green,1715-12-30
+61,red,1716-12-30
+61,red,1717-12-30
+61,vegetarian dinner,1718-12-30
+62,dress for ski,1700-12-30
+62,blue,1701-12-30
+62,black,1702-12-30
+62,gym,1703-12-30
+62,meat dinner,1704-12-30
+63,breakfast,1700-12-30
+63,dress for ski,1701-12-30
+63,green,1702-12-30
+63,black,1703-12-30
+63,green,1704-12-30
+63,green,1705-12-30
+63,black,1706-12-30
+63,red,1707-12-30
+63,blue,1708-12-30
+63,green,1709-12-30
+63,gym,1710-12-30
+63,vegetarian dinner,1711-12-30
+64,dress for ski,1700-12-30
+64,green,1701-12-30
+64,black,1702-12-30
+64,green,1703-12-30
+64,blue,1704-12-30
+64,black,1705-12-30
+64,red,1706-12-30
+64,green,1707-12-30
+64,blue,1708-12-30
+64,blue,1709-12-30
+64,black,1710-12-30
+64,red,1711-12-30
+64,red,1712-12-30
+64,blue,1713-12-30
+64,red,1714-12-30
+64,black,1715-12-30
+64,green,1716-12-30
+64,vegetarian dinner,1717-12-30
+65,dress for ski,1700-12-30
+65,breakfast,1701-12-30
+65,red,1702-12-30
+65,black,1703-12-30
+65,blue,1704-12-30
+65,red,1705-12-30
+65,red,1706-12-30
+65,green,1707-12-30
+65,black,1708-12-30
+65,green,1709-12-30
+65,black,1710-12-30
+65,black,1711-12-30
+65,black,1712-12-30
+65,green,1713-12-30
+65,black,1714-12-30
+65,green,1715-12-30
+65,vegetarian dinner,1716-12-30
+66,dress for ski,1700-12-30
+66,blue,1701-12-30
+66,red,1702-12-30
+66,red,1703-12-30
+66,blue,1704-12-30
+66,gym,1705-12-30
+66,meat dinner,1706-12-30
+67,dress for ski,1700-12-30
+67,red,1701-12-30
+67,black,1702-12-30
+67,green,1703-12-30
+67,blue,1704-12-30
+67,gym,1705-12-30
+67,meat dinner,1706-12-30
+68,dress for ski,1700-12-30
+68,red,1701-12-30
+68,green,1702-12-30
+68,gym,1703-12-30
+68,meat dinner,1704-12-30
+69,dress for ski,1700-12-30
+69,black,1701-12-30
+69,green,1702-12-30
+69,black,1703-12-30
+69,green,1704-12-30
+69,black,1705-12-30
+69,green,1706-12-30
+69,blue,1707-12-30
+69,black,1708-12-30
+69,blue,1709-12-30
+69,vegetarian dinner,1710-12-30
+70,dress for ski,1700-12-30
+70,black,1701-12-30
+70,green,1702-12-30
+70,blue,1703-12-30
+70,blue,1704-12-30
+70,red,1705-12-30
+70,black,1706-12-30
+70,green,1707-12-30
+70,blue,1708-12-30
+70,black,1709-12-30
+70,blue,1710-12-30
+70,blue,1711-12-30
+70,black,1712-12-30
+70,black,1713-12-30
+70,black,1714-12-30
+70,red,1715-12-30
+70,vegetarian dinner,1716-12-30
+71,dress for ski,1700-12-30
+71,black,1701-12-30
+71,blue,1702-12-30
+71,blue,1703-12-30
+71,blue,1704-12-30
+71,blue,1705-12-30
+71,red,1706-12-30
+71,blue,1707-12-30
+71,black,1708-12-30
+71,red,1709-12-30
+71,red,1710-12-30
+71,black,1711-12-30
+71,red,1712-12-30
+71,blue,1713-12-30
+71,black,1714-12-30
+71,green,1715-12-30
+71,vegetarian dinner,1716-12-30
+72,dress for ski,1700-12-30
+72,red,1701-12-30
+72,red,1702-12-30
+72,green,1703-12-30
+72,black,1704-12-30
+72,red,1705-12-30
+72,green,1706-12-30
+72,gym,1707-12-30
+72,meat dinner,1708-12-30
+73,breakfast,1700-12-30
+73,dress for ski,1701-12-30
+73,green,1702-12-30
+73,red,1703-12-30
+73,black,1704-12-30
+73,blue,1705-12-30
+73,black,1706-12-30
+73,black,1707-12-30
+73,red,1708-12-30
+73,vegetarian dinner,1709-12-30
+74,dress for ski,1700-12-30
+74,green,1701-12-30
+74,blue,1702-12-30
+74,green,1703-12-30
+74,blue,1704-12-30
+74,red,1705-12-30
+74,red,1706-12-30
+74,green,1707-12-30
+74,red,1708-12-30
+74,black,1709-12-30
+74,green,1710-12-30
+74,blue,1711-12-30
+74,red,1712-12-30
+74,green,1713-12-30
+74,blue,1714-12-30
+74,green,1715-12-30
+74,green,1716-12-30
+74,blue,1717-12-30
+74,gym,1718-12-30
+74,meat dinner,1719-12-30
+75,dress for ski,1700-12-30
+75,black,1701-12-30
+75,green,1702-12-30
+75,red,1703-12-30
+75,blue,1704-12-30
+75,black,1705-12-30
+75,black,1706-12-30
+75,black,1707-12-30
+75,vegetarian dinner,1708-12-30
+76,dress for ski,1700-12-30
+76,breakfast,1701-12-30
+76,green,1702-12-30
+76,blue,1703-12-30
+76,blue,1704-12-30
+76,blue,1705-12-30
+76,red,1706-12-30
+76,blue,1707-12-30
+76,green,1708-12-30
+76,black,1709-12-30
+76,gym,1710-12-30
+76,vegetarian dinner,1711-12-30
+77,breakfast,1700-12-30
+77,dress for ski,1701-12-30
+77,green,1702-12-30
+77,blue,1703-12-30
+77,blue,1704-12-30
+77,black,1705-12-30
+77,blue,1706-12-30
+77,green,1707-12-30
+77,black,1708-12-30
+77,green,1709-12-30
+77,red,1710-12-30
+77,black,1711-12-30
+77,red,1712-12-30
+77,blue,1713-12-30
+77,vegetarian dinner,1714-12-30
+78,dress for ski,1700-12-30
+78,green,1701-12-30
+78,green,1702-12-30
+78,green,1703-12-30
+78,gym,1704-12-30
+78,meat dinner,1705-12-30
+79,dress for ski,1700-12-30
+79,green,1701-12-30
+79,green,1702-12-30
+79,green,1703-12-30
+79,gym,1704-12-30
+79,meat dinner,1705-12-30
+80,dress for ski,1700-12-30
+80,breakfast,1701-12-30
+80,blue,1702-12-30
+80,blue,1703-12-30
+80,black,1704-12-30
+80,gym,1705-12-30
+80,vegetarian dinner,1706-12-30
+81,breakfast,1700-12-30
+81,dress for ski,1701-12-30
+81,green,1702-12-30
+81,blue,1703-12-30
+81,blue,1704-12-30
+81,green,1705-12-30
+81,red,1706-12-30
+81,red,1707-12-30
+81,red,1708-12-30
+81,green,1709-12-30
+81,red,1710-12-30
+81,green,1711-12-30
+81,blue,1712-12-30
+81,red,1713-12-30
+81,green,1714-12-30
+81,black,1715-12-30
+81,red,1716-12-30
+81,green,1717-12-30
+81,blue,1718-12-30
+81,red,1719-12-30
+81,gym,1720-12-30
+81,vegetarian dinner,1721-12-30
+82,dress for ski,1700-12-30
+82,green,1701-12-30
+82,green,1702-12-30
+82,black,1703-12-30
+82,green,1704-12-30
+82,blue,1705-12-30
+82,black,1706-12-30
+82,blue,1707-12-30
+82,blue,1708-12-30
+82,black,1709-12-30
+82,black,1710-12-30
+82,blue,1711-12-30
+82,red,1712-12-30
+82,blue,1713-12-30
+82,red,1714-12-30
+82,black,1715-12-30
+82,red,1716-12-30
+82,green,1717-12-30
+82,red,1718-12-30
+82,green,1719-12-30
+82,vegetarian dinner,1720-12-30
+83,breakfast,1700-12-30
+83,dress for ski,1701-12-30
+83,black,1702-12-30
+83,red,1703-12-30
+83,green,1704-12-30
+83,black,1705-12-30
+83,green,1706-12-30
+83,blue,1707-12-30
+83,blue,1708-12-30
+83,green,1709-12-30
+83,red,1710-12-30
+83,black,1711-12-30
+83,red,1712-12-30
+83,blue,1713-12-30
+83,red,1714-12-30
+83,blue,1715-12-30
+83,black,1716-12-30
+83,red,1717-12-30
+83,red,1718-12-30
+83,blue,1719-12-30
+83,black,1720-12-30
+83,vegetarian dinner,1721-12-30
+84,dress for ski,1700-12-30
+84,breakfast,1701-12-30
+84,green,1702-12-30
+84,blue,1703-12-30
+84,blue,1704-12-30
+84,gym,1705-12-30
+84,vegetarian dinner,1706-12-30
+85,dress for ski,1700-12-30
+85,red,1701-12-30
+85,black,1702-12-30
+85,blue,1703-12-30
+85,red,1704-12-30
+85,green,1705-12-30
+85,gym,1706-12-30
+85,meat dinner,1707-12-30
+86,dress for ski,1700-12-30
+86,breakfast,1701-12-30
+86,black,1702-12-30
+86,black,1703-12-30
+86,black,1704-12-30
+86,blue,1705-12-30
+86,red,1706-12-30
+86,black,1707-12-30
+86,blue,1708-12-30
+86,red,1709-12-30
+86,vegetarian dinner,1710-12-30
+87,dress for ski,1700-12-30
+87,black,1701-12-30
+87,red,1702-12-30
+87,black,1703-12-30
+87,red,1704-12-30
+87,green,1705-12-30
+87,black,1706-12-30
+87,green,1707-12-30
+87,green,1708-12-30
+87,green,1709-12-30
+87,green,1710-12-30
+87,red,1711-12-30
+87,blue,1712-12-30
+87,green,1713-12-30
+87,blue,1714-12-30
+87,black,1715-12-30
+87,green,1716-12-30
+87,vegetarian dinner,1717-12-30
+88,dress for ski,1700-12-30
+88,blue,1701-12-30
+88,black,1702-12-30
+88,blue,1703-12-30
+88,black,1704-12-30
+88,red,1705-12-30
+88,black,1706-12-30
+88,blue,1707-12-30
+88,red,1708-12-30
+88,vegetarian dinner,1709-12-30
+89,dress for ski,1700-12-30
+89,breakfast,1701-12-30
+89,red,1702-12-30
+89,blue,1703-12-30
+89,green,1704-12-30
+89,green,1705-12-30
+89,blue,1706-12-30
+89,red,1707-12-30
+89,blue,1708-12-30
+89,gym,1709-12-30
+89,vegetarian dinner,1710-12-30
+90,dress for ski,1700-12-30
+90,breakfast,1701-12-30
+90,green,1702-12-30
+90,red,1703-12-30
+90,green,1704-12-30
+90,red,1705-12-30
+90,green,1706-12-30
+90,blue,1707-12-30
+90,red,1708-12-30
+90,black,1709-12-30
+90,black,1710-12-30
+90,green,1711-12-30
+90,black,1712-12-30
+90,red,1713-12-30
+90,blue,1714-12-30
+90,black,1715-12-30
+90,red,1716-12-30
+90,green,1717-12-30
+90,black,1718-12-30
+90,vegetarian dinner,1719-12-30
+91,dress for ski,1700-12-30
+91,blue,1701-12-30
+91,blue,1702-12-30
+91,green,1703-12-30
+91,black,1704-12-30
+91,black,1705-12-30
+91,blue,1706-12-30
+91,blue,1707-12-30
+91,red,1708-12-30
+91,red,1709-12-30
+91,black,1710-12-30
+91,vegetarian dinner,1711-12-30
+92,dress for ski,1700-12-30
+92,black,1701-12-30
+92,blue,1702-12-30
+92,blue,1703-12-30
+92,black,1704-12-30
+92,black,1705-12-30
+92,blue,1706-12-30
+92,blue,1707-12-30
+92,green,1708-12-30
+92,blue,1709-12-30
+92,green,1710-12-30
+92,vegetarian dinner,1711-12-30
+93,dress for ski,1700-12-30
+93,red,1701-12-30
+93,green,1702-12-30
+93,black,1703-12-30
+93,blue,1704-12-30
+93,black,1705-12-30
+93,black,1706-12-30
+93,blue,1707-12-30
+93,black,1708-12-30
+93,red,1709-12-30
+93,black,1710-12-30
+93,blue,1711-12-30
+93,vegetarian dinner,1712-12-30
+94,breakfast,1700-12-30
+94,dress for ski,1701-12-30
+94,red,1702-12-30
+94,blue,1703-12-30
+94,red,1704-12-30
+94,blue,1705-12-30
+94,black,1706-12-30
+94,black,1707-12-30
+94,red,1708-12-30
+94,red,1709-12-30
+94,black,1710-12-30
+94,blue,1711-12-30
+94,blue,1712-12-30
+94,black,1713-12-30
+94,blue,1714-12-30
+94,green,1715-12-30
+94,vegetarian dinner,1716-12-30
+95,dress for ski,1700-12-30
+95,breakfast,1701-12-30
+95,green,1702-12-30
+95,red,1703-12-30
+95,black,1704-12-30
+95,blue,1705-12-30
+95,green,1706-12-30
+95,red,1707-12-30
+95,green,1708-12-30
+95,black,1709-12-30
+95,black,1710-12-30
+95,green,1711-12-30
+95,vegetarian dinner,1712-12-30
+96,breakfast,1700-12-30
+96,dress for ski,1701-12-30
+96,green,1702-12-30
+96,gym,1703-12-30
+96,vegetarian dinner,1704-12-30
+97,breakfast,1700-12-30
+97,dress for ski,1701-12-30
+97,blue,1702-12-30
+97,green,1703-12-30
+97,blue,1704-12-30
+97,red,1705-12-30
+97,green,1706-12-30
+97,green,1707-12-30
+97,blue,1708-12-30
+97,red,1709-12-30
+97,red,1710-12-30
+97,blue,1711-12-30
+97,blue,1712-12-30
+97,blue,1713-12-30
+97,red,1714-12-30
+97,blue,1715-12-30
+97,green,1716-12-30
+97,green,1717-12-30
+97,black,1718-12-30
+97,gym,1719-12-30
+97,vegetarian dinner,1720-12-30
+98,breakfast,1700-12-30
+98,dress for ski,1701-12-30
+98,blue,1702-12-30
+98,green,1703-12-30
+98,red,1704-12-30
+98,black,1705-12-30
+98,black,1706-12-30
+98,black,1707-12-30
+98,black,1708-12-30
+98,red,1709-12-30
+98,black,1710-12-30
+98,black,1711-12-30
+98,red,1712-12-30
+98,black,1713-12-30
+98,green,1714-12-30
+98,vegetarian dinner,1715-12-30
+99,dress for ski,1700-12-30
+99,breakfast,1701-12-30
+99,green,1702-12-30
+99,blue,1703-12-30
+99,green,1704-12-30
+99,black,1705-12-30
+99,red,1706-12-30
+99,red,1707-12-30
+99,green,1708-12-30
+99,gym,1709-12-30
+99,vegetarian dinner,1710-12-30

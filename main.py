@@ -549,7 +549,7 @@ def remove_not_need_nodes(process_tree):
             remove_not_need_nodes(children)
 
 if __name__ == "__main__":
-    log = import_csv("C:/Users/עידו שפירא/Downloads/p2p_event_log.csv")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv")
