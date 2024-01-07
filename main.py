@@ -154,10 +154,10 @@ def evaluation_1(log_path):
 
 
 def evaluation(log, net, initial_marking, final_marking):
-    replayed_traces = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
-                                              "case ID")
-    for trace in replayed_traces[0:30]:
-         print(trace)
+    # replayed_traces = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
+    #                                           "case ID")
+    # for trace in replayed_traces[0:30]:
+    #      print(trace)
     #print(pm4py.analysis.check_is_workflow_net(net))
 #    print(pm4py.analysis.check_soundness(net,initial_marking,final_marking))
     fitness = pm4py.fitness_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
@@ -385,234 +385,200 @@ def build_pre(place):
     return pre
 
 
+def build_recursive_names_of_transitions_not_under_loop(process_tree_Inductive, names_of_transitions_under_loop):
+    if len(process_tree_Inductive.children) == 0 :
+        if process_tree_Inductive.label!=None:
+            names_of_transitions_under_loop.append(process_tree_Inductive.label)
+    else :
+        if process_tree_Inductive.operator.value!="*":
+            for children in process_tree_Inductive.children:
+                child_names_of_transitions_under_loop = build_names_of_transitions_not_under_loop(children)
+                for children_of_children in child_names_of_transitions_under_loop:
+                    names_of_transitions_under_loop.append(children_of_children)
+    return names_of_transitions_under_loop
+
+
+
+def build_names_of_transitions_not_under_loop(process_tree_Inductive):
+    return build_recursive_names_of_transitions_not_under_loop(process_tree_Inductive,[])
+
+def transition_under_tree(process_tree, transition):
+    if process_tree.label == transition:
+        return -1
+    if process_tree.children == []:
+        return -2
+    index_of_children = 0
+    for children in process_tree.children:
+        if transition_under_tree(children,transition)>=-1:
+            return index_of_children
+        index_of_children = index_of_children + 1
+    return -2
+
+
+def build_names_of_transitions_under_tree(process_tree):
+    list_of_transitions = []
+    if process_tree.children == []:
+        if process_tree.label!=None:
+            return [process_tree.label]
+    for children in process_tree.children:
+        list_of_transitions_for_children = build_names_of_transitions_under_tree(children)
+        list_of_transitions.extend(list_of_transitions_for_children)
+    return list_of_transitions
+
+
+
+def build_transition_neighboors_under_loop(process_tree_Inductive, transition_not_under_loop):
+    list_of_good_transitions = []
+    if process_tree_Inductive.label != transition_not_under_loop:
+        children_with_transition_index = transition_under_tree(process_tree_Inductive, transition_not_under_loop)
+        children_with_transition = process_tree_Inductive.children[children_with_transition_index]
+        if process_tree_Inductive.operator.value == "->":
+            for index_of_child in range(children_with_transition_index):
+                list_of_children_transition = build_names_of_transitions_under_tree(process_tree_Inductive.children[index_of_child])
+                list_of_good_transitions.extend(list_of_children_transition)
+        if  process_tree_Inductive.operator.value == "+":
+            for index_of_child in range(len(process_tree_Inductive.children)):
+                if index_of_child != children_with_transition_index:
+                    list_of_children_transition = build_names_of_transitions_under_tree(process_tree_Inductive.children[index_of_child])
+                    list_of_good_transitions.extend(list_of_children_transition)
+        list_of_children_transition = build_transition_neighboors_under_loop(children_with_transition,transition_not_under_loop)
+        list_of_good_transitions.extend(list_of_children_transition)
+    return list_of_good_transitions
+
+
+def build_dict_of_xor_and_not_under_loop(process_tree_Inductive, names_of_transitions_not_under_loop):
+    dictionary_of_transitions = {}
+    for transition_not_under_loop in names_of_transitions_not_under_loop:
+        dictionary_of_transitions[transition_not_under_loop] = build_transition_neighboors_under_loop(process_tree_Inductive,transition_not_under_loop)
+    return dictionary_of_transitions
+
+
+#
+# def find_transitions_for_xor(process_tree_Inductive):
+#     if process_tree_Inductive.label!=None:
+#         return [process_tree_Inductive.label]
+#     if len(process_tree_Inductive.children) == 0:
+#         return []
+#     transitions_names = []
+#     xor_node = (process_tree_Inductive.operator.value == "X")
+#     xor_loop_node_left_is_empty_transition = (process_tree_Inductive.operator.value =="*" and process_tree_Inductive.children[0].name == "tau")
+#     if xor_loop_node_left_is_empty_transition:
+#         return []
+#     if xor_node and has_empty_child(process_tree_Inductive):
+#         return []
+#     for children in process_tree_Inductive.children:
+#         children_transition_names = find_transitions_for_xor(children)
+#         transitions_names.extend(children_transition_names)
+#     return transitions_names
+#
+#
+#
+def has_empty_child(process_tree_Inductive):
+    for children in process_tree_Inductive.children:
+        if len(children.children) == 0 and children.label == None:
+            return True
+    return False
+
+# def build_names_of_transitions_under_xor_with_empty_trnasitions_recursive(process_tree_Inductive, dictionary_of_problematic_nodes):
+#     if len(process_tree_Inductive.children)>0 and process_tree_Inductive.operator.value == "X":
+#         transitions_that_at_least_of_them_happen = find_transitions_for_xor(process_tree_Inductive)
+#         if len(transitions_that_at_least_of_them_happen)>0:
+#             dictionary_of_problematic_nodes[process_tree_Inductive] = transitions_that_at_least_of_them_happen
+#     for children in process_tree_Inductive.children:
+#         build_names_of_transitions_under_xor_with_empty_trnasitions_recursive(children,dictionary_of_problematic_nodes)
+#
+# def build_names_of_transitions_under_xor_with_empty_trnasitions(process_tree_Inductive):
+#     dictionary_of_problematic_nodes = {}
+#     return build_names_of_transitions_under_xor_with_empty_trnasitions_recursive(process_tree_Inductive,dictionary_of_problematic_nodes)
+
+def check_if_has_empty_transition_another_way_helper(process_tree):
+    has_empty_transition_another_way = False
+    if process_tree.label!=None:
+        return False
+    children_empty = len(process_tree.children) == 0 and process_tree.label == None
+    if children_empty:
+        return True
+    xor_node = (process_tree.operator.value == "X")
+    seq_node =  (process_tree.operator.value == "->")
+    loop_node =  (process_tree.operator.value == "*")
+    parallel_node =  (process_tree.operator.value == "+")
+    if xor_node:
+        for children in process_tree.children:
+            has_empty_transition_another_way = has_empty_transition_another_way or check_if_has_empty_transition_another_way_helper(children)
+    if seq_node or parallel_node:
+        all_children = True
+        for children in process_tree.children:
+            all_children = all_children and check_if_has_empty_transition_another_way_helper(
+                children)
+        has_empty_transition_another_way = all_children
+    if loop_node:
+        has_empty_transition_another_way = check_if_has_empty_transition_another_way_helper(process_tree.children[0])
+    return has_empty_transition_another_way
+
+def check_if_has_empty_transition_another_way(process_tree):
+    for children in process_tree.children:
+        children_empty = len(children.children) == 0 and children.label == None
+        if children_empty == False:
+            has_by_another = check_if_has_empty_transition_another_way_helper(children)
+            if has_by_another:
+                return True
+    return False
+
+def delete_empty_transition(xor_node):
+    for children in xor_node.children:
+        if len(children.children) == 0 and children.label == None:
+            xor_node.children.remove(children)
+
+
+def remove_not_need_nodes(process_tree):
+    if process_tree.children!=[]:
+        xor_node = (process_tree.operator.value == "X")
+        if xor_node and has_empty_child(process_tree):
+            has_empty_tranisition_another_way = check_if_has_empty_transition_another_way(process_tree)
+            if has_empty_tranisition_another_way:
+                delete_empty_transition(process_tree)
+                if len(process_tree.children) == 1:
+                    if process_tree.parent == None:
+                        process_tree = process_tree.children[0]
+                    else:
+                        index_of_child = process_tree.parent.children.index(process_tree)
+                        process_tree.parent.children.remove(process_tree)
+                        process_tree.parent.children.insert(index_of_child,process_tree.children[0])
+                        process_tree.children[0].parent = process_tree.parent
+        for children in process_tree.children:
+            remove_not_need_nodes(children)
+
 if __name__ == "__main__":
-    log = import_csv("C:/Users/עידו שפירא/Downloads/train_log.csv")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/RequestForPayment.csv")
+    #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv")
     test_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/test_log.csv")
     #convert_xes_to_csv("C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.xes","C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.csv")
     #print_traces_nice(traces)
-    # process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
-    # pm4py.view_process_tree(process_tree_Inductive)
+    process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
+    #pm4py.view_process_tree(process_tree_Inductive)
+    remove_not_need_nodes(process_tree_Inductive)
+    pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
+    names_of_transitions = build_names_of_transitions(net.transitions)
+    #names_of_transitions_not_under_loop = build_names_of_transitions_not_under_loop(process_tree_Inductive)
+    #dictio = build_dict_of_xor_and_not_under_loop(process_tree_Inductive,names_of_transitions_not_under_loop)
+    # print(names_of_transitions_not_under_loop)
+    # print(dictio)
+    #evaluation(train_log,net,im,fm)
     #print_petri_net(net,im,fm)
     names_of_transitions = build_names_of_transitions(net.transitions)
+    #names_of_transitions_under_xor_with_empty_trnasitions = build_names_of_transitions_under_xor_with_empty_trnasitions(process_tree_Inductive)
+    #print(names_of_transitions_under_xor_with_empty_trnasitions)
     #tree = pm4py.convert_to_process_tree(net, im, fm)
     #pm4py.view_process_tree(tree)
 
     print("Without Guards \n")
-    #evaluation(test_log, net, im, fm)
+    evaluation(test_log, net, im, fm)
+    Decision_Tree_To_Guards.add_xor_guards(process_tree_Inductive,net,train_log,names_of_transitions)
     print("\n==============================================================================================================================\nWith Guards\n")
-    Decision_Tree_To_Guards.create_ec_kitty_tree(net,train_log,names_of_transitions)
+    #Decision_Tree_To_Guards.add_xor_guards(tree,net,train_log)
     #print_petri_net(net,im,fm)
 
     evaluation(test_log,net,im,fm)
-# # process_tree_Inductive._print_tree()
-# # #print_petri_net(net_1,initial_marking_1,final_marking_1)
-# # #generate_for_inductive(net_1,initial_marking_1,final_marking_1,test_log)
-#     net_1, initial_marking_1, final_marking_1 = petri_net_by_inductive(train_log)
-#     print_petri_net(net_1,initial_marking_1,final_marking_1)
-# #tree = pm4py.convert_to_process_tree(net_1, initial_marking_1, final_marking_1)
-# #pm4py.view_process_tree(tree)
-    #print_petri_net(net_1,initial_marking_1,final_marking_1)
-    #evaluation(train_log, net_1, initial_marking_1, final_marking_1)
-# #generate_for_heuristic(net_1,initial_marking_1,final_marking_1,test_log)
-
-# tree = pm4py.generate_process_tree()
-# pm4py.view_process_tree(tree, format='png')
-# tree = pm4py.generate_process_tree()
-# pm4py.view_process_tree(tree, format='png')
-
-#     #log = pm4py.play_out(tree)
-#     #print((log))
-#     net, im, fm = pm4py.convert_to_petri_net(tree)
-#     #pm4py.view_process_tree(tree, format='png')
-# #     print_petri_net(net,im,fm)
-# #     event_log = simulate_execution(net,im,fm, num_cases=10)
-# #
-# #     # You can now use or export the event log as needed
-# #     for event in event_log:
-# #         print(event)
-# #
-# #     #evaluation_1("C:/Users/עידו שפירא/Downloads/log_example.csv")
-# #     #evaluation_1("C:/Users/עידו שפירא/Downloads/‏‏count_example.csv")
-# #     #log = import_csv("C:/Users/עידו שפירא/Downloads/transaction1.csv")
-# #     #net_1, initial_marking_1, final_marking_1 = petri_net_by_heuristics(log)
-# #     #dfg(log)
-# #     #print_petri_net(net_1, initial_marking_1, final_marking_1)
-# #     #transacted_petri_net = double_to_single_transaction.net_of_transaction(net_1)
-# #     #pm4py.view_petri_net(transacted_petri_net)
-# #     #
-# #     # #    bpmn_graph = pm4py.discover_bpmn_inductive(log, activity_key='concept:name', case_id_key='case:concept:name',
-# #     #              #               timestamp_key='time:timestamp')
-# #     #     process_tree = pm4py.discover_process_tree_inductive(log,0.0,True,"activity","timestamp","case ID")
-# #     #     #pm4py.view_process_tree(process_tree)
-# #     #     bpmn_model = pm4py.convert_to_bpmn(process_tree)
-# #     #     #pm4py.view_bpmn(bpmn_model)
-# #     #     petri_net, initial_marking, final_marking = pm4py.objects.conversion.process_tree.variants.to_petri_net.apply(process_tree)
-# #     #     pm4py.write_pnml(petri_net, initial_marking, final_marking, "createdPetriNet1.pnml")
-# #
-# #     # pm4py.view_petri_net(petri_net, initial_marking, final_marking)
-# #     net = PetriNet("new_petri_net")
-# #     one = PetriNet.Place("one")
-# #     two = PetriNet.Place("two")
-# #     three = PetriNet.Place("three")
-# #     four = PetriNet.Place("four")
-# #     five = PetriNet.Place("five")
-# #     six = PetriNet.Place("six")
-# #     seven = PetriNet.Place("seven")
-# #     eight = PetriNet.Place("eight")
-# #     nine = PetriNet.Place("nine")
-# #     ten = PetriNet.Place("ten")
-# #     eleven = PetriNet.Place("eleven")
-# #     twelve = PetriNet.Place("twelve")
-# #     thirteen = PetriNet.Place("thirteen")
-# #     fourteen = PetriNet.Place("fourteen")
-# #     fifteen = PetriNet.Place("fifteen")
-# #
-# #     net.places.add(one)
-# #     net.places.add(two)
-# #     net.places.add(three)
-# #     net.places.add(four)
-# #     net.places.add(five)
-# #     net.places.add(six)
-# #     net.places.add(seven)
-# #     net.places.add(eight)
-# #     net.places.add(nine)
-# #     net.places.add(ten)
-# #     net.places.add(eleven)
-# #     net.places.add(twelve)
-# #     net.places.add(thirteen)
-# #     net.places.add(fourteen)
-# #     net.places.add(fifteen)
-# #
-# #     # Create transitions
-# #     a = PetriNet.Transition("a", "a")
-# #     b = PetriNet.Transition("b", "b")
-# #     c = PetriNet.Transition("c", "c")
-# #     e1 = PetriNet.Transition("e", "e")
-# #     e2 = PetriNet.Transition("e", "e")
-# #     d1 = PetriNet.Transition("d", "d")
-# #     d2 = PetriNet.Transition("d", "d")
-# #     f = PetriNet.Transition("f", "f")
-# #     t1 = PetriNet.Transition("t", "t")
-# #     g1 = PetriNet.Transition("g", "g")
-# #     t2 = PetriNet.Transition("t", "t")
-# #     g2 = PetriNet.Transition("g", "g")
-# #     empty1 = PetriNet.Transition("empty1", None)
-# #
-# #     # Add the transitions to the Petri Net
-# #     net.transitions.add(a)
-# #     net.transitions.add(b)
-# #     net.transitions.add(c)
-# #     net.transitions.add(d1)
-# #     net.transitions.add(d2)
-# #     net.transitions.add(e1)
-# #     net.transitions.add(e2)
-# #     net.transitions.add(g1)
-# #     net.transitions.add(f)
-# #     net.transitions.add(g2)
-# #     net.transitions.add(t1)
-# #     net.transitions.add(t2)
-# #     net.transitions.add(empty1)
-# #
-# #
-# #     petri_utils.add_arc_from_to(one, a, net)
-# #     petri_utils.add_arc_from_to(a, two, net)
-# #     petri_utils.add_arc_from_to(a, three, net)
-# #     petri_utils.add_arc_from_to(two, b, net)
-# #     petri_utils.add_arc_from_to(three, c, net)
-# #     petri_utils.add_arc_from_to(b, four, net)
-# #     petri_utils.add_arc_from_to(c, five, net)
-# #     petri_utils.add_arc_from_to(four, empty1, net)
-# #     petri_utils.add_arc_from_to(five, empty1, net)
-# #     petri_utils.add_arc_from_to(empty1, six, net)
-# #     petri_utils.add_arc_from_to(six, d1, net)
-# #     petri_utils.add_arc_from_to(six, e1, net)
-# #     petri_utils.add_arc_from_to(e1, eight, net)
-# #     petri_utils.add_arc_from_to(d1, nine, net)
-# #     petri_utils.add_arc_from_to(eight, d2, net)
-# #     petri_utils.add_arc_from_to(nine, e2, net)
-# #     petri_utils.add_arc_from_to(d2, ten, net)
-# #     petri_utils.add_arc_from_to(e2, eleven, net)
-# #     petri_utils.add_arc_from_to(ten, g1, net)
-# #     petri_utils.add_arc_from_to(eleven, t1, net)
-# #     petri_utils.add_arc_from_to(g1, twelve, net)
-# #     petri_utils.add_arc_from_to(t1, thirteen, net)
-# #     petri_utils.add_arc_from_to(twelve, t2, net)
-# #     petri_utils.add_arc_from_to(thirteen, g2, net)
-# #     petri_utils.add_arc_from_to(t2, fourteen, net)
-# #     petri_utils.add_arc_from_to(g2, fourteen, net)
-# #     petri_utils.add_arc_from_to(fourteen, f, net)
-# #     petri_utils.add_arc_from_to(f, fifteen, net)
-# #
-# #     initial_marking = Marking()
-# #     initial_marking[one] = 1
-# #     final_marking = Marking()
-# #     final_marking[fifteen] = 0
-# #     #pm4py.write_pnml(net, initial_marking, final_marking, "createdPetriNet2.pnml")
-# #     #pm4py.view_petri_net(net, initial_marking, final_marking)
-# #     #evaluation("C:/Users/עידו שפירא/Downloads/‏‏count_example.csv",net,initial_marking,final_marking)
-# #
-# # # evaluation("C:/Users/עידו שפירא/Downloads/super_example.csv", net, initial_marking, final_marking)
-# # # net = PetriNet("new_petri_net")
-# # # one = PetriNet.Place("one")
-# # # two = PetriNet.Place("two")
-# # # three = PetriNet.Place("three")
-# # # four = PetriNet.Place("four")
-# # # five = PetriNet.Place("five")
-# # # six = PetriNet.Place("six")
-# # # seven = PetriNet.Place("seven")
-# # # eight = PetriNet.Place("eight")
-# # # net.places.add(one)
-# # # net.places.add(two)
-# # # net.places.add(three)
-# # # net.places.add(four)
-# # # net.places.add(five)
-# # # net.places.add(six)
-# # # net.places.add(seven)
-# # # net.places.add(eight)
-# # # # Create transitions
-# # # choose_c = PetriNet.Transition("choose_c", "choose_c")
-# # # choose_t = PetriNet.Transition("choose_t", "choose_t")
-# # # buy_c = PetriNet.Transition("buy_c", "buy_c")
-# # # buy_t = PetriNet.Transition("buy_t", "buy_t")
-# # # # Add the transitions to the Petri Net
-# # # net.transitions.add(choose_c)
-# # # net.transitions.add(choose_t)
-# # # net.transitions.add(buy_c)
-# # # net.transitions.add(buy_t)
-# # #
-# # # petri_utils.add_arc_from_to(one, choose_c, net)
-# # # petri_utils.add_arc_from_to(two, choose_c, net)
-# # # petri_utils.add_arc_from_to(two, choose_t, net)
-# # # petri_utils.add_arc_from_to(three, buy_c, net)
-# # # petri_utils.add_arc_from_to(four, buy_t, net)
-# # # petri_utils.add_arc_from_to(five, buy_c, net)
-# # # petri_utils.add_arc_from_to(six, buy_t, net)
-# # # petri_utils.add_arc_from_to(choose_c, five, net)
-# # # petri_utils.add_arc_from_to(choose_t, six, net)
-# # # petri_utils.add_arc_from_to(buy_c, seven, net)
-# # # petri_utils.add_arc_from_to(buy_c, two, net)
-# # # petri_utils.add_arc_from_to(buy_t, eight, net)
-# # # petri_utils.add_arc_from_to(buy_t, one, net)
-# # # initial_marking = Marking()
-# # # initial_marking[two] = 1
-# # # initial_marking[three] = 3
-# # # initial_marking[four] = 3
-# # # final_marking = Marking()
-# # # final_marking[seven] = 0
-# # # final_marking[eight] = 0
-# # #    pm4py.write_pnml(net, initial_marking, final_marking, "createdPetriNet1.pnml")
-# #
-# # #   pm4py.view_petri_net(net, initial_marking, final_marking)
-
-import shutil
-import zipfile
-#
-# import pickle
-#
-# if __name__ == "__main__":
-#     with open('test_normal_errors.pkl', 'rb') as file:
-#         data = pickle.load(file)
-#     print(len(data[0]))
