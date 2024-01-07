@@ -1443,8 +1443,8 @@ def add_xor_guards(tree, net, train_log, col_name):
         rows = build_rows(list_of_xor_nodes_and_choses_for_target, target_name)
         if len(rows) > 10:
             build_csv_for_child_of_xor(rows, col_name_copy)
-            csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name)
-            tree = build_decision_tree(csv_decision, col_name)
+            csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
+            tree = build_decision_tree(csv_decision, col_name_copy)
             if tree.capacity > 1:
                 list_of_guards = list_of_guards_must_happen(tree, col_name)
                 print(target_name)
