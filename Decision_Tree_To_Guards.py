@@ -153,7 +153,7 @@ def build_decision_tree(csv_file, col_names):
     # print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
 
     clf = clf.fit(features, labeled)
-    #
+
     # plt.figure(figsize=(20, 10))  # You can adjust the figure size as needed
     # plot_tree(clf, feature_names=feature_columns, class_names=class_names, filled=True, rounded=True,
     #           precision=2)
@@ -1090,7 +1090,7 @@ def is_child(node, child):
     return is_child_helper(node, child, child)
 
 
-def delete_from_list_childs(child, seq_loop_emergency_pointers, indexes_of_childs):
+def delete_from_list_childs(child, seq_loop_emergency_pointers, indexes_of_childs,pointers):
     list_of_indexes_to_delete = []
     for index in range(len(seq_loop_emergency_pointers)):
         node = seq_loop_emergency_pointers[index]
@@ -1099,6 +1099,14 @@ def delete_from_list_childs(child, seq_loop_emergency_pointers, indexes_of_child
     for index in sorted(list_of_indexes_to_delete, reverse=True):
         seq_loop_emergency_pointers.pop(index)
         indexes_of_childs.pop(index)
+
+    list_of_indexes_to_delete = []
+    for index in range(len(pointers)):
+        node = pointers[index]
+        if is_child(node, child):
+            list_of_indexes_to_delete.append(index)
+    for index in sorted(list_of_indexes_to_delete, reverse=True):
+        pointers.pop(index)
 
 
 def node_without_empty_right_xor(node):
@@ -1109,7 +1117,18 @@ def node_without_empty_right_xor(node):
     return True
 
 
-def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs, transition):
+def add_contrast_empty(node, start_index, end_index, list_of_xor_and_choices,nodes,enabled_transitions_for_nodes, rows, row):
+    for index in range(start_index, end_index, 1):
+        index_of_node = find_xor_node(node.children[index], nodes)
+        transitions_enabled = enabled_transitions_for_nodes[index_of_node]
+        row_copy = row.copy()
+        row_copy.append("empty transition")
+        row_copy.append(transitions_enabled)
+        rows.append(row_copy)
+
+
+
+def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs, transition,pointers,list_of_xor_and_choices,nodes,enabled_transitions_for_nodes, rows, row):
     last_index = len(seq_loop_emergency_pointers) - 1
     for i in range(len(seq_loop_emergency_pointers)):
         curr_index = last_index - i
@@ -1125,7 +1144,7 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
                     index_of_node_deleted = seq_loop_emergency_pointers.index(node)
                     del seq_loop_emergency_pointers[index_of_node_deleted]
                     del indexes_of_childs[index_of_node_deleted]
-                delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs)
+                delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs,pointers)
                 return node
             else:
                 if node_without_empty(child) == False:
@@ -1133,13 +1152,14 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
                         new_child_index = child_index + i + 1
                         child = node.children[new_child_index]
                         if found_way(child, transition):
+                            add_contrast_empty(node,child_index,new_child_index,list_of_xor_and_choices, nodes, enabled_transitions_for_nodes, rows, row)
                             if len(node.children) > child_index + 1:
                                 indexes_of_childs[curr_index] = child_index + 1
                             else:
                                 index_of_node_deleted = seq_loop_emergency_pointers.index(node)
                                 del seq_loop_emergency_pointers[index_of_node_deleted]
                                 del indexes_of_childs[index_of_node_deleted]
-                            delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs)
+                            delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs,pointers)
                             return node
 
         else:
@@ -1147,14 +1167,14 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
             if child_index == 0:
                 if found_way(child, transition):
                     indexes_of_childs[curr_index] = 1
-                    delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs)
+                    delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs,pointers)
                     return node
                 else:
                     if node_without_empty(child) == False:
                         for child in node.children[1:]:
                             if found_way(child, transition):
                                 indexes_of_childs[curr_index] = 0
-                                delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs)
+                                delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs,pointers)
                                 return node
             else:
                 while len(node.children) >= child_index + 1:
@@ -1162,37 +1182,49 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
                     child_index = child_index + 1
                     if found_way(child, transition):
                         indexes_of_childs[curr_index] = 0
-                        delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs)
+                        delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs, pointers)
                         return node
                 if node_without_empty_right_xor(node) == False:
                     child = node.children[0]
                     if found_way(child, transition):
                         indexes_of_childs[curr_index] = 1
-                        delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs)
+                        delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs, pointers)
                         return node
 
 
-def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers, indexes_of_childs, xor_nodes,
-                                  transition, list_of_xor_choices):
+def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers, indexes_of_childs, xor_nodes,activities_enables_for_nodes,
+                                  transition, list_of_xor_choices, appended, transitions_enabled, rows, row):
     if len(pointers) > 0 and in_transition(pointers[0], transition):
         pointers.pop(0)
         return True
     else:
         stop = False
+        not_from_pointers = False
         while not stop:
             child_index = find_pointer_index(pointers, transition)
             if child_index == -1:
-                pointer = find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs, transition)
+                not_from_pointers=True
+                pointer = find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs, transition,pointers, list_of_xor_choices, xor_nodes, activities_enables_for_nodes, rows, row)
             else:
                 pointer = pointers[child_index]
             child_index = find_child_index(pointer, transition)
             if len(pointer.children) == 0:
                 pointers.remove(pointer)
                 return True
+            if not_from_pointers and len(pointer.children[child_index].children) == 0:
+                return True
             xor_node = (pointer.operator.value == "X")
             seq_node = (pointer.operator.value == "->")
             loop_node = (pointer.operator.value == "*")
             parallel_node = (pointer.operator.value == "+")
+            if not_from_pointers:
+                index_of_node = find_xor_node(pointer.children[child_index], xor_nodes)
+            else:
+                index_of_node = find_xor_node(pointer,xor_nodes)
+            transitions_enabled_for_current_node = activities_enables_for_nodes[index_of_node]
+            for transition_enabled_for_current_node in transitions_enabled_for_current_node:
+                if not transitions_enabled.__contains__(transition_enabled_for_current_node):
+                    transitions_enabled.append(transition_enabled_for_current_node)
             if seq_node:
                 if pointers.__contains__(pointer):
                     pointers.remove(pointer)
@@ -1201,27 +1233,26 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
                     indexes_of_childs.append(child_index + 1)
                 pointers.insert(0, pointer.children[child_index])
                 stop = build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers,
-                                                     indexes_of_childs, xor_nodes, transition,
-                                                     list_of_xor_choices)
+                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes, transition,
+                                                     list_of_xor_choices,appended, transitions_enabled, rows, row)
             if parallel_node:
-                if pointers.__contains__(pointer):
-                    pointers.remove(pointer)
+                # if pointers.__contains__(pointer):
+                #     pointers.remove(pointer)
                 pointers.insert(0, pointer.children[child_index])
                 for index_of_child in range(len(pointer.children)):
                     if child_index != index_of_child:
-                        pointers.append(pointer.children[index_of_child])
+                        if pointers.__contains__(pointer.children[index_of_child]) == False:
+                            pointers.append(pointer.children[index_of_child])
                 stop = build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers,
-                                                     indexes_of_childs, xor_nodes, transition,
-                                                     list_of_xor_choices)
+                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes,transition,
+                                                     list_of_xor_choices,appended,transitions_enabled, rows, row)
             if xor_node:
                 if pointers.__contains__(pointer):
                     pointers.remove(pointer)
-                index_of_xor_node = find_xor_node(pointer, xor_nodes)
-                list_of_xor_choices.append((index_of_xor_node, child_index))
                 pointers.insert(0, pointer.children[child_index])
                 stop = build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers,
-                                                     indexes_of_childs, xor_nodes, transition,
-                                                     list_of_xor_choices)
+                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes, transition,
+                                                     list_of_xor_choices,appended,transitions_enabled, rows, row)
             if loop_node:
                 if pointers.__contains__(pointer):
                     pointers.remove(pointer)
@@ -1233,8 +1264,8 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
                         indexes_of_childs.append(0)
                 pointers.insert(0, pointer.children[child_index])
                 stop = build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers,
-                                                     indexes_of_childs, xor_nodes, transition,
-                                                     list_of_xor_choices)
+                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes, transition,
+                                                     list_of_xor_choices,appended,transitions_enabled, rows, row)
 
     return stop
 
@@ -1280,7 +1311,7 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
 #                                                   list_of_xor_choices)
 #
 #     return False
-def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, column):
+def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, activities_enables_for_nodes,column):
     rows = []
     for trace in traces:
         for index in range(len(trace)):
@@ -1289,36 +1320,95 @@ def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, column):
                 pointers = [process_tree]
                 seq_loop = []
                 indexes_seq_loop = []
+            if index>17:
+                debug = True
             pref = trace[0:index + 1]
             row = build_row(pref[:-1], column)
-            build_list_of_xor_and_choices(process_tree, pointers, seq_loop, indexes_seq_loop, xor_nodes, trace[index],
-                                          list_of_xor_and_choices)
-            for chice in list_of_xor_and_choices:
-                row_copy = row.copy()
-                row_copy.append(chice)
-                rows.append(row_copy)
+            transitions_enabled = []
+            build_list_of_xor_and_choices(process_tree, pointers, seq_loop, indexes_seq_loop, xor_nodes, activities_enables_for_nodes, trace[index],
+                                          list_of_xor_and_choices, False, transitions_enabled, rows, row)
+            row_copy = row.copy()
+            row_copy.append(trace[index])
+            row_copy.append(transitions_enabled)
+            rows.append(row_copy)
     return rows
 
 
-def build_xor_nodes(tree, xor_nodes):
+def is_transition_and_not_an_empty_one(tree):
+    return len(tree.children) == 0 and tree.label != None
+
+
+def is_empty_transition(tree):
+    return len(tree.children) == 0 and tree.label == None
+
+
+def build_first_options_of_tree(tree,activities_for_node):
+    xor_node = (tree.operator.value == "X")
+    seq_node = (tree.operator.value == "->")
+    loop_node = (tree.operator.value == "*")
+    parallel_node = (tree.operator.value == "+")
+    if xor_node or parallel_node:
+        for child in tree.children:
+            if is_transition_and_not_an_empty_one(child):
+                activities_for_node.append(child.label)
+            elif is_empty_transition(child) == False:
+                build_first_options_of_tree(child,activities_for_node)
+    if seq_node:
+        left_child = tree.children[0]
+        if is_transition_and_not_an_empty_one(left_child):
+            activities_for_node.append(left_child.label)
+        else:
+            stop = False
+            index = 0
+            while index<len(tree.children) and stop == False:
+                stop = (node_without_empty(tree.children[index]) == False)
+                if is_transition_and_not_an_empty_one(tree.children[index]):
+                    activities_for_node.append(tree.children[index].label)
+                else:
+                    build_first_options_of_tree(tree.children[index], activities_for_node)
+    if loop_node:
+        left_child = tree.children[0]
+        if is_transition_and_not_an_empty_one(left_child):
+            activities_for_node.append(left_child.label)
+        elif node_without_empty(left_child):
+            build_first_options_of_tree(left_child, activities_for_node)
+        else:
+            stop = False
+            index = 0
+            while index < len(tree.children) and stop == False:
+                stop =(node_without_empty(tree.children[index])==False)
+                if is_transition_and_not_an_empty_one(tree.children[index]):
+                    activities_for_node.append(tree.children[index].label)
+                else:
+                    build_first_options_of_tree(tree.children[index], activities_for_node)
+
+
+
+
+def build_xor_nodes(tree, nodes, activities_enabled_for_nodes):
+    activities_enabled_for_node = []
     if len(tree.children) > 0:
         xor_node = (tree.operator.value == "X")
-        if xor_node:
-            xor_nodes.append(tree)
+        loop_node = (tree.operator.value == "*")
+        seq_node = (tree.operator.value == "->")
+        parallel_node = (tree.operator.value == "+")
+        if xor_node or loop_node or parallel_node or seq_node:
+            nodes.append(tree)
+            build_first_options_of_tree(tree,activities_enabled_for_node)
+            activities_enabled_for_nodes.append(activities_enabled_for_node)
         for children in tree.children:
-            build_xor_nodes(children, xor_nodes)
+            build_xor_nodes(children, nodes, activities_enabled_for_nodes)
 
 
-def build_rows(list_of_xor_nodes_and_choses, xor_node, choice_of_xor, xor_nodes):
+def build_rows(list_of_xor_nodes_and_choses, target_name):
     rows = []
     for row in list_of_xor_nodes_and_choses:
-        row_without_target = row[:-1]
-        tuple_xor_and_choice = row[len(row) - 1]
-        xor = xor_nodes[tuple_xor_and_choice[0]]
-        choice = xor.children[tuple_xor_and_choice[1]]
-        if xor == xor_node:
+        row_without_target = row[:-2]
+        transition_chosen = row[len(row)-2]
+        transitions_enabled = row[len(row)-1]
+        if transitions_enabled.__contains__(target_name):
             row_to_append = row_without_target.copy()
-            if choice.label == choice_of_xor.label:
+            if target_name == transition_chosen:
                 row_to_append.append(1)
             else:
                 row_to_append.append(0)
@@ -1339,31 +1429,32 @@ def build_rows_for_target(list_of_xor_nodes_and_choses, index):
 
 def add_xor_guards(tree, net, train_log, col_name):
     traces = build_traces_from_csv(train_log)
-    xor_nodes = []
-    build_xor_nodes(tree, xor_nodes)
-    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(tree, traces, xor_nodes, col_name)
-    for xor_node in xor_nodes:
-        for choice_of_xor in xor_node.children:
-            if len(choice_of_xor.children) == 0 and choice_of_xor.label != None:
-                target_name = choice_of_xor.label
-                index_of_target = col_name.index(target_name)
-                col_name.remove(target_name)
-                col_name.append(target_name)
-                list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
-                                                                                index_of_target)
-                rows = build_rows(list_of_xor_nodes_and_choses_for_target, xor_node, choice_of_xor, xor_nodes)
-                if len(rows) > 10:
-                    build_csv_for_child_of_xor(rows, col_name)
-                    csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name)
-                    tree = build_decision_tree(csv_decision, col_name)
-                    if tree.capacity > 1:
-                        list_of_guards = list_of_guards_must_happen(tree, col_name)
-                        print(target_name)
-                        print(list_of_guards)
-                        if len(list_of_guards) > 0:
-                            apply_must_happen(net, choice_of_xor.label, list_of_guards)
-                col_name.remove(target_name)
-                col_name.insert(index_of_target, target_name)
+    nodes = []
+    activities_enables_for_nodes = []
+    build_xor_nodes(tree, nodes, activities_enables_for_nodes)
+    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(tree, traces, nodes, activities_enables_for_nodes, col_name)
+    columns = builds_all_target(col_name)
+    for column in columns:
+        col_name_copy = col_name.copy()
+        target_name = column[len(column)-1]
+        index_of_target = col_name.index(target_name)
+        col_name_copy.remove(target_name)
+        col_name_copy.append(target_name)
+        list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
+                                                                        index_of_target)
+        rows = build_rows(list_of_xor_nodes_and_choses_for_target, target_name)
+        if len(rows) > 10:
+            build_csv_for_child_of_xor(rows, col_name_copy)
+            csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name)
+            tree = build_decision_tree(csv_decision, col_name)
+            if tree.capacity > 1:
+                list_of_guards = list_of_guards_must_happen(tree, col_name)
+                print(target_name)
+                print(list_of_guards)
+                if len(list_of_guards) > 0:
+                    apply_must_happen(net, target_name, list_of_guards)
+        col_name.remove(target_name)
+        col_name.insert(index_of_target, target_name)
 
 
 def transition_enabled(transition, marking):

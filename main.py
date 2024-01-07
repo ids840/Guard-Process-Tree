@@ -549,7 +549,7 @@ def remove_not_need_nodes(process_tree):
             remove_not_need_nodes(children)
 
 if __name__ == "__main__":
-    log = import_csv("C:/Users/עידו שפירא/Downloads/RequestForPayment.csv")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/p2p_event_log.csv")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv")
@@ -559,7 +559,7 @@ if __name__ == "__main__":
     process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
     #pm4py.view_process_tree(process_tree_Inductive)
     remove_not_need_nodes(process_tree_Inductive)
-    pm4py.view_process_tree(process_tree_Inductive)
+    # pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
     names_of_transitions = build_names_of_transitions(net.transitions)
     #names_of_transitions_not_under_loop = build_names_of_transitions_not_under_loop(process_tree_Inductive)
@@ -574,8 +574,8 @@ if __name__ == "__main__":
     #tree = pm4py.convert_to_process_tree(net, im, fm)
     #pm4py.view_process_tree(tree)
 
-    print("Without Guards \n")
-    evaluation(test_log, net, im, fm)
+    # print("Without Guards \n")
+    # evaluation(test_log, net, im, fm)
     Decision_Tree_To_Guards.add_xor_guards(process_tree_Inductive,net,train_log,names_of_transitions)
     print("\n==============================================================================================================================\nWith Guards\n")
     #Decision_Tree_To_Guards.add_xor_guards(tree,net,train_log)
