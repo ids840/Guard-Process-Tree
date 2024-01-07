@@ -154,10 +154,10 @@ def evaluation_1(log_path):
 
 
 def evaluation(log, net, initial_marking, final_marking):
-    # replayed_traces = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
-    #                                           "case ID")
-    # for trace in replayed_traces[0:30]:
-    #      print(trace)
+    replayed_traces = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
+                                              "case ID")
+    for trace in replayed_traces[0:30]:
+         print(trace)
     #print(pm4py.analysis.check_is_workflow_net(net))
 #    print(pm4py.analysis.check_soundness(net,initial_marking,final_marking))
     fitness = pm4py.fitness_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",

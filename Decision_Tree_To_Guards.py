@@ -154,10 +154,10 @@ def build_decision_tree(csv_file, col_names):
 
     clf = clf.fit(features, labeled)
 
-    plt.figure(figsize=(20, 10))  # You can adjust the figure size as needed
-    plot_tree(clf, feature_names=feature_columns, class_names=class_names, filled=True, rounded=True,
-              precision=2)
-    plt.show()
+    # plt.figure(figsize=(20, 10))  # You can adjust the figure size as needed
+    # plot_tree(clf, feature_names=feature_columns, class_names=class_names, filled=True, rounded=True,
+    #           precision=2)
+    # plt.show()
 
     return clf.tree_
 
@@ -535,9 +535,21 @@ def or_guard_special(net, transition_name, list_of_guards):
     add_arc_from_place_to_transition(net, place_of_or, transition)
 
 
+def and_guard(functions, parameters):
+    list_of_functions = functions[0]
+    list_of_parameters = parameters[0]
+    for index in range(len(list_of_functions)):
+        function = list_of_functions[index]
+        parameter_list = list_of_parameters[index]
+        function(*parameter_list)
+
+
 def apply_must_happen(net, transition_name, must_happen):
     functions, parameters = build_guard_for_target_must_happen(net, must_happen, transition_name)
-    or_guard_of_and_guards(net, transition_name, functions, parameters)
+    if len(must_happen) == 1:
+        and_guard(functions, parameters)
+    else:
+        or_guard_of_and_guards(net, transition_name, functions, parameters)
 
 
 def build_empty_transition_for_and(net, list_of_functions, list_of_parameters, empty_transition):
@@ -1425,6 +1437,32 @@ def build_rows_for_target(list_of_xor_nodes_and_choses, index):
     return rows
 
 
+def get_must_happen_special_guard(tree, features):
+    left_node_id = tree.children_left[0]
+    right_node_id = tree.children_right[0]
+    value_of_left = tree.value[left_node_id][0]
+    value_of_right = tree.value[right_node_id][0]
+    threshold = int(tree.threshold[0])
+    if 0 == value_of_right[1]:
+        return (features[tree.feature[0]], "smaller", threshold)
+    if 0 == value_of_left[1]:
+        return (features[tree.feature[0]], "bigger", threshold + 1)
+    return None
+
+
+def apply_special_must_happen(net,transition_name,guard):
+    feature, smaller_or_bigger, threashold = guard[0], guard[1], guard[2]
+    if smaller_or_bigger == "bigger":
+        threashold = threashold + 1
+    parameter_list = [net, found_transition(net, transition_name), [found_transition(net, feature)],
+                                threashold, 0]
+    if smaller_or_bigger == "smaller":
+        function = guard_of_max_times_must_happen
+    else:
+        function = guard_min_x_times_must_happen
+    function(*parameter_list)
+
+
 def add_xor_guards(tree, net, train_log, col_name):
     traces = build_traces_from_csv(train_log)
     nodes = []
@@ -1446,9 +1484,19 @@ def add_xor_guards(tree, net, train_log, col_name):
             csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
             tree = build_decision_tree(csv_decision, col_name_copy)
             if tree.capacity > 1:
-                list_of_guards = list_of_guards_must_happen(tree, col_name)
-                print(target_name)
-                print(list_of_guards)
+                must_happen_special_guard = get_must_happen_special_guard(tree,col_name_copy)
+                list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
+                if must_happen_special_guard!=None:
+                    print(target_name)
+                    print(must_happen_special_guard)
+                    apply_special_must_happen(net, target_name, must_happen_special_guard)
+                    for list_of_guards_internal in list_of_guards:
+                        if list_of_guards_internal.__contains__(must_happen_special_guard):
+                            list_of_guards_internal.remove(must_happen_special_guard)
+                            if len(list_of_guards_internal) == 0:
+                                list_of_guards.remove(list_of_guards_internal)
+                # print(target_name)
+                # print(list_of_guards)
                 if len(list_of_guards) > 0:
                     apply_must_happen(net, target_name, list_of_guards)
         col_name_copy.remove(target_name)
