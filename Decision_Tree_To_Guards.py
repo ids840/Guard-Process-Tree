@@ -53,7 +53,7 @@ def guard_min_x_times(net, transition, list_of_transitions, times, index_for_tra
 
 
 def guard_min_x_times_must_happen(net, transition, list_of_transitions, times, index_for_transition):
-    place = PetriNet.Place("happened " + list_of_transitions[0].label + " as pre condition to " + transition.label)
+    place = PetriNet.Place("happened " + list_of_transitions[0].label + " " + str(times) +  " times as pre condition to " + transition.label)
     net.places.add(place)
     for transition_in_list in list_of_transitions:
         petri_utils.add_arc_from_to(transition_in_list, place, net)
@@ -61,8 +61,8 @@ def guard_min_x_times_must_happen(net, transition, list_of_transitions, times, i
     petri_utils.add_arc_from_to(transition, place, net, times)
 
 
-def create_max_guard_place(net, transition, times, index_of_guard):
-    max_guard_place = PetriNet.Place(transition.label + " guard " + str(index_of_guard))
+def create_max_guard_place(net, transition, times, index_of_guard, transition_max_times):
+    max_guard_place = PetriNet.Place(transition_max_times + " happens max " + str(times) + " times before happen " + transition.label)
     net.places.add(max_guard_place)
     start_transitions = found_start_transitions(net, found_place(net, "source"))
     for start_transition in start_transitions:
@@ -86,7 +86,8 @@ def guard_of_max_times(net, transition, list_of_transitions, times, index_of_gua
 
 
 def guard_of_max_times_must_happen(net, transition, list_of_transitions, times, index_of_guard):
-    max_guard_place = create_max_guard_place(net, transition, times, index_of_guard)
+    transition_max_name = list_of_transitions[0].label
+    max_guard_place = create_max_guard_place(net, transition, times, index_of_guard, transition_max_name)
     minus_counter_to_list_of_activites(net, list_of_transitions, max_guard_place)
     add_arcs_from_place_to_transitions(net, max_guard_place, [transition])
     petri_utils.add_arc_from_to(transition, max_guard_place, net, 1)
@@ -503,8 +504,6 @@ def build_guard_for_target_must_happen(net, list_of_guards, transition_name):
         guards_functions_list = []
         for guard in and_guards:
             feature, smaller_or_bigger, threashold = guard[0], guard[1], guard[2]
-            if smaller_or_bigger == "bigger":
-                threashold = threashold + 1
             parameters_list_internal = [net, found_transition(net, transition_name), [found_transition(net, feature)],
                                         threashold, index]
             if smaller_or_bigger == "smaller":
