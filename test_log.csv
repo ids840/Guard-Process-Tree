@@ -1,1293 +1,3091 @@
 case ID,activity,timestamp
-1,breakfast,1700-12-30
-1,dress for ski,1701-12-30
-1,black,1702-12-30
-1,red,1703-12-30
-1,black,1704-12-30
-1,black,1705-12-30
-1,red,1706-12-30
-1,black,1707-12-30
-1,red,1708-12-30
-1,green,1709-12-30
-1,vegetarian dinner,1710-12-30
-2,dress for ski,1700-12-30
-2,blue,1701-12-30
-2,blue,1702-12-30
-2,green,1703-12-30
-2,blue,1704-12-30
-2,blue,1705-12-30
-2,blue,1706-12-30
-2,black,1707-12-30
-2,blue,1708-12-30
-2,gym,1709-12-30
-2,meat dinner,1710-12-30
-3,dress for ski,1700-12-30
-3,breakfast,1701-12-30
-3,black,1702-12-30
-3,green,1703-12-30
-3,black,1704-12-30
-3,blue,1705-12-30
-3,black,1706-12-30
-3,green,1707-12-30
-3,black,1708-12-30
-3,blue,1709-12-30
-3,red,1710-12-30
-3,red,1711-12-30
-3,blue,1712-12-30
-3,black,1713-12-30
-3,green,1714-12-30
-3,green,1715-12-30
-3,vegetarian dinner,1716-12-30
-4,dress for ski,1700-12-30
-4,green,1701-12-30
-4,blue,1702-12-30
-4,green,1703-12-30
-4,black,1704-12-30
-4,black,1705-12-30
-4,green,1706-12-30
-4,blue,1707-12-30
-4,green,1708-12-30
-4,blue,1709-12-30
-4,green,1710-12-30
-4,blue,1711-12-30
-4,black,1712-12-30
-4,red,1713-12-30
-4,red,1714-12-30
-4,red,1715-12-30
-4,red,1716-12-30
-4,green,1717-12-30
-4,red,1718-12-30
-4,green,1719-12-30
-4,black,1720-12-30
-4,vegetarian dinner,1721-12-30
-5,dress for ski,1700-12-30
-5,black,1701-12-30
-5,blue,1702-12-30
-5,red,1703-12-30
-5,green,1704-12-30
-5,red,1705-12-30
-5,red,1706-12-30
-5,green,1707-12-30
-5,black,1708-12-30
-5,blue,1709-12-30
-5,green,1710-12-30
-5,blue,1711-12-30
-5,red,1712-12-30
-5,green,1713-12-30
-5,black,1714-12-30
-5,green,1715-12-30
-5,green,1716-12-30
-5,black,1717-12-30
-5,green,1718-12-30
-5,vegetarian dinner,1719-12-30
-6,dress for ski,1700-12-30
-6,green,1701-12-30
-6,gym,1702-12-30
-6,meat dinner,1703-12-30
-7,dress for ski,1700-12-30
-7,blue,1701-12-30
-7,black,1702-12-30
-7,blue,1703-12-30
-7,green,1704-12-30
-7,black,1705-12-30
-7,red,1706-12-30
-7,blue,1707-12-30
-7,blue,1708-12-30
-7,black,1709-12-30
-7,black,1710-12-30
-7,green,1711-12-30
-7,blue,1712-12-30
-7,red,1713-12-30
-7,red,1714-12-30
-7,blue,1715-12-30
-7,red,1716-12-30
-7,green,1717-12-30
-7,black,1718-12-30
-7,blue,1719-12-30
-7,black,1720-12-30
-7,vegetarian dinner,1721-12-30
-8,dress for ski,1700-12-30
-8,black,1701-12-30
-8,gym,1702-12-30
-8,meat dinner,1703-12-30
-9,dress for ski,1700-12-30
-9,breakfast,1701-12-30
-9,blue,1702-12-30
-9,blue,1703-12-30
-9,green,1704-12-30
-9,blue,1705-12-30
-9,blue,1706-12-30
-9,green,1707-12-30
-9,black,1708-12-30
-9,red,1709-12-30
-9,green,1710-12-30
-9,green,1711-12-30
-9,black,1712-12-30
-9,green,1713-12-30
-9,black,1714-12-30
-9,red,1715-12-30
-9,black,1716-12-30
-9,blue,1717-12-30
-9,blue,1718-12-30
-9,red,1719-12-30
-9,blue,1720-12-30
-9,blue,1721-12-30
-9,vegetarian dinner,1722-12-30
-10,dress for ski,1700-12-30
-10,black,1701-12-30
-10,red,1702-12-30
-10,red,1703-12-30
-10,gym,1704-12-30
-10,meat dinner,1705-12-30
-11,breakfast,1700-12-30
-11,dress for ski,1701-12-30
-11,green,1702-12-30
-11,blue,1703-12-30
-11,blue,1704-12-30
-11,green,1705-12-30
-11,blue,1706-12-30
-11,blue,1707-12-30
-11,blue,1708-12-30
-11,red,1709-12-30
-11,blue,1710-12-30
-11,gym,1711-12-30
-11,vegetarian dinner,1712-12-30
-12,breakfast,1700-12-30
-12,dress for ski,1701-12-30
-12,red,1702-12-30
-12,blue,1703-12-30
-12,blue,1704-12-30
-12,blue,1705-12-30
-12,black,1706-12-30
-12,blue,1707-12-30
-12,blue,1708-12-30
-12,red,1709-12-30
-12,green,1710-12-30
-12,red,1711-12-30
-12,black,1712-12-30
-12,blue,1713-12-30
-12,green,1714-12-30
-12,black,1715-12-30
-12,green,1716-12-30
-12,black,1717-12-30
-12,blue,1718-12-30
-12,red,1719-12-30
-12,vegetarian dinner,1720-12-30
-13,dress for ski,1700-12-30
-13,green,1701-12-30
-13,blue,1702-12-30
-13,green,1703-12-30
-13,blue,1704-12-30
-13,red,1705-12-30
-13,red,1706-12-30
-13,green,1707-12-30
-13,black,1708-12-30
-13,green,1709-12-30
-13,blue,1710-12-30
-13,black,1711-12-30
-13,blue,1712-12-30
-13,gym,1713-12-30
-13,meat dinner,1714-12-30
-14,dress for ski,1700-12-30
-14,green,1701-12-30
-14,green,1702-12-30
-14,blue,1703-12-30
-14,blue,1704-12-30
-14,red,1705-12-30
-14,black,1706-12-30
-14,green,1707-12-30
-14,gym,1708-12-30
-14,meat dinner,1709-12-30
-15,dress for ski,1700-12-30
-15,blue,1701-12-30
-15,black,1702-12-30
-15,red,1703-12-30
-15,green,1704-12-30
-15,red,1705-12-30
-15,red,1706-12-30
-15,red,1707-12-30
-15,black,1708-12-30
-15,black,1709-12-30
-15,red,1710-12-30
-15,blue,1711-12-30
-15,green,1712-12-30
-15,blue,1713-12-30
-15,red,1714-12-30
-15,red,1715-12-30
-15,black,1716-12-30
-15,vegetarian dinner,1717-12-30
-16,breakfast,1700-12-30
-16,dress for ski,1701-12-30
-16,black,1702-12-30
-16,green,1703-12-30
-16,red,1704-12-30
-16,red,1705-12-30
-16,green,1706-12-30
-16,black,1707-12-30
-16,green,1708-12-30
-16,blue,1709-12-30
-16,red,1710-12-30
-16,blue,1711-12-30
-16,black,1712-12-30
-16,black,1713-12-30
-16,vegetarian dinner,1714-12-30
-17,dress for ski,1700-12-30
-17,black,1701-12-30
-17,black,1702-12-30
-17,red,1703-12-30
-17,red,1704-12-30
-17,black,1705-12-30
-17,black,1706-12-30
-17,green,1707-12-30
-17,green,1708-12-30
-17,green,1709-12-30
-17,blue,1710-12-30
-17,red,1711-12-30
-17,blue,1712-12-30
-17,blue,1713-12-30
-17,vegetarian dinner,1714-12-30
-18,dress for ski,1700-12-30
-18,black,1701-12-30
-18,red,1702-12-30
-18,black,1703-12-30
-18,green,1704-12-30
-18,blue,1705-12-30
-18,gym,1706-12-30
-18,meat dinner,1707-12-30
-19,breakfast,1700-12-30
-19,dress for ski,1701-12-30
-19,red,1702-12-30
-19,blue,1703-12-30
-19,red,1704-12-30
-19,black,1705-12-30
-19,blue,1706-12-30
-19,red,1707-12-30
-19,black,1708-12-30
-19,green,1709-12-30
-19,red,1710-12-30
-19,blue,1711-12-30
-19,blue,1712-12-30
-19,black,1713-12-30
-19,black,1714-12-30
-19,green,1715-12-30
-19,blue,1716-12-30
-19,vegetarian dinner,1717-12-30
-20,dress for ski,1700-12-30
-20,black,1701-12-30
-20,red,1702-12-30
-20,green,1703-12-30
-20,black,1704-12-30
-20,blue,1705-12-30
-20,black,1706-12-30
-20,green,1707-12-30
-20,black,1708-12-30
-20,black,1709-12-30
-20,blue,1710-12-30
-20,blue,1711-12-30
-20,vegetarian dinner,1712-12-30
-21,dress for ski,1700-12-30
-21,blue,1701-12-30
-21,blue,1702-12-30
-21,blue,1703-12-30
-21,blue,1704-12-30
-21,red,1705-12-30
-21,blue,1706-12-30
-21,red,1707-12-30
-21,blue,1708-12-30
-21,black,1709-12-30
-21,red,1710-12-30
-21,gym,1711-12-30
-21,meat dinner,1712-12-30
-22,breakfast,1700-12-30
-22,dress for ski,1701-12-30
-22,black,1702-12-30
-22,black,1703-12-30
-22,black,1704-12-30
-22,blue,1705-12-30
-22,vegetarian dinner,1706-12-30
-23,dress for ski,1700-12-30
-23,black,1701-12-30
-23,green,1702-12-30
-23,black,1703-12-30
-23,black,1704-12-30
-23,blue,1705-12-30
-23,blue,1706-12-30
-23,blue,1707-12-30
-23,red,1708-12-30
-23,green,1709-12-30
-23,blue,1710-12-30
-23,black,1711-12-30
-23,blue,1712-12-30
-23,black,1713-12-30
-23,red,1714-12-30
-23,vegetarian dinner,1715-12-30
-24,dress for ski,1700-12-30
-24,red,1701-12-30
-24,green,1702-12-30
-24,green,1703-12-30
-24,green,1704-12-30
-24,black,1705-12-30
-24,red,1706-12-30
-24,black,1707-12-30
-24,black,1708-12-30
-24,blue,1709-12-30
-24,green,1710-12-30
-24,blue,1711-12-30
-24,vegetarian dinner,1712-12-30
-25,dress for ski,1700-12-30
-25,blue,1701-12-30
-25,blue,1702-12-30
-25,blue,1703-12-30
-25,gym,1704-12-30
-25,meat dinner,1705-12-30
-26,breakfast,1700-12-30
-26,dress for ski,1701-12-30
-26,green,1702-12-30
-26,black,1703-12-30
-26,blue,1704-12-30
-26,blue,1705-12-30
-26,green,1706-12-30
-26,green,1707-12-30
-26,green,1708-12-30
-26,green,1709-12-30
-26,red,1710-12-30
-26,green,1711-12-30
-26,red,1712-12-30
-26,green,1713-12-30
-26,black,1714-12-30
-26,red,1715-12-30
-26,black,1716-12-30
-26,black,1717-12-30
-26,vegetarian dinner,1718-12-30
-27,dress for ski,1700-12-30
-27,breakfast,1701-12-30
-27,black,1702-12-30
-27,blue,1703-12-30
-27,red,1704-12-30
-27,gym,1705-12-30
-27,vegetarian dinner,1706-12-30
-28,dress for ski,1700-12-30
-28,red,1701-12-30
-28,green,1702-12-30
-28,green,1703-12-30
-28,green,1704-12-30
-28,red,1705-12-30
-28,red,1706-12-30
-28,black,1707-12-30
-28,black,1708-12-30
-28,green,1709-12-30
-28,red,1710-12-30
-28,green,1711-12-30
-28,blue,1712-12-30
-28,green,1713-12-30
-28,black,1714-12-30
-28,red,1715-12-30
-28,red,1716-12-30
-28,red,1717-12-30
-28,red,1718-12-30
-28,green,1719-12-30
-28,vegetarian dinner,1720-12-30
-29,breakfast,1700-12-30
-29,dress for ski,1701-12-30
-29,green,1702-12-30
-29,red,1703-12-30
-29,red,1704-12-30
-29,green,1705-12-30
-29,green,1706-12-30
-29,black,1707-12-30
-29,green,1708-12-30
-29,green,1709-12-30
-29,blue,1710-12-30
-29,red,1711-12-30
-29,red,1712-12-30
-29,green,1713-12-30
-29,green,1714-12-30
-29,gym,1715-12-30
-29,vegetarian dinner,1716-12-30
-30,dress for ski,1700-12-30
-30,black,1701-12-30
-30,gym,1702-12-30
-30,meat dinner,1703-12-30
-31,dress for ski,1700-12-30
-31,green,1701-12-30
-31,red,1702-12-30
-31,black,1703-12-30
-31,black,1704-12-30
-31,blue,1705-12-30
-31,blue,1706-12-30
-31,blue,1707-12-30
-31,red,1708-12-30
-31,red,1709-12-30
-31,gym,1710-12-30
-31,meat dinner,1711-12-30
-32,dress for ski,1700-12-30
-32,blue,1701-12-30
-32,red,1702-12-30
-32,green,1703-12-30
-32,blue,1704-12-30
-32,blue,1705-12-30
-32,black,1706-12-30
-32,gym,1707-12-30
-32,meat dinner,1708-12-30
-33,dress for ski,1700-12-30
-33,breakfast,1701-12-30
-33,blue,1702-12-30
-33,black,1703-12-30
-33,green,1704-12-30
-33,blue,1705-12-30
-33,black,1706-12-30
-33,blue,1707-12-30
-33,red,1708-12-30
-33,red,1709-12-30
-33,green,1710-12-30
-33,green,1711-12-30
-33,red,1712-12-30
-33,red,1713-12-30
-33,green,1714-12-30
-33,blue,1715-12-30
-33,blue,1716-12-30
-33,blue,1717-12-30
-33,red,1718-12-30
-33,red,1719-12-30
-33,black,1720-12-30
-33,red,1721-12-30
-33,vegetarian dinner,1722-12-30
-34,dress for ski,1700-12-30
-34,breakfast,1701-12-30
-34,blue,1702-12-30
-34,red,1703-12-30
-34,green,1704-12-30
-34,black,1705-12-30
-34,blue,1706-12-30
-34,black,1707-12-30
-34,black,1708-12-30
-34,red,1709-12-30
-34,blue,1710-12-30
-34,red,1711-12-30
-34,green,1712-12-30
-34,blue,1713-12-30
-34,red,1714-12-30
-34,black,1715-12-30
-34,green,1716-12-30
-34,green,1717-12-30
-34,green,1718-12-30
-34,black,1719-12-30
-34,vegetarian dinner,1720-12-30
-35,breakfast,1700-12-30
-35,dress for ski,1701-12-30
-35,red,1702-12-30
-35,red,1703-12-30
-35,blue,1704-12-30
-35,red,1705-12-30
-35,blue,1706-12-30
-35,black,1707-12-30
-35,black,1708-12-30
-35,blue,1709-12-30
-35,red,1710-12-30
-35,red,1711-12-30
-35,blue,1712-12-30
-35,gym,1713-12-30
-35,vegetarian dinner,1714-12-30
-36,dress for ski,1700-12-30
-36,breakfast,1701-12-30
-36,blue,1702-12-30
-36,blue,1703-12-30
-36,blue,1704-12-30
-36,black,1705-12-30
-36,green,1706-12-30
-36,blue,1707-12-30
-36,blue,1708-12-30
-36,green,1709-12-30
-36,green,1710-12-30
-36,green,1711-12-30
-36,gym,1712-12-30
-36,vegetarian dinner,1713-12-30
-37,dress for ski,1700-12-30
-37,red,1701-12-30
-37,blue,1702-12-30
-37,red,1703-12-30
-37,black,1704-12-30
-37,green,1705-12-30
-37,blue,1706-12-30
-37,gym,1707-12-30
-37,meat dinner,1708-12-30
-38,breakfast,1700-12-30
-38,dress for ski,1701-12-30
-38,red,1702-12-30
-38,black,1703-12-30
-38,red,1704-12-30
-38,red,1705-12-30
-38,green,1706-12-30
-38,black,1707-12-30
-38,green,1708-12-30
-38,blue,1709-12-30
-38,gym,1710-12-30
-38,vegetarian dinner,1711-12-30
-39,dress for ski,1700-12-30
-39,black,1701-12-30
-39,black,1702-12-30
-39,blue,1703-12-30
-39,blue,1704-12-30
-39,black,1705-12-30
-39,black,1706-12-30
-39,black,1707-12-30
-39,blue,1708-12-30
-39,green,1709-12-30
-39,black,1710-12-30
-39,red,1711-12-30
-39,vegetarian dinner,1712-12-30
-40,breakfast,1700-12-30
-40,dress for ski,1701-12-30
-40,red,1702-12-30
-40,green,1703-12-30
-40,black,1704-12-30
-40,blue,1705-12-30
-40,black,1706-12-30
-40,gym,1707-12-30
-40,vegetarian dinner,1708-12-30
-41,dress for ski,1700-12-30
-41,black,1701-12-30
-41,red,1702-12-30
-41,black,1703-12-30
-41,blue,1704-12-30
-41,black,1705-12-30
-41,blue,1706-12-30
-41,black,1707-12-30
-41,black,1708-12-30
-41,black,1709-12-30
-41,red,1710-12-30
-41,red,1711-12-30
-41,blue,1712-12-30
-41,blue,1713-12-30
-41,green,1714-12-30
-41,red,1715-12-30
-41,red,1716-12-30
-41,red,1717-12-30
-41,green,1718-12-30
-41,blue,1719-12-30
-41,vegetarian dinner,1720-12-30
-42,dress for ski,1700-12-30
-42,breakfast,1701-12-30
-42,blue,1702-12-30
-42,blue,1703-12-30
-42,red,1704-12-30
-42,green,1705-12-30
-42,gym,1706-12-30
-42,vegetarian dinner,1707-12-30
-43,dress for ski,1700-12-30
-43,breakfast,1701-12-30
-43,black,1702-12-30
-43,red,1703-12-30
-43,blue,1704-12-30
-43,green,1705-12-30
-43,black,1706-12-30
-43,blue,1707-12-30
-43,red,1708-12-30
-43,red,1709-12-30
-43,black,1710-12-30
-43,vegetarian dinner,1711-12-30
-44,dress for ski,1700-12-30
-44,blue,1701-12-30
-44,green,1702-12-30
-44,green,1703-12-30
-44,green,1704-12-30
-44,green,1705-12-30
-44,gym,1706-12-30
-44,meat dinner,1707-12-30
-45,dress for ski,1700-12-30
-45,breakfast,1701-12-30
-45,green,1702-12-30
-45,red,1703-12-30
-45,green,1704-12-30
-45,black,1705-12-30
-45,black,1706-12-30
-45,black,1707-12-30
-45,vegetarian dinner,1708-12-30
-46,dress for ski,1700-12-30
-46,red,1701-12-30
-46,green,1702-12-30
-46,red,1703-12-30
-46,green,1704-12-30
-46,red,1705-12-30
-46,blue,1706-12-30
-46,black,1707-12-30
-46,red,1708-12-30
-46,black,1709-12-30
-46,red,1710-12-30
-46,black,1711-12-30
-46,blue,1712-12-30
-46,blue,1713-12-30
-46,green,1714-12-30
-46,vegetarian dinner,1715-12-30
-47,dress for ski,1700-12-30
-47,blue,1701-12-30
-47,green,1702-12-30
-47,red,1703-12-30
-47,black,1704-12-30
-47,blue,1705-12-30
-47,black,1706-12-30
-47,blue,1707-12-30
-47,red,1708-12-30
-47,green,1709-12-30
-47,black,1710-12-30
-47,red,1711-12-30
-47,green,1712-12-30
-47,black,1713-12-30
-47,green,1714-12-30
-47,vegetarian dinner,1715-12-30
-48,dress for ski,1700-12-30
-48,red,1701-12-30
-48,blue,1702-12-30
-48,blue,1703-12-30
-48,green,1704-12-30
-48,black,1705-12-30
-48,blue,1706-12-30
-48,black,1707-12-30
-48,red,1708-12-30
-48,red,1709-12-30
-48,blue,1710-12-30
-48,red,1711-12-30
-48,green,1712-12-30
-48,black,1713-12-30
-48,green,1714-12-30
-48,red,1715-12-30
-48,red,1716-12-30
-48,vegetarian dinner,1717-12-30
-49,dress for ski,1700-12-30
-49,breakfast,1701-12-30
-49,red,1702-12-30
-49,blue,1703-12-30
-49,green,1704-12-30
-49,green,1705-12-30
-49,green,1706-12-30
-49,blue,1707-12-30
-49,green,1708-12-30
-49,green,1709-12-30
-49,green,1710-12-30
-49,black,1711-12-30
-49,black,1712-12-30
-49,blue,1713-12-30
-49,gym,1714-12-30
-49,vegetarian dinner,1715-12-30
-50,dress for ski,1700-12-30
-50,green,1701-12-30
-50,black,1702-12-30
-50,blue,1703-12-30
-50,blue,1704-12-30
-50,blue,1705-12-30
-50,gym,1706-12-30
-50,meat dinner,1707-12-30
-51,dress for ski,1700-12-30
-51,black,1701-12-30
-51,green,1702-12-30
-51,green,1703-12-30
-51,green,1704-12-30
-51,red,1705-12-30
-51,red,1706-12-30
-51,blue,1707-12-30
-51,black,1708-12-30
-51,green,1709-12-30
-51,red,1710-12-30
-51,blue,1711-12-30
-51,green,1712-12-30
-51,black,1713-12-30
-51,blue,1714-12-30
-51,vegetarian dinner,1715-12-30
-52,breakfast,1700-12-30
-52,dress for ski,1701-12-30
-52,blue,1702-12-30
-52,black,1703-12-30
-52,green,1704-12-30
-52,black,1705-12-30
-52,blue,1706-12-30
-52,red,1707-12-30
-52,blue,1708-12-30
-52,black,1709-12-30
-52,red,1710-12-30
-52,vegetarian dinner,1711-12-30
-53,breakfast,1700-12-30
-53,dress for ski,1701-12-30
-53,blue,1702-12-30
-53,black,1703-12-30
-53,blue,1704-12-30
-53,red,1705-12-30
-53,black,1706-12-30
-53,red,1707-12-30
-53,blue,1708-12-30
-53,blue,1709-12-30
-53,blue,1710-12-30
-53,blue,1711-12-30
-53,red,1712-12-30
-53,green,1713-12-30
-53,black,1714-12-30
-53,vegetarian dinner,1715-12-30
-54,dress for ski,1700-12-30
-54,black,1701-12-30
-54,red,1702-12-30
-54,gym,1703-12-30
-54,meat dinner,1704-12-30
-55,dress for ski,1700-12-30
-55,red,1701-12-30
-55,red,1702-12-30
-55,blue,1703-12-30
-55,red,1704-12-30
-55,blue,1705-12-30
-55,green,1706-12-30
-55,black,1707-12-30
-55,green,1708-12-30
-55,red,1709-12-30
-55,blue,1710-12-30
-55,blue,1711-12-30
-55,green,1712-12-30
-55,green,1713-12-30
-55,gym,1714-12-30
-55,meat dinner,1715-12-30
-56,breakfast,1700-12-30
-56,dress for ski,1701-12-30
-56,green,1702-12-30
-56,blue,1703-12-30
-56,black,1704-12-30
-56,green,1705-12-30
-56,red,1706-12-30
-56,green,1707-12-30
-56,red,1708-12-30
-56,blue,1709-12-30
-56,black,1710-12-30
-56,gym,1711-12-30
-56,vegetarian dinner,1712-12-30
-57,dress for ski,1700-12-30
-57,blue,1701-12-30
-57,blue,1702-12-30
-57,green,1703-12-30
-57,black,1704-12-30
-57,red,1705-12-30
-57,black,1706-12-30
-57,black,1707-12-30
-57,red,1708-12-30
-57,green,1709-12-30
-57,vegetarian dinner,1710-12-30
-58,dress for ski,1700-12-30
-58,blue,1701-12-30
-58,blue,1702-12-30
-58,gym,1703-12-30
-58,meat dinner,1704-12-30
-59,dress for ski,1700-12-30
-59,green,1701-12-30
-59,red,1702-12-30
-59,black,1703-12-30
-59,green,1704-12-30
-59,green,1705-12-30
-59,black,1706-12-30
-59,green,1707-12-30
-59,gym,1708-12-30
-59,meat dinner,1709-12-30
-60,dress for ski,1700-12-30
-60,green,1701-12-30
-60,blue,1702-12-30
-60,green,1703-12-30
-60,red,1704-12-30
-60,red,1705-12-30
-60,blue,1706-12-30
-60,blue,1707-12-30
-60,black,1708-12-30
-60,gym,1709-12-30
-60,meat dinner,1710-12-30
-61,dress for ski,1700-12-30
-61,blue,1701-12-30
-61,red,1702-12-30
-61,red,1703-12-30
-61,black,1704-12-30
-61,black,1705-12-30
-61,black,1706-12-30
-61,green,1707-12-30
-61,blue,1708-12-30
-61,blue,1709-12-30
-61,green,1710-12-30
-61,blue,1711-12-30
-61,black,1712-12-30
-61,blue,1713-12-30
-61,blue,1714-12-30
-61,green,1715-12-30
-61,red,1716-12-30
-61,red,1717-12-30
-61,vegetarian dinner,1718-12-30
-62,dress for ski,1700-12-30
-62,blue,1701-12-30
-62,black,1702-12-30
-62,gym,1703-12-30
-62,meat dinner,1704-12-30
-63,breakfast,1700-12-30
-63,dress for ski,1701-12-30
-63,green,1702-12-30
-63,black,1703-12-30
-63,green,1704-12-30
-63,green,1705-12-30
-63,black,1706-12-30
-63,red,1707-12-30
-63,blue,1708-12-30
-63,green,1709-12-30
-63,gym,1710-12-30
-63,vegetarian dinner,1711-12-30
-64,dress for ski,1700-12-30
-64,green,1701-12-30
-64,black,1702-12-30
-64,green,1703-12-30
-64,blue,1704-12-30
-64,black,1705-12-30
-64,red,1706-12-30
-64,green,1707-12-30
-64,blue,1708-12-30
-64,blue,1709-12-30
-64,black,1710-12-30
-64,red,1711-12-30
-64,red,1712-12-30
-64,blue,1713-12-30
-64,red,1714-12-30
-64,black,1715-12-30
-64,green,1716-12-30
-64,vegetarian dinner,1717-12-30
-65,dress for ski,1700-12-30
-65,breakfast,1701-12-30
-65,red,1702-12-30
-65,black,1703-12-30
-65,blue,1704-12-30
-65,red,1705-12-30
-65,red,1706-12-30
-65,green,1707-12-30
-65,black,1708-12-30
-65,green,1709-12-30
-65,black,1710-12-30
-65,black,1711-12-30
-65,black,1712-12-30
-65,green,1713-12-30
-65,black,1714-12-30
-65,green,1715-12-30
-65,vegetarian dinner,1716-12-30
-66,dress for ski,1700-12-30
-66,blue,1701-12-30
-66,red,1702-12-30
-66,red,1703-12-30
-66,blue,1704-12-30
-66,gym,1705-12-30
-66,meat dinner,1706-12-30
-67,dress for ski,1700-12-30
-67,red,1701-12-30
-67,black,1702-12-30
-67,green,1703-12-30
-67,blue,1704-12-30
-67,gym,1705-12-30
-67,meat dinner,1706-12-30
-68,dress for ski,1700-12-30
-68,red,1701-12-30
-68,green,1702-12-30
-68,gym,1703-12-30
-68,meat dinner,1704-12-30
-69,dress for ski,1700-12-30
-69,black,1701-12-30
-69,green,1702-12-30
-69,black,1703-12-30
-69,green,1704-12-30
-69,black,1705-12-30
-69,green,1706-12-30
-69,blue,1707-12-30
-69,black,1708-12-30
-69,blue,1709-12-30
-69,vegetarian dinner,1710-12-30
-70,dress for ski,1700-12-30
-70,black,1701-12-30
-70,green,1702-12-30
-70,blue,1703-12-30
-70,blue,1704-12-30
-70,red,1705-12-30
-70,black,1706-12-30
-70,green,1707-12-30
-70,blue,1708-12-30
-70,black,1709-12-30
-70,blue,1710-12-30
-70,blue,1711-12-30
-70,black,1712-12-30
-70,black,1713-12-30
-70,black,1714-12-30
-70,red,1715-12-30
-70,vegetarian dinner,1716-12-30
-71,dress for ski,1700-12-30
-71,black,1701-12-30
-71,blue,1702-12-30
-71,blue,1703-12-30
-71,blue,1704-12-30
-71,blue,1705-12-30
-71,red,1706-12-30
-71,blue,1707-12-30
-71,black,1708-12-30
-71,red,1709-12-30
-71,red,1710-12-30
-71,black,1711-12-30
-71,red,1712-12-30
-71,blue,1713-12-30
-71,black,1714-12-30
-71,green,1715-12-30
-71,vegetarian dinner,1716-12-30
-72,dress for ski,1700-12-30
-72,red,1701-12-30
-72,red,1702-12-30
-72,green,1703-12-30
-72,black,1704-12-30
-72,red,1705-12-30
-72,green,1706-12-30
-72,gym,1707-12-30
-72,meat dinner,1708-12-30
-73,breakfast,1700-12-30
-73,dress for ski,1701-12-30
-73,green,1702-12-30
-73,red,1703-12-30
-73,black,1704-12-30
-73,blue,1705-12-30
-73,black,1706-12-30
-73,black,1707-12-30
-73,red,1708-12-30
-73,vegetarian dinner,1709-12-30
-74,dress for ski,1700-12-30
-74,green,1701-12-30
-74,blue,1702-12-30
-74,green,1703-12-30
-74,blue,1704-12-30
-74,red,1705-12-30
-74,red,1706-12-30
-74,green,1707-12-30
-74,red,1708-12-30
-74,black,1709-12-30
-74,green,1710-12-30
-74,blue,1711-12-30
-74,red,1712-12-30
-74,green,1713-12-30
-74,blue,1714-12-30
-74,green,1715-12-30
-74,green,1716-12-30
-74,blue,1717-12-30
-74,gym,1718-12-30
-74,meat dinner,1719-12-30
-75,dress for ski,1700-12-30
-75,black,1701-12-30
-75,green,1702-12-30
-75,red,1703-12-30
-75,blue,1704-12-30
-75,black,1705-12-30
-75,black,1706-12-30
-75,black,1707-12-30
-75,vegetarian dinner,1708-12-30
-76,dress for ski,1700-12-30
-76,breakfast,1701-12-30
-76,green,1702-12-30
-76,blue,1703-12-30
-76,blue,1704-12-30
-76,blue,1705-12-30
-76,red,1706-12-30
-76,blue,1707-12-30
-76,green,1708-12-30
-76,black,1709-12-30
-76,gym,1710-12-30
-76,vegetarian dinner,1711-12-30
-77,breakfast,1700-12-30
-77,dress for ski,1701-12-30
-77,green,1702-12-30
-77,blue,1703-12-30
-77,blue,1704-12-30
-77,black,1705-12-30
-77,blue,1706-12-30
-77,green,1707-12-30
-77,black,1708-12-30
-77,green,1709-12-30
-77,red,1710-12-30
-77,black,1711-12-30
-77,red,1712-12-30
-77,blue,1713-12-30
-77,vegetarian dinner,1714-12-30
-78,dress for ski,1700-12-30
-78,green,1701-12-30
-78,green,1702-12-30
-78,green,1703-12-30
-78,gym,1704-12-30
-78,meat dinner,1705-12-30
-79,dress for ski,1700-12-30
-79,green,1701-12-30
-79,green,1702-12-30
-79,green,1703-12-30
-79,gym,1704-12-30
-79,meat dinner,1705-12-30
-80,dress for ski,1700-12-30
-80,breakfast,1701-12-30
-80,blue,1702-12-30
-80,blue,1703-12-30
-80,black,1704-12-30
-80,gym,1705-12-30
-80,vegetarian dinner,1706-12-30
-81,breakfast,1700-12-30
-81,dress for ski,1701-12-30
-81,green,1702-12-30
-81,blue,1703-12-30
-81,blue,1704-12-30
-81,green,1705-12-30
-81,red,1706-12-30
-81,red,1707-12-30
-81,red,1708-12-30
-81,green,1709-12-30
-81,red,1710-12-30
-81,green,1711-12-30
-81,blue,1712-12-30
-81,red,1713-12-30
-81,green,1714-12-30
-81,black,1715-12-30
-81,red,1716-12-30
-81,green,1717-12-30
-81,blue,1718-12-30
-81,red,1719-12-30
-81,gym,1720-12-30
-81,vegetarian dinner,1721-12-30
-82,dress for ski,1700-12-30
-82,green,1701-12-30
-82,green,1702-12-30
-82,black,1703-12-30
-82,green,1704-12-30
-82,blue,1705-12-30
-82,black,1706-12-30
-82,blue,1707-12-30
-82,blue,1708-12-30
-82,black,1709-12-30
-82,black,1710-12-30
-82,blue,1711-12-30
-82,red,1712-12-30
-82,blue,1713-12-30
-82,red,1714-12-30
-82,black,1715-12-30
-82,red,1716-12-30
-82,green,1717-12-30
-82,red,1718-12-30
-82,green,1719-12-30
-82,vegetarian dinner,1720-12-30
-83,breakfast,1700-12-30
-83,dress for ski,1701-12-30
-83,black,1702-12-30
-83,red,1703-12-30
-83,green,1704-12-30
-83,black,1705-12-30
-83,green,1706-12-30
-83,blue,1707-12-30
-83,blue,1708-12-30
-83,green,1709-12-30
-83,red,1710-12-30
-83,black,1711-12-30
-83,red,1712-12-30
-83,blue,1713-12-30
-83,red,1714-12-30
-83,blue,1715-12-30
-83,black,1716-12-30
-83,red,1717-12-30
-83,red,1718-12-30
-83,blue,1719-12-30
-83,black,1720-12-30
-83,vegetarian dinner,1721-12-30
-84,dress for ski,1700-12-30
-84,breakfast,1701-12-30
-84,green,1702-12-30
-84,blue,1703-12-30
-84,blue,1704-12-30
-84,gym,1705-12-30
-84,vegetarian dinner,1706-12-30
-85,dress for ski,1700-12-30
-85,red,1701-12-30
-85,black,1702-12-30
-85,blue,1703-12-30
-85,red,1704-12-30
-85,green,1705-12-30
-85,gym,1706-12-30
-85,meat dinner,1707-12-30
-86,dress for ski,1700-12-30
-86,breakfast,1701-12-30
-86,black,1702-12-30
-86,black,1703-12-30
-86,black,1704-12-30
-86,blue,1705-12-30
-86,red,1706-12-30
-86,black,1707-12-30
-86,blue,1708-12-30
-86,red,1709-12-30
-86,vegetarian dinner,1710-12-30
-87,dress for ski,1700-12-30
-87,black,1701-12-30
-87,red,1702-12-30
-87,black,1703-12-30
-87,red,1704-12-30
-87,green,1705-12-30
-87,black,1706-12-30
-87,green,1707-12-30
-87,green,1708-12-30
-87,green,1709-12-30
-87,green,1710-12-30
-87,red,1711-12-30
-87,blue,1712-12-30
-87,green,1713-12-30
-87,blue,1714-12-30
-87,black,1715-12-30
-87,green,1716-12-30
-87,vegetarian dinner,1717-12-30
-88,dress for ski,1700-12-30
-88,blue,1701-12-30
-88,black,1702-12-30
-88,blue,1703-12-30
-88,black,1704-12-30
-88,red,1705-12-30
-88,black,1706-12-30
-88,blue,1707-12-30
-88,red,1708-12-30
-88,vegetarian dinner,1709-12-30
-89,dress for ski,1700-12-30
-89,breakfast,1701-12-30
-89,red,1702-12-30
-89,blue,1703-12-30
-89,green,1704-12-30
-89,green,1705-12-30
-89,blue,1706-12-30
-89,red,1707-12-30
-89,blue,1708-12-30
-89,gym,1709-12-30
-89,vegetarian dinner,1710-12-30
-90,dress for ski,1700-12-30
-90,breakfast,1701-12-30
-90,green,1702-12-30
-90,red,1703-12-30
-90,green,1704-12-30
-90,red,1705-12-30
-90,green,1706-12-30
-90,blue,1707-12-30
-90,red,1708-12-30
-90,black,1709-12-30
-90,black,1710-12-30
-90,green,1711-12-30
-90,black,1712-12-30
-90,red,1713-12-30
-90,blue,1714-12-30
-90,black,1715-12-30
-90,red,1716-12-30
-90,green,1717-12-30
-90,black,1718-12-30
-90,vegetarian dinner,1719-12-30
-91,dress for ski,1700-12-30
-91,blue,1701-12-30
-91,blue,1702-12-30
-91,green,1703-12-30
-91,black,1704-12-30
-91,black,1705-12-30
-91,blue,1706-12-30
-91,blue,1707-12-30
-91,red,1708-12-30
-91,red,1709-12-30
-91,black,1710-12-30
-91,vegetarian dinner,1711-12-30
-92,dress for ski,1700-12-30
-92,black,1701-12-30
-92,blue,1702-12-30
-92,blue,1703-12-30
-92,black,1704-12-30
-92,black,1705-12-30
-92,blue,1706-12-30
-92,blue,1707-12-30
-92,green,1708-12-30
-92,blue,1709-12-30
-92,green,1710-12-30
-92,vegetarian dinner,1711-12-30
-93,dress for ski,1700-12-30
-93,red,1701-12-30
-93,green,1702-12-30
-93,black,1703-12-30
-93,blue,1704-12-30
-93,black,1705-12-30
-93,black,1706-12-30
-93,blue,1707-12-30
-93,black,1708-12-30
-93,red,1709-12-30
-93,black,1710-12-30
-93,blue,1711-12-30
-93,vegetarian dinner,1712-12-30
-94,breakfast,1700-12-30
-94,dress for ski,1701-12-30
-94,red,1702-12-30
-94,blue,1703-12-30
-94,red,1704-12-30
-94,blue,1705-12-30
-94,black,1706-12-30
-94,black,1707-12-30
-94,red,1708-12-30
-94,red,1709-12-30
-94,black,1710-12-30
-94,blue,1711-12-30
-94,blue,1712-12-30
-94,black,1713-12-30
-94,blue,1714-12-30
-94,green,1715-12-30
-94,vegetarian dinner,1716-12-30
-95,dress for ski,1700-12-30
-95,breakfast,1701-12-30
-95,green,1702-12-30
-95,red,1703-12-30
-95,black,1704-12-30
-95,blue,1705-12-30
-95,green,1706-12-30
-95,red,1707-12-30
-95,green,1708-12-30
-95,black,1709-12-30
-95,black,1710-12-30
-95,green,1711-12-30
-95,vegetarian dinner,1712-12-30
-96,breakfast,1700-12-30
-96,dress for ski,1701-12-30
-96,green,1702-12-30
-96,gym,1703-12-30
-96,vegetarian dinner,1704-12-30
-97,breakfast,1700-12-30
-97,dress for ski,1701-12-30
-97,blue,1702-12-30
-97,green,1703-12-30
-97,blue,1704-12-30
-97,red,1705-12-30
-97,green,1706-12-30
-97,green,1707-12-30
-97,blue,1708-12-30
-97,red,1709-12-30
-97,red,1710-12-30
-97,blue,1711-12-30
-97,blue,1712-12-30
-97,blue,1713-12-30
-97,red,1714-12-30
-97,blue,1715-12-30
-97,green,1716-12-30
-97,green,1717-12-30
-97,black,1718-12-30
-97,gym,1719-12-30
-97,vegetarian dinner,1720-12-30
-98,breakfast,1700-12-30
-98,dress for ski,1701-12-30
-98,blue,1702-12-30
-98,green,1703-12-30
-98,red,1704-12-30
-98,black,1705-12-30
-98,black,1706-12-30
-98,black,1707-12-30
-98,black,1708-12-30
-98,red,1709-12-30
-98,black,1710-12-30
-98,black,1711-12-30
-98,red,1712-12-30
-98,black,1713-12-30
-98,green,1714-12-30
-98,vegetarian dinner,1715-12-30
-99,dress for ski,1700-12-30
-99,breakfast,1701-12-30
-99,green,1702-12-30
-99,blue,1703-12-30
-99,green,1704-12-30
-99,black,1705-12-30
-99,red,1706-12-30
-99,red,1707-12-30
-99,green,1708-12-30
-99,gym,1709-12-30
-99,vegetarian dinner,1710-12-30
+1,ER Registration,1700-12-30
+1,ER Triage,1701-12-30
+1,ER Sepsis Triage,1702-12-30
+1,Leucocytes,1703-12-30
+1,CRP,1704-12-30
+1,Admission NC,1705-12-30
+1,Release A,1706-12-30
+1,Return ER,1707-12-30
+2,ER Registration,1700-12-30
+2,ER Triage,1701-12-30
+2,ER Sepsis Triage,1702-12-30
+2,IV Liquid,1703-12-30
+2,Leucocytes,1704-12-30
+2,CRP,1705-12-30
+2,LacticAcid,1706-12-30
+2,IV Antibiotics,1707-12-30
+2,Admission NC,1708-12-30
+2,Admission NC,1709-12-30
+2,CRP,1710-12-30
+2,Leucocytes,1711-12-30
+2,CRP,1712-12-30
+2,Release A,1713-12-30
+2,Return ER,1714-12-30
+3,ER Registration,1700-12-30
+3,ER Triage,1701-12-30
+3,ER Sepsis Triage,1702-12-30
+3,CRP,1703-12-30
+3,LacticAcid,1704-12-30
+3,Leucocytes,1705-12-30
+3,IV Liquid,1706-12-30
+3,IV Antibiotics,1707-12-30
+3,Admission NC,1708-12-30
+3,Release A,1709-12-30
+4,ER Registration,1700-12-30
+4,ER Triage,1701-12-30
+4,Leucocytes,1702-12-30
+4,CRP,1703-12-30
+4,LacticAcid,1704-12-30
+4,ER Sepsis Triage,1705-12-30
+4,IV Liquid,1706-12-30
+4,IV Antibiotics,1707-12-30
+4,Admission NC,1708-12-30
+4,Leucocytes,1709-12-30
+4,CRP,1710-12-30
+4,Release A,1711-12-30
+4,Return ER,1712-12-30
+5,ER Registration,1700-12-30
+5,ER Triage,1701-12-30
+5,ER Sepsis Triage,1702-12-30
+5,CRP,1703-12-30
+5,Leucocytes,1704-12-30
+5,LacticAcid,1705-12-30
+5,IV Liquid,1706-12-30
+5,IV Antibiotics,1707-12-30
+6,ER Registration,1700-12-30
+6,LacticAcid,1701-12-30
+6,Leucocytes,1702-12-30
+6,CRP,1703-12-30
+6,ER Triage,1704-12-30
+6,ER Sepsis Triage,1705-12-30
+6,IV Antibiotics,1706-12-30
+7,ER Registration,1700-12-30
+7,ER Triage,1701-12-30
+7,ER Sepsis Triage,1702-12-30
+7,IV Liquid,1703-12-30
+7,IV Antibiotics,1704-12-30
+7,Leucocytes,1705-12-30
+7,LacticAcid,1706-12-30
+7,CRP,1707-12-30
+7,Admission IC,1708-12-30
+7,LacticAcid,1709-12-30
+7,CRP,1710-12-30
+7,LacticAcid,1711-12-30
+7,Leucocytes,1712-12-30
+7,LacticAcid,1713-12-30
+7,CRP,1714-12-30
+7,Leucocytes,1715-12-30
+7,Admission NC,1716-12-30
+7,Leucocytes,1717-12-30
+7,CRP,1718-12-30
+7,Release A,1719-12-30
+8,ER Registration,1700-12-30
+8,ER Triage,1701-12-30
+8,ER Sepsis Triage,1702-12-30
+8,CRP,1703-12-30
+8,Leucocytes,1704-12-30
+8,LacticAcid,1705-12-30
+8,Admission NC,1706-12-30
+8,Release B,1707-12-30
+9,ER Registration,1700-12-30
+9,IV Liquid,1701-12-30
+9,ER Triage,1702-12-30
+9,ER Sepsis Triage,1703-12-30
+9,IV Antibiotics,1704-12-30
+9,LacticAcid,1705-12-30
+9,Leucocytes,1706-12-30
+9,CRP,1707-12-30
+9,Admission NC,1708-12-30
+9,Release B,1709-12-30
+10,ER Registration,1700-12-30
+10,ER Triage,1701-12-30
+10,ER Sepsis Triage,1702-12-30
+10,IV Liquid,1703-12-30
+10,CRP,1704-12-30
+10,LacticAcid,1705-12-30
+10,Leucocytes,1706-12-30
+10,IV Antibiotics,1707-12-30
+10,Admission NC,1708-12-30
+10,ER Triage,1709-12-30
+10,Leucocytes,1710-12-30
+10,CRP,1711-12-30
+10,CRP,1712-12-30
+10,Leucocytes,1713-12-30
+10,Release A,1714-12-30
+10,Return ER,1715-12-30
+11,ER Registration,1700-12-30
+11,ER Triage,1701-12-30
+11,Leucocytes,1702-12-30
+11,LacticAcid,1703-12-30
+11,CRP,1704-12-30
+11,ER Sepsis Triage,1705-12-30
+12,ER Registration,1700-12-30
+12,ER Triage,1701-12-30
+12,LacticAcid,1702-12-30
+12,Leucocytes,1703-12-30
+12,CRP,1704-12-30
+12,ER Sepsis Triage,1705-12-30
+12,IV Liquid,1706-12-30
+12,IV Antibiotics,1707-12-30
+13,ER Registration,1700-12-30
+13,ER Triage,1701-12-30
+13,ER Sepsis Triage,1702-12-30
+13,Leucocytes,1703-12-30
+13,CRP,1704-12-30
+13,LacticAcid,1705-12-30
+13,IV Antibiotics,1706-12-30
+13,IV Liquid,1707-12-30
+13,Admission NC,1708-12-30
+13,Admission NC,1709-12-30
+13,Leucocytes,1710-12-30
+13,CRP,1711-12-30
+13,Leucocytes,1712-12-30
+13,CRP,1713-12-30
+13,Leucocytes,1714-12-30
+13,Release A,1715-12-30
+14,ER Registration,1700-12-30
+14,ER Triage,1701-12-30
+14,ER Sepsis Triage,1702-12-30
+14,IV Liquid,1703-12-30
+14,IV Antibiotics,1704-12-30
+14,Leucocytes,1705-12-30
+14,LacticAcid,1706-12-30
+14,CRP,1707-12-30
+14,Admission NC,1708-12-30
+14,Leucocytes,1709-12-30
+14,CRP,1710-12-30
+14,Release A,1711-12-30
+14,Return ER,1712-12-30
+15,ER Registration,1700-12-30
+15,ER Triage,1701-12-30
+15,ER Sepsis Triage,1702-12-30
+15,Leucocytes,1703-12-30
+15,CRP,1704-12-30
+15,Admission NC,1705-12-30
+15,Admission IC,1706-12-30
+15,Leucocytes,1707-12-30
+15,CRP,1708-12-30
+15,LacticAcid,1709-12-30
+15,CRP,1710-12-30
+15,LacticAcid,1711-12-30
+15,Leucocytes,1712-12-30
+15,Leucocytes,1713-12-30
+15,CRP,1714-12-30
+15,LacticAcid,1715-12-30
+15,Admission NC,1716-12-30
+15,Release A,1717-12-30
+15,Return ER,1718-12-30
+16,ER Registration,1700-12-30
+16,ER Triage,1701-12-30
+16,ER Sepsis Triage,1702-12-30
+16,IV Liquid,1703-12-30
+16,IV Antibiotics,1704-12-30
+16,Leucocytes,1705-12-30
+16,LacticAcid,1706-12-30
+16,CRP,1707-12-30
+16,Admission NC,1708-12-30
+16,Leucocytes,1709-12-30
+16,CRP,1710-12-30
+16,Release A,1711-12-30
+17,ER Registration,1700-12-30
+17,ER Triage,1701-12-30
+17,ER Sepsis Triage,1702-12-30
+17,Leucocytes,1703-12-30
+17,CRP,1704-12-30
+17,LacticAcid,1705-12-30
+17,IV Liquid,1706-12-30
+17,IV Antibiotics,1707-12-30
+17,Admission NC,1708-12-30
+17,Leucocytes,1709-12-30
+17,CRP,1710-12-30
+17,Release A,1711-12-30
+17,Return ER,1712-12-30
+18,ER Registration,1700-12-30
+18,ER Triage,1701-12-30
+18,ER Sepsis Triage,1702-12-30
+18,LacticAcid,1703-12-30
+18,Leucocytes,1704-12-30
+18,CRP,1705-12-30
+18,IV Liquid,1706-12-30
+18,IV Antibiotics,1707-12-30
+18,Admission NC,1708-12-30
+18,Leucocytes,1709-12-30
+18,CRP,1710-12-30
+18,Admission NC,1711-12-30
+18,CRP,1712-12-30
+18,Leucocytes,1713-12-30
+18,Release A,1714-12-30
+19,ER Registration,1700-12-30
+19,CRP,1701-12-30
+19,LacticAcid,1702-12-30
+19,Leucocytes,1703-12-30
+19,ER Triage,1704-12-30
+19,ER Sepsis Triage,1705-12-30
+19,IV Liquid,1706-12-30
+19,IV Antibiotics,1707-12-30
+19,Admission NC,1708-12-30
+19,Leucocytes,1709-12-30
+19,CRP,1710-12-30
+19,Release A,1711-12-30
+20,ER Registration,1700-12-30
+20,ER Triage,1701-12-30
+20,ER Sepsis Triage,1702-12-30
+20,Leucocytes,1703-12-30
+20,CRP,1704-12-30
+20,IV Liquid,1705-12-30
+20,IV Antibiotics,1706-12-30
+20,Admission NC,1707-12-30
+20,Admission NC,1708-12-30
+20,Release B,1709-12-30
+21,ER Registration,1700-12-30
+21,ER Triage,1701-12-30
+21,ER Sepsis Triage,1702-12-30
+21,IV Liquid,1703-12-30
+21,IV Antibiotics,1704-12-30
+21,CRP,1705-12-30
+21,LacticAcid,1706-12-30
+21,Leucocytes,1707-12-30
+21,Admission NC,1708-12-30
+21,Leucocytes,1709-12-30
+21,CRP,1710-12-30
+21,Leucocytes,1711-12-30
+21,Leucocytes,1712-12-30
+21,CRP,1713-12-30
+21,CRP,1714-12-30
+21,Leucocytes,1715-12-30
+21,Admission NC,1716-12-30
+21,Release C,1717-12-30
+22,ER Registration,1700-12-30
+22,ER Triage,1701-12-30
+22,ER Sepsis Triage,1702-12-30
+22,IV Liquid,1703-12-30
+22,Leucocytes,1704-12-30
+22,CRP,1705-12-30
+22,LacticAcid,1706-12-30
+22,IV Antibiotics,1707-12-30
+22,Admission NC,1708-12-30
+22,Admission NC,1709-12-30
+22,CRP,1710-12-30
+22,Leucocytes,1711-12-30
+22,Release A,1712-12-30
+23,ER Registration,1700-12-30
+23,ER Triage,1701-12-30
+23,ER Sepsis Triage,1702-12-30
+23,CRP,1703-12-30
+23,Leucocytes,1704-12-30
+23,LacticAcid,1705-12-30
+23,IV Antibiotics,1706-12-30
+23,Admission NC,1707-12-30
+23,CRP,1708-12-30
+23,Leucocytes,1709-12-30
+23,IV Liquid,1710-12-30
+24,ER Registration,1700-12-30
+24,ER Triage,1701-12-30
+24,ER Sepsis Triage,1702-12-30
+24,LacticAcid,1703-12-30
+24,Leucocytes,1704-12-30
+24,CRP,1705-12-30
+24,IV Liquid,1706-12-30
+24,IV Antibiotics,1707-12-30
+25,ER Registration,1700-12-30
+25,ER Triage,1701-12-30
+25,Leucocytes,1702-12-30
+25,CRP,1703-12-30
+25,LacticAcid,1704-12-30
+25,ER Sepsis Triage,1705-12-30
+25,IV Liquid,1706-12-30
+25,IV Antibiotics,1707-12-30
+25,Admission NC,1708-12-30
+25,Leucocytes,1709-12-30
+25,CRP,1710-12-30
+25,LacticAcid,1711-12-30
+25,Leucocytes,1712-12-30
+25,CRP,1713-12-30
+25,CRP,1714-12-30
+25,Release A,1715-12-30
+26,ER Registration,1700-12-30
+26,ER Triage,1701-12-30
+26,ER Sepsis Triage,1702-12-30
+26,IV Liquid,1703-12-30
+26,Leucocytes,1704-12-30
+26,CRP,1705-12-30
+26,LacticAcid,1706-12-30
+26,IV Antibiotics,1707-12-30
+26,Admission NC,1708-12-30
+26,Admission NC,1709-12-30
+26,CRP,1710-12-30
+26,Leucocytes,1711-12-30
+26,Leucocytes,1712-12-30
+26,CRP,1713-12-30
+26,Release A,1714-12-30
+26,Return ER,1715-12-30
+27,ER Registration,1700-12-30
+27,ER Triage,1701-12-30
+27,ER Sepsis Triage,1702-12-30
+27,Leucocytes,1703-12-30
+27,CRP,1704-12-30
+27,LacticAcid,1705-12-30
+27,Admission NC,1706-12-30
+27,Release A,1707-12-30
+28,ER Registration,1700-12-30
+28,ER Triage,1701-12-30
+28,ER Sepsis Triage,1702-12-30
+28,Leucocytes,1703-12-30
+28,CRP,1704-12-30
+28,Admission NC,1705-12-30
+29,ER Triage,1700-12-30
+29,ER Registration,1701-12-30
+29,Leucocytes,1702-12-30
+29,CRP,1703-12-30
+29,LacticAcid,1704-12-30
+29,ER Sepsis Triage,1705-12-30
+29,Admission NC,1706-12-30
+29,IV Liquid,1707-12-30
+29,IV Antibiotics,1708-12-30
+30,ER Registration,1700-12-30
+30,ER Triage,1701-12-30
+30,ER Sepsis Triage,1702-12-30
+30,IV Liquid,1703-12-30
+30,IV Antibiotics,1704-12-30
+30,CRP,1705-12-30
+30,LacticAcid,1706-12-30
+30,Leucocytes,1707-12-30
+30,Admission NC,1708-12-30
+30,Leucocytes,1709-12-30
+30,CRP,1710-12-30
+30,Release B,1711-12-30
+31,ER Registration,1700-12-30
+31,ER Triage,1701-12-30
+31,ER Sepsis Triage,1702-12-30
+31,IV Liquid,1703-12-30
+31,CRP,1704-12-30
+31,Leucocytes,1705-12-30
+31,LacticAcid,1706-12-30
+31,IV Antibiotics,1707-12-30
+31,Admission NC,1708-12-30
+31,Leucocytes,1709-12-30
+31,Admission NC,1710-12-30
+31,CRP,1711-12-30
+31,LacticAcid,1712-12-30
+31,Leucocytes,1713-12-30
+31,LacticAcid,1714-12-30
+31,CRP,1715-12-30
+31,Leucocytes,1716-12-30
+31,LacticAcid,1717-12-30
+31,Admission IC,1718-12-30
+31,CRP,1719-12-30
+31,LacticAcid,1720-12-30
+31,Leucocytes,1721-12-30
+31,CRP,1722-12-30
+31,Leucocytes,1723-12-30
+31,LacticAcid,1724-12-30
+31,LacticAcid,1725-12-30
+31,Leucocytes,1726-12-30
+31,CRP,1727-12-30
+31,CRP,1728-12-30
+31,LacticAcid,1729-12-30
+31,Leucocytes,1730-12-30
+31,CRP,1731-12-30
+31,Leucocytes,1732-12-30
+31,LacticAcid,1733-12-30
+31,Leucocytes,1734-12-30
+31,CRP,1735-12-30
+31,LacticAcid,1736-12-30
+31,LacticAcid,1737-12-30
+31,CRP,1738-12-30
+31,Leucocytes,1739-12-30
+31,LacticAcid,1740-12-30
+31,Leucocytes,1741-12-30
+31,CRP,1742-12-30
+31,LacticAcid,1743-12-30
+31,Leucocytes,1744-12-30
+31,LacticAcid,1745-12-30
+31,CRP,1746-12-30
+31,Leucocytes,1747-12-30
+31,LacticAcid,1748-12-30
+31,CRP,1749-12-30
+31,Leucocytes,1750-12-30
+31,LacticAcid,1751-12-30
+31,LacticAcid,1752-12-30
+31,Leucocytes,1753-12-30
+31,CRP,1754-12-30
+31,Leucocytes,1755-12-30
+31,LacticAcid,1756-12-30
+31,CRP,1757-12-30
+31,CRP,1758-12-30
+31,LacticAcid,1759-12-30
+31,Leucocytes,1760-12-30
+31,CRP,1761-12-30
+31,Leucocytes,1762-12-30
+31,LacticAcid,1763-12-30
+31,CRP,1764-12-30
+31,Leucocytes,1765-12-30
+31,LacticAcid,1766-12-30
+31,Leucocytes,1767-12-30
+31,LacticAcid,1768-12-30
+31,CRP,1769-12-30
+31,CRP,1770-12-30
+31,Leucocytes,1771-12-30
+31,LacticAcid,1772-12-30
+31,CRP,1773-12-30
+31,Leucocytes,1774-12-30
+31,LacticAcid,1775-12-30
+31,LacticAcid,1776-12-30
+31,Leucocytes,1777-12-30
+31,CRP,1778-12-30
+31,Leucocytes,1779-12-30
+31,CRP,1780-12-30
+31,LacticAcid,1781-12-30
+31,Leucocytes,1782-12-30
+31,LacticAcid,1783-12-30
+31,CRP,1784-12-30
+31,CRP,1785-12-30
+31,LacticAcid,1786-12-30
+31,Leucocytes,1787-12-30
+31,Leucocytes,1788-12-30
+31,CRP,1789-12-30
+31,LacticAcid,1790-12-30
+31,Leucocytes,1791-12-30
+31,CRP,1792-12-30
+31,LacticAcid,1793-12-30
+31,Leucocytes,1794-12-30
+31,LacticAcid,1795-12-30
+31,CRP,1796-12-30
+31,Admission NC,1797-12-30
+31,Leucocytes,1798-12-30
+31,CRP,1799-12-30
+31,Leucocytes,1800-12-30
+31,CRP,1801-12-30
+31,CRP,1802-12-30
+31,Leucocytes,1803-12-30
+31,Leucocytes,1804-12-30
+31,CRP,1805-12-30
+31,Leucocytes,1806-12-30
+31,CRP,1807-12-30
+31,CRP,1808-12-30
+31,Leucocytes,1809-12-30
+31,Leucocytes,1810-12-30
+31,CRP,1811-12-30
+31,CRP,1812-12-30
+31,Leucocytes,1813-12-30
+31,Leucocytes,1814-12-30
+31,CRP,1815-12-30
+31,CRP,1816-12-30
+31,Leucocytes,1817-12-30
+31,CRP,1818-12-30
+31,Leucocytes,1819-12-30
+31,Leucocytes,1820-12-30
+31,CRP,1821-12-30
+31,Leucocytes,1822-12-30
+31,CRP,1823-12-30
+31,Leucocytes,1824-12-30
+31,Leucocytes,1825-12-30
+31,CRP,1826-12-30
+31,Admission NC,1827-12-30
+31,CRP,1828-12-30
+31,Leucocytes,1829-12-30
+31,Leucocytes,1830-12-30
+31,CRP,1831-12-30
+31,Leucocytes,1832-12-30
+31,CRP,1833-12-30
+31,Leucocytes,1834-12-30
+31,CRP,1835-12-30
+31,CRP,1836-12-30
+31,Leucocytes,1837-12-30
+31,CRP,1838-12-30
+31,Leucocytes,1839-12-30
+31,CRP,1840-12-30
+31,Leucocytes,1841-12-30
+31,Leucocytes,1842-12-30
+31,CRP,1843-12-30
+31,CRP,1844-12-30
+31,Leucocytes,1845-12-30
+31,Leucocytes,1846-12-30
+31,CRP,1847-12-30
+31,CRP,1848-12-30
+31,Leucocytes,1849-12-30
+31,Leucocytes,1850-12-30
+31,CRP,1851-12-30
+31,Leucocytes,1852-12-30
+31,CRP,1853-12-30
+31,CRP,1854-12-30
+31,Leucocytes,1855-12-30
+31,Leucocytes,1856-12-30
+31,Leucocytes,1857-12-30
+31,CRP,1858-12-30
+31,Leucocytes,1859-12-30
+31,CRP,1860-12-30
+31,Leucocytes,1861-12-30
+31,CRP,1862-12-30
+31,CRP,1863-12-30
+31,Leucocytes,1864-12-30
+31,CRP,1865-12-30
+31,Leucocytes,1866-12-30
+31,Leucocytes,1867-12-30
+31,CRP,1868-12-30
+31,Leucocytes,1869-12-30
+31,CRP,1870-12-30
+31,CRP,1871-12-30
+31,Leucocytes,1872-12-30
+31,Leucocytes,1873-12-30
+31,CRP,1874-12-30
+31,Leucocytes,1875-12-30
+31,CRP,1876-12-30
+31,CRP,1877-12-30
+31,Leucocytes,1878-12-30
+31,Leucocytes,1879-12-30
+31,CRP,1880-12-30
+31,Leucocytes,1881-12-30
+31,CRP,1882-12-30
+31,Leucocytes,1883-12-30
+31,Release C,1884-12-30
+32,ER Registration,1700-12-30
+32,ER Triage,1701-12-30
+32,ER Sepsis Triage,1702-12-30
+32,IV Liquid,1703-12-30
+32,LacticAcid,1704-12-30
+32,Leucocytes,1705-12-30
+32,CRP,1706-12-30
+32,IV Antibiotics,1707-12-30
+32,Admission NC,1708-12-30
+32,Admission NC,1709-12-30
+32,CRP,1710-12-30
+32,Leucocytes,1711-12-30
+32,Release A,1712-12-30
+33,ER Registration,1700-12-30
+33,ER Triage,1701-12-30
+33,ER Sepsis Triage,1702-12-30
+33,IV Liquid,1703-12-30
+33,IV Antibiotics,1704-12-30
+33,LacticAcid,1705-12-30
+33,Leucocytes,1706-12-30
+33,CRP,1707-12-30
+33,Admission NC,1708-12-30
+33,Admission NC,1709-12-30
+33,Admission IC,1710-12-30
+33,Leucocytes,1711-12-30
+33,CRP,1712-12-30
+33,LacticAcid,1713-12-30
+33,LacticAcid,1714-12-30
+33,LacticAcid,1715-12-30
+33,Leucocytes,1716-12-30
+33,CRP,1717-12-30
+33,Admission NC,1718-12-30
+33,Leucocytes,1719-12-30
+33,CRP,1720-12-30
+33,Release A,1721-12-30
+33,Return ER,1722-12-30
+34,ER Registration,1700-12-30
+34,ER Triage,1701-12-30
+34,ER Sepsis Triage,1702-12-30
+34,CRP,1703-12-30
+34,LacticAcid,1704-12-30
+34,Leucocytes,1705-12-30
+34,IV Antibiotics,1706-12-30
+35,ER Registration,1700-12-30
+35,ER Triage,1701-12-30
+35,ER Sepsis Triage,1702-12-30
+35,IV Liquid,1703-12-30
+35,CRP,1704-12-30
+35,Leucocytes,1705-12-30
+35,LacticAcid,1706-12-30
+35,IV Antibiotics,1707-12-30
+35,Admission NC,1708-12-30
+35,Leucocytes,1709-12-30
+35,CRP,1710-12-30
+35,Leucocytes,1711-12-30
+35,CRP,1712-12-30
+35,Release A,1713-12-30
+36,ER Registration,1700-12-30
+36,ER Triage,1701-12-30
+36,CRP,1702-12-30
+36,LacticAcid,1703-12-30
+36,Leucocytes,1704-12-30
+36,ER Sepsis Triage,1705-12-30
+36,IV Liquid,1706-12-30
+36,IV Antibiotics,1707-12-30
+36,Admission IC,1708-12-30
+36,Leucocytes,1709-12-30
+36,CRP,1710-12-30
+36,LacticAcid,1711-12-30
+36,CRP,1712-12-30
+36,Leucocytes,1713-12-30
+36,LacticAcid,1714-12-30
+36,Release B,1715-12-30
+37,ER Registration,1700-12-30
+37,ER Triage,1701-12-30
+37,ER Sepsis Triage,1702-12-30
+37,IV Liquid,1703-12-30
+37,IV Antibiotics,1704-12-30
+37,LacticAcid,1705-12-30
+37,Leucocytes,1706-12-30
+37,CRP,1707-12-30
+37,Admission NC,1708-12-30
+37,Admission NC,1709-12-30
+37,Leucocytes,1710-12-30
+37,CRP,1711-12-30
+37,Leucocytes,1712-12-30
+37,CRP,1713-12-30
+37,Release A,1714-12-30
+38,ER Registration,1700-12-30
+38,ER Triage,1701-12-30
+38,ER Sepsis Triage,1702-12-30
+38,LacticAcid,1703-12-30
+38,CRP,1704-12-30
+38,Leucocytes,1705-12-30
+38,IV Antibiotics,1706-12-30
+38,Admission NC,1707-12-30
+38,Leucocytes,1708-12-30
+38,CRP,1709-12-30
+38,Admission NC,1710-12-30
+38,CRP,1711-12-30
+38,Leucocytes,1712-12-30
+38,CRP,1713-12-30
+38,Release A,1714-12-30
+39,ER Registration,1700-12-30
+39,ER Triage,1701-12-30
+39,LacticAcid,1702-12-30
+39,Leucocytes,1703-12-30
+39,CRP,1704-12-30
+39,ER Sepsis Triage,1705-12-30
+39,IV Liquid,1706-12-30
+39,IV Antibiotics,1707-12-30
+40,ER Registration,1700-12-30
+40,ER Triage,1701-12-30
+40,ER Sepsis Triage,1702-12-30
+40,Leucocytes,1703-12-30
+40,CRP,1704-12-30
+40,LacticAcid,1705-12-30
+40,IV Liquid,1706-12-30
+40,IV Antibiotics,1707-12-30
+40,Admission NC,1708-12-30
+40,CRP,1709-12-30
+40,Admission IC,1710-12-30
+40,CRP,1711-12-30
+40,Leucocytes,1712-12-30
+40,LacticAcid,1713-12-30
+40,LacticAcid,1714-12-30
+40,Leucocytes,1715-12-30
+40,CRP,1716-12-30
+40,Leucocytes,1717-12-30
+40,LacticAcid,1718-12-30
+40,CRP,1719-12-30
+40,CRP,1720-12-30
+40,Leucocytes,1721-12-30
+40,LacticAcid,1722-12-30
+40,LacticAcid,1723-12-30
+40,CRP,1724-12-30
+40,Leucocytes,1725-12-30
+40,Admission NC,1726-12-30
+40,Leucocytes,1727-12-30
+40,CRP,1728-12-30
+40,Admission NC,1729-12-30
+40,Leucocytes,1730-12-30
+40,CRP,1731-12-30
+40,CRP,1732-12-30
+40,Leucocytes,1733-12-30
+40,Release D,1734-12-30
+40,Return ER,1735-12-30
+41,ER Registration,1700-12-30
+41,CRP,1701-12-30
+41,Leucocytes,1702-12-30
+41,LacticAcid,1703-12-30
+41,ER Triage,1704-12-30
+41,ER Sepsis Triage,1705-12-30
+41,IV Liquid,1706-12-30
+41,IV Antibiotics,1707-12-30
+41,Admission NC,1708-12-30
+41,CRP,1709-12-30
+41,Leucocytes,1710-12-30
+41,Leucocytes,1711-12-30
+41,CRP,1712-12-30
+41,Release A,1713-12-30
+41,Return ER,1714-12-30
+42,ER Registration,1700-12-30
+42,ER Triage,1701-12-30
+42,ER Sepsis Triage,1702-12-30
+42,Leucocytes,1703-12-30
+42,CRP,1704-12-30
+42,LacticAcid,1705-12-30
+42,IV Liquid,1706-12-30
+42,IV Antibiotics,1707-12-30
+42,Admission NC,1708-12-30
+42,Leucocytes,1709-12-30
+42,CRP,1710-12-30
+42,Admission NC,1711-12-30
+42,Release A,1712-12-30
+42,Return ER,1713-12-30
+43,ER Registration,1700-12-30
+43,ER Triage,1701-12-30
+43,ER Sepsis Triage,1702-12-30
+43,Leucocytes,1703-12-30
+43,CRP,1704-12-30
+43,LacticAcid,1705-12-30
+43,IV Liquid,1706-12-30
+43,IV Antibiotics,1707-12-30
+43,Admission NC,1708-12-30
+43,CRP,1709-12-30
+43,Leucocytes,1710-12-30
+43,Leucocytes,1711-12-30
+43,CRP,1712-12-30
+43,Leucocytes,1713-12-30
+43,CRP,1714-12-30
+43,Leucocytes,1715-12-30
+43,CRP,1716-12-30
+43,Leucocytes,1717-12-30
+43,CRP,1718-12-30
+43,Leucocytes,1719-12-30
+43,CRP,1720-12-30
+43,Leucocytes,1721-12-30
+43,CRP,1722-12-30
+43,CRP,1723-12-30
+43,Leucocytes,1724-12-30
+43,Leucocytes,1725-12-30
+43,CRP,1726-12-30
+43,Release A,1727-12-30
+43,Return ER,1728-12-30
+44,ER Registration,1700-12-30
+44,ER Triage,1701-12-30
+44,ER Sepsis Triage,1702-12-30
+44,IV Liquid,1703-12-30
+44,LacticAcid,1704-12-30
+44,Leucocytes,1705-12-30
+44,CRP,1706-12-30
+44,IV Antibiotics,1707-12-30
+44,Admission NC,1708-12-30
+44,Leucocytes,1709-12-30
+44,CRP,1710-12-30
+44,Release A,1711-12-30
+45,ER Registration,1700-12-30
+45,ER Triage,1701-12-30
+45,ER Sepsis Triage,1702-12-30
+45,IV Liquid,1703-12-30
+45,LacticAcid,1704-12-30
+45,Leucocytes,1705-12-30
+45,CRP,1706-12-30
+45,IV Antibiotics,1707-12-30
+45,CRP,1708-12-30
+45,Leucocytes,1709-12-30
+45,Admission NC,1710-12-30
+45,Admission NC,1711-12-30
+45,CRP,1712-12-30
+45,Leucocytes,1713-12-30
+45,Release A,1714-12-30
+46,ER Registration,1700-12-30
+46,ER Triage,1701-12-30
+46,ER Sepsis Triage,1702-12-30
+46,CRP,1703-12-30
+46,LacticAcid,1704-12-30
+46,Leucocytes,1705-12-30
+46,IV Antibiotics,1706-12-30
+46,IV Liquid,1707-12-30
+46,Admission NC,1708-12-30
+46,Leucocytes,1709-12-30
+46,CRP,1710-12-30
+46,Release A,1711-12-30
+46,Return ER,1712-12-30
+47,ER Registration,1700-12-30
+47,ER Triage,1701-12-30
+47,ER Sepsis Triage,1702-12-30
+47,CRP,1703-12-30
+47,Leucocytes,1704-12-30
+47,Admission NC,1705-12-30
+47,CRP,1706-12-30
+47,Release D,1707-12-30
+48,ER Registration,1700-12-30
+48,ER Triage,1701-12-30
+48,ER Sepsis Triage,1702-12-30
+48,CRP,1703-12-30
+48,LacticAcid,1704-12-30
+48,Leucocytes,1705-12-30
+48,IV Liquid,1706-12-30
+48,IV Antibiotics,1707-12-30
+48,Admission IC,1708-12-30
+48,CRP,1709-12-30
+48,Leucocytes,1710-12-30
+48,LacticAcid,1711-12-30
+48,LacticAcid,1712-12-30
+48,Leucocytes,1713-12-30
+48,CRP,1714-12-30
+48,LacticAcid,1715-12-30
+48,Leucocytes,1716-12-30
+48,CRP,1717-12-30
+48,Leucocytes,1718-12-30
+48,CRP,1719-12-30
+48,LacticAcid,1720-12-30
+48,Leucocytes,1721-12-30
+48,CRP,1722-12-30
+48,LacticAcid,1723-12-30
+48,Admission NC,1724-12-30
+48,CRP,1725-12-30
+48,Leucocytes,1726-12-30
+48,CRP,1727-12-30
+48,Leucocytes,1728-12-30
+48,Release A,1729-12-30
+49,ER Registration,1700-12-30
+49,ER Triage,1701-12-30
+49,ER Sepsis Triage,1702-12-30
+49,CRP,1703-12-30
+49,LacticAcid,1704-12-30
+49,Leucocytes,1705-12-30
+49,IV Antibiotics,1706-12-30
+49,Admission NC,1707-12-30
+49,Leucocytes,1708-12-30
+49,CRP,1709-12-30
+49,CRP,1710-12-30
+49,Release A,1711-12-30
+49,Return ER,1712-12-30
+50,ER Registration,1700-12-30
+50,ER Triage,1701-12-30
+50,ER Sepsis Triage,1702-12-30
+50,Leucocytes,1703-12-30
+50,CRP,1704-12-30
+50,LacticAcid,1705-12-30
+50,Leucocytes,1706-12-30
+50,CRP,1707-12-30
+50,LacticAcid,1708-12-30
+50,IV Liquid,1709-12-30
+50,IV Antibiotics,1710-12-30
+50,Admission NC,1711-12-30
+50,CRP,1712-12-30
+50,Release A,1713-12-30
+51,ER Registration,1700-12-30
+51,ER Triage,1701-12-30
+51,ER Sepsis Triage,1702-12-30
+51,LacticAcid,1703-12-30
+51,CRP,1704-12-30
+51,Leucocytes,1705-12-30
+51,IV Liquid,1706-12-30
+51,IV Antibiotics,1707-12-30
+51,Admission IC,1708-12-30
+51,LacticAcid,1709-12-30
+51,Leucocytes,1710-12-30
+51,CRP,1711-12-30
+51,Admission NC,1712-12-30
+51,Leucocytes,1713-12-30
+51,CRP,1714-12-30
+51,Release A,1715-12-30
+52,ER Registration,1700-12-30
+52,ER Triage,1701-12-30
+52,ER Sepsis Triage,1702-12-30
+52,Leucocytes,1703-12-30
+52,LacticAcid,1704-12-30
+52,CRP,1705-12-30
+52,IV Liquid,1706-12-30
+52,IV Antibiotics,1707-12-30
+52,Admission NC,1708-12-30
+52,CRP,1709-12-30
+52,Leucocytes,1710-12-30
+52,Leucocytes,1711-12-30
+52,CRP,1712-12-30
+52,Leucocytes,1713-12-30
+52,CRP,1714-12-30
+52,Release A,1715-12-30
+53,ER Registration,1700-12-30
+53,ER Triage,1701-12-30
+53,ER Sepsis Triage,1702-12-30
+53,Leucocytes,1703-12-30
+53,Admission NC,1704-12-30
+53,Leucocytes,1705-12-30
+53,Release A,1706-12-30
+54,ER Registration,1700-12-30
+54,IV Liquid,1701-12-30
+54,ER Triage,1702-12-30
+54,ER Sepsis Triage,1703-12-30
+54,IV Antibiotics,1704-12-30
+54,CRP,1705-12-30
+54,Leucocytes,1706-12-30
+54,LacticAcid,1707-12-30
+54,Admission NC,1708-12-30
+54,Release A,1709-12-30
+55,ER Registration,1700-12-30
+55,ER Triage,1701-12-30
+55,ER Sepsis Triage,1702-12-30
+55,IV Liquid,1703-12-30
+55,IV Antibiotics,1704-12-30
+55,CRP,1705-12-30
+55,Leucocytes,1706-12-30
+55,LacticAcid,1707-12-30
+55,Admission NC,1708-12-30
+55,CRP,1709-12-30
+55,Leucocytes,1710-12-30
+55,Admission NC,1711-12-30
+55,Release A,1712-12-30
+56,ER Registration,1700-12-30
+56,ER Triage,1701-12-30
+56,ER Sepsis Triage,1702-12-30
+56,Leucocytes,1703-12-30
+56,CRP,1704-12-30
+56,LacticAcid,1705-12-30
+56,IV Liquid,1706-12-30
+56,IV Antibiotics,1707-12-30
+56,Admission NC,1708-12-30
+56,CRP,1709-12-30
+56,CRP,1710-12-30
+56,Release A,1711-12-30
+56,Return ER,1712-12-30
+57,ER Registration,1700-12-30
+57,ER Triage,1701-12-30
+57,ER Sepsis Triage,1702-12-30
+57,CRP,1703-12-30
+57,Leucocytes,1704-12-30
+57,LacticAcid,1705-12-30
+57,IV Liquid,1706-12-30
+57,IV Antibiotics,1707-12-30
+57,Admission NC,1708-12-30
+57,Admission NC,1709-12-30
+57,Release A,1710-12-30
+58,ER Registration,1700-12-30
+58,ER Triage,1701-12-30
+58,CRP,1702-12-30
+58,Leucocytes,1703-12-30
+58,LacticAcid,1704-12-30
+58,ER Sepsis Triage,1705-12-30
+58,IV Liquid,1706-12-30
+58,IV Antibiotics,1707-12-30
+58,Admission NC,1708-12-30
+58,Leucocytes,1709-12-30
+58,CRP,1710-12-30
+58,CRP,1711-12-30
+58,Release A,1712-12-30
+59,ER Registration,1700-12-30
+59,ER Triage,1701-12-30
+59,ER Sepsis Triage,1702-12-30
+59,CRP,1703-12-30
+59,Leucocytes,1704-12-30
+59,LacticAcid,1705-12-30
+59,IV Liquid,1706-12-30
+59,IV Antibiotics,1707-12-30
+60,ER Registration,1700-12-30
+60,ER Triage,1701-12-30
+60,ER Sepsis Triage,1702-12-30
+60,IV Liquid,1703-12-30
+60,LacticAcid,1704-12-30
+60,Leucocytes,1705-12-30
+60,CRP,1706-12-30
+60,IV Antibiotics,1707-12-30
+60,Admission NC,1708-12-30
+60,CRP,1709-12-30
+60,Leucocytes,1710-12-30
+60,Leucocytes,1711-12-30
+60,CRP,1712-12-30
+60,Release A,1713-12-30
+61,ER Registration,1700-12-30
+61,ER Triage,1701-12-30
+61,ER Sepsis Triage,1702-12-30
+61,Leucocytes,1703-12-30
+61,CRP,1704-12-30
+61,Admission NC,1705-12-30
+61,CRP,1706-12-30
+61,Leucocytes,1707-12-30
+61,Release A,1708-12-30
+62,ER Registration,1700-12-30
+62,ER Triage,1701-12-30
+62,ER Sepsis Triage,1702-12-30
+62,IV Liquid,1703-12-30
+62,IV Antibiotics,1704-12-30
+62,Leucocytes,1705-12-30
+62,LacticAcid,1706-12-30
+62,CRP,1707-12-30
+62,Admission IC,1708-12-30
+62,Leucocytes,1709-12-30
+62,LacticAcid,1710-12-30
+62,CRP,1711-12-30
+62,Admission NC,1712-12-30
+62,CRP,1713-12-30
+62,Leucocytes,1714-12-30
+62,Leucocytes,1715-12-30
+62,Release A,1716-12-30
+63,ER Registration,1700-12-30
+63,CRP,1701-12-30
+63,Leucocytes,1702-12-30
+63,LacticAcid,1703-12-30
+63,ER Triage,1704-12-30
+63,ER Sepsis Triage,1705-12-30
+63,IV Liquid,1706-12-30
+63,IV Antibiotics,1707-12-30
+63,Admission NC,1708-12-30
+63,CRP,1709-12-30
+63,Leucocytes,1710-12-30
+63,Release A,1711-12-30
+64,ER Registration,1700-12-30
+64,ER Triage,1701-12-30
+64,ER Sepsis Triage,1702-12-30
+64,Leucocytes,1703-12-30
+64,CRP,1704-12-30
+65,ER Registration,1700-12-30
+65,ER Triage,1701-12-30
+65,ER Sepsis Triage,1702-12-30
+65,Leucocytes,1703-12-30
+65,CRP,1704-12-30
+66,ER Registration,1700-12-30
+66,ER Triage,1701-12-30
+66,ER Sepsis Triage,1702-12-30
+66,IV Antibiotics,1703-12-30
+66,IV Liquid,1704-12-30
+66,Leucocytes,1705-12-30
+66,CRP,1706-12-30
+66,LacticAcid,1707-12-30
+66,Admission NC,1708-12-30
+66,Leucocytes,1709-12-30
+66,CRP,1710-12-30
+66,Release A,1711-12-30
+67,ER Registration,1700-12-30
+67,ER Triage,1701-12-30
+67,Leucocytes,1702-12-30
+67,CRP,1703-12-30
+67,LacticAcid,1704-12-30
+67,ER Sepsis Triage,1705-12-30
+67,IV Liquid,1706-12-30
+67,IV Antibiotics,1707-12-30
+67,Admission IC,1708-12-30
+67,Leucocytes,1709-12-30
+67,CRP,1710-12-30
+67,LacticAcid,1711-12-30
+68,ER Registration,1700-12-30
+68,ER Triage,1701-12-30
+68,LacticAcid,1702-12-30
+68,CRP,1703-12-30
+68,Leucocytes,1704-12-30
+68,ER Sepsis Triage,1705-12-30
+68,IV Liquid,1706-12-30
+68,IV Antibiotics,1707-12-30
+68,Admission NC,1708-12-30
+68,Leucocytes,1709-12-30
+68,CRP,1710-12-30
+68,CRP,1711-12-30
+68,Leucocytes,1712-12-30
+68,Leucocytes,1713-12-30
+68,CRP,1714-12-30
+68,Release A,1715-12-30
+69,ER Registration,1700-12-30
+69,ER Triage,1701-12-30
+69,ER Sepsis Triage,1702-12-30
+69,IV Liquid,1703-12-30
+69,IV Antibiotics,1704-12-30
+69,Admission IC,1705-12-30
+69,CRP,1706-12-30
+69,Leucocytes,1707-12-30
+69,LacticAcid,1708-12-30
+69,CRP,1709-12-30
+69,Leucocytes,1710-12-30
+69,LacticAcid,1711-12-30
+69,CRP,1712-12-30
+69,LacticAcid,1713-12-30
+69,Leucocytes,1714-12-30
+69,Leucocytes,1715-12-30
+69,CRP,1716-12-30
+69,LacticAcid,1717-12-30
+69,Leucocytes,1718-12-30
+69,CRP,1719-12-30
+69,LacticAcid,1720-12-30
+69,Admission NC,1721-12-30
+69,Leucocytes,1722-12-30
+69,CRP,1723-12-30
+69,Release A,1724-12-30
+69,Return ER,1725-12-30
+70,ER Registration,1700-12-30
+70,ER Triage,1701-12-30
+70,CRP,1702-12-30
+70,Leucocytes,1703-12-30
+70,LacticAcid,1704-12-30
+70,ER Sepsis Triage,1705-12-30
+70,IV Liquid,1706-12-30
+70,IV Antibiotics,1707-12-30
+70,Admission NC,1708-12-30
+70,Leucocytes,1709-12-30
+70,Admission NC,1710-12-30
+70,Leucocytes,1711-12-30
+70,Leucocytes,1712-12-30
+70,Leucocytes,1713-12-30
+70,Leucocytes,1714-12-30
+70,Release A,1715-12-30
+70,Return ER,1716-12-30
+71,IV Liquid,1700-12-30
+71,ER Registration,1701-12-30
+71,ER Triage,1702-12-30
+71,ER Sepsis Triage,1703-12-30
+71,LacticAcid,1704-12-30
+71,Leucocytes,1705-12-30
+71,CRP,1706-12-30
+71,IV Antibiotics,1707-12-30
+71,Admission IC,1708-12-30
+71,LacticAcid,1709-12-30
+71,CRP,1710-12-30
+71,Leucocytes,1711-12-30
+71,Leucocytes,1712-12-30
+71,CRP,1713-12-30
+71,LacticAcid,1714-12-30
+71,Leucocytes,1715-12-30
+71,LacticAcid,1716-12-30
+71,CRP,1717-12-30
+71,CRP,1718-12-30
+71,Leucocytes,1719-12-30
+71,LacticAcid,1720-12-30
+71,CRP,1721-12-30
+71,LacticAcid,1722-12-30
+71,Leucocytes,1723-12-30
+71,LacticAcid,1724-12-30
+71,Leucocytes,1725-12-30
+71,CRP,1726-12-30
+71,CRP,1727-12-30
+71,Leucocytes,1728-12-30
+71,LacticAcid,1729-12-30
+71,Admission NC,1730-12-30
+71,CRP,1731-12-30
+71,Leucocytes,1732-12-30
+71,Leucocytes,1733-12-30
+71,Release A,1734-12-30
+71,Return ER,1735-12-30
+72,ER Registration,1700-12-30
+72,ER Triage,1701-12-30
+72,ER Sepsis Triage,1702-12-30
+72,Leucocytes,1703-12-30
+72,CRP,1704-12-30
+73,ER Registration,1700-12-30
+73,ER Triage,1701-12-30
+73,ER Sepsis Triage,1702-12-30
+73,CRP,1703-12-30
+73,Leucocytes,1704-12-30
+74,ER Registration,1700-12-30
+74,ER Triage,1701-12-30
+74,ER Sepsis Triage,1702-12-30
+74,Leucocytes,1703-12-30
+74,CRP,1704-12-30
+74,LacticAcid,1705-12-30
+74,IV Liquid,1706-12-30
+74,IV Antibiotics,1707-12-30
+74,Admission NC,1708-12-30
+74,CRP,1709-12-30
+74,Release A,1710-12-30
+74,Return ER,1711-12-30
+75,ER Registration,1700-12-30
+75,ER Triage,1701-12-30
+75,ER Sepsis Triage,1702-12-30
+75,Leucocytes,1703-12-30
+75,LacticAcid,1704-12-30
+75,CRP,1705-12-30
+75,Admission NC,1706-12-30
+75,LacticAcid,1707-12-30
+75,Leucocytes,1708-12-30
+75,CRP,1709-12-30
+75,Admission NC,1710-12-30
+75,Admission NC,1711-12-30
+75,Release C,1712-12-30
+76,ER Registration,1700-12-30
+76,ER Triage,1701-12-30
+76,ER Sepsis Triage,1702-12-30
+76,Leucocytes,1703-12-30
+76,LacticAcid,1704-12-30
+76,CRP,1705-12-30
+76,IV Antibiotics,1706-12-30
+77,ER Registration,1700-12-30
+77,ER Triage,1701-12-30
+77,ER Sepsis Triage,1702-12-30
+77,CRP,1703-12-30
+77,Leucocytes,1704-12-30
+77,LacticAcid,1705-12-30
+77,IV Antibiotics,1706-12-30
+77,IV Liquid,1707-12-30
+77,Admission NC,1708-12-30
+77,Leucocytes,1709-12-30
+77,CRP,1710-12-30
+77,Admission NC,1711-12-30
+77,CRP,1712-12-30
+77,Leucocytes,1713-12-30
+77,Release A,1714-12-30
+77,Return ER,1715-12-30
+78,ER Registration,1700-12-30
+78,ER Triage,1701-12-30
+78,ER Sepsis Triage,1702-12-30
+78,Leucocytes,1703-12-30
+78,LacticAcid,1704-12-30
+78,CRP,1705-12-30
+78,IV Liquid,1706-12-30
+78,IV Antibiotics,1707-12-30
+78,Admission NC,1708-12-30
+78,Leucocytes,1709-12-30
+78,CRP,1710-12-30
+78,CRP,1711-12-30
+78,Release A,1712-12-30
+79,CRP,1700-12-30
+79,Leucocytes,1701-12-30
+79,ER Registration,1702-12-30
+79,ER Triage,1703-12-30
+79,ER Sepsis Triage,1704-12-30
+79,Leucocytes,1705-12-30
+79,CRP,1706-12-30
+79,IV Liquid,1707-12-30
+79,IV Antibiotics,1708-12-30
+80,ER Registration,1700-12-30
+80,ER Triage,1701-12-30
+80,ER Sepsis Triage,1702-12-30
+80,IV Liquid,1703-12-30
+80,Leucocytes,1704-12-30
+80,CRP,1705-12-30
+80,LacticAcid,1706-12-30
+80,IV Antibiotics,1707-12-30
+80,Admission NC,1708-12-30
+80,Leucocytes,1709-12-30
+80,CRP,1710-12-30
+80,CRP,1711-12-30
+80,Release A,1712-12-30
+81,ER Registration,1700-12-30
+81,ER Triage,1701-12-30
+81,ER Sepsis Triage,1702-12-30
+81,CRP,1703-12-30
+81,LacticAcid,1704-12-30
+81,Leucocytes,1705-12-30
+81,IV Liquid,1706-12-30
+81,IV Antibiotics,1707-12-30
+81,Admission IC,1708-12-30
+81,LacticAcid,1709-12-30
+81,Leucocytes,1710-12-30
+81,CRP,1711-12-30
+81,LacticAcid,1712-12-30
+81,Leucocytes,1713-12-30
+81,CRP,1714-12-30
+81,LacticAcid,1715-12-30
+81,Admission NC,1716-12-30
+81,Leucocytes,1717-12-30
+81,CRP,1718-12-30
+81,Leucocytes,1719-12-30
+81,CRP,1720-12-30
+81,CRP,1721-12-30
+81,Leucocytes,1722-12-30
+81,Leucocytes,1723-12-30
+81,CRP,1724-12-30
+81,Leucocytes,1725-12-30
+81,CRP,1726-12-30
+81,Leucocytes,1727-12-30
+81,CRP,1728-12-30
+81,Release A,1729-12-30
+81,Return ER,1730-12-30
+82,ER Registration,1700-12-30
+82,ER Triage,1701-12-30
+82,ER Sepsis Triage,1702-12-30
+82,Leucocytes,1703-12-30
+82,LacticAcid,1704-12-30
+82,CRP,1705-12-30
+82,IV Antibiotics,1706-12-30
+82,IV Liquid,1707-12-30
+82,Admission NC,1708-12-30
+82,CRP,1709-12-30
+82,Leucocytes,1710-12-30
+82,Release A,1711-12-30
+82,Return ER,1712-12-30
+83,ER Registration,1700-12-30
+83,ER Triage,1701-12-30
+83,ER Sepsis Triage,1702-12-30
+83,LacticAcid,1703-12-30
+83,CRP,1704-12-30
+83,Leucocytes,1705-12-30
+83,IV Liquid,1706-12-30
+83,IV Antibiotics,1707-12-30
+83,Admission NC,1708-12-30
+83,Leucocytes,1709-12-30
+83,CRP,1710-12-30
+83,Release A,1711-12-30
+83,Return ER,1712-12-30
+84,ER Registration,1700-12-30
+84,ER Triage,1701-12-30
+84,ER Sepsis Triage,1702-12-30
+84,Leucocytes,1703-12-30
+84,LacticAcid,1704-12-30
+84,CRP,1705-12-30
+84,IV Antibiotics,1706-12-30
+84,IV Liquid,1707-12-30
+84,Admission NC,1708-12-30
+84,Admission NC,1709-12-30
+84,Leucocytes,1710-12-30
+84,CRP,1711-12-30
+84,CRP,1712-12-30
+84,Leucocytes,1713-12-30
+84,Release A,1714-12-30
+85,ER Registration,1700-12-30
+85,ER Triage,1701-12-30
+85,ER Sepsis Triage,1702-12-30
+85,Leucocytes,1703-12-30
+85,CRP,1704-12-30
+85,LacticAcid,1705-12-30
+85,IV Liquid,1706-12-30
+85,IV Antibiotics,1707-12-30
+85,Admission NC,1708-12-30
+85,Leucocytes,1709-12-30
+85,CRP,1710-12-30
+85,Admission NC,1711-12-30
+85,Leucocytes,1712-12-30
+85,CRP,1713-12-30
+85,CRP,1714-12-30
+85,CRP,1715-12-30
+85,Leucocytes,1716-12-30
+85,Leucocytes,1717-12-30
+85,CRP,1718-12-30
+85,Leucocytes,1719-12-30
+85,Admission IC,1720-12-30
+85,Leucocytes,1721-12-30
+85,CRP,1722-12-30
+85,LacticAcid,1723-12-30
+85,Leucocytes,1724-12-30
+85,Leucocytes,1725-12-30
+85,Leucocytes,1726-12-30
+85,LacticAcid,1727-12-30
+85,Leucocytes,1728-12-30
+85,CRP,1729-12-30
+85,Leucocytes,1730-12-30
+85,Leucocytes,1731-12-30
+85,Leucocytes,1732-12-30
+85,Leucocytes,1733-12-30
+85,CRP,1734-12-30
+85,LacticAcid,1735-12-30
+85,Leucocytes,1736-12-30
+85,Leucocytes,1737-12-30
+85,CRP,1738-12-30
+85,LacticAcid,1739-12-30
+85,Admission NC,1740-12-30
+85,Leucocytes,1741-12-30
+85,CRP,1742-12-30
+85,Release A,1743-12-30
+85,Return ER,1744-12-30
+86,ER Registration,1700-12-30
+86,ER Triage,1701-12-30
+86,ER Sepsis Triage,1702-12-30
+86,IV Antibiotics,1703-12-30
+86,IV Liquid,1704-12-30
+86,Leucocytes,1705-12-30
+86,CRP,1706-12-30
+86,LacticAcid,1707-12-30
+86,Admission NC,1708-12-30
+86,CRP,1709-12-30
+86,Leucocytes,1710-12-30
+86,Admission NC,1711-12-30
+86,CRP,1712-12-30
+86,Leucocytes,1713-12-30
+86,Release A,1714-12-30
+86,Return ER,1715-12-30
+87,ER Registration,1700-12-30
+87,ER Triage,1701-12-30
+87,ER Sepsis Triage,1702-12-30
+87,Leucocytes,1703-12-30
+87,LacticAcid,1704-12-30
+87,CRP,1705-12-30
+87,IV Liquid,1706-12-30
+87,IV Antibiotics,1707-12-30
+87,Admission NC,1708-12-30
+87,Admission NC,1709-12-30
+87,CRP,1710-12-30
+87,Leucocytes,1711-12-30
+87,Release A,1712-12-30
+88,ER Registration,1700-12-30
+88,Leucocytes,1701-12-30
+88,CRP,1702-12-30
+88,LacticAcid,1703-12-30
+88,IV Liquid,1704-12-30
+88,ER Triage,1705-12-30
+88,ER Sepsis Triage,1706-12-30
+88,IV Antibiotics,1707-12-30
+89,ER Registration,1700-12-30
+89,ER Triage,1701-12-30
+89,ER Sepsis Triage,1702-12-30
+89,Leucocytes,1703-12-30
+89,CRP,1704-12-30
+89,Admission NC,1705-12-30
+89,Admission NC,1706-12-30
+89,Leucocytes,1707-12-30
+89,CRP,1708-12-30
+89,CRP,1709-12-30
+89,Leucocytes,1710-12-30
+89,Leucocytes,1711-12-30
+89,Leucocytes,1712-12-30
+89,CRP,1713-12-30
+89,Release A,1714-12-30
+90,ER Registration,1700-12-30
+90,CRP,1701-12-30
+90,Leucocytes,1702-12-30
+90,LacticAcid,1703-12-30
+90,ER Triage,1704-12-30
+90,ER Sepsis Triage,1705-12-30
+90,IV Liquid,1706-12-30
+90,IV Antibiotics,1707-12-30
+90,Admission NC,1708-12-30
+90,CRP,1709-12-30
+90,Leucocytes,1710-12-30
+90,CRP,1711-12-30
+90,Release A,1712-12-30
+91,ER Registration,1700-12-30
+91,ER Triage,1701-12-30
+91,ER Sepsis Triage,1702-12-30
+91,Leucocytes,1703-12-30
+91,CRP,1704-12-30
+91,LacticAcid,1705-12-30
+91,IV Antibiotics,1706-12-30
+91,IV Liquid,1707-12-30
+91,Admission IC,1708-12-30
+91,CRP,1709-12-30
+91,Leucocytes,1710-12-30
+91,LacticAcid,1711-12-30
+91,Leucocytes,1712-12-30
+91,LacticAcid,1713-12-30
+91,LacticAcid,1714-12-30
+91,CRP,1715-12-30
+91,Leucocytes,1716-12-30
+91,Leucocytes,1717-12-30
+91,CRP,1718-12-30
+91,LacticAcid,1719-12-30
+91,Leucocytes,1720-12-30
+91,LacticAcid,1721-12-30
+91,CRP,1722-12-30
+91,LacticAcid,1723-12-30
+91,Leucocytes,1724-12-30
+91,CRP,1725-12-30
+91,Admission NC,1726-12-30
+91,Leucocytes,1727-12-30
+91,CRP,1728-12-30
+91,Leucocytes,1729-12-30
+91,Leucocytes,1730-12-30
+91,CRP,1731-12-30
+91,Leucocytes,1732-12-30
+91,CRP,1733-12-30
+91,Leucocytes,1734-12-30
+91,Release A,1735-12-30
+92,ER Registration,1700-12-30
+92,ER Triage,1701-12-30
+92,Leucocytes,1702-12-30
+92,CRP,1703-12-30
+92,ER Sepsis Triage,1704-12-30
+93,ER Registration,1700-12-30
+93,ER Triage,1701-12-30
+93,ER Sepsis Triage,1702-12-30
+93,CRP,1703-12-30
+93,Leucocytes,1704-12-30
+94,ER Registration,1700-12-30
+94,ER Triage,1701-12-30
+94,ER Sepsis Triage,1702-12-30
+94,CRP,1703-12-30
+94,Leucocytes,1704-12-30
+94,LacticAcid,1705-12-30
+94,IV Antibiotics,1706-12-30
+94,IV Liquid,1707-12-30
+94,Admission NC,1708-12-30
+94,LacticAcid,1709-12-30
+94,CRP,1710-12-30
+94,Leucocytes,1711-12-30
+94,Admission IC,1712-12-30
+94,Leucocytes,1713-12-30
+94,CRP,1714-12-30
+94,LacticAcid,1715-12-30
+94,Admission NC,1716-12-30
+94,CRP,1717-12-30
+94,Leucocytes,1718-12-30
+94,Leucocytes,1719-12-30
+94,CRP,1720-12-30
+94,Leucocytes,1721-12-30
+94,CRP,1722-12-30
+94,Leucocytes,1723-12-30
+94,CRP,1724-12-30
+94,Leucocytes,1725-12-30
+94,CRP,1726-12-30
+94,Leucocytes,1727-12-30
+94,CRP,1728-12-30
+94,Leucocytes,1729-12-30
+94,CRP,1730-12-30
+94,Leucocytes,1731-12-30
+94,CRP,1732-12-30
+94,Leucocytes,1733-12-30
+94,CRP,1734-12-30
+94,CRP,1735-12-30
+94,Leucocytes,1736-12-30
+94,Leucocytes,1737-12-30
+94,CRP,1738-12-30
+94,CRP,1739-12-30
+94,Leucocytes,1740-12-30
+94,Leucocytes,1741-12-30
+94,CRP,1742-12-30
+94,CRP,1743-12-30
+94,Leucocytes,1744-12-30
+94,CRP,1745-12-30
+94,Leucocytes,1746-12-30
+94,Admission NC,1747-12-30
+94,Leucocytes,1748-12-30
+94,CRP,1749-12-30
+94,Release A,1750-12-30
+94,Return ER,1751-12-30
+95,ER Registration,1700-12-30
+95,ER Triage,1701-12-30
+95,ER Sepsis Triage,1702-12-30
+95,CRP,1703-12-30
+95,Leucocytes,1704-12-30
+95,LacticAcid,1705-12-30
+95,IV Liquid,1706-12-30
+95,IV Antibiotics,1707-12-30
+96,ER Registration,1700-12-30
+96,CRP,1701-12-30
+96,Leucocytes,1702-12-30
+96,ER Triage,1703-12-30
+96,ER Sepsis Triage,1704-12-30
+97,ER Registration,1700-12-30
+97,ER Triage,1701-12-30
+97,ER Sepsis Triage,1702-12-30
+97,Leucocytes,1703-12-30
+97,CRP,1704-12-30
+97,LacticAcid,1705-12-30
+97,IV Antibiotics,1706-12-30
+97,Admission NC,1707-12-30
+97,IV Liquid,1708-12-30
+97,Leucocytes,1709-12-30
+97,CRP,1710-12-30
+97,CRP,1711-12-30
+97,Leucocytes,1712-12-30
+97,Admission NC,1713-12-30
+97,Admission NC,1714-12-30
+97,Release A,1715-12-30
+97,Return ER,1716-12-30
+98,ER Registration,1700-12-30
+98,ER Triage,1701-12-30
+98,ER Sepsis Triage,1702-12-30
+98,Leucocytes,1703-12-30
+98,CRP,1704-12-30
+98,Admission NC,1705-12-30
+98,CRP,1706-12-30
+98,Release A,1707-12-30
+99,ER Registration,1700-12-30
+99,ER Triage,1701-12-30
+99,ER Sepsis Triage,1702-12-30
+99,CRP,1703-12-30
+99,Leucocytes,1704-12-30
+99,LacticAcid,1705-12-30
+99,Admission NC,1706-12-30
+99,Release A,1707-12-30
+99,Return ER,1708-12-30
+100,ER Registration,1700-12-30
+100,CRP,1701-12-30
+100,Leucocytes,1702-12-30
+100,LacticAcid,1703-12-30
+100,ER Triage,1704-12-30
+100,ER Sepsis Triage,1705-12-30
+100,IV Antibiotics,1706-12-30
+100,Admission NC,1707-12-30
+100,Release A,1708-12-30
+101,ER Registration,1700-12-30
+101,ER Triage,1701-12-30
+101,ER Sepsis Triage,1702-12-30
+101,Leucocytes,1703-12-30
+101,CRP,1704-12-30
+101,LacticAcid,1705-12-30
+101,IV Liquid,1706-12-30
+101,IV Antibiotics,1707-12-30
+101,Admission NC,1708-12-30
+101,Leucocytes,1709-12-30
+101,CRP,1710-12-30
+101,CRP,1711-12-30
+101,Leucocytes,1712-12-30
+101,Leucocytes,1713-12-30
+101,CRP,1714-12-30
+101,Release A,1715-12-30
+102,ER Registration,1700-12-30
+102,ER Triage,1701-12-30
+102,LacticAcid,1702-12-30
+102,Leucocytes,1703-12-30
+102,CRP,1704-12-30
+102,ER Sepsis Triage,1705-12-30
+102,IV Liquid,1706-12-30
+102,IV Antibiotics,1707-12-30
+102,Admission NC,1708-12-30
+102,LacticAcid,1709-12-30
+102,CRP,1710-12-30
+102,Leucocytes,1711-12-30
+102,Admission NC,1712-12-30
+102,Leucocytes,1713-12-30
+102,CRP,1714-12-30
+102,CRP,1715-12-30
+102,Leucocytes,1716-12-30
+102,Release A,1717-12-30
+102,Return ER,1718-12-30
+103,ER Registration,1700-12-30
+103,ER Triage,1701-12-30
+103,ER Sepsis Triage,1702-12-30
+103,CRP,1703-12-30
+103,LacticAcid,1704-12-30
+103,Leucocytes,1705-12-30
+103,IV Liquid,1706-12-30
+103,IV Antibiotics,1707-12-30
+103,Admission NC,1708-12-30
+103,Admission NC,1709-12-30
+103,CRP,1710-12-30
+103,Leucocytes,1711-12-30
+103,Release A,1712-12-30
+104,ER Registration,1700-12-30
+104,ER Triage,1701-12-30
+104,ER Sepsis Triage,1702-12-30
+104,LacticAcid,1703-12-30
+104,Leucocytes,1704-12-30
+104,CRP,1705-12-30
+104,IV Antibiotics,1706-12-30
+104,IV Liquid,1707-12-30
+104,Admission NC,1708-12-30
+104,Leucocytes,1709-12-30
+104,CRP,1710-12-30
+105,ER Registration,1700-12-30
+105,ER Triage,1701-12-30
+105,ER Sepsis Triage,1702-12-30
+105,Leucocytes,1703-12-30
+105,CRP,1704-12-30
+105,LacticAcid,1705-12-30
+105,Admission NC,1706-12-30
+105,CRP,1707-12-30
+105,Release A,1708-12-30
+106,Leucocytes,1700-12-30
+106,CRP,1701-12-30
+106,ER Registration,1702-12-30
+106,ER Triage,1703-12-30
+106,ER Sepsis Triage,1704-12-30
+107,ER Registration,1700-12-30
+107,ER Triage,1701-12-30
+107,ER Sepsis Triage,1702-12-30
+107,LacticAcid,1703-12-30
+107,CRP,1704-12-30
+107,Leucocytes,1705-12-30
+107,IV Liquid,1706-12-30
+107,IV Antibiotics,1707-12-30
+108,ER Registration,1700-12-30
+108,ER Triage,1701-12-30
+108,ER Sepsis Triage,1702-12-30
+108,Leucocytes,1703-12-30
+108,CRP,1704-12-30
+108,IV Antibiotics,1705-12-30
+108,Leucocytes,1706-12-30
+108,CRP,1707-12-30
+109,ER Registration,1700-12-30
+109,ER Triage,1701-12-30
+109,ER Sepsis Triage,1702-12-30
+109,Leucocytes,1703-12-30
+109,LacticAcid,1704-12-30
+109,CRP,1705-12-30
+109,IV Liquid,1706-12-30
+109,IV Antibiotics,1707-12-30
+109,Admission NC,1708-12-30
+109,Admission NC,1709-12-30
+109,CRP,1710-12-30
+109,Leucocytes,1711-12-30
+109,Admission NC,1712-12-30
+109,CRP,1713-12-30
+109,Leucocytes,1714-12-30
+109,Release A,1715-12-30
+110,ER Registration,1700-12-30
+110,ER Triage,1701-12-30
+110,ER Sepsis Triage,1702-12-30
+111,ER Registration,1700-12-30
+111,ER Triage,1701-12-30
+111,ER Sepsis Triage,1702-12-30
+111,IV Liquid,1703-12-30
+111,IV Antibiotics,1704-12-30
+111,LacticAcid,1705-12-30
+111,CRP,1706-12-30
+111,Leucocytes,1707-12-30
+112,ER Registration,1700-12-30
+112,LacticAcid,1701-12-30
+112,Leucocytes,1702-12-30
+112,CRP,1703-12-30
+112,ER Triage,1704-12-30
+112,ER Sepsis Triage,1705-12-30
+112,IV Liquid,1706-12-30
+112,IV Antibiotics,1707-12-30
+112,Leucocytes,1708-12-30
+113,ER Registration,1700-12-30
+113,ER Triage,1701-12-30
+113,ER Sepsis Triage,1702-12-30
+113,Leucocytes,1703-12-30
+113,LacticAcid,1704-12-30
+113,CRP,1705-12-30
+113,IV Liquid,1706-12-30
+113,IV Antibiotics,1707-12-30
+114,ER Registration,1700-12-30
+114,ER Triage,1701-12-30
+114,ER Sepsis Triage,1702-12-30
+114,IV Antibiotics,1703-12-30
+114,CRP,1704-12-30
+114,LacticAcid,1705-12-30
+114,Leucocytes,1706-12-30
+114,Admission NC,1707-12-30
+114,Leucocytes,1708-12-30
+114,CRP,1709-12-30
+114,Release A,1710-12-30
+114,Return ER,1711-12-30
+115,ER Registration,1700-12-30
+115,ER Triage,1701-12-30
+115,ER Sepsis Triage,1702-12-30
+115,IV Liquid,1703-12-30
+115,Leucocytes,1704-12-30
+115,CRP,1705-12-30
+115,LacticAcid,1706-12-30
+115,IV Antibiotics,1707-12-30
+115,Admission NC,1708-12-30
+115,CRP,1709-12-30
+115,Leucocytes,1710-12-30
+115,Leucocytes,1711-12-30
+115,CRP,1712-12-30
+115,CRP,1713-12-30
+115,Leucocytes,1714-12-30
+115,Leucocytes,1715-12-30
+115,Leucocytes,1716-12-30
+115,Leucocytes,1717-12-30
+115,Leucocytes,1718-12-30
+115,CRP,1719-12-30
+115,Leucocytes,1720-12-30
+115,CRP,1721-12-30
+115,Leucocytes,1722-12-30
+115,CRP,1723-12-30
+115,Leucocytes,1724-12-30
+115,Leucocytes,1725-12-30
+115,Release A,1726-12-30
+116,ER Registration,1700-12-30
+116,ER Triage,1701-12-30
+116,ER Sepsis Triage,1702-12-30
+116,IV Liquid,1703-12-30
+116,IV Antibiotics,1704-12-30
+116,Leucocytes,1705-12-30
+116,LacticAcid,1706-12-30
+116,CRP,1707-12-30
+117,ER Registration,1700-12-30
+117,ER Triage,1701-12-30
+117,ER Sepsis Triage,1702-12-30
+118,IV Liquid,1700-12-30
+118,ER Registration,1701-12-30
+118,ER Triage,1702-12-30
+118,ER Sepsis Triage,1703-12-30
+118,CRP,1704-12-30
+118,LacticAcid,1705-12-30
+118,Leucocytes,1706-12-30
+118,IV Antibiotics,1707-12-30
+118,Admission NC,1708-12-30
+118,CRP,1709-12-30
+118,CRP,1710-12-30
+118,Leucocytes,1711-12-30
+118,CRP,1712-12-30
+118,Leucocytes,1713-12-30
+118,CRP,1714-12-30
+118,Leucocytes,1715-12-30
+118,CRP,1716-12-30
+118,Release C,1717-12-30
+119,ER Registration,1700-12-30
+119,ER Triage,1701-12-30
+119,ER Sepsis Triage,1702-12-30
+119,LacticAcid,1703-12-30
+119,Leucocytes,1704-12-30
+119,CRP,1705-12-30
+119,IV Liquid,1706-12-30
+119,IV Antibiotics,1707-12-30
+119,Admission NC,1708-12-30
+119,CRP,1709-12-30
+119,Leucocytes,1710-12-30
+119,Leucocytes,1711-12-30
+119,CRP,1712-12-30
+119,Leucocytes,1713-12-30
+119,CRP,1714-12-30
+119,CRP,1715-12-30
+119,Leucocytes,1716-12-30
+119,Leucocytes,1717-12-30
+119,CRP,1718-12-30
+119,Release A,1719-12-30
+120,ER Registration,1700-12-30
+120,LacticAcid,1701-12-30
+120,Leucocytes,1702-12-30
+120,CRP,1703-12-30
+120,IV Liquid,1704-12-30
+120,ER Triage,1705-12-30
+120,ER Sepsis Triage,1706-12-30
+120,IV Antibiotics,1707-12-30
+120,Admission NC,1708-12-30
+120,CRP,1709-12-30
+120,Leucocytes,1710-12-30
+120,Release A,1711-12-30
+121,ER Registration,1700-12-30
+121,ER Triage,1701-12-30
+121,ER Sepsis Triage,1702-12-30
+121,Leucocytes,1703-12-30
+121,CRP,1704-12-30
+121,LacticAcid,1705-12-30
+121,IV Liquid,1706-12-30
+121,IV Antibiotics,1707-12-30
+121,Admission NC,1708-12-30
+121,Leucocytes,1709-12-30
+121,Leucocytes,1710-12-30
+121,CRP,1711-12-30
+121,CRP,1712-12-30
+121,Leucocytes,1713-12-30
+121,CRP,1714-12-30
+121,Leucocytes,1715-12-30
+121,Leucocytes,1716-12-30
+121,CRP,1717-12-30
+121,Leucocytes,1718-12-30
+121,CRP,1719-12-30
+121,Leucocytes,1720-12-30
+121,CRP,1721-12-30
+121,Release A,1722-12-30
+122,ER Registration,1700-12-30
+122,ER Triage,1701-12-30
+122,ER Sepsis Triage,1702-12-30
+123,ER Registration,1700-12-30
+123,ER Triage,1701-12-30
+123,ER Sepsis Triage,1702-12-30
+123,Leucocytes,1703-12-30
+123,CRP,1704-12-30
+123,LacticAcid,1705-12-30
+123,LacticAcid,1706-12-30
+123,IV Liquid,1707-12-30
+123,IV Antibiotics,1708-12-30
+123,Admission NC,1709-12-30
+123,Leucocytes,1710-12-30
+123,CRP,1711-12-30
+123,Admission NC,1712-12-30
+123,CRP,1713-12-30
+123,Leucocytes,1714-12-30
+123,CRP,1715-12-30
+123,Leucocytes,1716-12-30
+123,Release A,1717-12-30
+123,Return ER,1718-12-30
+124,ER Registration,1700-12-30
+124,ER Triage,1701-12-30
+124,ER Sepsis Triage,1702-12-30
+124,IV Liquid,1703-12-30
+124,LacticAcid,1704-12-30
+124,Leucocytes,1705-12-30
+124,CRP,1706-12-30
+124,IV Antibiotics,1707-12-30
+124,Admission NC,1708-12-30
+124,CRP,1709-12-30
+124,LacticAcid,1710-12-30
+124,Leucocytes,1711-12-30
+124,Leucocytes,1712-12-30
+124,Leucocytes,1713-12-30
+124,CRP,1714-12-30
+124,LacticAcid,1715-12-30
+124,Release A,1716-12-30
+125,ER Registration,1700-12-30
+125,ER Triage,1701-12-30
+125,Leucocytes,1702-12-30
+125,LacticAcid,1703-12-30
+125,CRP,1704-12-30
+125,ER Sepsis Triage,1705-12-30
+125,IV Liquid,1706-12-30
+125,IV Antibiotics,1707-12-30
+125,Admission NC,1708-12-30
+125,Admission NC,1709-12-30
+125,Leucocytes,1710-12-30
+125,CRP,1711-12-30
+125,Release A,1712-12-30
+125,Return ER,1713-12-30
+126,ER Registration,1700-12-30
+126,ER Triage,1701-12-30
+126,ER Sepsis Triage,1702-12-30
+126,IV Liquid,1703-12-30
+126,CRP,1704-12-30
+126,Leucocytes,1705-12-30
+126,LacticAcid,1706-12-30
+126,IV Antibiotics,1707-12-30
+126,Admission NC,1708-12-30
+126,CRP,1709-12-30
+126,Leucocytes,1710-12-30
+126,CRP,1711-12-30
+126,Leucocytes,1712-12-30
+126,Release A,1713-12-30
+127,ER Registration,1700-12-30
+127,ER Triage,1701-12-30
+127,ER Sepsis Triage,1702-12-30
+127,Leucocytes,1703-12-30
+127,CRP,1704-12-30
+127,LacticAcid,1705-12-30
+127,Admission NC,1706-12-30
+127,Leucocytes,1707-12-30
+127,CRP,1708-12-30
+127,Admission NC,1709-12-30
+127,Release A,1710-12-30
+128,ER Registration,1700-12-30
+128,ER Triage,1701-12-30
+128,ER Sepsis Triage,1702-12-30
+128,CRP,1703-12-30
+128,LacticAcid,1704-12-30
+128,Leucocytes,1705-12-30
+129,ER Registration,1700-12-30
+129,ER Triage,1701-12-30
+129,ER Sepsis Triage,1702-12-30
+129,CRP,1703-12-30
+129,LacticAcid,1704-12-30
+129,Leucocytes,1705-12-30
+129,IV Liquid,1706-12-30
+129,IV Antibiotics,1707-12-30
+129,Admission NC,1708-12-30
+129,Leucocytes,1709-12-30
+129,Admission NC,1710-12-30
+129,CRP,1711-12-30
+129,CRP,1712-12-30
+129,Leucocytes,1713-12-30
+129,Leucocytes,1714-12-30
+129,Leucocytes,1715-12-30
+129,Leucocytes,1716-12-30
+129,CRP,1717-12-30
+129,Release D,1718-12-30
+130,ER Registration,1700-12-30
+130,ER Triage,1701-12-30
+130,IV Liquid,1702-12-30
+130,Leucocytes,1703-12-30
+130,CRP,1704-12-30
+130,LacticAcid,1705-12-30
+130,ER Sepsis Triage,1706-12-30
+130,IV Antibiotics,1707-12-30
+131,ER Registration,1700-12-30
+131,ER Triage,1701-12-30
+131,ER Sepsis Triage,1702-12-30
+131,IV Liquid,1703-12-30
+131,LacticAcid,1704-12-30
+131,CRP,1705-12-30
+131,Leucocytes,1706-12-30
+131,IV Antibiotics,1707-12-30
+131,Admission NC,1708-12-30
+131,Leucocytes,1709-12-30
+131,CRP,1710-12-30
+131,CRP,1711-12-30
+131,Release B,1712-12-30
+132,ER Registration,1700-12-30
+132,ER Triage,1701-12-30
+132,ER Sepsis Triage,1702-12-30
+132,LacticAcid,1703-12-30
+132,CRP,1704-12-30
+132,Leucocytes,1705-12-30
+132,IV Liquid,1706-12-30
+132,IV Antibiotics,1707-12-30
+132,Admission IC,1708-12-30
+132,Leucocytes,1709-12-30
+132,LacticAcid,1710-12-30
+132,CRP,1711-12-30
+132,Admission NC,1712-12-30
+132,Release A,1713-12-30
+133,ER Registration,1700-12-30
+133,ER Triage,1701-12-30
+133,ER Sepsis Triage,1702-12-30
+133,Leucocytes,1703-12-30
+133,CRP,1704-12-30
+133,LacticAcid,1705-12-30
+133,IV Liquid,1706-12-30
+133,IV Antibiotics,1707-12-30
+133,Admission NC,1708-12-30
+133,Leucocytes,1709-12-30
+133,CRP,1710-12-30
+133,Leucocytes,1711-12-30
+133,CRP,1712-12-30
+133,CRP,1713-12-30
+133,Leucocytes,1714-12-30
+133,Leucocytes,1715-12-30
+133,CRP,1716-12-30
+133,Leucocytes,1717-12-30
+133,CRP,1718-12-30
+133,Leucocytes,1719-12-30
+133,CRP,1720-12-30
+133,Release A,1721-12-30
+133,Leucocytes,1722-12-30
+133,Return ER,1723-12-30
+134,ER Registration,1700-12-30
+134,ER Triage,1701-12-30
+134,ER Sepsis Triage,1702-12-30
+134,CRP,1703-12-30
+134,Leucocytes,1704-12-30
+134,IV Liquid,1705-12-30
+134,IV Antibiotics,1706-12-30
+134,Admission NC,1707-12-30
+134,Leucocytes,1708-12-30
+134,CRP,1709-12-30
+134,Admission IC,1710-12-30
+134,CRP,1711-12-30
+134,LacticAcid,1712-12-30
+134,Leucocytes,1713-12-30
+134,CRP,1714-12-30
+134,LacticAcid,1715-12-30
+134,Leucocytes,1716-12-30
+134,Leucocytes,1717-12-30
+134,CRP,1718-12-30
+134,LacticAcid,1719-12-30
+134,Leucocytes,1720-12-30
+134,LacticAcid,1721-12-30
+134,CRP,1722-12-30
+134,LacticAcid,1723-12-30
+134,CRP,1724-12-30
+134,Leucocytes,1725-12-30
+134,CRP,1726-12-30
+134,Leucocytes,1727-12-30
+134,LacticAcid,1728-12-30
+134,LacticAcid,1729-12-30
+134,Leucocytes,1730-12-30
+134,CRP,1731-12-30
+134,LacticAcid,1732-12-30
+134,CRP,1733-12-30
+134,Leucocytes,1734-12-30
+134,Leucocytes,1735-12-30
+134,CRP,1736-12-30
+134,LacticAcid,1737-12-30
+134,Leucocytes,1738-12-30
+134,CRP,1739-12-30
+134,LacticAcid,1740-12-30
+134,CRP,1741-12-30
+134,Leucocytes,1742-12-30
+134,LacticAcid,1743-12-30
+134,LacticAcid,1744-12-30
+134,Leucocytes,1745-12-30
+134,CRP,1746-12-30
+134,Leucocytes,1747-12-30
+134,LacticAcid,1748-12-30
+134,CRP,1749-12-30
+134,Admission NC,1750-12-30
+134,Release A,1751-12-30
+135,ER Registration,1700-12-30
+135,ER Triage,1701-12-30
+135,IV Liquid,1702-12-30
+135,CRP,1703-12-30
+135,Leucocytes,1704-12-30
+135,LacticAcid,1705-12-30
+135,ER Sepsis Triage,1706-12-30
+135,IV Antibiotics,1707-12-30
+135,Admission NC,1708-12-30
+135,Release A,1709-12-30
+136,ER Registration,1700-12-30
+136,ER Triage,1701-12-30
+136,ER Sepsis Triage,1702-12-30
+136,Leucocytes,1703-12-30
+136,CRP,1704-12-30
+136,LacticAcid,1705-12-30
+136,IV Liquid,1706-12-30
+136,IV Antibiotics,1707-12-30
+136,Admission NC,1708-12-30
+136,Leucocytes,1709-12-30
+136,CRP,1710-12-30
+136,Release A,1711-12-30
+137,ER Registration,1700-12-30
+137,ER Triage,1701-12-30
+137,Leucocytes,1702-12-30
+137,LacticAcid,1703-12-30
+137,CRP,1704-12-30
+137,ER Sepsis Triage,1705-12-30
+137,IV Antibiotics,1706-12-30
+137,Admission NC,1707-12-30
+137,Admission NC,1708-12-30
+137,Leucocytes,1709-12-30
+137,CRP,1710-12-30
+137,CRP,1711-12-30
+137,Leucocytes,1712-12-30
+137,Release A,1713-12-30
+137,Return ER,1714-12-30
+138,ER Registration,1700-12-30
+138,ER Triage,1701-12-30
+138,ER Sepsis Triage,1702-12-30
+138,Leucocytes,1703-12-30
+138,CRP,1704-12-30
+138,LacticAcid,1705-12-30
+138,IV Liquid,1706-12-30
+138,IV Antibiotics,1707-12-30
+138,Leucocytes,1708-12-30
+138,Admission NC,1709-12-30
+138,CRP,1710-12-30
+138,Leucocytes,1711-12-30
+138,Release A,1712-12-30
+138,Return ER,1713-12-30
+139,ER Registration,1700-12-30
+139,ER Triage,1701-12-30
+139,ER Sepsis Triage,1702-12-30
+139,LacticAcid,1703-12-30
+139,Leucocytes,1704-12-30
+139,CRP,1705-12-30
+139,Admission NC,1706-12-30
+139,CRP,1707-12-30
+139,Leucocytes,1708-12-30
+139,Release A,1709-12-30
+140,ER Registration,1700-12-30
+140,ER Triage,1701-12-30
+140,ER Sepsis Triage,1702-12-30
+141,ER Registration,1700-12-30
+141,ER Triage,1701-12-30
+141,ER Sepsis Triage,1702-12-30
+141,LacticAcid,1703-12-30
+141,CRP,1704-12-30
+141,Leucocytes,1705-12-30
+141,IV Antibiotics,1706-12-30
+141,Admission NC,1707-12-30
+141,LacticAcid,1708-12-30
+141,IV Liquid,1709-12-30
+141,Leucocytes,1710-12-30
+141,CRP,1711-12-30
+141,Release A,1712-12-30
+142,ER Registration,1700-12-30
+142,ER Triage,1701-12-30
+142,ER Sepsis Triage,1702-12-30
+142,CRP,1703-12-30
+142,LacticAcid,1704-12-30
+142,Leucocytes,1705-12-30
+142,IV Liquid,1706-12-30
+142,IV Antibiotics,1707-12-30
+142,Admission NC,1708-12-30
+142,Admission NC,1709-12-30
+142,CRP,1710-12-30
+142,CRP,1711-12-30
+142,Leucocytes,1712-12-30
+142,Leucocytes,1713-12-30
+142,CRP,1714-12-30
+142,Admission NC,1715-12-30
+142,Release A,1716-12-30
+143,ER Registration,1700-12-30
+143,ER Triage,1701-12-30
+143,ER Sepsis Triage,1702-12-30
+143,Leucocytes,1703-12-30
+143,CRP,1704-12-30
+143,LacticAcid,1705-12-30
+143,IV Liquid,1706-12-30
+143,IV Antibiotics,1707-12-30
+143,Admission NC,1708-12-30
+143,Leucocytes,1709-12-30
+143,Admission NC,1710-12-30
+143,CRP,1711-12-30
+143,Leucocytes,1712-12-30
+143,Release D,1713-12-30
+144,ER Registration,1700-12-30
+144,ER Triage,1701-12-30
+144,ER Sepsis Triage,1702-12-30
+144,IV Liquid,1703-12-30
+144,Leucocytes,1704-12-30
+144,CRP,1705-12-30
+144,LacticAcid,1706-12-30
+144,IV Antibiotics,1707-12-30
+144,Admission NC,1708-12-30
+144,Admission IC,1709-12-30
+144,LacticAcid,1710-12-30
+144,Leucocytes,1711-12-30
+144,CRP,1712-12-30
+144,LacticAcid,1713-12-30
+144,CRP,1714-12-30
+144,Leucocytes,1715-12-30
+144,Admission NC,1716-12-30
+144,Release B,1717-12-30
+145,ER Registration,1700-12-30
+145,ER Triage,1701-12-30
+145,ER Sepsis Triage,1702-12-30
+145,IV Liquid,1703-12-30
+145,CRP,1704-12-30
+145,Leucocytes,1705-12-30
+145,LacticAcid,1706-12-30
+145,IV Antibiotics,1707-12-30
+145,Admission NC,1708-12-30
+145,Leucocytes,1709-12-30
+145,CRP,1710-12-30
+145,Release A,1711-12-30
+145,Return ER,1712-12-30
+146,ER Registration,1700-12-30
+146,ER Triage,1701-12-30
+146,ER Sepsis Triage,1702-12-30
+146,LacticAcid,1703-12-30
+146,Leucocytes,1704-12-30
+146,CRP,1705-12-30
+146,IV Liquid,1706-12-30
+146,IV Antibiotics,1707-12-30
+146,Admission IC,1708-12-30
+146,Leucocytes,1709-12-30
+146,LacticAcid,1710-12-30
+146,CRP,1711-12-30
+146,Admission NC,1712-12-30
+146,Leucocytes,1713-12-30
+146,CRP,1714-12-30
+146,Leucocytes,1715-12-30
+146,CRP,1716-12-30
+146,Leucocytes,1717-12-30
+146,CRP,1718-12-30
+146,Leucocytes,1719-12-30
+146,CRP,1720-12-30
+146,Leucocytes,1721-12-30
+146,Leucocytes,1722-12-30
+146,Leucocytes,1723-12-30
+146,Leucocytes,1724-12-30
+146,Leucocytes,1725-12-30
+146,Leucocytes,1726-12-30
+146,Leucocytes,1727-12-30
+146,Leucocytes,1728-12-30
+146,Leucocytes,1729-12-30
+146,CRP,1730-12-30
+146,Leucocytes,1731-12-30
+146,Leucocytes,1732-12-30
+146,Leucocytes,1733-12-30
+146,Leucocytes,1734-12-30
+146,Leucocytes,1735-12-30
+146,Leucocytes,1736-12-30
+146,Leucocytes,1737-12-30
+146,CRP,1738-12-30
+146,Leucocytes,1739-12-30
+146,Leucocytes,1740-12-30
+146,CRP,1741-12-30
+146,Release A,1742-12-30
+147,ER Registration,1700-12-30
+147,IV Liquid,1701-12-30
+147,ER Triage,1702-12-30
+147,ER Sepsis Triage,1703-12-30
+147,IV Antibiotics,1704-12-30
+147,Leucocytes,1705-12-30
+147,LacticAcid,1706-12-30
+147,CRP,1707-12-30
+147,Admission NC,1708-12-30
+147,Leucocytes,1709-12-30
+147,LacticAcid,1710-12-30
+147,CRP,1711-12-30
+147,Leucocytes,1712-12-30
+147,CRP,1713-12-30
+147,Release A,1714-12-30
+147,Return ER,1715-12-30
+148,ER Registration,1700-12-30
+148,ER Triage,1701-12-30
+148,ER Sepsis Triage,1702-12-30
+148,IV Liquid,1703-12-30
+148,IV Antibiotics,1704-12-30
+148,CRP,1705-12-30
+148,LacticAcid,1706-12-30
+148,Leucocytes,1707-12-30
+148,Admission NC,1708-12-30
+148,Leucocytes,1709-12-30
+148,Release A,1710-12-30
+149,ER Registration,1700-12-30
+149,ER Triage,1701-12-30
+149,ER Sepsis Triage,1702-12-30
+149,LacticAcid,1703-12-30
+149,Leucocytes,1704-12-30
+149,CRP,1705-12-30
+149,IV Liquid,1706-12-30
+149,IV Antibiotics,1707-12-30
+149,Admission NC,1708-12-30
+149,Leucocytes,1709-12-30
+149,Leucocytes,1710-12-30
+149,CRP,1711-12-30
+149,Leucocytes,1712-12-30
+149,CRP,1713-12-30
+149,Leucocytes,1714-12-30
+149,CRP,1715-12-30
+149,Leucocytes,1716-12-30
+149,CRP,1717-12-30
+149,Release A,1718-12-30
+149,Return ER,1719-12-30
+150,ER Registration,1700-12-30
+150,ER Triage,1701-12-30
+150,Leucocytes,1702-12-30
+150,CRP,1703-12-30
+150,LacticAcid,1704-12-30
+150,ER Sepsis Triage,1705-12-30
+150,IV Liquid,1706-12-30
+150,IV Antibiotics,1707-12-30
+151,ER Registration,1700-12-30
+151,ER Triage,1701-12-30
+151,LacticAcid,1702-12-30
+151,Leucocytes,1703-12-30
+151,CRP,1704-12-30
+151,ER Sepsis Triage,1705-12-30
+151,IV Liquid,1706-12-30
+151,IV Antibiotics,1707-12-30
+152,ER Registration,1700-12-30
+152,ER Triage,1701-12-30
+152,LacticAcid,1702-12-30
+152,Leucocytes,1703-12-30
+152,CRP,1704-12-30
+152,ER Sepsis Triage,1705-12-30
+152,IV Liquid,1706-12-30
+152,IV Antibiotics,1707-12-30
+152,Admission NC,1708-12-30
+152,Admission NC,1709-12-30
+152,Leucocytes,1710-12-30
+152,CRP,1711-12-30
+152,Admission NC,1712-12-30
+152,Leucocytes,1713-12-30
+152,Leucocytes,1714-12-30
+152,CRP,1715-12-30
+152,Leucocytes,1716-12-30
+152,Leucocytes,1717-12-30
+152,CRP,1718-12-30
+152,Release A,1719-12-30
+153,ER Registration,1700-12-30
+153,ER Triage,1701-12-30
+153,Leucocytes,1702-12-30
+153,CRP,1703-12-30
+153,ER Sepsis Triage,1704-12-30
+154,ER Registration,1700-12-30
+154,ER Triage,1701-12-30
+154,ER Sepsis Triage,1702-12-30
+154,IV Antibiotics,1703-12-30
+154,CRP,1704-12-30
+154,Leucocytes,1705-12-30
+154,LacticAcid,1706-12-30
+154,Admission NC,1707-12-30
+154,Admission NC,1708-12-30
+154,CRP,1709-12-30
+154,Leucocytes,1710-12-30
+154,CRP,1711-12-30
+154,Leucocytes,1712-12-30
+154,Release A,1713-12-30
+155,ER Registration,1700-12-30
+155,ER Triage,1701-12-30
+155,ER Sepsis Triage,1702-12-30
+155,LacticAcid,1703-12-30
+155,Leucocytes,1704-12-30
+155,CRP,1705-12-30
+155,IV Liquid,1706-12-30
+155,IV Antibiotics,1707-12-30
+155,Admission IC,1708-12-30
+155,Leucocytes,1709-12-30
+155,LacticAcid,1710-12-30
+155,CRP,1711-12-30
+155,Admission NC,1712-12-30
+155,Leucocytes,1713-12-30
+155,CRP,1714-12-30
+155,Release A,1715-12-30
+156,ER Registration,1700-12-30
+156,ER Triage,1701-12-30
+156,ER Sepsis Triage,1702-12-30
+156,Leucocytes,1703-12-30
+156,LacticAcid,1704-12-30
+156,CRP,1705-12-30
+156,IV Liquid,1706-12-30
+156,IV Antibiotics,1707-12-30
+156,Admission NC,1708-12-30
+156,Admission NC,1709-12-30
+156,Release A,1710-12-30
+156,Return ER,1711-12-30
+157,ER Registration,1700-12-30
+157,ER Triage,1701-12-30
+157,Leucocytes,1702-12-30
+157,CRP,1703-12-30
+157,LacticAcid,1704-12-30
+157,ER Sepsis Triage,1705-12-30
+157,IV Liquid,1706-12-30
+157,IV Antibiotics,1707-12-30
+157,Admission NC,1708-12-30
+157,Leucocytes,1709-12-30
+157,Leucocytes,1710-12-30
+157,CRP,1711-12-30
+157,Leucocytes,1712-12-30
+157,CRP,1713-12-30
+157,Leucocytes,1714-12-30
+157,CRP,1715-12-30
+157,CRP,1716-12-30
+157,Leucocytes,1717-12-30
+157,CRP,1718-12-30
+157,CRP,1719-12-30
+157,Leucocytes,1720-12-30
+157,Leucocytes,1721-12-30
+157,Leucocytes,1722-12-30
+157,CRP,1723-12-30
+157,Release A,1724-12-30
+158,ER Registration,1700-12-30
+158,ER Triage,1701-12-30
+158,ER Sepsis Triage,1702-12-30
+158,LacticAcid,1703-12-30
+158,Leucocytes,1704-12-30
+158,CRP,1705-12-30
+158,IV Liquid,1706-12-30
+158,IV Antibiotics,1707-12-30
+158,Admission NC,1708-12-30
+158,Leucocytes,1709-12-30
+158,Leucocytes,1710-12-30
+158,Leucocytes,1711-12-30
+158,CRP,1712-12-30
+158,Release A,1713-12-30
+159,ER Registration,1700-12-30
+159,ER Triage,1701-12-30
+159,ER Sepsis Triage,1702-12-30
+159,CRP,1703-12-30
+159,Leucocytes,1704-12-30
+160,ER Registration,1700-12-30
+160,ER Triage,1701-12-30
+160,ER Sepsis Triage,1702-12-30
+160,Leucocytes,1703-12-30
+160,CRP,1704-12-30
+161,ER Registration,1700-12-30
+161,ER Triage,1701-12-30
+161,ER Sepsis Triage,1702-12-30
+161,CRP,1703-12-30
+161,Leucocytes,1704-12-30
+162,ER Registration,1700-12-30
+162,ER Triage,1701-12-30
+162,ER Sepsis Triage,1702-12-30
+162,Leucocytes,1703-12-30
+162,CRP,1704-12-30
+162,LacticAcid,1705-12-30
+162,IV Liquid,1706-12-30
+162,IV Antibiotics,1707-12-30
+162,Admission NC,1708-12-30
+162,CRP,1709-12-30
+162,Release A,1710-12-30
+162,Return ER,1711-12-30
+163,ER Registration,1700-12-30
+163,ER Triage,1701-12-30
+163,ER Sepsis Triage,1702-12-30
+163,LacticAcid,1703-12-30
+163,Leucocytes,1704-12-30
+163,CRP,1705-12-30
+163,IV Liquid,1706-12-30
+163,IV Antibiotics,1707-12-30
+163,Admission NC,1708-12-30
+163,Admission NC,1709-12-30
+163,CRP,1710-12-30
+163,Leucocytes,1711-12-30
+163,Leucocytes,1712-12-30
+163,CRP,1713-12-30
+163,Leucocytes,1714-12-30
+163,CRP,1715-12-30
+163,Leucocytes,1716-12-30
+163,CRP,1717-12-30
+163,CRP,1718-12-30
+163,Leucocytes,1719-12-30
+163,CRP,1720-12-30
+163,CRP,1721-12-30
+163,Leucocytes,1722-12-30
+163,Release A,1723-12-30
+163,Return ER,1724-12-30
+164,ER Triage,1700-12-30
+164,ER Registration,1701-12-30
+164,Leucocytes,1702-12-30
+164,CRP,1703-12-30
+164,LacticAcid,1704-12-30
+164,ER Sepsis Triage,1705-12-30
+164,IV Antibiotics,1706-12-30
+165,ER Registration,1700-12-30
+165,ER Triage,1701-12-30
+165,ER Sepsis Triage,1702-12-30
+165,CRP,1703-12-30
+165,Leucocytes,1704-12-30
+165,LacticAcid,1705-12-30
+165,IV Antibiotics,1706-12-30
+165,Admission NC,1707-12-30
+165,Leucocytes,1708-12-30
+165,CRP,1709-12-30
+165,Leucocytes,1710-12-30
+165,CRP,1711-12-30
+165,CRP,1712-12-30
+165,Leucocytes,1713-12-30
+165,Leucocytes,1714-12-30
+165,CRP,1715-12-30
+165,Leucocytes,1716-12-30
+165,CRP,1717-12-30
+165,CRP,1718-12-30
+165,CRP,1719-12-30
+165,Release C,1720-12-30
+165,Return ER,1721-12-30
+166,ER Registration,1700-12-30
+166,ER Triage,1701-12-30
+166,ER Sepsis Triage,1702-12-30
+166,IV Liquid,1703-12-30
+166,LacticAcid,1704-12-30
+166,Leucocytes,1705-12-30
+166,CRP,1706-12-30
+166,IV Antibiotics,1707-12-30
+166,Admission NC,1708-12-30
+166,Leucocytes,1709-12-30
+166,CRP,1710-12-30
+166,Leucocytes,1711-12-30
+166,CRP,1712-12-30
+166,CRP,1713-12-30
+166,Leucocytes,1714-12-30
+166,CRP,1715-12-30
+166,Leucocytes,1716-12-30
+166,Leucocytes,1717-12-30
+166,CRP,1718-12-30
+166,Leucocytes,1719-12-30
+166,CRP,1720-12-30
+166,CRP,1721-12-30
+166,Leucocytes,1722-12-30
+166,Release A,1723-12-30
+167,ER Registration,1700-12-30
+167,ER Triage,1701-12-30
+167,ER Sepsis Triage,1702-12-30
+167,Leucocytes,1703-12-30
+167,CRP,1704-12-30
+167,LacticAcid,1705-12-30
+167,IV Liquid,1706-12-30
+167,IV Antibiotics,1707-12-30
+168,ER Registration,1700-12-30
+168,IV Liquid,1701-12-30
+168,ER Triage,1702-12-30
+168,Leucocytes,1703-12-30
+168,CRP,1704-12-30
+168,LacticAcid,1705-12-30
+168,ER Sepsis Triage,1706-12-30
+168,IV Antibiotics,1707-12-30
+168,Admission NC,1708-12-30
+168,CRP,1709-12-30
+168,Leucocytes,1710-12-30
+168,Leucocytes,1711-12-30
+168,CRP,1712-12-30
+168,Admission NC,1713-12-30
+168,Release A,1714-12-30
+169,ER Registration,1700-12-30
+169,ER Triage,1701-12-30
+169,ER Sepsis Triage,1702-12-30
+169,IV Liquid,1703-12-30
+169,IV Antibiotics,1704-12-30
+169,Leucocytes,1705-12-30
+169,CRP,1706-12-30
+169,LacticAcid,1707-12-30
+170,ER Registration,1700-12-30
+170,ER Triage,1701-12-30
+170,ER Sepsis Triage,1702-12-30
+170,CRP,1703-12-30
+170,Leucocytes,1704-12-30
+170,Admission NC,1705-12-30
+170,CRP,1706-12-30
+170,Leucocytes,1707-12-30
+170,Admission NC,1708-12-30
+170,Leucocytes,1709-12-30
+170,CRP,1710-12-30
+170,CRP,1711-12-30
+170,Release A,1712-12-30
+170,Return ER,1713-12-30
+171,ER Registration,1700-12-30
+171,ER Triage,1701-12-30
+171,ER Sepsis Triage,1702-12-30
+171,Leucocytes,1703-12-30
+171,LacticAcid,1704-12-30
+171,CRP,1705-12-30
+171,IV Liquid,1706-12-30
+171,IV Antibiotics,1707-12-30
+172,ER Registration,1700-12-30
+172,ER Triage,1701-12-30
+172,ER Sepsis Triage,1702-12-30
+172,CRP,1703-12-30
+172,Leucocytes,1704-12-30
+172,Admission IC,1705-12-30
+172,CRP,1706-12-30
+172,Leucocytes,1707-12-30
+172,LacticAcid,1708-12-30
+172,Leucocytes,1709-12-30
+172,LacticAcid,1710-12-30
+172,CRP,1711-12-30
+172,LacticAcid,1712-12-30
+172,CRP,1713-12-30
+172,Leucocytes,1714-12-30
+172,Leucocytes,1715-12-30
+172,CRP,1716-12-30
+172,LacticAcid,1717-12-30
+172,CRP,1718-12-30
+172,Leucocytes,1719-12-30
+172,LacticAcid,1720-12-30
+172,Leucocytes,1721-12-30
+172,CRP,1722-12-30
+172,LacticAcid,1723-12-30
+172,Leucocytes,1724-12-30
+172,CRP,1725-12-30
+172,LacticAcid,1726-12-30
+172,Leucocytes,1727-12-30
+172,CRP,1728-12-30
+172,LacticAcid,1729-12-30
+172,LacticAcid,1730-12-30
+172,CRP,1731-12-30
+172,Leucocytes,1732-12-30
+172,Admission NC,1733-12-30
+172,Leucocytes,1734-12-30
+172,CRP,1735-12-30
+172,LacticAcid,1736-12-30
+172,Leucocytes,1737-12-30
+172,Leucocytes,1738-12-30
+172,CRP,1739-12-30
+172,LacticAcid,1740-12-30
+172,CRP,1741-12-30
+172,Leucocytes,1742-12-30
+172,CRP,1743-12-30
+172,Admission NC,1744-12-30
+172,CRP,1745-12-30
+172,Leucocytes,1746-12-30
+172,CRP,1747-12-30
+172,Leucocytes,1748-12-30
+172,CRP,1749-12-30
+172,Leucocytes,1750-12-30
+172,Leucocytes,1751-12-30
+172,CRP,1752-12-30
+172,Leucocytes,1753-12-30
+172,CRP,1754-12-30
+172,CRP,1755-12-30
+172,Leucocytes,1756-12-30
+172,Leucocytes,1757-12-30
+172,CRP,1758-12-30
+172,Release A,1759-12-30
+172,Return ER,1760-12-30
+173,ER Registration,1700-12-30
+173,ER Triage,1701-12-30
+173,ER Sepsis Triage,1702-12-30
+173,LacticAcid,1703-12-30
+173,CRP,1704-12-30
+173,Leucocytes,1705-12-30
+173,IV Liquid,1706-12-30
+173,IV Antibiotics,1707-12-30
+173,Admission NC,1708-12-30
+173,Release A,1709-12-30
+173,Return ER,1710-12-30
+174,ER Registration,1700-12-30
+174,ER Triage,1701-12-30
+174,ER Sepsis Triage,1702-12-30
+174,Leucocytes,1703-12-30
+174,CRP,1704-12-30
+174,Admission NC,1705-12-30
+174,Leucocytes,1706-12-30
+174,CRP,1707-12-30
+174,Release A,1708-12-30
+175,ER Registration,1700-12-30
+175,ER Triage,1701-12-30
+175,ER Sepsis Triage,1702-12-30
+175,Leucocytes,1703-12-30
+175,LacticAcid,1704-12-30
+175,CRP,1705-12-30
+175,IV Liquid,1706-12-30
+175,IV Antibiotics,1707-12-30
+175,Admission NC,1708-12-30
+175,CRP,1709-12-30
+175,Release A,1710-12-30
+175,Return ER,1711-12-30
+176,ER Registration,1700-12-30
+176,ER Triage,1701-12-30
+176,ER Sepsis Triage,1702-12-30
+176,CRP,1703-12-30
+176,Leucocytes,1704-12-30
+176,LacticAcid,1705-12-30
+176,IV Antibiotics,1706-12-30
+176,Admission NC,1707-12-30
+177,ER Registration,1700-12-30
+177,ER Triage,1701-12-30
+177,ER Sepsis Triage,1702-12-30
+178,ER Registration,1700-12-30
+178,ER Triage,1701-12-30
+178,ER Sepsis Triage,1702-12-30
+178,LacticAcid,1703-12-30
+178,CRP,1704-12-30
+178,Leucocytes,1705-12-30
+178,IV Antibiotics,1706-12-30
+178,IV Liquid,1707-12-30
+178,Admission NC,1708-12-30
+178,CRP,1709-12-30
+178,Leucocytes,1710-12-30
+178,Leucocytes,1711-12-30
+178,CRP,1712-12-30
+178,Leucocytes,1713-12-30
+178,CRP,1714-12-30
+178,Release A,1715-12-30
+178,Return ER,1716-12-30
+179,ER Registration,1700-12-30
+179,CRP,1701-12-30
+179,LacticAcid,1702-12-30
+179,Leucocytes,1703-12-30
+179,ER Triage,1704-12-30
+179,ER Sepsis Triage,1705-12-30
+179,IV Liquid,1706-12-30
+179,IV Antibiotics,1707-12-30
+179,Admission NC,1708-12-30
+179,Admission NC,1709-12-30
+179,Admission NC,1710-12-30
+179,Release A,1711-12-30
+179,Return ER,1712-12-30
+180,ER Registration,1700-12-30
+180,ER Triage,1701-12-30
+180,ER Sepsis Triage,1702-12-30
+180,Leucocytes,1703-12-30
+180,CRP,1704-12-30
+180,Admission NC,1705-12-30
+180,Admission NC,1706-12-30
+180,CRP,1707-12-30
+180,Leucocytes,1708-12-30
+180,CRP,1709-12-30
+180,Leucocytes,1710-12-30
+180,CRP,1711-12-30
+180,Release A,1712-12-30
+181,ER Registration,1700-12-30
+181,ER Triage,1701-12-30
+181,ER Sepsis Triage,1702-12-30
+182,ER Registration,1700-12-30
+182,ER Triage,1701-12-30
+182,CRP,1702-12-30
+182,Leucocytes,1703-12-30
+182,ER Sepsis Triage,1704-12-30
+183,ER Sepsis Triage,1700-12-30
+183,ER Registration,1701-12-30
+183,ER Triage,1702-12-30
+183,IV Liquid,1703-12-30
+183,IV Antibiotics,1704-12-30
+183,CRP,1705-12-30
+183,Leucocytes,1706-12-30
+183,LacticAcid,1707-12-30
+183,Admission NC,1708-12-30
+183,CRP,1709-12-30
+183,Leucocytes,1710-12-30
+183,Admission NC,1711-12-30
+183,Leucocytes,1712-12-30
+183,CRP,1713-12-30
+183,Leucocytes,1714-12-30
+183,CRP,1715-12-30
+183,Release A,1716-12-30
+184,ER Registration,1700-12-30
+184,ER Triage,1701-12-30
+184,ER Sepsis Triage,1702-12-30
+184,IV Liquid,1703-12-30
+184,CRP,1704-12-30
+184,Leucocytes,1705-12-30
+184,LacticAcid,1706-12-30
+184,IV Antibiotics,1707-12-30
+184,Admission NC,1708-12-30
+184,Leucocytes,1709-12-30
+184,CRP,1710-12-30
+184,CRP,1711-12-30
+184,Leucocytes,1712-12-30
+184,Leucocytes,1713-12-30
+184,CRP,1714-12-30
+184,CRP,1715-12-30
+184,Leucocytes,1716-12-30
+184,Leucocytes,1717-12-30
+184,CRP,1718-12-30
+184,Release D,1719-12-30
+185,ER Registration,1700-12-30
+185,ER Triage,1701-12-30
+185,ER Sepsis Triage,1702-12-30
+185,Leucocytes,1703-12-30
+185,Admission NC,1704-12-30
+185,Release A,1705-12-30
+186,ER Registration,1700-12-30
+186,ER Triage,1701-12-30
+186,CRP,1702-12-30
+186,Leucocytes,1703-12-30
+186,LacticAcid,1704-12-30
+186,ER Sepsis Triage,1705-12-30
+186,IV Liquid,1706-12-30
+186,IV Antibiotics,1707-12-30
+187,ER Registration,1700-12-30
+187,ER Triage,1701-12-30
+187,ER Sepsis Triage,1702-12-30
+187,IV Liquid,1703-12-30
+187,IV Antibiotics,1704-12-30
+187,Leucocytes,1705-12-30
+187,LacticAcid,1706-12-30
+187,CRP,1707-12-30
+187,Admission NC,1708-12-30
+187,Leucocytes,1709-12-30
+187,CRP,1710-12-30
+187,Leucocytes,1711-12-30
+187,CRP,1712-12-30
+187,Admission NC,1713-12-30
+187,Leucocytes,1714-12-30
+187,CRP,1715-12-30
+187,Leucocytes,1716-12-30
+187,CRP,1717-12-30
+187,Admission NC,1718-12-30
+187,Admission NC,1719-12-30
+187,Release A,1720-12-30
+188,ER Sepsis Triage,1700-12-30
+188,ER Registration,1701-12-30
+188,ER Triage,1702-12-30
+188,IV Liquid,1703-12-30
+188,IV Antibiotics,1704-12-30
+188,CRP,1705-12-30
+188,LacticAcid,1706-12-30
+188,Leucocytes,1707-12-30
+188,Admission IC,1708-12-30
+188,LacticAcid,1709-12-30
+188,Leucocytes,1710-12-30
+188,CRP,1711-12-30
+188,LacticAcid,1712-12-30
+188,Leucocytes,1713-12-30
+188,CRP,1714-12-30
+188,LacticAcid,1715-12-30
+188,Leucocytes,1716-12-30
+188,CRP,1717-12-30
+188,LacticAcid,1718-12-30
+188,Admission NC,1719-12-30
+188,CRP,1720-12-30
+188,Leucocytes,1721-12-30
+188,CRP,1722-12-30
+188,Leucocytes,1723-12-30
+188,Release A,1724-12-30
+188,Return ER,1725-12-30
+189,ER Registration,1700-12-30
+189,ER Triage,1701-12-30
+189,ER Sepsis Triage,1702-12-30
+189,Leucocytes,1703-12-30
+189,CRP,1704-12-30
+189,LacticAcid,1705-12-30
+189,IV Liquid,1706-12-30
+189,IV Antibiotics,1707-12-30
+189,Admission NC,1708-12-30
+189,CRP,1709-12-30
+189,Leucocytes,1710-12-30
+189,Leucocytes,1711-12-30
+189,CRP,1712-12-30
+189,Release A,1713-12-30
+190,ER Registration,1700-12-30
+190,Leucocytes,1701-12-30
+190,CRP,1702-12-30
+190,LacticAcid,1703-12-30
+190,ER Triage,1704-12-30
+190,ER Sepsis Triage,1705-12-30
+190,IV Liquid,1706-12-30
+190,IV Antibiotics,1707-12-30
+190,Admission NC,1708-12-30
+190,CRP,1709-12-30
+190,Leucocytes,1710-12-30
+190,CRP,1711-12-30
+190,Admission NC,1712-12-30
+190,Leucocytes,1713-12-30
+190,CRP,1714-12-30
+190,CRP,1715-12-30
+190,Leucocytes,1716-12-30
+190,Release A,1717-12-30
+191,ER Registration,1700-12-30
+191,ER Triage,1701-12-30
+191,ER Sepsis Triage,1702-12-30
+191,CRP,1703-12-30
+191,Leucocytes,1704-12-30
+191,IV Liquid,1705-12-30
+191,IV Antibiotics,1706-12-30
+191,Admission IC,1707-12-30
+191,Admission NC,1708-12-30
+191,Leucocytes,1709-12-30
+191,CRP,1710-12-30
+191,Leucocytes,1711-12-30
+191,CRP,1712-12-30
+191,Leucocytes,1713-12-30
+191,CRP,1714-12-30
+191,Release A,1715-12-30
+192,ER Registration,1700-12-30
+192,ER Triage,1701-12-30
+192,ER Sepsis Triage,1702-12-30
+192,IV Liquid,1703-12-30
+192,CRP,1704-12-30
+192,Leucocytes,1705-12-30
+192,LacticAcid,1706-12-30
+192,IV Antibiotics,1707-12-30
+192,Admission NC,1708-12-30
+192,Release A,1709-12-30
+193,CRP,1700-12-30
+193,Leucocytes,1701-12-30
+193,ER Registration,1702-12-30
+193,ER Triage,1703-12-30
+193,ER Sepsis Triage,1704-12-30
+193,LacticAcid,1705-12-30
+193,Leucocytes,1706-12-30
+193,CRP,1707-12-30
+193,IV Liquid,1708-12-30
+193,IV Antibiotics,1709-12-30
+193,Admission NC,1710-12-30
+193,CRP,1711-12-30
+193,Leucocytes,1712-12-30
+193,Release A,1713-12-30
+194,ER Registration,1700-12-30
+194,ER Triage,1701-12-30
+194,ER Sepsis Triage,1702-12-30
+195,ER Registration,1700-12-30
+195,ER Triage,1701-12-30
+195,ER Sepsis Triage,1702-12-30
+195,Leucocytes,1703-12-30
+195,CRP,1704-12-30
+196,ER Registration,1700-12-30
+196,ER Triage,1701-12-30
+196,ER Sepsis Triage,1702-12-30
+197,ER Registration,1700-12-30
+197,ER Triage,1701-12-30
+197,ER Sepsis Triage,1702-12-30
+197,Leucocytes,1703-12-30
+197,CRP,1704-12-30
+197,Admission NC,1705-12-30
+197,Leucocytes,1706-12-30
+197,CRP,1707-12-30
+197,Release A,1708-12-30
+197,Return ER,1709-12-30
+198,IV Liquid,1700-12-30
+198,ER Registration,1701-12-30
+198,ER Triage,1702-12-30
+198,ER Sepsis Triage,1703-12-30
+198,Leucocytes,1704-12-30
+198,LacticAcid,1705-12-30
+198,CRP,1706-12-30
+198,IV Antibiotics,1707-12-30
+198,LacticAcid,1708-12-30
+198,Admission IC,1709-12-30
+198,LacticAcid,1710-12-30
+198,CRP,1711-12-30
+198,LacticAcid,1712-12-30
+198,Leucocytes,1713-12-30
+198,LacticAcid,1714-12-30
+198,Leucocytes,1715-12-30
+198,CRP,1716-12-30
+198,Leucocytes,1717-12-30
+198,LacticAcid,1718-12-30
+198,LacticAcid,1719-12-30
+198,CRP,1720-12-30
+198,Leucocytes,1721-12-30
+198,Leucocytes,1722-12-30
+198,LacticAcid,1723-12-30
+198,CRP,1724-12-30
+198,Leucocytes,1725-12-30
+198,CRP,1726-12-30
+198,LacticAcid,1727-12-30
+198,Leucocytes,1728-12-30
+198,CRP,1729-12-30
+198,LacticAcid,1730-12-30
+198,Leucocytes,1731-12-30
+198,CRP,1732-12-30
+198,LacticAcid,1733-12-30
+198,Admission NC,1734-12-30
+198,Leucocytes,1735-12-30
+198,CRP,1736-12-30
+198,Leucocytes,1737-12-30
+198,CRP,1738-12-30
+198,CRP,1739-12-30
+198,Leucocytes,1740-12-30
+198,CRP,1741-12-30
+198,Leucocytes,1742-12-30
+198,Leucocytes,1743-12-30
+198,CRP,1744-12-30
+198,Leucocytes,1745-12-30
+198,CRP,1746-12-30
+198,Leucocytes,1747-12-30
+198,CRP,1748-12-30
+198,Leucocytes,1749-12-30
+198,CRP,1750-12-30
+198,CRP,1751-12-30
+198,Leucocytes,1752-12-30
+198,Leucocytes,1753-12-30
+198,CRP,1754-12-30
+198,Leucocytes,1755-12-30
+198,Leucocytes,1756-12-30
+198,CRP,1757-12-30
+198,Leucocytes,1758-12-30
+198,CRP,1759-12-30
+198,Admission IC,1760-12-30
+198,LacticAcid,1761-12-30
+198,Leucocytes,1762-12-30
+198,CRP,1763-12-30
+198,Leucocytes,1764-12-30
+198,Release B,1765-12-30
+199,ER Registration,1700-12-30
+199,ER Triage,1701-12-30
+199,ER Sepsis Triage,1702-12-30
+199,CRP,1703-12-30
+199,Leucocytes,1704-12-30
+199,Admission NC,1705-12-30
+199,Leucocytes,1706-12-30
+199,CRP,1707-12-30
+199,Release A,1708-12-30
+200,ER Registration,1700-12-30
+200,ER Triage,1701-12-30
+200,ER Sepsis Triage,1702-12-30
+200,CRP,1703-12-30
+200,Leucocytes,1704-12-30
+200,Admission NC,1705-12-30
+200,Release A,1706-12-30
+201,ER Registration,1700-12-30
+201,ER Triage,1701-12-30
+201,ER Sepsis Triage,1702-12-30
+201,Leucocytes,1703-12-30
+201,CRP,1704-12-30
+201,Admission NC,1705-12-30
+201,Leucocytes,1706-12-30
+201,Leucocytes,1707-12-30
+201,CRP,1708-12-30
+201,CRP,1709-12-30
+201,Leucocytes,1710-12-30
+201,Leucocytes,1711-12-30
+201,CRP,1712-12-30
+201,Leucocytes,1713-12-30
+201,CRP,1714-12-30
+201,Release A,1715-12-30
+201,Return ER,1716-12-30
+202,ER Registration,1700-12-30
+202,ER Triage,1701-12-30
+202,ER Sepsis Triage,1702-12-30
+202,Leucocytes,1703-12-30
+202,CRP,1704-12-30
+202,LacticAcid,1705-12-30
+202,IV Liquid,1706-12-30
+202,IV Antibiotics,1707-12-30
+203,ER Registration,1700-12-30
+203,ER Triage,1701-12-30
+203,ER Sepsis Triage,1702-12-30
+203,CRP,1703-12-30
+203,Leucocytes,1704-12-30
+204,ER Registration,1700-12-30
+204,ER Triage,1701-12-30
+204,ER Sepsis Triage,1702-12-30
+204,CRP,1703-12-30
+204,LacticAcid,1704-12-30
+204,Leucocytes,1705-12-30
+204,IV Antibiotics,1706-12-30
+204,Admission NC,1707-12-30
+204,IV Liquid,1708-12-30
+205,ER Registration,1700-12-30
+205,ER Triage,1701-12-30
+205,ER Sepsis Triage,1702-12-30
+205,IV Liquid,1703-12-30
+205,CRP,1704-12-30
+205,LacticAcid,1705-12-30
+205,Leucocytes,1706-12-30
+205,IV Antibiotics,1707-12-30
+205,Admission IC,1708-12-30
+205,CRP,1709-12-30
+205,Leucocytes,1710-12-30
+205,LacticAcid,1711-12-30
+205,CRP,1712-12-30
+205,LacticAcid,1713-12-30
+205,Leucocytes,1714-12-30
+205,Admission IC,1715-12-30
+205,Leucocytes,1716-12-30
+205,CRP,1717-12-30
+205,LacticAcid,1718-12-30
+205,Leucocytes,1719-12-30
+205,Leucocytes,1720-12-30
+205,CRP,1721-12-30
+205,LacticAcid,1722-12-30
+205,Admission NC,1723-12-30
+205,Release A,1724-12-30
+206,ER Registration,1700-12-30
+206,ER Triage,1701-12-30
+206,ER Sepsis Triage,1702-12-30
+206,Leucocytes,1703-12-30
+206,CRP,1704-12-30
+206,LacticAcid,1705-12-30
+206,IV Antibiotics,1706-12-30
+206,Admission IC,1707-12-30
+206,CRP,1708-12-30
+206,Leucocytes,1709-12-30
+206,LacticAcid,1710-12-30
+206,LacticAcid,1711-12-30
+206,Leucocytes,1712-12-30
+206,Leucocytes,1713-12-30
+206,CRP,1714-12-30
+206,LacticAcid,1715-12-30
+206,Leucocytes,1716-12-30
+206,CRP,1717-12-30
+206,LacticAcid,1718-12-30
+206,LacticAcid,1719-12-30
+206,Leucocytes,1720-12-30
+206,CRP,1721-12-30
+206,Admission NC,1722-12-30
+206,CRP,1723-12-30
+206,Leucocytes,1724-12-30
+206,CRP,1725-12-30
+206,CRP,1726-12-30
+206,Leucocytes,1727-12-30
+206,CRP,1728-12-30
+206,Release A,1729-12-30
+207,ER Registration,1700-12-30
+207,ER Triage,1701-12-30
+207,ER Sepsis Triage,1702-12-30
+208,ER Registration,1700-12-30
+208,ER Triage,1701-12-30
+208,ER Sepsis Triage,1702-12-30
+209,ER Registration,1700-12-30
+209,ER Triage,1701-12-30
+209,ER Sepsis Triage,1702-12-30
+209,Leucocytes,1703-12-30
+209,LacticAcid,1704-12-30
+209,CRP,1705-12-30
+209,IV Liquid,1706-12-30
+209,IV Antibiotics,1707-12-30
+209,Admission NC,1708-12-30
+209,CRP,1709-12-30
+209,Leucocytes,1710-12-30
+209,LacticAcid,1711-12-30
+209,Leucocytes,1712-12-30
+209,CRP,1713-12-30
+209,Release A,1714-12-30

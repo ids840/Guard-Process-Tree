@@ -1451,8 +1451,6 @@ def get_must_happen_special_guard(tree, features):
 
 def apply_special_must_happen(net,transition_name,guard):
     feature, smaller_or_bigger, threashold = guard[0], guard[1], guard[2]
-    if smaller_or_bigger == "bigger":
-        threashold = threashold + 1
     parameter_list = [net, found_transition(net, transition_name), [found_transition(net, feature)],
                                 threashold, 0]
     if smaller_or_bigger == "smaller":
@@ -1479,6 +1477,8 @@ def add_xor_guards(tree, net, train_log, col_name):
                                                                         index_of_target)
         rows = build_rows(list_of_xor_nodes_and_choses_for_target, target_name)
         if len(rows) > 10:
+            if target_name == "Admission NC":
+                debug = True
             build_csv_for_child_of_xor(rows, col_name_copy)
             csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
             tree = build_decision_tree(csv_decision, col_name_copy)
@@ -1486,8 +1486,6 @@ def add_xor_guards(tree, net, train_log, col_name):
                 must_happen_special_guard = get_must_happen_special_guard(tree,col_name_copy)
                 list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
                 if must_happen_special_guard!=None:
-                    print(target_name)
-                    print(must_happen_special_guard)
                     apply_special_must_happen(net, target_name, must_happen_special_guard)
                     for list_of_guards_internal in list_of_guards:
                         if list_of_guards_internal.__contains__(must_happen_special_guard):
