@@ -53,7 +53,8 @@ def guard_min_x_times(net, transition, list_of_transitions, times, index_for_tra
 
 
 def guard_min_x_times_must_happen(net, transition, list_of_transitions, times, index_for_transition):
-    place = PetriNet.Place("happened " + list_of_transitions[0].label + " " + str(times) +  " times as pre condition to " + transition.label)
+    place = PetriNet.Place("happened " + list_of_transitions[0].label + " " + str(
+        times) + " times as pre condition to " + transition.label)
     net.places.add(place)
     for transition_in_list in list_of_transitions:
         petri_utils.add_arc_from_to(transition_in_list, place, net)
@@ -62,7 +63,8 @@ def guard_min_x_times_must_happen(net, transition, list_of_transitions, times, i
 
 
 def create_max_guard_place(net, transition, times, index_of_guard, transition_max_times):
-    max_guard_place = PetriNet.Place(transition_max_times + " happens max " + str(times) + " times before happen " + transition.label)
+    max_guard_place = PetriNet.Place(
+        transition_max_times + " happens max " + str(times) + " times before happen " + transition.label)
     net.places.add(max_guard_place)
     start_transitions = found_start_transitions(net, found_place(net, "source"))
     for start_transition in start_transitions:
@@ -693,7 +695,7 @@ def create_csv_event_log(log, csv_name):
         case_id = event.get("case_id")[5:]
         activity = event.get("activity")
         if int(case_id) != last_case_id:
-            timestamp = '1700-12-30'
+            timestamp = '1700-12-01'
             last_case_id = int(case_id)
         else:
             timestamp = add_one_year(timestamp)
@@ -1101,7 +1103,7 @@ def is_child(node, child):
     return is_child_helper(node, child, child)
 
 
-def delete_from_list_childs(child, seq_loop_emergency_pointers, indexes_of_childs,pointers):
+def delete_from_list_childs(child, seq_loop_emergency_pointers, indexes_of_childs, pointers):
     list_of_indexes_to_delete = []
     for index in range(len(seq_loop_emergency_pointers)):
         node = seq_loop_emergency_pointers[index]
@@ -1128,7 +1130,8 @@ def node_without_empty_right_xor(node):
     return True
 
 
-def add_contrast_empty(node, start_index, end_index, list_of_xor_and_choices,nodes,enabled_transitions_for_nodes, rows, row):
+def add_contrast_empty(node, start_index, end_index, list_of_xor_and_choices, nodes, enabled_transitions_for_nodes,
+                       rows, row):
     for index in range(start_index, end_index, 1):
         index_of_node = find_xor_node(node.children[index], nodes)
         transitions_enabled = enabled_transitions_for_nodes[index_of_node]
@@ -1138,8 +1141,8 @@ def add_contrast_empty(node, start_index, end_index, list_of_xor_and_choices,nod
         rows.append(row_copy)
 
 
-
-def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs, transition,pointers,list_of_xor_and_choices,nodes,enabled_transitions_for_nodes, rows, row):
+def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs, transition, pointers,
+                                 list_of_xor_and_choices, nodes, enabled_transitions_for_nodes, rows, row):
     last_index = len(seq_loop_emergency_pointers) - 1
     for i in range(len(seq_loop_emergency_pointers)):
         curr_index = last_index - i
@@ -1155,7 +1158,7 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
                     index_of_node_deleted = seq_loop_emergency_pointers.index(node)
                     del seq_loop_emergency_pointers[index_of_node_deleted]
                     del indexes_of_childs[index_of_node_deleted]
-                delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs,pointers)
+                delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs, pointers)
                 return node
             else:
                 if node_without_empty(child) == False:
@@ -1163,14 +1166,15 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
                         new_child_index = child_index + i + 1
                         child = node.children[new_child_index]
                         if found_way(child, transition):
-                            add_contrast_empty(node,child_index,new_child_index,list_of_xor_and_choices, nodes, enabled_transitions_for_nodes, rows, row)
+                            add_contrast_empty(node, child_index, new_child_index, list_of_xor_and_choices, nodes,
+                                               enabled_transitions_for_nodes, rows, row)
                             if len(node.children) > child_index + 1:
                                 indexes_of_childs[curr_index] = child_index + 1
                             else:
                                 index_of_node_deleted = seq_loop_emergency_pointers.index(node)
                                 del seq_loop_emergency_pointers[index_of_node_deleted]
                                 del indexes_of_childs[index_of_node_deleted]
-                            delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs,pointers)
+                            delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs, pointers)
                             return node
 
         else:
@@ -1178,14 +1182,14 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
             if child_index == 0:
                 if found_way(child, transition):
                     indexes_of_childs[curr_index] = 1
-                    delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs,pointers)
+                    delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs, pointers)
                     return node
                 else:
                     if node_without_empty(child) == False:
                         for child in node.children[1:]:
                             if found_way(child, transition):
                                 indexes_of_childs[curr_index] = 0
-                                delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs,pointers)
+                                delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs, pointers)
                                 return node
             else:
                 while len(node.children) >= child_index + 1:
@@ -1203,7 +1207,8 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
                         return node
 
 
-def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers, indexes_of_childs, xor_nodes,activities_enables_for_nodes,
+def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers, indexes_of_childs, xor_nodes,
+                                  activities_enables_for_nodes,
                                   transition, list_of_xor_choices, appended, transitions_enabled, rows, row):
     if len(pointers) > 0 and in_transition(pointers[0], transition):
         pointers.pop(0)
@@ -1214,8 +1219,10 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
         while not stop:
             child_index = find_pointer_index(pointers, transition)
             if child_index == -1:
-                not_from_pointers=True
-                pointer = find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs, transition,pointers, list_of_xor_choices, xor_nodes, activities_enables_for_nodes, rows, row)
+                not_from_pointers = True
+                pointer = find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs, transition,
+                                                       pointers, list_of_xor_choices, xor_nodes,
+                                                       activities_enables_for_nodes, rows, row)
             else:
                 pointer = pointers[child_index]
             child_index = find_child_index(pointer, transition)
@@ -1231,7 +1238,7 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
             if not_from_pointers:
                 index_of_node = find_xor_node(pointer.children[child_index], xor_nodes)
             else:
-                index_of_node = find_xor_node(pointer,xor_nodes)
+                index_of_node = find_xor_node(pointer, xor_nodes)
             transitions_enabled_for_current_node = activities_enables_for_nodes[index_of_node]
             for transition_enabled_for_current_node in transitions_enabled_for_current_node:
                 if not transitions_enabled.__contains__(transition_enabled_for_current_node):
@@ -1244,8 +1251,9 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
                     indexes_of_childs.append(child_index + 1)
                 pointers.insert(0, pointer.children[child_index])
                 stop = build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers,
-                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes, transition,
-                                                     list_of_xor_choices,appended, transitions_enabled, rows, row)
+                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes,
+                                                     transition,
+                                                     list_of_xor_choices, appended, transitions_enabled, rows, row)
             if parallel_node:
                 # if pointers.__contains__(pointer):
                 #     pointers.remove(pointer)
@@ -1255,15 +1263,17 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
                         if pointers.__contains__(pointer.children[index_of_child]) == False:
                             pointers.append(pointer.children[index_of_child])
                 stop = build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers,
-                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes,transition,
-                                                     list_of_xor_choices,appended,transitions_enabled, rows, row)
+                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes,
+                                                     transition,
+                                                     list_of_xor_choices, appended, transitions_enabled, rows, row)
             if xor_node:
                 if pointers.__contains__(pointer):
                     pointers.remove(pointer)
                 pointers.insert(0, pointer.children[child_index])
                 stop = build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers,
-                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes, transition,
-                                                     list_of_xor_choices,appended,transitions_enabled, rows, row)
+                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes,
+                                                     transition,
+                                                     list_of_xor_choices, appended, transitions_enabled, rows, row)
             if loop_node:
                 if pointers.__contains__(pointer):
                     pointers.remove(pointer)
@@ -1275,8 +1285,9 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
                         indexes_of_childs.append(0)
                 pointers.insert(0, pointer.children[child_index])
                 stop = build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_pointers,
-                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes, transition,
-                                                     list_of_xor_choices,appended,transitions_enabled, rows, row)
+                                                     indexes_of_childs, xor_nodes, activities_enables_for_nodes,
+                                                     transition,
+                                                     list_of_xor_choices, appended, transitions_enabled, rows, row)
 
     return stop
 
@@ -1322,7 +1333,7 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
 #                                                   list_of_xor_choices)
 #
 #     return False
-def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, activities_enables_for_nodes,column):
+def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, activities_enables_for_nodes, column):
     rows = []
     for trace in traces:
         for index in range(len(trace)):
@@ -1334,7 +1345,8 @@ def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, activiti
             pref = trace[0:index + 1]
             row = build_row(pref[:-1], column)
             transitions_enabled = []
-            build_list_of_xor_and_choices(process_tree, pointers, seq_loop, indexes_seq_loop, xor_nodes, activities_enables_for_nodes, trace[index],
+            build_list_of_xor_and_choices(process_tree, pointers, seq_loop, indexes_seq_loop, xor_nodes,
+                                          activities_enables_for_nodes, trace[index],
                                           list_of_xor_and_choices, False, transitions_enabled, rows, row)
             row_copy = row.copy()
             row_copy.append(trace[index])
@@ -1351,7 +1363,7 @@ def is_empty_transition(tree):
     return len(tree.children) == 0 and tree.label == None
 
 
-def build_first_options_of_tree(tree,activities_for_node):
+def build_first_options_of_tree(tree, activities_for_node):
     xor_node = (tree.operator.value == "X")
     seq_node = (tree.operator.value == "->")
     loop_node = (tree.operator.value == "*")
@@ -1361,7 +1373,7 @@ def build_first_options_of_tree(tree,activities_for_node):
             if is_transition_and_not_an_empty_one(child):
                 activities_for_node.append(child.label)
             elif is_empty_transition(child) == False:
-                build_first_options_of_tree(child,activities_for_node)
+                build_first_options_of_tree(child, activities_for_node)
     if seq_node:
         left_child = tree.children[0]
         if is_transition_and_not_an_empty_one(left_child):
@@ -1369,7 +1381,7 @@ def build_first_options_of_tree(tree,activities_for_node):
         else:
             stop = False
             index = 0
-            while index<len(tree.children) and stop == False:
+            while index < len(tree.children) and stop == False:
                 stop = (node_without_empty(tree.children[index]) == False)
                 if is_transition_and_not_an_empty_one(tree.children[index]):
                     activities_for_node.append(tree.children[index].label)
@@ -1385,13 +1397,11 @@ def build_first_options_of_tree(tree,activities_for_node):
             stop = False
             index = 0
             while index < len(tree.children) and stop == False:
-                stop =(node_without_empty(tree.children[index])==False)
+                stop = (node_without_empty(tree.children[index]) == False)
                 if is_transition_and_not_an_empty_one(tree.children[index]):
                     activities_for_node.append(tree.children[index].label)
                 else:
                     build_first_options_of_tree(tree.children[index], activities_for_node)
-
-
 
 
 def build_xor_nodes(tree, nodes, activities_enabled_for_nodes):
@@ -1403,7 +1413,7 @@ def build_xor_nodes(tree, nodes, activities_enabled_for_nodes):
         parallel_node = (tree.operator.value == "+")
         if xor_node or loop_node or parallel_node or seq_node:
             nodes.append(tree)
-            build_first_options_of_tree(tree,activities_enabled_for_node)
+            build_first_options_of_tree(tree, activities_enabled_for_node)
             activities_enabled_for_nodes.append(activities_enabled_for_node)
         for children in tree.children:
             build_xor_nodes(children, nodes, activities_enabled_for_nodes)
@@ -1413,8 +1423,8 @@ def build_rows(list_of_xor_nodes_and_choses, target_name):
     rows = []
     for row in list_of_xor_nodes_and_choses:
         row_without_target = row[:-2]
-        transition_chosen = row[len(row)-2]
-        transitions_enabled = row[len(row)-1]
+        transition_chosen = row[len(row) - 2]
+        transitions_enabled = row[len(row) - 1]
         if transitions_enabled.__contains__(target_name):
             row_to_append = row_without_target.copy()
             if target_name == transition_chosen:
@@ -1449,10 +1459,30 @@ def get_must_happen_special_guard(tree, features):
     return None
 
 
-def apply_special_must_happen(net,transition_name,guard):
+def get_must_happen_special_guards(tree, features):
+    list_of_and_guard = []
+    stack = [0]
+    while len(stack) > 0:
+        node_id = stack.pop(0)
+        left_node_id = tree.children_left[node_id]
+        right_node_id = tree.children_right[node_id]
+        value_of_left = tree.value[left_node_id][0]
+        value_of_right = tree.value[right_node_id][0]
+        threshold = int(tree.threshold[node_id])
+        is_split_node = left_node_id != right_node_id
+        if is_split_node:
+            if 0 == value_of_right[1]:
+                list_of_and_guard.append((features[tree.feature[node_id]], "smaller", threshold))
+                stack.append(left_node_id)
+            if 0 == value_of_left[1]:
+                list_of_and_guard.append((features[tree.feature[node_id]], "bigger", threshold + 1))
+                stack.append(right_node_id)
+    return list_of_and_guard
+
+def apply_special_must_happen(net, transition_name, guard):
     feature, smaller_or_bigger, threashold = guard[0], guard[1], guard[2]
     parameter_list = [net, found_transition(net, transition_name), [found_transition(net, feature)],
-                                threashold, 0]
+                      threashold, 0]
     if smaller_or_bigger == "smaller":
         function = guard_of_max_times_must_happen
     else:
@@ -1460,16 +1490,18 @@ def apply_special_must_happen(net,transition_name,guard):
     function(*parameter_list)
 
 
+
 def add_xor_guards(tree, net, train_log, col_name):
     traces = build_traces_from_csv(train_log)
     nodes = []
     activities_enables_for_nodes = []
     build_xor_nodes(tree, nodes, activities_enables_for_nodes)
-    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(tree, traces, nodes, activities_enables_for_nodes, col_name)
+    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(tree, traces, nodes, activities_enables_for_nodes,
+                                                                      col_name)
     columns = builds_all_target(col_name)
     for column in columns:
         col_name_copy = col_name.copy()
-        target_name = column[len(column)-1]
+        target_name = column[len(column) - 1]
         index_of_target = col_name.index(target_name)
         col_name_copy.remove(target_name)
         col_name_copy.append(target_name)
@@ -1477,15 +1509,14 @@ def add_xor_guards(tree, net, train_log, col_name):
                                                                         index_of_target)
         rows = build_rows(list_of_xor_nodes_and_choses_for_target, target_name)
         if len(rows) > 10:
-            if target_name == "Admission NC":
-                debug = True
             build_csv_for_child_of_xor(rows, col_name_copy)
             csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
             tree = build_decision_tree(csv_decision, col_name_copy)
             if tree.capacity > 1:
-                must_happen_special_guard = get_must_happen_special_guard(tree,col_name_copy)
+                #must_happen_special_guard = get_must_happen_special_guard(tree, col_name_copy)
+                must_happen_special_guards = get_must_happen_special_guards(tree,col_name_copy)
                 list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
-                if must_happen_special_guard!=None:
+                for must_happen_special_guard in must_happen_special_guards:
                     apply_special_must_happen(net, target_name, must_happen_special_guard)
                     for list_of_guards_internal in list_of_guards:
                         if list_of_guards_internal.__contains__(must_happen_special_guard):
@@ -1620,13 +1651,25 @@ def build_log(traces):
 def year_plus_one(year):
     int_year = int(year)
     int_year = int_year + 1
+    if len(str(int_year)) == 1:
+        return "0" + str(int_year)
     return str(int_year)
 
 
 def add_one_year(timestamp):
+    day = timestamp[8:10]
+    month = timestamp[5:7]
     year = timestamp[:4]
-    year = year_plus_one(year)
-    return year + timestamp[4:]
+    if int(day) == 28 and int(month) == 12:
+        day = "01"
+        month = "01"
+        year = year_plus_one(year)
+    if int(day) == 28:
+        day = "01"
+        month = year_plus_one(month)
+    else:
+        day = year_plus_one(day)
+    return year + "-" + month + "-" + day
 
 
 def create_train_log(log):

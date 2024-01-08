@@ -156,8 +156,9 @@ def evaluation_1(log_path):
 def evaluation(log, net, initial_marking, final_marking):
     # replayed_traces = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
     #                                           "case ID")
-    # for trace in replayed_traces[0:30]:
-    #      print(trace)
+    # for trace in replayed_traces:
+    #      if trace['missing_tokens'] > 0:
+    #          print(trace)
     #print(pm4py.analysis.check_is_workflow_net(net))
 #    print(pm4py.analysis.check_soundness(net,initial_marking,final_marking))
     fitness = pm4py.fitness_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
@@ -549,7 +550,7 @@ def remove_not_need_nodes(process_tree):
             remove_not_need_nodes(children)
 
 if __name__ == "__main__":
-    log = import_csv("C:/Users/עידו שפירא/Downloads/Sepsis Cases - Event Log.csv")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.csv")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv")
