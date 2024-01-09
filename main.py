@@ -1,6 +1,7 @@
 # This is a sample Python script.
 import csv
 import operator
+from pm4py.objects.conversion.process_tree import converter as process_tree_converter
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -11,6 +12,7 @@ import pandas
 
 from datetime import datetime
 
+from pm4py import ProcessTree
 from pm4py.algo.conformance.tokenreplay.variants import token_replay
 from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
 
@@ -549,8 +551,29 @@ def remove_not_need_nodes(process_tree):
         for children in process_tree.children:
             remove_not_need_nodes(children)
 
+
+def copy_process_tree(process_tree_Inductive, parent):
+    if len(process_tree_Inductive.children) == 0:
+        copy_process_tree_ret = ProcessTree()
+        copy_process_tree_ret.children = []
+        copy_process_tree_ret.label = process_tree_Inductive.label
+        copy_process_tree_ret.operator = process_tree_Inductive.operator
+        copy_process_tree_ret.parent = parent
+        return copy_process_tree_ret
+    else:
+        copy_process_tree_ret = ProcessTree()
+        copy_process_tree_ret.label = None
+        copy_process_tree_ret.operator = process_tree_Inductive.operator
+        copy_process_tree_ret.parent = parent
+        for child in process_tree_Inductive.children:
+            copy_child = copy_process_tree(child,copy_process_tree_ret)
+            copy_process_tree_ret.children.append(copy_child)
+        return copy_process_tree_ret
+
+
+
 if __name__ == "__main__":
-    log = import_csv("C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.csv")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/RequestForPayment.csv")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv")
@@ -559,25 +582,28 @@ if __name__ == "__main__":
     #print_traces_nice(traces)
     process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
     #pm4py.view_process_tree(process_tree_Inductive)
-    remove_not_need_nodes(process_tree_Inductive)
-    # pm4py.view_process_tree(process_tree_Inductive)
+    pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
+    evaluation(test_log, net, im, fm)
+    remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     #names_of_transitions_not_under_loop = build_names_of_transitions_not_under_loop(process_tree_Inductive)
     #dictio = build_dict_of_xor_and_not_under_loop(process_tree_Inductive,names_of_transitions_not_under_loop)
     # print(names_of_transitions_not_under_loop)
     # print(dictio)
     #evaluation(train_log,net,im,fm)
-    #print_petri_net(net,im,fm)
+    # pm4py.view_process_tree(process_tree_Inductive)
+    process_tree_Inductive_before = copy_process_tree(process_tree_Inductive,None)
+    Decision_Tree_To_Guards.delete_empty_transitions(process_tree_Inductive,  train_log, names_of_transitions)
+    pm4py.view_process_tree(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     #names_of_transitions_under_xor_with_empty_trnasitions = build_names_of_transitions_under_xor_with_empty_trnasitions(process_tree_Inductive)
     #print(names_of_transitions_under_xor_with_empty_trnasitions)
     #tree = pm4py.convert_to_process_tree(net, im, fm)
     #pm4py.view_process_tree(tree)
-
+    # Decision_Tree_To_Guards.create_ec_kitty_tree(net,train_log,names_of_transitions)
     print("Without Guards \n")
-    evaluation(test_log, net, im, fm)
-    Decision_Tree_To_Guards.add_xor_guards(process_tree_Inductive,net,train_log,names_of_transitions)
+    Decision_Tree_To_Guards.add_xor_guards(process_tree_Inductive_before,net,train_log,names_of_transitions)
     print("\n==============================================================================================================================\nWith Guards\n")
     #Decision_Tree_To_Guards.add_xor_guards(tree,net,train_log)
     #print_petri_net(net,im,fm)

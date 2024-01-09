@@ -348,6 +348,37 @@ def find_must_guard_new(tree, features):
     return list_of_or_guards
 
 
+def special_transition_condition_function(tree, features):
+    list_of_or_guards = []
+    list_of_and_guard = []
+    stack = [0]
+    value_of_positive =value_of_curr = tree.value[0][0][1]
+    while len(stack) > 0:
+        found = False
+        node_id = stack.pop(0)
+        value_of_curr = tree.value[node_id][0]
+        left_node_id = tree.children_left[node_id]
+        right_node_id = tree.children_right[node_id]
+        is_split_node = left_node_id != right_node_id
+        if is_split_node:
+            value_of_left = tree.value[left_node_id][0]
+            value_of_right = tree.value[right_node_id][0]
+            if 0 == value_of_right[0]:
+                stack.append(left_node_id)
+                value_of_positive = value_of_positive - value_of_right[1]
+                found = True
+            if 0 == value_of_left[0]:
+                stack.append(right_node_id)
+                value_of_positive = value_of_positive - value_of_left[1]
+                found = True
+            if value_of_curr[1] == value_of_left[1] and found == False:
+                stack.append(left_node_id)
+            if value_of_curr[1] == value_of_right[1] and found == False:
+                stack.append(right_node_id)
+    if value_of_curr[0] == 0:
+        value_of_positive = value_of_positive - value_of_curr[1]
+    return value_of_positive == 0
+
 def find_must_guards(tree, features):
     # traces = build_traces_list(0, [], [], tree)
     # threasholds = build_therashold_list(0,[],[],tree)
@@ -960,41 +991,27 @@ def create_ec_kitty_guard_in_net(net, tree):
     pass
 
 
-def create_ec_kitty_tree(net, csv, col_name, dictionary_of_not_under_loop):
+def create_ec_kitty_tree(net, csv, col_name):
     columns = builds_all_target(col_name)
     for column in columns:
         target_name = column[len(column) - 1:][0]
-        print("target: ", target_name)
-        if dictionary_of_not_under_loop.keys().__contains__(target_name):
-            for feature in column.copy():
-                if dictionary_of_not_under_loop[target_name].__contains__(feature) == False and feature != target_name:
-                    column.remove(feature)
-            if len(column) > 1:
-                build_csv_for_column_first_occurance(csv, column)
-                csv_decision = pd.read_csv("decision_tree.csv", header=None, names=column)
-                tree = build_decision_tree(csv_decision, column)
-                if tree.capacity > 1:
-                    list_of_guards = list_of_guards_must_happen(tree, column)
-                    print(list_of_guards)
-                    if len(list_of_guards) > 0:
-                        apply_must_happen(net, target_name, list_of_guards)
-        else:
-            rows_number = build_csv_for_column_every_time_target_happen(csv, column)
-            if rows_number > 9:
-                csv_decision = pd.read_csv("decision_tree.csv", header=None, names=column)
-                regression = EC_KITTY_SKL.ec_kitty_tree(csv_decision, column)
-                tree = regression.algorithm.best_of_run_.tree
-                if regression.algorithm.best_of_run_.fitness.fitness == 0:
-                    print("predicted ", target_name, " succesfully using ec kitty")
-                    # for node in tree:
-                    #     print_node = ""
-                    #     if type(node) is str:
-                    #         print_node = column[int(node[1:])]
-                    #     if type(node) is int:
-                    #         print_node = node
-                    #     if callable(node):
-                    #         print_node = getattr(node, "__name__", None)
-                    #     print(print_node)
+        # print("target: ", target_name)
+        rows_number = build_csv_for_column_every_time_target_happen(csv, column)
+        if rows_number > 9:
+            csv_decision = pd.read_csv("decision_tree.csv", header=None, names=column)
+            regression = EC_KITTY_SKL.ec_kitty_tree(csv_decision, column)
+            tree = regression.algorithm.best_of_run_.tree
+            if regression.algorithm.best_of_run_.fitness.fitness == 0:
+                print("predicted ", target_name, " succesfully using ec kitty")
+                for node in tree:
+                    print_node = ""
+                    if type(node) is str:
+                        print_node = column[int(node[1:])]
+                    if type(node) is int:
+                        print_node = node
+                    if callable(node):
+                        print_node = getattr(node, "__name__", None)
+                    print(print_node)
 
 
 def has_empty_child(process_tree_Inductive):
@@ -1489,8 +1506,6 @@ def apply_special_must_happen(net, transition_name, guard):
         function = guard_min_x_times_must_happen
     function(*parameter_list)
 
-
-
 def add_xor_guards(tree, net, train_log, col_name):
     traces = build_traces_from_csv(train_log)
     nodes = []
@@ -1523,12 +1538,62 @@ def add_xor_guards(tree, net, train_log, col_name):
                             list_of_guards_internal.remove(must_happen_special_guard)
                             if len(list_of_guards_internal) == 0:
                                 list_of_guards.remove(list_of_guards_internal)
-                # print(target_name)
-                # print(list_of_guards)
                 if len(list_of_guards) > 0:
                     apply_must_happen(net, target_name, list_of_guards)
         col_name_copy.remove(target_name)
         col_name_copy.insert(index_of_target, target_name)
+
+
+def check_delete_empty(tree, special_transitions):
+    activities_enabled_for_node = []
+    build_first_options_of_tree(tree, activities_enabled_for_node)
+    delete_empty_transition = all(element in special_transitions for element in activities_enabled_for_node)
+    if delete_empty_transition:
+        for child in tree.children:
+            if len(child.children) == 0 and child.label == None:
+                tree.children.remove(child)
+        if len(tree.children) == 1:
+            index_of_tree_in_parent = tree.parent.children.index(tree)
+            tree.parent.children[index_of_tree_in_parent] = tree.children[0]
+            tree.children[0].parent = tree.parent
+
+def delete_empty_transitions_active(tree, special_transitions):
+    if len(tree.children) > 0:
+        xor_node = (tree.operator.value == "X")
+        if xor_node and has_empty_child(tree):
+            check_delete_empty(tree,special_transitions)
+        for child in tree.children:
+            delete_empty_transitions_active(child,special_transitions)
+
+def delete_empty_transitions(process_tree, train_log, col_name):
+    traces = build_traces_from_csv(train_log)
+    nodes = []
+    activities_enables_for_nodes = []
+    build_xor_nodes(process_tree, nodes, activities_enables_for_nodes)
+    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(process_tree, traces, nodes, activities_enables_for_nodes,
+                                                                      col_name)
+    columns = builds_all_target(col_name)
+    special_transitions = []
+    for column in columns:
+        col_name_copy = col_name.copy()
+        target_name = column[len(column) - 1]
+        index_of_target = col_name.index(target_name)
+        col_name_copy.remove(target_name)
+        col_name_copy.append(target_name)
+        list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
+                                                                        index_of_target)
+        rows = build_rows(list_of_xor_nodes_and_choses_for_target, target_name)
+        if len(rows) > 10:
+            build_csv_for_child_of_xor(rows, col_name_copy)
+            csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
+            tree = build_decision_tree(csv_decision, col_name_copy)
+            if tree.capacity > 1:
+                special_transition_condition = special_transition_condition_function(tree, col_name_copy)
+                if special_transition_condition:
+                    special_transitions.append(target_name)
+        col_name_copy.remove(target_name)
+        col_name_copy.insert(index_of_target, target_name)
+    delete_empty_transitions_active(process_tree, special_transitions)
 
 
 def transition_enabled(transition, marking):
