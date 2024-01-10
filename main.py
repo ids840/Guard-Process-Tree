@@ -27,9 +27,6 @@ import random
 import datetime
 
 import Decision_Tree_To_Guards
-import build_bank_net
-import build_ski_net
-import build_tv_net
 
 
 def simulate_execution(petri_net, initial_marking, final_marking, num_cases=10):
@@ -65,8 +62,8 @@ def simulate_execution(petri_net, initial_marking, final_marking, num_cases=10):
     return event_log
 
 
-def import_csv(file_path):
-    event_log = pandas.read_csv(file_path, sep=',')
+def import_csv(file_path, seperator):
+    event_log = pandas.read_csv(file_path, sep=seperator)
     event_log['case ID'] = event_log['case ID'].astype(str)
     event_log['activity'] = event_log['activity'].astype(str)
     event_log['timestamp'] = pandas.to_datetime(event_log['timestamp'],format='mixed')
@@ -570,20 +567,116 @@ def copy_process_tree(process_tree_Inductive, parent):
             copy_process_tree_ret.children.append(copy_child)
         return copy_process_tree_ret
 
+def build_traces():
+    traces = []
+    for _ in range(500):
+        trace = []
+        for i in range(3):
+            if i<2:
+                random_sign = random.randint(0,1)
+                if random_sign==0:
+                    trace.append("a")
+                else:
+                    trace.append("b")
+            else:
+                if count_in_trace("b",trace) == 2:
+                    trace.append("b")
+                else:
+                    trace.append("a")
+        traces.append(trace)
+    return traces
+
+def build_process_tree_gera_initial_example():
+    process_tree = ProcessTree()
+    process_tree.operator= "->"
+    for i in range(3):
+        xor = ProcessTree()
+        child_a = ProcessTree()
+        child_a.label = "a"
+        child_a.parent = xor
+        child_b = ProcessTree()
+        child_b.label = "b"
+        child_b.parent = xor
+        xor.operator = "X"
+        xor.parent = process_tree
+        xor.children.append(child_a)
+        xor.children.append(child_b)
+        process_tree.children.append(xor)
+    return process_tree
+
+def build_events(trace, case_id):
+    case_id_str = f"Case_{case_id}"
+    trace_log = []
+    for activity in trace:
+        event = {
+            "case_id": case_id_str,
+            "activity": activity,
+            "timestamp": datetime.datetime.now().isoformat(),
+        }
+        trace_log.append(event)
+    return trace_log
+
+def build_log():
+    log = []
+    traces = build_traces()
+    for i in range(len(traces)):
+        trace_log = build_events(traces[i],i+1)
+        log.extend(trace_log)
+    return log
+
+
+def create_train_log(log):
+    timestamp = ''
+    last_case_id = 0
+    list_of_events_for_log = []
+    for event in log:
+        case_id = event.get("case_id")[5:]
+        activity = event.get("activity")
+        if int(case_id) != last_case_id:
+            timestamp = '1700-12-01'
+            last_case_id = int(case_id)
+        else:
+            timestamp = Decision_Tree_To_Guards.add_one_year(timestamp)
+        event_for_log = []
+        event_for_log.append(case_id)
+        event_for_log.append(activity)
+        event_for_log.append(timestamp)
+        list_of_events_for_log.append(event_for_log)
+    create_csv_file(['case ID','activity', 'timestamp'], list_of_events_for_log, 'gera_log.csv')
+
+
+def create_csv_file(headlines, data, csv_name):
+    with open(csv_name, 'w', newline='') as file:
+        writer = csv.writer(file)
+
+        writer.writerow(headlines)
+
+        for row in data:
+            writer.writerow(row)
 
 
 if __name__ == "__main__":
-    log = import_csv("C:/Users/עידו שפירא/Downloads/RequestForPayment.csv")
+    # gera_tree = build_process_tree_gera_initial_example()
+    # # pm4py.view_process_tree(gera_tree)
+    # train_log_g = build_log()
+    # create_train_log(train_log_g)
+    # log_g = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/gera_log.csv", ",")
+    # net, im, fm = pm4py.convert_to_petri_net(gera_tree)
+    # names_of_transitions = build_names_of_transitions(net.transitions)
+    # Decision_Tree_To_Guards.add_xor_guards(gera_tree,net,log_g,names_of_transitions)
+
+    log = import_csv("C:/Users/עידו שפירא/Downloads/PermitLog.csv", ",")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
-    train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv")
-    test_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/test_log.csv")
+    train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
+    test_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/test_log.csv", ",")
     #convert_xes_to_csv("C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.xes","C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.csv")
     #print_traces_nice(traces)
     process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
     #pm4py.view_process_tree(process_tree_Inductive)
-    pm4py.view_process_tree(process_tree_Inductive)
+    #pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
+    print("Without Guards \n")
     evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
@@ -595,14 +688,13 @@ if __name__ == "__main__":
     # pm4py.view_process_tree(process_tree_Inductive)
     process_tree_Inductive_before = copy_process_tree(process_tree_Inductive,None)
     Decision_Tree_To_Guards.delete_empty_transitions(process_tree_Inductive,  train_log, names_of_transitions)
-    pm4py.view_process_tree(process_tree_Inductive)
+    # pm4py.view_process_tree(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     #names_of_transitions_under_xor_with_empty_trnasitions = build_names_of_transitions_under_xor_with_empty_trnasitions(process_tree_Inductive)
     #print(names_of_transitions_under_xor_with_empty_trnasitions)
     #tree = pm4py.convert_to_process_tree(net, im, fm)
     #pm4py.view_process_tree(tree)
     # Decision_Tree_To_Guards.create_ec_kitty_tree(net,train_log,names_of_transitions)
-    print("Without Guards \n")
     Decision_Tree_To_Guards.add_xor_guards(process_tree_Inductive_before,net,train_log,names_of_transitions)
     print("\n==============================================================================================================================\nWith Guards\n")
     #Decision_Tree_To_Guards.add_xor_guards(tree,net,train_log)

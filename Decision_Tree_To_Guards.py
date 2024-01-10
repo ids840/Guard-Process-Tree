@@ -1178,7 +1178,7 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
                 delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs, pointers)
                 return node
             else:
-                if node_without_empty(child) == False:
+                if node_without_empty(child) == False or (child.operator == "X" and seq_loop_emergency_pointers.__contains__(child) == False):
                     for i in range(len(node.children) - child_index - 1):
                         new_child_index = child_index + i + 1
                         child = node.children[new_child_index]
@@ -1436,6 +1436,18 @@ def build_xor_nodes(tree, nodes, activities_enabled_for_nodes):
             build_xor_nodes(children, nodes, activities_enabled_for_nodes)
 
 
+def clear_rows(rows):
+    for row in rows.copy():
+        chosen = row[len(row)-1]
+        if not chosen:
+            copy_row = row.copy()
+            features = copy_row[:-1]
+            features.append(1)
+            if rows.__contains__(features):
+                rows.remove(row)
+
+
+
 def build_rows(list_of_xor_nodes_and_choses, target_name):
     rows = []
     for row in list_of_xor_nodes_and_choses:
@@ -1449,6 +1461,7 @@ def build_rows(list_of_xor_nodes_and_choses, target_name):
             else:
                 row_to_append.append(0)
             rows.append(row_to_append)
+    clear_rows(rows)
     return rows
 
 
@@ -1528,8 +1541,10 @@ def add_xor_guards(tree, net, train_log, col_name):
             csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
             tree = build_decision_tree(csv_decision, col_name_copy)
             if tree.capacity > 1:
+                # print(target_name)
                 #must_happen_special_guard = get_must_happen_special_guard(tree, col_name_copy)
                 must_happen_special_guards = get_must_happen_special_guards(tree,col_name_copy)
+                # print(must_happen_special_guards)
                 list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
                 for must_happen_special_guard in must_happen_special_guards:
                     apply_special_must_happen(net, target_name, must_happen_special_guard)
@@ -1539,6 +1554,7 @@ def add_xor_guards(tree, net, train_log, col_name):
                             if len(list_of_guards_internal) == 0:
                                 list_of_guards.remove(list_of_guards_internal)
                 if len(list_of_guards) > 0:
+                    # print(list_of_guards)
                     apply_must_happen(net, target_name, list_of_guards)
         col_name_copy.remove(target_name)
         col_name_copy.insert(index_of_target, target_name)
