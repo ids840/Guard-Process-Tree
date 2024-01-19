@@ -642,7 +642,6 @@ def create_train_log(log):
         event_for_log.append(activity)
         event_for_log.append(timestamp)
         list_of_events_for_log.append(event_for_log)
-    create_csv_file(['case ID','activity', 'timestamp'], list_of_events_for_log, 'gera_log.csv')
 
 
 def create_csv_file(headlines, data, csv_name):
@@ -656,28 +655,20 @@ def create_csv_file(headlines, data, csv_name):
 
 
 if __name__ == "__main__":
-    # gera_tree = build_process_tree_gera_initial_example()
-    # # pm4py.view_process_tree(gera_tree)
-    # train_log_g = build_log()
-    # create_train_log(train_log_g)
-    # log_g = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/gera_log.csv", ",")
-    # net, im, fm = pm4py.convert_to_petri_net(gera_tree)
-    # names_of_transitions = build_names_of_transitions(net.transitions)
-    # Decision_Tree_To_Guards.add_xor_guards(gera_tree,net,log_g,names_of_transitions)
 
-    log = import_csv("C:/Users/עידו שפירא/Downloads/PermitLog.csv", ",")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/ski_log.csv", ",")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
     test_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/test_log.csv", ",")
-    #convert_xes_to_csv("C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.xes","C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.csv")
+    # convert_xes_to_csv("C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.xes","C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.csv")
     #print_traces_nice(traces)
     process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
-    #pm4py.view_process_tree(process_tree_Inductive)
+    # pm4py.view_process_tree(process_tree_Inductive)
     #pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
-    print("Without Guards \n")
-    evaluation(test_log, net, im, fm)
+    # print("Without Guards \n")
+    # evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     #names_of_transitions_not_under_loop = build_names_of_transitions_not_under_loop(process_tree_Inductive)
@@ -687,7 +678,7 @@ if __name__ == "__main__":
     #evaluation(train_log,net,im,fm)
     # pm4py.view_process_tree(process_tree_Inductive)
     process_tree_Inductive_before = copy_process_tree(process_tree_Inductive,None)
-    Decision_Tree_To_Guards.delete_empty_transitions(process_tree_Inductive,  train_log, names_of_transitions)
+    #Decision_Tree_To_Guards.delete_empty_transitions(process_tree_Inductive,  train_log, names_of_transitions)
     # pm4py.view_process_tree(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     #names_of_transitions_under_xor_with_empty_trnasitions = build_names_of_transitions_under_xor_with_empty_trnasitions(process_tree_Inductive)

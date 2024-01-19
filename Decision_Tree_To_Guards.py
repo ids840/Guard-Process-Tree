@@ -17,6 +17,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 import EC_KITTY
 import EC_KITTY_SKL
+from PonyGE2.src import ponyge
 
 
 def add_arcs_from_place_to_transitions(net, place, transitions):
@@ -1178,7 +1179,7 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
                 delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs, pointers)
                 return node
             else:
-                if node_without_empty(child) == False or (child.operator == "X" and seq_loop_emergency_pointers.__contains__(child) == False):
+                if node_without_empty(child) == False or  seq_loop_emergency_pointers.__contains__(child) == False:
                     for i in range(len(node.children) - child_index - 1):
                         new_child_index = child_index + i + 1
                         child = node.children[new_child_index]
@@ -1531,33 +1532,73 @@ def add_xor_guards(tree, net, train_log, col_name):
         col_name_copy = col_name.copy()
         target_name = column[len(column) - 1]
         index_of_target = col_name.index(target_name)
-        col_name_copy.remove(target_name)
-        col_name_copy.append(target_name)
-        list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
-                                                                        index_of_target)
-        rows = build_rows(list_of_xor_nodes_and_choses_for_target, target_name)
+        col_name_copy.append("choose")
+        # list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
+        #                                                                 index_of_target)
+        rows = build_rows(list_of_xor_nodes_and_choses, target_name)
         if len(rows) > 10:
             build_csv_for_child_of_xor(rows, col_name_copy)
             csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
             tree = build_decision_tree(csv_decision, col_name_copy)
             if tree.capacity > 1:
-                # print(target_name)
-                #must_happen_special_guard = get_must_happen_special_guard(tree, col_name_copy)
-                must_happen_special_guards = get_must_happen_special_guards(tree,col_name_copy)
-                # print(must_happen_special_guards)
-                list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
-                for must_happen_special_guard in must_happen_special_guards:
-                    apply_special_must_happen(net, target_name, must_happen_special_guard)
-                    for list_of_guards_internal in list_of_guards:
-                        if list_of_guards_internal.__contains__(must_happen_special_guard):
-                            list_of_guards_internal.remove(must_happen_special_guard)
-                            if len(list_of_guards_internal) == 0:
-                                list_of_guards.remove(list_of_guards_internal)
-                if len(list_of_guards) > 0:
-                    # print(list_of_guards)
-                    apply_must_happen(net, target_name, list_of_guards)
-        col_name_copy.remove(target_name)
-        col_name_copy.insert(index_of_target, target_name)
+                ponyge.mane_2(["--parameters", "decision_tree.csv"])
+        #         # print(target_name)
+        #         #must_happen_special_guard = get_must_happen_special_guard(tree, col_name_copy)
+        #         must_happen_special_guards = get_must_happen_special_guards(tree,col_name_copy)
+        #         # print(must_happen_special_guards)
+        #         list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
+        #         for must_happen_special_guard in must_happen_special_guards:
+        #             apply_special_must_happen(net, target_name, must_happen_special_guard)
+        #             for list_of_guards_internal in list_of_guards:
+        #                 if list_of_guards_internal.__contains__(must_happen_special_guard):
+        #                     list_of_guards_internal.remove(must_happen_special_guard)
+        #                     if len(list_of_guards_internal) == 0:
+        #                         list_of_guards.remove(list_of_guards_internal)
+        #         if len(list_of_guards) > 0:
+        #             # print(list_of_guards)
+        #             apply_must_happen(net, target_name, list_of_guards)
+        # col_name_copy.remove(target_name)
+        # col_name_copy.insert(index_of_target, target_name)
+
+# def add_xor_guards(tree, net, train_log, col_name):
+#     traces = build_traces_from_csv(train_log)
+#     nodes = []
+#     activities_enables_for_nodes = []
+#     build_xor_nodes(tree, nodes, activities_enables_for_nodes)
+#     list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(tree, traces, nodes, activities_enables_for_nodes,
+#                                                                       col_name)
+#     columns = builds_all_target(col_name)
+#     for column in columns:
+#         col_name_copy = col_name.copy()
+#         target_name = column[len(column) - 1]
+#         index_of_target = col_name.index(target_name)
+#         col_name_copy.remove(target_name)
+#         col_name_copy.append(target_name)
+#         list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
+#                                                                         index_of_target)
+#         rows = build_rows(list_of_xor_nodes_and_choses_for_target, target_name)
+#         if len(rows) > 10:
+#             build_csv_for_child_of_xor(rows, col_name_copy)
+#             csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
+#             tree = build_decision_tree(csv_decision, col_name_copy)
+#             if tree.capacity > 1:
+#                 # print(target_name)
+#                 #must_happen_special_guard = get_must_happen_special_guard(tree, col_name_copy)
+#                 must_happen_special_guards = get_must_happen_special_guards(tree,col_name_copy)
+#                 # print(must_happen_special_guards)
+#                 list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
+#                 for must_happen_special_guard in must_happen_special_guards:
+#                     apply_special_must_happen(net, target_name, must_happen_special_guard)
+#                     for list_of_guards_internal in list_of_guards:
+#                         if list_of_guards_internal.__contains__(must_happen_special_guard):
+#                             list_of_guards_internal.remove(must_happen_special_guard)
+#                             if len(list_of_guards_internal) == 0:
+#                                 list_of_guards.remove(list_of_guards_internal)
+#                 if len(list_of_guards) > 0:
+#                     # print(list_of_guards)
+#                     apply_must_happen(net, target_name, list_of_guards)
+#         col_name_copy.remove(target_name)
+#         col_name_copy.insert(index_of_target, target_name)
 
 
 def check_delete_empty(tree, special_transitions):
