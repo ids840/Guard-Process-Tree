@@ -26,6 +26,7 @@ import random
 
 import datetime
 
+import ApplyPonyGuard
 import Decision_Tree_To_Guards
 
 
@@ -654,6 +655,26 @@ def create_csv_file(headlines, data, csv_name):
             writer.writerow(row)
 
 
+def generate_bnf_file(number_of_transitions):
+    with open("C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/grammars/supervised_learning/decision_tree.bnf", 'w') as bnf_file:
+        bnf_file.write('<b> ::= np.less(<e>,<e>)|\n')
+        bnf_file.write('        np.greater(<e>,<e>)|\n')
+        bnf_file.write('        np.logical_and(<b>,<b>)|\n')
+        bnf_file.write('        np.logical_or(<b>,<b>)|\n')
+        bnf_file.write('        np.where(<b>,<e>,<e>)|\n')
+        bnf_file.write('        np.equal(<e>,<e>)\n\n')
+
+        bnf_file.write('<e> ::= x[:, 0]|\n')
+        for i in range(1, number_of_transitions):
+            bnf_file.write(f'        x[:, {i}]|\n')
+
+        bnf_file.write('        np.subtract(<e>,<e>)|\n')
+        bnf_file.write('        np.add(<e>,<e>)|\n')
+        bnf_file.write('        <c>\n\n')
+
+        bnf_file.write('<c> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9\n')
+
+
 if __name__ == "__main__":
 
     log = import_csv("C:/Users/עידו שפירא/Downloads/ski_log.csv", ",")
@@ -681,12 +702,14 @@ if __name__ == "__main__":
     #Decision_Tree_To_Guards.delete_empty_transitions(process_tree_Inductive,  train_log, names_of_transitions)
     # pm4py.view_process_tree(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
+    generate_bnf_file(len(names_of_transitions))
+    # ApplyPonyGuard.apply_pony_guard(net, target_name, "np.less(x[:, 5],np.add(1,x[:, 0]))", col_name_copy)
     #names_of_transitions_under_xor_with_empty_trnasitions = build_names_of_transitions_under_xor_with_empty_trnasitions(process_tree_Inductive)
     #print(names_of_transitions_under_xor_with_empty_trnasitions)
     #tree = pm4py.convert_to_process_tree(net, im, fm)
     #pm4py.view_process_tree(tree)
     # Decision_Tree_To_Guards.create_ec_kitty_tree(net,train_log,names_of_transitions)
-    Decision_Tree_To_Guards.add_xor_guards(process_tree_Inductive_before,net,train_log,names_of_transitions)
+    Decision_Tree_To_Guards.add_xor_guards_ponyG(process_tree_Inductive_before,net,train_log,names_of_transitions)
     print("\n==============================================================================================================================\nWith Guards\n")
     #Decision_Tree_To_Guards.add_xor_guards(tree,net,train_log)
     #print_petri_net(net,im,fm)

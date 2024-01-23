@@ -1,4 +1,5 @@
 import csv
+import subprocess
 from datetime import datetime
 
 import clf as clf
@@ -15,9 +16,11 @@ from sklearn.model_selection import train_test_split  # Import train_test_split 
 from sklearn import metrics, __all__  # Import scikit-learn metrics module for accuracy calculation
 from sklearn.tree import DecisionTreeClassifier
 
+import ApplyPonyGuard
 import EC_KITTY
 import EC_KITTY_SKL
-from PonyGE2.src import ponyge
+# import PonyGE2.src.ponyge
+
 
 
 def add_arcs_from_place_to_transitions(net, place, transitions):
@@ -800,7 +803,7 @@ def count_transition_until_feature(trace, feature, target):
 
 
 def build_csv_for_child_of_xor(rows, column):
-    create_csv_file(column, rows, "decision_tree.csv")
+    create_csv_file(column, rows, "C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/datasets/decision_tree.csv")
 
 
 def build_csv_for_column_first_occurance(csv, column):
@@ -1519,6 +1522,60 @@ def apply_special_must_happen(net, transition_name, guard):
     else:
         function = guard_min_x_times_must_happen
     function(*parameter_list)
+
+
+def add_xor_guards_ponyG(tree, net, train_log, col_name):
+
+    traces = build_traces_from_csv(train_log)
+    nodes = []
+    activities_enables_for_nodes = []
+    build_xor_nodes(tree, nodes, activities_enables_for_nodes)
+    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(tree, traces, nodes, activities_enables_for_nodes,
+                                                                      col_name)
+    columns = builds_all_target(col_name)
+    for column in columns:
+        col_name_copy = col_name.copy()
+        target_name = column[len(column) - 1]
+        index_of_target = col_name.index(target_name)
+        col_name_copy.append("choose")
+        # list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
+        #                                                                 index_of_target)
+        rows = build_rows(list_of_xor_nodes_and_choses, target_name)
+        build_csv_for_child_of_xor(rows, col_name_copy)
+        list_argv = []
+        command = 'ponyge.py'
+        directory_path = 'C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/src'  # Replace with the actual path
+
+        # Run the command in the specified directory
+        result = subprocess.run(command, shell=True, cwd=directory_path, capture_output=True, text=True)
+        fitness_str_copy = result.stdout
+        phenotype_str_copy = result.stdout
+        index_of_fitness = result.stdout.find("Fitness:")
+        Fitness = fitness_str_copy[index_of_fitness+10:]
+        index_of_phenotype = phenotype_str_copy.find("Phenotype:")
+        Phenotype = result.stdout[index_of_phenotype+ 11:]
+        index_of_end = Phenotype.find("\n")
+        Phenotype = Phenotype[:index_of_end]
+        if Fitness.startswith("0.0"):
+        # stats = PonyGE2.src.ponyge.mane_2(list_argv)
+            ApplyPonyGuard.apply_pony_guard(net,target_name,Phenotype,col_name_copy)
+                # print(target_name)
+        #         #must_happen_special_guard = get_must_happen_special_guard(tree, col_name_copy)
+        #         must_happen_special_guards = get_must_happen_special_guards(tree,col_name_copy)
+        #         # print(must_happen_special_guards)
+        #         list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
+        #         for must_happen_special_guard in must_happen_special_guards:
+        #             apply_special_must_happen(net, target_name, must_happen_special_guard)
+        #             for list_of_guards_internal in list_of_guards:
+        #                 if list_of_guards_internal.__contains__(must_happen_special_guard):
+        #                     list_of_guards_internal.remove(must_happen_special_guard)
+        #                     if len(list_of_guards_internal) == 0:
+        #                         list_of_guards.remove(list_of_guards_internal)
+        #         if len(list_of_guards) > 0:
+        #             # print(list_of_guards)
+        #             apply_must_happen(net, target_name, list_of_guards)
+        # col_name_copy.remove(target_name)
+        # col_name_copy.insert(index_of_target, target_name)
 
 def add_xor_guards(tree, net, train_log, col_name):
     traces = build_traces_from_csv(train_log)
