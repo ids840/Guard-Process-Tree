@@ -1576,37 +1576,37 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name):
         #             apply_must_happen(net, target_name, list_of_guards)
         # col_name_copy.remove(target_name)
         # col_name_copy.insert(index_of_target, target_name)
-
-def add_xor_guards(tree, net, train_log, col_name):
-    traces = build_traces_from_csv(train_log)
-    nodes = []
-    activities_enables_for_nodes = []
-    build_xor_nodes(tree, nodes, activities_enables_for_nodes)
-    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(tree, traces, nodes, activities_enables_for_nodes,
-                                                                      col_name)
-    columns = builds_all_target(col_name)
-    for column in columns:
-        col_name_copy = col_name.copy()
-        target_name = column[len(column) - 1]
-        index_of_target = col_name.index(target_name)
-        col_name_copy.append("choose")
-        # list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
-        #                                                                 index_of_target)
-        rows = build_rows(list_of_xor_nodes_and_choses, target_name)
-        if len(rows) > 10:
-            build_csv_for_child_of_xor(rows, col_name_copy)
-            csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
-            tree = build_decision_tree(csv_decision, col_name_copy)
-            if tree.capacity > 1:
-                ponyge.mane_2(["--parameters", "decision_tree.csv"])
-        #         # print(target_name)
-        #         #must_happen_special_guard = get_must_happen_special_guard(tree, col_name_copy)
-        #         must_happen_special_guards = get_must_happen_special_guards(tree,col_name_copy)
-        #         # print(must_happen_special_guards)
-        #         list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
-        #         for must_happen_special_guard in must_happen_special_guards:
-        #             apply_special_must_happen(net, target_name, must_happen_special_guard)
-        #             for list_of_guards_internal in list_of_guards:
+#
+# def add_xor_guards(tree, net, train_log, col_name):
+#     traces = build_traces_from_csv(train_log)
+#     nodes = []
+#     activities_enables_for_nodes = []
+#     build_xor_nodes(tree, nodes, activities_enables_for_nodes)
+#     list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(tree, traces, nodes, activities_enables_for_nodes,
+#                                                                       col_name)
+#     columns = builds_all_target(col_name)
+#     for column in columns:
+#         col_name_copy = col_name.copy()
+#         target_name = column[len(column) - 1]
+#         index_of_target = col_name.index(target_name)
+#         col_name_copy.append("choose")
+#         # list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
+#         #                                                                 index_of_target)
+#         rows = build_rows(list_of_xor_nodes_and_choses, target_name)
+#         if len(rows) > 10:
+#             build_csv_for_child_of_xor(rows, col_name_copy)
+#             csv_decision = pd.read_csv("decision_tree.csv", header=None, names=col_name_copy)
+#             tree = build_decision_tree(csv_decision, col_name_copy)
+#             if tree.capacity > 1:
+#                 ponyge.mane_2(["--parameters", "decision_tree.csv"])
+#         #         # print(target_name)
+#         #         #must_happen_special_guard = get_must_happen_special_guard(tree, col_name_copy)
+#         #         must_happen_special_guards = get_must_happen_special_guards(tree,col_name_copy)
+#         #         # print(must_happen_special_guards)
+#         #         list_of_guards = list_of_guards_must_happen(tree, col_name_copy)
+#         #         for must_happen_special_guard in must_happen_special_guards:
+#         #             apply_special_must_happen(net, target_name, must_happen_special_guard)
+#         #             for list_of_guards_internal in list_of_guards:
         #                 if list_of_guards_internal.__contains__(must_happen_special_guard):
         #                     list_of_guards_internal.remove(must_happen_special_guard)
         #                     if len(list_of_guards_internal) == 0:
@@ -1745,25 +1745,6 @@ def activate_transition(transition: PetriNet.Transition, dictionary_of_tokens_co
     for arc in arcs_out:
         dictionary_of_tokens_copy[arc.target] = dictionary_of_tokens_copy[arc.target] + arc.weight
 
-
-# Function that return if a trace is in the net
-def check_if_trace_in_net(net, trace, final_marking, dict_of_tokens):
-    trace_in_net = False
-    set_of_activate_None_transitions = group_of_can_do_transitions(net.transitions, dict_of_tokens)
-    for None_activate_transition in set_of_activate_None_transitions:
-        dictionary_of_tokens_copy = dict_of_tokens.copy()
-        activate_transition(None_activate_transition, dictionary_of_tokens_copy)
-        trace_in_net = trace_in_net or check_if_trace_in_net(net, trace, final_marking, dictionary_of_tokens_copy)
-    if len(trace) == 0:
-        trace_in_net = True
-    else:
-        label_transition = found_transition(net, trace[0])
-        if transition_enabled(label_transition, dict_of_tokens):
-            dictionary_of_tokens_copy = dict_of_tokens.copy()
-            activate_transition(label_transition, dictionary_of_tokens_copy)
-            trace_in_net = trace_in_net or check_if_trace_in_net(net, trace[1:], final_marking,
-                                                                 dictionary_of_tokens_copy)
-    return trace_in_net
 
 
 def import_csv(file_path):
