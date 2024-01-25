@@ -19,8 +19,9 @@ from sklearn.tree import DecisionTreeClassifier
 import ApplyPonyGuard
 import EC_KITTY
 import EC_KITTY_SKL
-# import PonyGE2.src.ponyge
 
+
+# import PonyGE2.src.ponyge
 
 
 def add_arcs_from_place_to_transitions(net, place, transitions):
@@ -356,7 +357,7 @@ def special_transition_condition_function(tree, features):
     list_of_or_guards = []
     list_of_and_guard = []
     stack = [0]
-    value_of_positive =value_of_curr = tree.value[0][0][1]
+    value_of_positive = value_of_curr = tree.value[0][0][1]
     while len(stack) > 0:
         found = False
         node_id = stack.pop(0)
@@ -382,6 +383,7 @@ def special_transition_condition_function(tree, features):
     if value_of_curr[0] == 0:
         value_of_positive = value_of_positive - value_of_curr[1]
     return value_of_positive == 0
+
 
 def find_must_guards(tree, features):
     # traces = build_traces_list(0, [], [], tree)
@@ -868,14 +870,17 @@ def build_prefixes(traces):
     return list_of_prefixes
 
 
-def build_csv_for_prefixes(net, csv, column, initial_marking, final_marking):
-    traces = build_traces_from_csv(csv)
+def build_csv_for_prefixes(net, train_log, column, initial_marking, final_marking):
+    traces = build_traces_from_csv(train_log)
     prefixes = build_prefixes(traces)
     rows = []
     target = column[len(column) - 1]
-    features = column[:-1]
-    good_prefixes, bad_prefixes = build_good_and_bad_prefixes_for_transition(net, prefixes, target, initial_marking,
+    features = column
+    good_prefixes, bad_prefixes = build_good_and_bad_prefixes_for_transition(net, train_log, prefixes, target,
+                                                                             initial_marking,
                                                                              final_marking)
+    copy_column = column.copy()
+    copy_column.append("choose")
     for good_prefix in good_prefixes:
         row = build_row(good_prefix, features)
         row.append(1)
@@ -884,8 +889,7 @@ def build_csv_for_prefixes(net, csv, column, initial_marking, final_marking):
         row = build_row(bad_prefix, features)
         row.append(0)
         rows.append(row)
-    create_csv_file(column, rows, "decision_tree.csv")
-    return len(rows)
+    create_csv_file(copy_column, rows, "C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/datasets/decision_tree.csv")
 
 
 def build_all_decision_trees_first_occurance(net, csv, col_name):
@@ -1019,8 +1023,10 @@ def create_ec_kitty_tree(net, csv, col_name):
 
 
 def has_empty_child(process_tree_Inductive):
+    if len(process_tree_Inductive.children) == 0 and process_tree_Inductive.label == None:
+        return True
     for children in process_tree_Inductive.children:
-        if len(children.children) == 0 and children.label == None:
+        if has_empty_child(children):
             return True
     return False
 
@@ -1182,7 +1188,7 @@ def find_emergency_pointer_index(seq_loop_emergency_pointers, indexes_of_childs,
                 delete_from_list_childs(node, seq_loop_emergency_pointers, indexes_of_childs, pointers)
                 return node
             else:
-                if node_without_empty(child) == False or  seq_loop_emergency_pointers.__contains__(child) == False:
+                if node_without_empty(child) == False or seq_loop_emergency_pointers.__contains__(child) == False:
                     for i in range(len(node.children) - child_index - 1):
                         new_child_index = child_index + i + 1
                         child = node.children[new_child_index]
@@ -1232,6 +1238,8 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
                                   activities_enables_for_nodes,
                                   transition, list_of_xor_choices, appended, transitions_enabled, rows, row):
     if len(pointers) > 0 and in_transition(pointers[0], transition):
+        if not transitions_enabled.__contains__(transition):
+            transitions_enabled.append(transition)
         pointers.pop(0)
         return True
     else:
@@ -1248,9 +1256,13 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
                 pointer = pointers[child_index]
             child_index = find_child_index(pointer, transition)
             if len(pointer.children) == 0:
+                if not transitions_enabled.__contains__(transition):
+                    transitions_enabled.append(transition)
                 pointers.remove(pointer)
                 return True
             if not_from_pointers and len(pointer.children[child_index].children) == 0:
+                if not transitions_enabled.__contains__(transition):
+                    transitions_enabled.append(transition)
                 return True
             xor_node = (pointer.operator.value == "X")
             seq_node = (pointer.operator.value == "->")
@@ -1276,8 +1288,8 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
                                                      transition,
                                                      list_of_xor_choices, appended, transitions_enabled, rows, row)
             if parallel_node:
-                # if pointers.__contains__(pointer):
-                #     pointers.remove(pointer)
+                if pointers.__contains__(pointer):
+                    pointers.remove(pointer)
                 pointers.insert(0, pointer.children[child_index])
                 for index_of_child in range(len(pointer.children)):
                     if child_index != index_of_child:
@@ -1313,47 +1325,203 @@ def build_list_of_xor_and_choices(process_tree, pointers, seq_loop_emergency_poi
     return stop
 
 
-# def build_list_of_xor_and_choices(process_tree, pointers, xor_nodes, transition, list_of_xor_choices):
-#     if len(pointers)>0 and in_transition(pointers[0],transition):
-#         pointers.pop(0)
-#         return True
-#     else:
-#         stop = False
-#         for index in range(len(pointers.copy())):
-#             pointer = pointers[index]
-#             if found_way(pointer, transition) and not stop:
-#                 child_index = find_child_index(pointer, transition)
-#                 xor_node = (pointer.operator.value == "X")
-#                 seq_node = (pointer.operator.value == "->")
-#                 loop_node = (pointer.operator.value == "*")
-#                 parallel_node = (pointer.operator.value == "+")
-#                 if seq_node:
-#                     pointers.remove(pointer)
-#                     pointers.insert(0, pointer.children[child_index])
-#                     stop = build_list_of_xor_and_choices(process_tree, pointers, xor_nodes, transition,
-#                                                   list_of_xor_choices)
-#                 if parallel_node:
-#                     pointers.remove(pointer)
-#                     pointers.insert(0, pointer.children[child_index])
-#                     for index_of_child in range(len(pointer.children)):
-#                         if child_index != index_of_child:
-#                             pointers.append(pointer.children[index_of_child])
-#                     stop = build_list_of_xor_and_choices(process_tree, pointers, xor_nodes, transition,
-#                                                   list_of_xor_choices)
-#                 if xor_node:
-#                     pointers.remove(pointer)
-#                     index_of_xor_node = find_xor_node(pointer, xor_nodes)
-#                     list_of_xor_choices.append((index_of_xor_node, child_index))
-#                     pointers.insert(0, pointer.children[child_index])
-#                     stop = build_list_of_xor_and_choices(process_tree, pointers, xor_nodes, transition,
-#                                                   list_of_xor_choices)
-#                 if loop_node:
-#                     pointers.remove(pointer)
-#                     pointers.insert(0, pointer.children[child_index])
-#                     stop = build_list_of_xor_and_choices(process_tree, pointers, xor_nodes, transition,
-#                                                   list_of_xor_choices)
-#
-#     return False
+def create_loop_indexes(pointer, child_index):
+    list_of_indexes = []
+    if child_index == 0:
+        right_has_empty = False
+        for children in pointer.children[1:]:
+            right_has_empty = right_has_empty or has_empty_child(children)
+        list_of_indexes = list(range(len(pointer.children)))
+        if not right_has_empty:
+            list_of_indexes = list_of_indexes[1:]
+    else:
+        if has_empty_child(pointer.children[0]):
+            list_of_indexes = list(range(len(pointer.children)))
+        else:
+            list_of_indexes.append(0)
+    return list_of_indexes
+
+
+def try_in_specials(pointers, list_of_loop_seq, transition):
+    for node in list_of_loop_seq:
+        if found_way(node, transition):
+            return node
+
+
+def is_son_of(node, pointer):
+    if node.parent == None or node == pointer:
+        return False
+    if node.parent == pointer:
+        return True
+    return is_son_of(node.parent, pointer)
+
+
+def switch_list(list_1, list_2):
+    for item in list_2.copy():
+        list_2.remove(item)
+    for item in list_1:
+        list_2.append(item)
+
+
+def fix_lists(list_of_loop_seq, list_of_loop, list_of_seq, list_of_loop_indexes, list_of_seq_inedxes, pointer,
+              pointers):
+    list_1 = []
+    list_2 = []
+    list_3 = []
+    list_4 = []
+    list_5 = []
+    for curr_pointer in pointers:
+        if is_son_of(curr_pointer, pointer):
+            pointers.remove(curr_pointer)
+    index_of_pointer = list_of_loop_seq.index(pointer)
+    for index in range(0, index_of_pointer):
+        node = list_of_loop_seq[index]
+        if not is_son_of(node, pointer):
+            list_1.append(node)
+    list_1 = list_1 + list_of_loop_seq[index_of_pointer:]
+    for index in range(len(list_of_loop)):
+        node = list_of_loop[index]
+        index_of_child = list_of_loop_indexes[index]
+        if not is_son_of(node, pointer):
+            list_2.append(node)
+            list_3.append(index_of_child)
+    for index in range(len(list_of_seq)):
+        node = list_of_seq[index]
+        index_of_child = list_of_seq_inedxes[index]
+        if (not is_son_of(node, pointer)) or node == pointer:
+            list_4.append(node)
+            list_5.append(index_of_child)
+    switch_list(list_1, list_of_loop_seq)
+    switch_list(list_2, list_of_loop)
+    switch_list(list_3, list_of_loop_indexes)
+    switch_list(list_4, list_of_seq)
+    switch_list(list_5, list_of_seq_inedxes)
+
+
+
+def transitions_can_happen_in_pointer(pointer, names_of_transitions):
+    if len(pointer.children) == 0:
+        if pointer.label != None:
+            names_of_transitions.append(pointer.label)
+    else:
+        for children in pointer.children:
+            transitions_can_happen_in_pointer(children, names_of_transitions)
+
+
+def build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
+                               list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                               activities_enables_for_nodes,
+                               transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row):
+    pointer_index = find_pointer_index(pointers, transition)
+    if not start and not (len(pointers) != 0 and pointers[0] == process_tree):
+        for pointer in pointers:
+            names_of_transitions = []
+            transitions_can_happen_in_pointer(pointer, names_of_transitions)
+            for names_of_transition in names_of_transitions:
+                if not transitions_enabled.__contains__(names_of_transition):
+                    transitions_enabled.append(names_of_transition)
+        for pointer in list_of_loop:
+            index_in_list = list_of_loop.index(pointer)
+            loop_indexes = list_of_loop_indexes[index_in_list]
+            for index in loop_indexes:
+                names_of_transitions = []
+                node_could_done = pointer.children[index]
+                transitions_can_happen_in_pointer(node_could_done, names_of_transitions)
+                for names_of_transition in names_of_transitions:
+                    transitions_enabled.append(names_of_transition)
+        start = True
+    if pointer_index != -1:
+        if (not appended) and not (len(pointers) != 0 and pointers[0] == process_tree):
+            for pointer in pointers:
+                names_of_transitions = []
+                transitions_can_happen_in_pointer(pointer, names_of_transitions)
+                for names_of_transition in names_of_transitions:
+                    if not transitions_enabled.__contains__(names_of_transition):
+                        transitions_enabled.append(names_of_transition)
+            appended = True
+        pointer = pointers[pointer_index]
+
+    else:
+        pointer = try_in_specials(pointers, list_of_loop_seq, transition)
+        fix_lists(list_of_loop_seq, list_of_loop, list_of_seq, list_of_loop_indexes, list_of_seq_inedxes, pointer, pointers)
+
+        type_of_node = pointer.operator.value
+        if type_of_node == "->":
+            index_in_list = list_of_seq.index(pointer)
+            index_curr_seq = list_of_seq_inedxes[index_in_list]
+            child_index = find_child_index(pointer, transition)
+            names_of_transitions = []
+            for index in range(index_curr_seq, child_index):
+                node_could_done = pointer.children[index]
+                transitions_can_happen_in_pointer(node_could_done, names_of_transitions)
+                for names_of_transition in names_of_transitions:
+                    transitions_enabled.append(names_of_transition)
+            if child_index == len(pointer.children) - 1:
+                list_of_seq.pop(index_in_list)
+                list_of_seq_inedxes.pop(index_in_list)
+            else:
+                list_of_seq_inedxes[index_in_list] = child_index + 1
+        else:
+            index_in_list = list_of_loop.index(pointer)
+            child_index = find_child_index(pointer, transition)
+            list_of_indexes_for_loop = create_loop_indexes(pointer, child_index)
+            list_of_loop_indexes[index_in_list] = list_of_indexes_for_loop
+    if in_transition(pointer, transition):
+        pointers.remove(pointer)
+        return
+    xor_node = (pointer.operator.value == "X")
+    seq_node = (pointer.operator.value == "->")
+    loop_node = (pointer.operator.value == "*")
+    parallel_node = (pointer.operator.value == "+")
+    child_index = find_child_index(pointer, transition)
+    if seq_node:
+        if pointers.__contains__(pointer):
+            pointers.remove(pointer)
+        if child_index + 1 != len(pointer.children):
+            if not list_of_seq.__contains__(pointer):
+                list_of_seq.insert(0, pointer)
+                list_of_seq_inedxes.insert(0, child_index + 1)
+            if not list_of_loop_seq.__contains__(pointer):
+                list_of_loop_seq.insert(0, pointer)
+        pointers.insert(0, pointer.children[child_index])
+        build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
+                                       list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                       activities_enables_for_nodes,
+                                       transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
+    if parallel_node:
+        pointers.remove(pointer)
+        pointers.insert(0, pointer.children[child_index])
+        for index_of_child in range(len(pointer.children)):
+            if child_index != index_of_child:
+                pointers.insert(1, pointer.children[index_of_child])
+        build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
+                                   list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                   activities_enables_for_nodes,
+                                   transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
+    if xor_node:
+        pointers.remove(pointer)
+        pointers.insert(0, pointer.children[child_index])
+        build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
+                                   list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                   activities_enables_for_nodes,
+                                   transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
+    if loop_node:
+        if pointers.__contains__(pointer):
+            pointers.remove(pointer)
+        pointers.insert(0, pointer.children[child_index])
+        # pointers.insert(0, pointer.children[child_index])
+        if not list_of_loop_seq.__contains__(pointer):
+            list_of_loop_seq.insert(0, pointer)
+        if not list_of_loop.__contains__(pointer):
+            list_of_loop.insert(0, pointer)
+            list_of_indexes_for_loop = create_loop_indexes(pointer, child_index)
+            list_of_loop_indexes.insert(0, list_of_indexes_for_loop)
+        build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
+                                   list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                   activities_enables_for_nodes,
+                                   transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
+
+
 def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, activities_enables_for_nodes, column):
     rows = []
     for trace in traces:
@@ -1369,6 +1537,31 @@ def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, activiti
             build_list_of_xor_and_choices(process_tree, pointers, seq_loop, indexes_seq_loop, xor_nodes,
                                           activities_enables_for_nodes, trace[index],
                                           list_of_xor_and_choices, False, transitions_enabled, rows, row)
+            row_copy = row.copy()
+            row_copy.append(trace[index])
+            row_copy.append(transitions_enabled)
+            rows.append(row_copy)
+    return rows
+
+
+def build_list_of_xor_nodes_and_choses_2(process_tree, traces, xor_nodes, activities_enables_for_nodes, column):
+    rows = []
+    for trace in traces:
+        pointers = [process_tree]
+        list_of_loop = []
+        list_of_loop_indexes = []
+        list_of_seq = []
+        list_of_seq_inedxes = []
+        list_of_loop_seq = []
+        for index in range(len(trace)):
+            list_of_xor_and_choices = []
+            pref = trace[0:index + 1]
+            row = build_row(pref[:-1], column)
+            transitions_enabled = []
+            build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
+                                       list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                       activities_enables_for_nodes, trace[index],
+                                       list_of_xor_and_choices, False, False, transitions_enabled, rows, row)
             row_copy = row.copy()
             row_copy.append(trace[index])
             row_copy.append(transitions_enabled)
@@ -1442,14 +1635,13 @@ def build_xor_nodes(tree, nodes, activities_enabled_for_nodes):
 
 def clear_rows(rows):
     for row in rows.copy():
-        chosen = row[len(row)-1]
+        chosen = row[len(row) - 1]
         if not chosen:
             copy_row = row.copy()
             features = copy_row[:-1]
             features.append(1)
             if rows.__contains__(features):
                 rows.remove(row)
-
 
 
 def build_rows(list_of_xor_nodes_and_choses, target_name):
@@ -1513,6 +1705,7 @@ def get_must_happen_special_guards(tree, features):
                 stack.append(right_node_id)
     return list_of_and_guard
 
+
 def apply_special_must_happen(net, transition_name, guard):
     feature, smaller_or_bigger, threashold = guard[0], guard[1], guard[2]
     parameter_list = [net, found_transition(net, transition_name), [found_transition(net, feature)],
@@ -1524,25 +1717,102 @@ def apply_special_must_happen(net, transition_name, guard):
     function(*parameter_list)
 
 
-def add_xor_guards_ponyG(tree, net, train_log, col_name):
+def print_guard_of_target(target_name, Phenotype, col_name_copy):
+    print(target_name, " guard:")
+    print(Phenotype)
+    start_index = Phenotype.find("x")
+    new_phenotype = ""
+    curr_index = 0
+    while start_index != -1:
+        new_phenotype = new_phenotype + Phenotype[curr_index:start_index]
+        first_index_of_close_bracket = Phenotype.index("]", start_index + 1)
+        feature_index = int(Phenotype[start_index + 5:first_index_of_close_bracket])
+        feature = col_name_copy[feature_index]
+        new_phenotype = new_phenotype + feature
+        start_index = Phenotype.find("x", first_index_of_close_bracket + 1)
+        curr_index = first_index_of_close_bracket + 1
+    new_phenotype = new_phenotype + Phenotype[curr_index:]
+    print(new_phenotype)
 
+
+def generate_bnf_file(number_of_transitions):
+    with open("C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/grammars/supervised_learning/decision_tree.bnf",
+              'w') as bnf_file:
+        bnf_file.write('<b> ::= np.less(<e>,<e>)|\n')
+        bnf_file.write('        np.greater(<e>,<e>)|\n')
+        bnf_file.write('        np.logical_and(<b>,<b>)|\n')
+        bnf_file.write('        np.logical_or(<b>,<b>)|\n')
+        # bnf_file.write('        np.where(<b>,<e>,<e>)|\n')
+        # bnf_file.write('        np.equal(<e>,<e>)\n\n')
+
+        bnf_file.write('<e> ::= x[:, 0]|\n')
+        for i in range(1, number_of_transitions):
+            bnf_file.write(f'        x[:, {i}]|\n')
+
+        bnf_file.write('        np.subtract(<e>,<e>)|\n')
+        bnf_file.write('        np.add(<e>,<e>)|\n')
+        bnf_file.write('        <c>\n\n')
+
+        bnf_file.write('<c> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9\n')
+
+
+def build_good_indexes(column, not_relevant_features_for_target):
+    good_indexexs = []
+    for index in range(len(column)):
+        if not not_relevant_features_for_target.__contains__(column[index]):
+            good_indexexs.append(index)
+    return good_indexexs
+
+
+def build_row_to_append(row, good_indexes):
+    row_to_append = []
+    for index in range(len(row)):
+        if good_indexes.__contains__(index):
+            row_to_append.append(row[index])
+    return row_to_append
+
+
+def build_rows_not_relevant(list_of_xor_nodes_and_choses, target_name, column, not_relevant_features_for_target):
+    good_indexes = build_good_indexes(column, not_relevant_features_for_target)
+    rows = []
+    for row in list_of_xor_nodes_and_choses:
+        transition_chosen = row[len(row) - 2]
+        transitions_enabled = row[len(row) - 1]
+        if transitions_enabled.__contains__(target_name):
+            row_to_append = build_row_to_append(row, good_indexes)
+            if target_name == transition_chosen:
+                row_to_append.append(1)
+            else:
+                row_to_append.append(0)
+            rows.append(row_to_append)
+    clear_rows(rows)
+    return rows
+
+
+def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_marking, dicitionary_for_transitions):
+    # copy_net = net.__deepcopy__()
     traces = build_traces_from_csv(train_log)
     nodes = []
     activities_enables_for_nodes = []
     build_xor_nodes(tree, nodes, activities_enables_for_nodes)
-    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(tree, traces, nodes, activities_enables_for_nodes,
-                                                                      col_name)
+    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses_2(tree, traces, nodes,
+                                                                        activities_enables_for_nodes,
+                                                                        col_name)
     columns = builds_all_target(col_name)
     for column in columns:
-        col_name_copy = col_name.copy()
         target_name = column[len(column) - 1]
-        index_of_target = col_name.index(target_name)
+        not_relevant_features_for_target = dicitionary_for_transitions[target_name]
+        rows = build_rows_not_relevant(list_of_xor_nodes_and_choses, target_name, column,
+                                       not_relevant_features_for_target)
+        for not_relevant_feature_for_target in not_relevant_features_for_target:
+            column.remove(not_relevant_feature_for_target)
+        generate_bnf_file(len(column))
+        # build_csv_for_prefixes(copy_net, train_log, column, initial_marking, final_marking)
+        col_name_copy = column.copy()
         col_name_copy.append("choose")
-        # list_of_xor_nodes_and_choses_for_target = build_rows_for_target(list_of_xor_nodes_and_choses,
-        #                                                                 index_of_target)
-        rows = build_rows(list_of_xor_nodes_and_choses, target_name)
+        # build_rows_for_target(list_of_xor_nodes_and_choses, index_of_target)
+        # rows = build_rows(list_of_xor_nodes_and_choses, target_name)
         build_csv_for_child_of_xor(rows, col_name_copy)
-        list_argv = []
         command = 'ponyge.py'
         directory_path = 'C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/src'  # Replace with the actual path
 
@@ -1551,15 +1821,18 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name):
         fitness_str_copy = result.stdout
         phenotype_str_copy = result.stdout
         index_of_fitness = result.stdout.find("Fitness:")
-        Fitness = fitness_str_copy[index_of_fitness+10:]
+        Fitness = fitness_str_copy[index_of_fitness + 10:]
         index_of_phenotype = phenotype_str_copy.find("Phenotype:")
-        Phenotype = result.stdout[index_of_phenotype+ 11:]
+        Phenotype = result.stdout[index_of_phenotype + 11:]
         index_of_end = Phenotype.find("\n")
         Phenotype = Phenotype[:index_of_end]
         if Fitness.startswith("0.0"):
-        # stats = PonyGE2.src.ponyge.mane_2(list_argv)
-            ApplyPonyGuard.apply_pony_guard(net,target_name,Phenotype,col_name_copy)
-                # print(target_name)
+            # stats = PonyGE2.src.ponyge.mane_2(list_argv)
+            print_guard_of_target(target_name, Phenotype, col_name_copy)
+            ApplyPonyGuard.apply_pony_guard(net, target_name, Phenotype, col_name_copy)
+            # print_guard_of_target(target_name, Phenotype, column)
+            # ApplyPonyGuard.apply_pony_guard(net, target_name, Phenotype, column)
+            # print(target_name)
         #         #must_happen_special_guard = get_must_happen_special_guard(tree, col_name_copy)
         #         must_happen_special_guards = get_must_happen_special_guards(tree,col_name_copy)
         #         # print(must_happen_special_guards)
@@ -1576,6 +1849,8 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name):
         #             apply_must_happen(net, target_name, list_of_guards)
         # col_name_copy.remove(target_name)
         # col_name_copy.insert(index_of_target, target_name)
+
+
 #
 # def add_xor_guards(tree, net, train_log, col_name):
 #     traces = build_traces_from_csv(train_log)
@@ -1607,15 +1882,15 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name):
 #         #         for must_happen_special_guard in must_happen_special_guards:
 #         #             apply_special_must_happen(net, target_name, must_happen_special_guard)
 #         #             for list_of_guards_internal in list_of_guards:
-        #                 if list_of_guards_internal.__contains__(must_happen_special_guard):
-        #                     list_of_guards_internal.remove(must_happen_special_guard)
-        #                     if len(list_of_guards_internal) == 0:
-        #                         list_of_guards.remove(list_of_guards_internal)
-        #         if len(list_of_guards) > 0:
-        #             # print(list_of_guards)
-        #             apply_must_happen(net, target_name, list_of_guards)
-        # col_name_copy.remove(target_name)
-        # col_name_copy.insert(index_of_target, target_name)
+#                 if list_of_guards_internal.__contains__(must_happen_special_guard):
+#                     list_of_guards_internal.remove(must_happen_special_guard)
+#                     if len(list_of_guards_internal) == 0:
+#                         list_of_guards.remove(list_of_guards_internal)
+#         if len(list_of_guards) > 0:
+#             # print(list_of_guards)
+#             apply_must_happen(net, target_name, list_of_guards)
+# col_name_copy.remove(target_name)
+# col_name_copy.insert(index_of_target, target_name)
 
 # def add_xor_guards(tree, net, train_log, col_name):
 #     traces = build_traces_from_csv(train_log)
@@ -1671,20 +1946,23 @@ def check_delete_empty(tree, special_transitions):
             tree.parent.children[index_of_tree_in_parent] = tree.children[0]
             tree.children[0].parent = tree.parent
 
+
 def delete_empty_transitions_active(tree, special_transitions):
     if len(tree.children) > 0:
         xor_node = (tree.operator.value == "X")
         if xor_node and has_empty_child(tree):
-            check_delete_empty(tree,special_transitions)
+            check_delete_empty(tree, special_transitions)
         for child in tree.children:
-            delete_empty_transitions_active(child,special_transitions)
+            delete_empty_transitions_active(child, special_transitions)
+
 
 def delete_empty_transitions(process_tree, train_log, col_name):
     traces = build_traces_from_csv(train_log)
     nodes = []
     activities_enables_for_nodes = []
     build_xor_nodes(process_tree, nodes, activities_enables_for_nodes)
-    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(process_tree, traces, nodes, activities_enables_for_nodes,
+    list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses(process_tree, traces, nodes,
+                                                                      activities_enables_for_nodes,
                                                                       col_name)
     columns = builds_all_target(col_name)
     special_transitions = []
@@ -1746,7 +2024,6 @@ def activate_transition(transition: PetriNet.Transition, dictionary_of_tokens_co
         dictionary_of_tokens_copy[arc.target] = dictionary_of_tokens_copy[arc.target] + arc.weight
 
 
-
 def import_csv(file_path):
     event_log = pd.read_csv(file_path, sep=';')
     event_log['case ID'] = event_log['case ID'].astype(str)
@@ -1755,7 +2032,7 @@ def import_csv(file_path):
     return event_log
 
 
-def build_good_and_bad_prefixes_for_transition(net, prefixes, transition, initial_marking, final_marking):
+def build_good_and_bad_prefixes_for_transition(net, train_log, prefixes, transition, initial_marking, final_marking):
     list_of_good_prefixes = []
     list_of_bad_prefixes = []
     prefixes_in_net = []
@@ -1765,7 +2042,6 @@ def build_good_and_bad_prefixes_for_transition(net, prefixes, transition, initia
         prefix.append(transition)
     log = build_log(prefixes)
     create_train_log(log)
-    train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv")
     replayed_traces = pm4py.conformance_diagnostics_token_based_replay(train_log, net, initial_marking, final_marking,
                                                                        "activity", "timestamp",
                                                                        "case ID")

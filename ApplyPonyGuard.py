@@ -91,9 +91,11 @@ def apply_pony_guard(net,target_name,string_guard, features):
         elif func_of_guard == "equal":
             left_copy = left
             right_copy = right
-
+            start_transitions = found_start_transitions(net, found_place(net,"source"))
             place_of_greater = PetriNet.Place("greater condition to " + target_transition.label)
             net.places.add(place_of_greater)
+            for transition in start_transitions:
+                petri_utils.add_arc_from_to(transition, place_of_greater, net)
             apply_pony_guard_greater(net, target_name, left_copy, target_transition, 1, place_of_greater, features)
             apply_pony_guard_greater(net, target_name, right_copy, target_transition, 0, place_of_greater, features)
             petri_utils.add_arc_from_to(place_of_greater, target_transition, net)
@@ -101,6 +103,8 @@ def apply_pony_guard(net,target_name,string_guard, features):
 
             place_of_less = PetriNet.Place("less condition to " + target_transition.label)
             net.places.add(place_of_less)
+            for transition in start_transitions:
+                petri_utils.add_arc_from_to(transition, place_of_less, net)
             apply_pony_guard_greater(net, target_name, right, target_transition, 1, place_of_less, features)
             apply_pony_guard_greater(net, target_name, left, target_transition, 0, place_of_less, features)
             petri_utils.add_arc_from_to(place_of_less, target_transition, net)
