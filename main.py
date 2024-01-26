@@ -724,9 +724,14 @@ def generate_bnf_file(number_of_transitions):
         bnf_file.write('<c> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9\n')
 
 
+def define_empty_transitions(transitions):
+    for transition in transitions:
+        if transition.label != None and transition.label.startswith("empty transition"):
+            transition.label = None
+
 if __name__ == "__main__":
 
-    log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv", ",")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/Sepsis Cases - Event Log.csv", ",")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
@@ -737,11 +742,11 @@ if __name__ == "__main__":
     dictionary_for_transitions = {}
     build_dictionary_for_transitions(process_tree_Inductive,dictionary_for_transitions)
     #print(dictionary_for_transitions)
-    #pm4py.view_process_tree(process_tree_Inductive)
+    # pm4py.view_process_tree(process_tree_Inductive)
     #pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
-    # print("Without Guards \n")
-    # evaluation(test_log, net, im, fm)
+    print("Without Guards \n")
+    evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     #names_of_transitions_not_under_loop = build_names_of_transitions_not_under_loop(process_tree_Inductive)
@@ -765,5 +770,5 @@ if __name__ == "__main__":
     Decision_Tree_To_Guards.add_xor_guards_ponyG(process_tree_Inductive,net,train_log,names_of_transitions,im,fm, dictionary_for_transitions)
     #Decision_Tree_To_Guards.add_xor_guards(tree,net,train_log)
     #print_petri_net(net,im,fm)
-
+    define_empty_transitions(net.transitions)
     evaluation(test_log,net,im,fm)
