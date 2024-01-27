@@ -2,13 +2,14 @@ import csv
 import pm4py
 import pandas
 from datetime import datetime
-from pm4py import ProcessTree
+from pm4py import ProcessTree, PetriNet
 from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
 import random
 import datetime
 
 from pm4py.objects.petri_net.utils import petri_utils
 
+import ApplyPonyGuard
 import Decision_Tree_To_Guards
 import LogSplit
 
@@ -525,6 +526,27 @@ def add_back_transitions(net):
                 petri_utils.add_arc_from_to(tranition, source, net)
 
 
+def swap_start_transitions(source, place_of_initialized):
+    arcs_from_source = source.out_arcs
+    for arc in arcs_from_source.copy():
+        net.arcs.remove(arc)
+        arc.target.in_arcs.remove(arc)
+        source.out_arcs.remove(arc)
+        petri_utils.add_arc_from_to(place_of_initialized, arc.target, net)
+
+
+def add_initialize_to_net(net):
+    source = ApplyPonyGuard.found_place(net,"source")
+    initial_transition_name = "initial transition"
+    initial_transition = PetriNet.Transition(initial_transition_name, None)
+    net.transitions.add(initial_transition)
+    place_of_initialized = PetriNet.Place("initial place")
+    net.places.add(place_of_initialized)
+    swap_start_transitions(source, place_of_initialized)
+    petri_utils.add_arc_from_to(source, initial_transition, net)
+    petri_utils.add_arc_from_to(initial_transition,place_of_initialized, net)
+
+
 if __name__ == "__main__":
 
     log = import_csv("C:/Users/עידו שפירא/Downloads/p2p_event_log.csv", ",")
@@ -542,6 +564,7 @@ if __name__ == "__main__":
     evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
+    add_initialize_to_net(net)
     print("\n==============================================================================================================================\nWith Guards\n")
     Decision_Tree_To_Guards.add_xor_guards_ponyG(process_tree_Inductive,net,train_log,names_of_transitions,im,fm, dictionary_for_transitions)
     #print_petri_net(net,im,fm)
