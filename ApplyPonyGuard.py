@@ -146,10 +146,19 @@ def remove_xor_edge_from_option_with_xor(net, pre_places, target_transition,empt
         petri_utils.add_arc_from_to(place, empty_transition_1, net)
         petri_utils.add_arc_from_to(place, empty_transition_2, net)
 
+
+def find_index(places, or_place_name):
+    index = 0
+    for place in places:
+        if place.name.startswith(or_place_name):
+            index = index + 1
+    return str(index)
 def replace_edges_between_transition_to_empty(net,target_transition, empty_transition_1, empty_transition_2):
     pre_places = found_pre_places(target_transition)
     remove_xor_edge_from_option_with_xor(net, pre_places, target_transition,empty_transition_1,empty_transition_2)
-    place_of_or = PetriNet.Place("or place of " + target_transition.label)
+    or_place_name = "or place of " + target_transition.label
+    index_of_or = find_index(net.places, or_place_name)
+    place_of_or = PetriNet.Place("or place of " + target_transition.label + " " + index_of_or)
     net.places.add(place_of_or)
     petri_utils.add_arc_from_to(empty_transition_1, place_of_or, net)
     petri_utils.add_arc_from_to(empty_transition_2, place_of_or, net)
