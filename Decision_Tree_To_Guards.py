@@ -480,7 +480,6 @@ def get_must_happen_special_guards(tree, features):
 
 def print_guard_of_target(target_name, Phenotype, col_name_copy):
     print(target_name, " guard:")
-    print(Phenotype)
     start_index = Phenotype.find("x")
     new_phenotype = ""
     curr_index = 0

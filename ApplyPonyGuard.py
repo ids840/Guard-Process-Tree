@@ -62,6 +62,8 @@ def apply_pony_guard_greater(net, target_name,expression,target_transition, sign
 
 
 def apply_pony_guard(net,target_name,string_guard, features):
+    if found_start_transitions(net,found_place(net,"source")).__contains__(found_transition(net,target_name)):
+        return
     if string_guard.startswith("np"):
         first_index_of_open_bracket = string_guard.index("(")
         func_of_guard = string_guard[3:first_index_of_open_bracket]
@@ -76,7 +78,7 @@ def apply_pony_guard(net,target_name,string_guard, features):
             apply_pony_guard_greater(net,target_name,left,target_transition, 1, place_of_greater,features)
             apply_pony_guard_greater(net,target_name,right,target_transition, 0, place_of_greater, features)
             petri_utils.add_arc_from_to(place_of_greater, target_transition, net)
-            petri_utils.add_arc_from_to(target_transition, place_of_greater, net)
+            # petri_utils.add_arc_from_to(target_transition, place_of_greater, net)
 
         elif func_of_guard == "less":
             place_of_less = PetriNet.Place("less condition to " + target_transition.label)
@@ -84,7 +86,7 @@ def apply_pony_guard(net,target_name,string_guard, features):
             apply_pony_guard_greater(net, target_name, right, target_transition, 1, place_of_less, features)
             apply_pony_guard_greater(net, target_name, left, target_transition, 0, place_of_less, features)
             petri_utils.add_arc_from_to(place_of_less, target_transition, net)
-            petri_utils.add_arc_from_to(target_transition, place_of_less, net)
+            # petri_utils.add_arc_from_to(target_transition, place_of_less, net)
         elif func_of_guard == "logical_and":
             apply_pony_guard(net, target_name, left, features)
             apply_pony_guard(net, target_name, right, features)
@@ -113,7 +115,7 @@ def apply_pony_guard(net,target_name,string_guard, features):
             apply_pony_guard_greater(net, target_name, left_copy, target_transition, 1, place_of_greater, features)
             apply_pony_guard_greater(net, target_name, right_copy, target_transition, 0, place_of_greater, features)
             petri_utils.add_arc_from_to(place_of_greater, target_transition, net)
-            petri_utils.add_arc_from_to(target_transition, place_of_greater, net)
+            # petri_utils.add_arc_from_to(target_transition, place_of_greater, net)
 
 
             place_of_less = PetriNet.Place("less condition to " + target_transition.label)
@@ -127,7 +129,7 @@ def apply_pony_guard(net,target_name,string_guard, features):
             apply_pony_guard_greater(net, target_name, right, target_transition, 1, place_of_less, features)
             apply_pony_guard_greater(net, target_name, left, target_transition, 0, place_of_less, features)
             petri_utils.add_arc_from_to(place_of_less, target_transition, net)
-            petri_utils.add_arc_from_to(target_transition, place_of_less, net)
+            # petri_utils.add_arc_from_to(target_transition, place_of_less, net)
 
 
 

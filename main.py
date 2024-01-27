@@ -6,6 +6,9 @@ from pm4py import ProcessTree
 from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
 import random
 import datetime
+
+from pm4py.objects.petri_net.utils import petri_utils
+
 import Decision_Tree_To_Guards
 import LogSplit
 
@@ -511,9 +514,20 @@ def define_empty_transitions(transitions):
             transition.label = None
 
 
+def add_back_transitions(net):
+    tranitions = net.transitions
+    for tranition in tranitions:
+        in_arcs = tranition.in_arcs
+        for in_arc in in_arcs:
+            source = in_arc.source
+            source_name = source.name
+            if source_name.startswith("less") or source_name.startswith("greater"):
+                petri_utils.add_arc_from_to(tranition, source, net)
+
+
 if __name__ == "__main__":
 
-    log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv", ",")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/p2p_event_log.csv", ",")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     LogSplit.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
@@ -532,4 +546,5 @@ if __name__ == "__main__":
     Decision_Tree_To_Guards.add_xor_guards_ponyG(process_tree_Inductive,net,train_log,names_of_transitions,im,fm, dictionary_for_transitions)
     #print_petri_net(net,im,fm)
     define_empty_transitions(net.transitions)
+    add_back_transitions(net)
     evaluation(test_log,net,im,fm)
