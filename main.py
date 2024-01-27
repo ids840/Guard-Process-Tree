@@ -30,37 +30,6 @@ import ApplyPonyGuard
 import Decision_Tree_To_Guards
 
 
-def simulate_execution(petri_net, initial_marking, final_marking, num_cases=10):
-    event_log = []
-
-    for _ in range(num_cases):
-        case_id = f"Case_{_ + 1}"
-        current_marking = initial_marking.copy()
-        trace = []
-
-        while current_marking not in final_marking:
-            enabled_transitions = pm4py.objects.petri_net.semantics.enabled_transitions(petri_net, current_marking)
-            if not enabled_transitions:
-                break
-
-            # Choose a random enabled transition
-            random_number = random.randint(0, len(enabled_transitions) - 1)
-            chosen_transition = list(enabled_transitions)[random_number]
-
-            # Simulate the execution of the transition
-            event = {
-                "case_id": case_id,
-                "activity": chosen_transition.label,
-                "timestamp": datetime.datetime.now().isoformat(),
-            }
-            if chosen_transition.label is not None:
-                trace.append(event)
-
-            current_marking = pm4py.objects.petri_net.semantics.execute(chosen_transition, petri_net, current_marking)
-
-        event_log.extend(trace)
-
-    return event_log
 
 
 def import_csv(file_path, seperator):
@@ -94,10 +63,6 @@ def petri_net_by_heuristics(log):
     return net, initial_marking, final_marking
 
 
-def petri_net_by_ilp(log):
-    net, initial_marking, final_marking = pm4py.discovery.discover_petri_net_ilp(log, 1.0, "activity", "timestamp",
-                                                                                 "case ID")
-    return net, initial_marking, final_marking
 
 
 def print_petri_net(net, initial_marking, final_marking):
@@ -114,44 +79,6 @@ def print_confermance(log, net, initial_marking, final_marking):
 def dfg(log):
     dfg, start_activity, end_activity = pm4py.discover_directly_follows_graph(log, "activity", "timestamp", "case ID")
     pm4py.view_dfg(dfg, start_activity, end_activity)
-
-
-def create_new_process_tree(process_tree):
-    pass
-
-
-def evaluation_1(log_path):
-    log = import_csv(log_path)
-    pro_tree = pm4py.discover_process_tree_inductive(log, 0.0, True, "activity", "timestamp", "case ID")
-    pm4py.view_process_tree(pro_tree)
-    net_1, initial_marking_1, final_marking_1 = petri_net_by_inductive(log)
-    print_petri_net(net_1, initial_marking_1, final_marking_1)
-    net_2, initial_marking_2, final_marking_2 = petri_net_by_alpha(log)
-    # print_petri_net(net_2, initial_marking_2, final_marking_2)
-    net_3, initial_marking_3, final_marking_3 = petri_net_by_ilp(log)
-    # print_petri_net(net_2, initial_marking_3, final_marking_3)
-    net_4, initial_marking_4, final_marking_4 = petri_net_by_heuristics(log)
-    # print_petri_net(net_4, initial_marking_4, final_marking_4)
-    print_confermance(log, net_4, initial_marking_4, final_marking_4)
-    # dfg(log)
-    # process_tree = pm4py.discover_process_tree_inductive(log, 0.0, True, "activity", "timestamp", "case ID")
-    # pm4py.view_process_tree(process_tree)
-    # net, initial_marking, final_marking = pm4py.objects.conversion.process_tree.variants.to_petri_net.apply(
-    # process_tree)
-
-    # pm4py.write_pnml(net, initial_marking, final_marking, "createdPetriNet1.pnml")
-    # pm4py.view_petri_net(net, initial_marking, final_marking)
-    fitness = pm4py.fitness_token_based_replay(log, net_4, initial_marking_4, final_marking_4, "activity", "timestamp",
-                                               "case ID")
-    prec = pm4py.precision_token_based_replay(log, net_4, initial_marking_4, final_marking_4, "activity", "timestamp",
-                                              "case ID")
-    # gen = generalization_evaluator.apply(log, net, initial_marking, final_marking)
-    simp = simplicity_evaluator.apply(net_4)
-    print(fitness)
-    print("prec: " + str(prec))
-    # print("gen: " + gen)
-    print("simp: " + str(simp))
-
 
 def evaluation(log, net, initial_marking, final_marking):
     replayed_traces = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
@@ -172,123 +99,6 @@ def evaluation(log, net, initial_marking, final_marking):
     # print("gen: " + gen)
     print("simp: " + str(simp))
 
-
-# Function that check for each transition if we can do it
-def check_if_can_do_transition(transition: PetriNet.Transition, dict_of_tokens):
-    arcs_in = transition.in_arcs
-    for arc in arcs_in:
-        if dict_of_tokens[arc.source] == 0:
-            return False
-    return True
-
-
-# Function that return set of the None transitions that we can do
-def group_of_can_do_transitions(transitions, dict_of_tokens):
-    set_of_None_can_do_transitions = set()
-    for transition in transitions:
-        if transition.label == None:
-            if check_if_can_do_transition(transition, dict_of_tokens):
-                set_of_None_can_do_transitions.add(transition)
-    return set_of_None_can_do_transitions
-
-
-# Function that activate the transition
-def activate_transition(transition: PetriNet.Transition, dictionary_of_tokens_copy):
-    arcs_in = transition.in_arcs
-    for arc in arcs_in:
-        dictionary_of_tokens_copy[arc.source] = dictionary_of_tokens_copy[arc.source] - 1
-    arcs_out = transition.out_arcs
-    for arc in arcs_out:
-        dictionary_of_tokens_copy[arc.target] = dictionary_of_tokens_copy[arc.target] + 1
-
-
-def return_final_place(places):
-    for place in places:
-        if place.name == 'sink' or place.name == 'sink0':
-            return place
-
-
-# Function that return the label of the transition (activity name)
-def return_label_transition(transitions, label):
-    for transition in transitions.copy():
-        if transition.label == label:
-            return transition
-
-
-# Function that return if a trace is in the net
-def check_if_trace_in_net(net, trace, final_marking, dict_of_tokens):
-    trace_in_net = False
-    set_of_activate_None_transitions = group_of_can_do_transitions(net.transitions, dict_of_tokens)
-    for None_activate_transition in set_of_activate_None_transitions:
-        dictionary_of_tokens_copy = dict_of_tokens.copy()
-        activate_transition(None_activate_transition, dictionary_of_tokens_copy)
-        trace_in_net = trace_in_net or check_if_trace_in_net(net, trace, final_marking, dictionary_of_tokens_copy)
-    if len(trace) == 0:
-        trace_in_net = trace_in_net or dict_of_tokens[return_final_place(net.places)] == 1
-    else:
-        label_transition = return_label_transition(net.transitions, trace[0])
-        if check_if_can_do_transition(label_transition, dict_of_tokens):
-            dictionary_of_tokens_copy = dict_of_tokens.copy()
-            activate_transition(label_transition, dictionary_of_tokens_copy)
-            trace_in_net = trace_in_net or check_if_trace_in_net(net, trace[1:], final_marking,
-                                                                 dictionary_of_tokens_copy)
-    return trace_in_net
-
-
-def compute_TN_FP(net, initial, final, test_log):
-    TN = 0
-    FP = 0
-    dict_of_tokens = {}
-    for place in net.places:
-        if place.name != 'source' and place.name != 'source0':
-            dict_of_tokens[place] = 0
-        else:
-            dict_of_tokens[place] = 1
-    for trace in test_log:
-        if check_if_trace_in_net(net, trace, final, dict_of_tokens):
-            TN = TN + 1
-        else:
-            FP = FP + 1
-    return TN, FP
-
-
-def compute_TP_FN(net, initial, final, test_log):
-    TP = 0
-    FN = 0
-    dict_of_tokens = {}
-    for place in net.places:
-        if place.name != 'source':
-            dict_of_tokens[place] = 0
-        else:
-            dict_of_tokens[place] = 1
-    for trace in test_log:
-        if check_if_trace_in_net(net, trace, final, dict_of_tokens):
-            FN = FN + 1
-        else:
-            TP = TP + 1
-    return TP, FN
-
-
-def generate_for_inductive(net, initial, final, test_log):
-    print("Inductive Results: \n")
-    TN, FP = compute_TN_FP(net, initial, final, test_log[:10000])
-    TP, FN = compute_TP_FN(net, initial, final, test_log[10000:])
-    print("TP = " + str(TP) + " TN = " + str(TN) + " FP = " + str(FP) + " FN = " + str(FN) + "\n")
-    precision = (TP) / (TP + FP)
-    recall = (TP) / (TP + FN)
-    f1_measure = (2 * precision * recall) / (precision + recall)
-    print("Precision = " + str(precision) + " Recall = " + str(recall) + " F1 measure = " + str(f1_measure) + "\n")
-
-
-def generate_for_heuristic(net, initial, final, test_log):
-    print("Heuristic Results: \n")
-    TN, FP = compute_TN_FP(net, initial, final, test_log[:15000])
-    TP, FN = compute_TP_FN(net, initial, final, test_log[15000:])
-    print("TP = " + str(TP) + " TN = " + str(TN) + " FP = " + str(FP) + " FN = " + str(FN) + "\n")
-    precision = (TP) / (TP + FP)
-    recall = (TP) / (TP + FN)
-    f1_measure = (2 * precision * recall) / (precision + recall)
-    print("Precision = " + str(precision) + " Recall = " + str(recall) + " F1 measure = " + str(f1_measure) + "\n")
 
 
 def get_test_log(log_path):
@@ -337,9 +147,6 @@ def occurs_in_trace(trace, activity):
             index = index + 1
     return index
 
-
-def true_func(trace):
-    return True
 
 
 def print_traces_nice(traces, min_length, max_length):
@@ -731,7 +538,7 @@ def define_empty_transitions(transitions):
 
 if __name__ == "__main__":
 
-    log = import_csv("C:/Users/עידו שפירא/Downloads/Sepsis Cases - Event Log.csv", ",")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/RequestForPayment.csv", ",")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
@@ -745,8 +552,8 @@ if __name__ == "__main__":
     # pm4py.view_process_tree(process_tree_Inductive)
     #pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
-    print("Without Guards \n")
-    evaluation(test_log, net, im, fm)
+    # print("Without Guards \n")
+    # evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     #names_of_transitions_not_under_loop = build_names_of_transitions_not_under_loop(process_tree_Inductive)

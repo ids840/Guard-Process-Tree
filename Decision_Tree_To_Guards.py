@@ -1103,12 +1103,10 @@ def find_child_index(tree, transition):
 
 
 def find_pointer_index(pointers, transition):
-    index = 0
-    for node in pointers:
+    for index in range(len(pointers) - 1, -1, -1):
+        node = pointers[index]
         if found_way(node, transition):
             return index
-        else:
-            index = index + 1
     return -1
 
 
@@ -1398,7 +1396,6 @@ def fix_lists(list_of_loop_seq, list_of_loop, list_of_seq, list_of_loop_indexes,
     switch_list(list_5, list_of_seq_inedxes)
 
 
-
 def transitions_can_happen_in_pointer(pointer, names_of_transitions):
     if len(pointer.children) == 0:
         if pointer.label != None:
@@ -1416,18 +1413,17 @@ def transitions_can_happen_in_pointer(pointer, names_of_transitions):
             for children in pointer.children:
                 if cont:
                     transitions_can_happen_in_pointer(children, names_of_transitions)
-                    cont = not(pointer_not_empty(children))
+                    cont = not (pointer_not_empty(children))
         if loop_node:
             transitions_can_happen_in_pointer(pointer.children[0], names_of_transitions)
-            if not(pointer_not_empty(pointer.children[0])):
+            if not (pointer_not_empty(pointer.children[0])):
                 for children in pointer.children[1:]:
                     transitions_can_happen_in_pointer(children, names_of_transitions)
 
 
-
 def pointer_not_empty(pointer):
     if len(pointer.children) == 0:
-        return pointer.label!=None
+        return pointer.label != None
     xor_node = (pointer.operator.value == "X")
     loop_node = (pointer.operator.value == "*")
     seq_node = (pointer.operator.value == "->")
@@ -1442,8 +1438,7 @@ def pointer_not_empty(pointer):
             ans = ans or pointer_not_empty(child)
     if loop_node:
         ans = pointer_not_empty(pointer.children[0])
-    return  ans
-
+    return ans
 
 
 def check_if_all_pointers_have_empty(pointers):
@@ -1468,7 +1463,7 @@ def add_from_seq(transitions_enabled, list_of_seq, list_of_seq_indexes):
         found = False
         for index in range(index_curr_seq, len(pointer.children)):
             if not found:
-                names_of_transitions=[]
+                names_of_transitions = []
                 node_could_done = pointer.children[index]
                 transitions_can_happen_in_pointer(node_could_done, names_of_transitions)
                 for names_of_transition in names_of_transitions:
@@ -1478,13 +1473,12 @@ def add_from_seq(transitions_enabled, list_of_seq, list_of_seq_indexes):
                 return
 
 
-
 def add_to_transition_enables_seq_if_can(transitions_enabled, pointers, list_of_loop, list_of_seq,
-                                          list_of_loop_inedxes, list_of_seq_indexes):
+                                         list_of_loop_inedxes, list_of_seq_indexes):
     all_pointers_have_empty = check_if_all_pointers_have_empty(pointers)
-    all_loops_have_empty = check_if_all_loop_have_empty(list_of_loop,list_of_loop_inedxes)
+    all_loops_have_empty = check_if_all_loop_have_empty(list_of_loop, list_of_loop_inedxes)
     if all_loops_have_empty and all_pointers_have_empty:
-        add_from_seq(transitions_enabled,list_of_seq,list_of_seq_indexes)
+        add_from_seq(transitions_enabled, list_of_seq, list_of_seq_indexes)
 
 
 def build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
@@ -1522,7 +1516,8 @@ def build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loo
 
     else:
         pointer = try_in_specials(pointers, list_of_loop_seq, transition)
-        fix_lists(list_of_loop_seq, list_of_loop, list_of_seq, list_of_loop_indexes, list_of_seq_inedxes, pointer, pointers)
+        fix_lists(list_of_loop_seq, list_of_loop, list_of_seq, list_of_loop_indexes, list_of_seq_inedxes, pointer,
+                  pointers)
 
         type_of_node = pointer.operator.value
         if type_of_node == "->":
@@ -1565,9 +1560,9 @@ def build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loo
                 list_of_loop_seq.insert(0, pointer)
         pointers.insert(0, pointer.children[child_index])
         build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
-                                       list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
-                                       activities_enables_for_nodes,
-                                       transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
+                                   list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                   activities_enables_for_nodes,
+                                   transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
     if parallel_node:
         pointers.remove(pointer)
         pointers.insert(0, pointer.children[child_index])
@@ -1602,13 +1597,142 @@ def build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loo
                                    transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
 
 
+def handle_parallel_node(pointers, pointer, child_index):
+    pointers.remove(pointer)
+    for index_of_child in range(len(pointer.children)):
+        if child_index != index_of_child:
+            pointers.append(pointer.children[index_of_child])
+    pointers.append(pointer.children[child_index])
+
+
+def handle_xor_node(pointers, pointer, child_index):
+    pointers.remove(pointer)
+    pointers.append(pointer.children[child_index])
+
+
+def handle_seq_node(pointers, backup_pointers, backup_indexes, pointer, child_index):
+    if pointers.__contains__(pointer):
+        pointers.remove(pointer)
+    if not backup_pointers.__contains__(pointer):
+        if child_index + 1 != len(pointer.children):
+            backup_pointers.append(pointer)
+            backup_indexes.append(child_index + 1)
+    else:
+            pointer_index = backup_pointers.index(pointer)
+            if child_index + 1 != len(pointer.children):
+                backup_indexes[pointer_index] = child_index + 1
+            else:
+                backup_pointers.pop(pointer_index)
+                backup_indexes.pop(pointer_index)
+    pointers.append(pointer.children[child_index])
+
+
+def handle_loop_node(pointers, backup_pointers, backup_indexes, pointer, child_index):
+    if pointers.__contains__(pointer):
+        pointers.remove(pointer)
+    if not backup_pointers.__contains__(pointer):
+        backup_pointers.append(pointer)
+        backup_indexes.append(1 - child_index)
+    else:
+        pointer_index = backup_pointers.index(pointer)
+        backup_indexes[pointer_index] = 1 - child_index
+    pointers.append(pointer.children[child_index])
+
+
+def add_to_transition_enables(pointers, transitions_enabled):
+    for pointer in pointers:
+        names_of_transitions_enable = []
+        transitions_can_happen_in_pointer(pointer, names_of_transitions_enable)
+        for name_of_transition in names_of_transitions_enable:
+            if not transitions_enabled.__contains__(name_of_transition):
+                transitions_enabled.append(name_of_transition)
+
+
+def get_type_of_node(pointer):
+    if pointer.operator.value == "X":
+        return "xor"
+    if pointer.operator.value == "->":
+        return "seq"
+    if pointer.operator.value == "*":
+        return "loop"
+    if pointer.operator.value == "+":
+        return "parallel"
+
+
+def delete_from_pointers(pointers, pointer):
+    for pointer_in_list in pointers.copy():
+        if is_son_of(pointer_in_list, pointer):
+            pointers.remove(pointer_in_list)
+
+
+def delete_from_backups(pointer, backup_pointers, backup_indexes):
+    for index in range(len(backup_indexes) - 1, -1, -1):
+        curr_backup_pointer = backup_pointers[index]
+        if is_son_of(curr_backup_pointer, pointer):
+            backup_pointers.pop(index)
+            backup_indexes.pop(index)
+
+
+def handle_seq_node_backup(backup_indexes, transition, transitions_enabled, pointer, pointer_index):
+    child_index = find_child_index(pointer, transition)
+    inedx_of_pointer_in_backup = backup_indexes[pointer_index]
+    add_to_transition_enables(pointer.children[inedx_of_pointer_in_backup:child_index], transitions_enabled)
+
+
+def handle_loop_node_backup(backup_indexes, transitions_enabled, pointer, pointer_index):
+    inedx_of_pointer_in_backup = backup_indexes[pointer_index]
+    if inedx_of_pointer_in_backup == 0:
+        add_to_transition_enables(pointer.children[0:1], transitions_enabled)
+    else:
+        add_to_transition_enables(pointer.children[1:], transitions_enabled)
+
+
+def fix_backup_pointers_and_pointers(pointers, backup_pointers, backup_indexes, transition, transitions_enabled,
+                                     pointer):
+    delete_from_pointers(pointers, pointer)
+    delete_from_backups(pointer, backup_pointers, backup_indexes)
+    type_of_node = get_type_of_node(pointer)
+    pointer_index = find_pointer_index(backup_pointers, transition)
+    if type_of_node == "seq":
+        handle_seq_node_backup(backup_indexes, transition, transitions_enabled, pointer, pointer_index)
+    if type_of_node == "loop":
+        handle_loop_node_backup(backup_indexes, transitions_enabled, pointer, pointer_index)
+
+
+def build_choices_of_train_log_3(pointers, backup_pointers, backup_indexes, transition, transitions_enabled):
+    add_to_transition_enables(pointers, transitions_enabled)
+    pointer_index = find_pointer_index(pointers, transition)
+    if pointer_index != -1:
+        pointer = pointers[pointer_index]
+    else:
+        pointer_index = find_pointer_index(backup_pointers, transition)
+        pointer = backup_pointers[pointer_index]
+        fix_backup_pointers_and_pointers(pointers, backup_pointers, backup_indexes, transition, transitions_enabled,pointer)
+    if in_transition(pointer, transition):
+        pointers.remove(pointer)
+        return
+    type_of_node = get_type_of_node(pointer)
+    child_index = find_child_index(pointer, transition)
+    if type_of_node == "seq":
+        handle_seq_node(pointers, backup_pointers, backup_indexes, pointer, child_index)
+    if type_of_node == "parallel":
+        handle_parallel_node(pointers, pointer, child_index)
+    if type_of_node == "xor":
+        handle_xor_node(pointers, pointer, child_index)
+    if type_of_node == "loop":
+        handle_loop_node(pointers, backup_pointers, backup_indexes, pointer, child_index)
+    build_choices_of_train_log_3(pointers, backup_pointers, backup_indexes, transition, transitions_enabled)
+
+
 def build_choices_of_train_log_advanced(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
-                               list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
-                               activities_enables_for_nodes,
-                               transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row):
+                                        list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                        activities_enables_for_nodes,
+                                        transition, list_of_xor_choices, appended, start, transitions_enabled, rows,
+                                        row):
     pointer_index = find_pointer_index(pointers, transition)
     if not start and (not (len(pointers) != 0 and pointers[0] == process_tree)):
-        add_to_transition_enables_seq_if_can(transitions_enabled, pointers, list_of_loop, list_of_seq,list_of_loop_indexes, list_of_seq_inedxes)
+        add_to_transition_enables_seq_if_can(transitions_enabled, pointers, list_of_loop, list_of_seq,
+                                             list_of_loop_indexes, list_of_seq_inedxes)
     if not start and not (len(pointers) != 0 and pointers[0] == process_tree):
         for pointer in pointers:
             names_of_transitions = []
@@ -1639,7 +1763,8 @@ def build_choices_of_train_log_advanced(process_tree, pointers, list_of_loop, li
 
     else:
         pointer = try_in_specials(pointers, list_of_loop_seq, transition)
-        fix_lists(list_of_loop_seq, list_of_loop, list_of_seq, list_of_loop_indexes, list_of_seq_inedxes, pointer, pointers)
+        fix_lists(list_of_loop_seq, list_of_loop, list_of_seq, list_of_loop_indexes, list_of_seq_inedxes, pointer,
+                  pointers)
 
         type_of_node = pointer.operator.value
         if type_of_node == "->":
@@ -1684,9 +1809,10 @@ def build_choices_of_train_log_advanced(process_tree, pointers, list_of_loop, li
                 list_of_loop_seq.insert(0, pointer)
         pointers.insert(0, pointer.children[child_index])
         build_choices_of_train_log_advanced(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
-                                       list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
-                                       activities_enables_for_nodes,
-                                       transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
+                                            list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                            activities_enables_for_nodes,
+                                            transition, list_of_xor_choices, appended, start, transitions_enabled, rows,
+                                            row)
     if parallel_node:
         pointers.remove(pointer)
         pointers.insert(0, pointer.children[child_index])
@@ -1694,16 +1820,18 @@ def build_choices_of_train_log_advanced(process_tree, pointers, list_of_loop, li
             if child_index != index_of_child:
                 pointers.insert(1, pointer.children[index_of_child])
         build_choices_of_train_log_advanced(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
-                                   list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
-                                   activities_enables_for_nodes,
-                                   transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
+                                            list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                            activities_enables_for_nodes,
+                                            transition, list_of_xor_choices, appended, start, transitions_enabled, rows,
+                                            row)
     if xor_node:
         pointers.remove(pointer)
         pointers.insert(0, pointer.children[child_index])
         build_choices_of_train_log_advanced(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
-                                   list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
-                                   activities_enables_for_nodes,
-                                   transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
+                                            list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                            activities_enables_for_nodes,
+                                            transition, list_of_xor_choices, appended, start, transitions_enabled, rows,
+                                            row)
     if loop_node:
         if pointers.__contains__(pointer):
             pointers.remove(pointer)
@@ -1716,9 +1844,10 @@ def build_choices_of_train_log_advanced(process_tree, pointers, list_of_loop, li
             list_of_indexes_for_loop = create_loop_indexes(pointer, child_index)
             list_of_loop_indexes.insert(0, list_of_indexes_for_loop)
         build_choices_of_train_log_advanced(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
-                                   list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
-                                   activities_enables_for_nodes,
-                                   transition, list_of_xor_choices, appended, start, transitions_enabled, rows, row)
+                                            list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
+                                            activities_enables_for_nodes,
+                                            transition, list_of_xor_choices, appended, start, transitions_enabled, rows,
+                                            row)
 
 
 def build_list_of_xor_nodes_and_choses(process_tree, traces, xor_nodes, activities_enables_for_nodes, column):
@@ -1747,20 +1876,14 @@ def build_list_of_xor_nodes_and_choses_2(process_tree, traces, xor_nodes, activi
     rows = []
     for trace in traces:
         pointers = [process_tree]
-        list_of_loop = []
-        list_of_loop_indexes = []
-        list_of_seq = []
-        list_of_seq_inedxes = []
-        list_of_loop_seq = []
+        list_backup_pointers = []
+        list_of_backup_indexes = []
         for index in range(len(trace)):
-            list_of_xor_and_choices = []
             pref = trace[0:index + 1]
             row = build_row(pref[:-1], column)
             transitions_enabled = []
-            build_choices_of_train_log(process_tree, pointers, list_of_loop, list_of_loop_indexes, list_of_seq,
-                                       list_of_seq_inedxes, list_of_loop_seq, xor_nodes,
-                                       activities_enables_for_nodes, trace[index],
-                                       list_of_xor_and_choices, False, False, transitions_enabled, rows, row)
+            transition = trace[index]
+            build_choices_of_train_log_3(pointers, list_backup_pointers, list_of_backup_indexes,transition, transitions_enabled)
             row_copy = row.copy()
             row_copy.append(trace[index])
             row_copy.append(transitions_enabled)
@@ -1988,13 +2111,13 @@ def build_rows_not_relevant(list_of_xor_nodes_and_choses, target_name, column, n
     return rows
 
 
-def build_unique_indexes(rows,len_of_row):
+def build_unique_indexes(rows, len_of_row):
     indexes = []
     for i in range(len_of_row):
         bad_index = True
         value = rows[0][i]
         for row in rows:
-            if row[i]!=value:
+            if row[i] != value:
                 bad_index = False
         if bad_index:
             indexes.append(bad_index)
@@ -2019,8 +2142,8 @@ def fix_rows_unique(rows, list_of_bad_indexes):
 
 
 def remove_unique_columns(rows, column):
-    list_of_bad_indexes = build_unique_indexes(rows,len(column)-2)
-    list_of_bad_features = build_bad_features(list_of_bad_indexes,column)
+    list_of_bad_indexes = build_unique_indexes(rows, len(column) - 2)
+    list_of_bad_features = build_bad_features(list_of_bad_indexes, column)
     fix_rows_unique(rows, list_of_bad_indexes)
     for bad_feature in list_of_bad_features:
         column.remove(bad_feature)
