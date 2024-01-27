@@ -85,7 +85,7 @@ def evaluation(log, net, initial_marking, final_marking):
                                               "case ID")
     for trace in replayed_traces:
          if trace['missing_tokens'] > 0:
-             print(trace)
+             print(trace['transitions_with_problems'])
     #print(pm4py.analysis.check_is_workflow_net(net))
 #    print(pm4py.analysis.check_soundness(net,initial_marking,final_marking))
     fitness = pm4py.fitness_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
@@ -538,7 +538,7 @@ def define_empty_transitions(transitions):
 
 if __name__ == "__main__":
 
-    log = import_csv("C:/Users/עידו שפירא/Downloads/RequestForPayment.csv", ",")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/Sepsis Cases - Event Log.csv", ",")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     Decision_Tree_To_Guards.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
@@ -552,8 +552,8 @@ if __name__ == "__main__":
     # pm4py.view_process_tree(process_tree_Inductive)
     #pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
-    # print("Without Guards \n")
-    # evaluation(test_log, net, im, fm)
+    print("Without Guards \n")
+    evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     #names_of_transitions_not_under_loop = build_names_of_transitions_not_under_loop(process_tree_Inductive)
