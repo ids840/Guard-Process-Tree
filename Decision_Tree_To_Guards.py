@@ -1,9 +1,7 @@
 import csv
 import subprocess
-from datetime import datetime
-import pandas as pd
-
 import ApplyPonyGuard
+import LogSplit
 
 
 def build_csv_for_child_of_xor(rows, column):
@@ -23,120 +21,6 @@ def builds_all_target(column):
         copy_column = replace_element_with_last(copy_column, index)
         targets.append(copy_column)
     return targets
-
-
-def build_class_names(labeled):
-    values = []
-    for row in labeled.iterrows():
-        value = row[1].iloc[0]
-        values.append(value)
-    set_of_values = set(values)
-    sorted_list = sorted(set_of_values)
-    classs_names = []
-    for item in sorted_list:
-        classs_names.append(str(item))
-    return classs_names
-
-
-
-def build_features_list(node_id, traces_list, current_trace, tree):
-    if len(current_trace) > 0:
-        traces_list.append(current_trace.copy())
-    is_split_node = tree.children_left[node_id] != tree.children_right[node_id]
-    if is_split_node:
-        current_trace.append(tree.feature[node_id])
-        build_features_list(tree.children_left[node_id], traces_list, current_trace.copy(), tree)
-        build_features_list(tree.children_right[node_id], traces_list, current_trace.copy(), tree)
-    return traces_list
-
-
-def build_therashold_list(node_id, traces_list, current_trace, tree):
-    if len(current_trace) > 0:
-        traces_list.append(current_trace.copy())
-    is_split_node = tree.children_left[node_id] != tree.children_right[node_id]
-    if is_split_node:
-        current_trace.append(tree.threshold[node_id])
-        build_therashold_list(tree.children_left[node_id], traces_list, current_trace.copy(), tree)
-        build_therashold_list(tree.children_right[node_id], traces_list, current_trace.copy(), tree)
-    return traces_list
-
-
-def build_traces_list(node_id, traces_list, current_trace, tree):
-    if len(current_trace) > 0:
-        traces_list.append(current_trace)
-    is_split_node = tree.children_left[node_id] != tree.children_right[node_id]
-    if is_split_node:
-        trace_for_left = current_trace.copy()
-        trace_for_left.append("left")
-        trace_for_right = current_trace.copy()
-        trace_for_right.append("right")
-        build_traces_list(tree.children_left[node_id], traces_list, trace_for_left, tree)
-        build_traces_list(tree.children_right[node_id], traces_list, trace_for_right, tree)
-    return traces_list
-
-
-def build_guard(trace, threasholds, features):
-    traces = []
-    for i in range(len(threasholds)):
-        traces.append((features[i], trace[i], threasholds[i]))
-    return traces
-
-
-
-def create_csv_event_log(log, csv_name):
-    timestamp = ''
-    last_case_id = 0
-    list_of_events_for_log = []
-    for event in log:
-        case_id = event.get("case_id")[5:]
-        activity = event.get("activity")
-        if int(case_id) != last_case_id:
-            timestamp = '1700-12-01'
-            last_case_id = int(case_id)
-        else:
-            timestamp = add_one_year(timestamp)
-        event_for_log = []
-        event_for_log.append(case_id)
-        event_for_log.append(activity)
-        event_for_log.append(timestamp)
-        list_of_events_for_log.append(event_for_log)
-    create_csv_file(['case ID', 'activity', 'timestamp'], list_of_events_for_log, csv_name)
-
-
-def build_log(traces):
-    log = []
-    for i in range(len(traces)):
-        trace_log = build_events(traces[i], i + 1)
-        log.extend(trace_log)
-    return log
-
-
-def split_csv_to_train_test(csv):
-    traces = build_traces_from_csv(csv)
-    train_length = int(0.8 * len(traces))
-    train_log = build_log(traces[0:train_length + 1])
-    test_log = build_log(traces[train_length + 1:])
-    create_csv_event_log(train_log, "train_log.csv")
-    create_csv_event_log(test_log, "test_log.csv")
-
-
-def build_traces_from_csv(csv):
-    traces = []
-    last_case_id = ""
-    trace = []
-    for row in csv.iterrows():
-        case_id = row[1]["case ID"]
-        activity = row[1]["activity"]
-        if case_id != "UNKNOWN":
-            if case_id == last_case_id:
-                trace.append(activity)
-            else:
-                traces.append(trace.copy())
-                trace = [activity]
-                last_case_id = case_id
-
-    return traces[1:]
-
 
 def count_transition(trace, transition):
     counter = 0
@@ -705,8 +589,7 @@ def remove_unique_columns(rows, column):
 
 
 def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_marking, dicitionary_for_transitions):
-    # copy_net = net.__deepcopy__()
-    traces = build_traces_from_csv(train_log)
+    traces = LogSplit.build_traces_from_csv(train_log)
     nodes = []
     activities_enables_for_nodes = []
     build_xor_nodes(tree, nodes, activities_enables_for_nodes)
@@ -723,7 +606,6 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_
             column.remove(not_relevant_feature_for_target)
         # remove_unique_columns(rows,column)
         generate_bnf_file(len(column))
-        # build_csv_for_prefixes(copy_net, train_log, column, initial_marking, final_marking)
         col_name_copy = column.copy()
         col_name_copy.append("choose")
         # build_rows_for_target(list_of_xor_nodes_and_choses, index_of_target)
@@ -743,81 +625,8 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_
         index_of_end = Phenotype.find("\n")
         Phenotype = Phenotype[:index_of_end]
         if Fitness.startswith("0.0"):
-            # stats = PonyGE2.src.ponyge.mane_2(list_argv)
             print_guard_of_target(target_name, Phenotype, col_name_copy)
             ApplyPonyGuard.apply_pony_guard(net, target_name, Phenotype, col_name_copy)
 
 
 
-def import_csv(file_path):
-    event_log = pd.read_csv(file_path, sep=';')
-    event_log['case ID'] = event_log['case ID'].astype(str)
-    event_log['activity'] = event_log['activity'].astype(str)
-    event_log['timestamp'] = pd.to_datetime(event_log['timestamp'], format='mixed')
-    return event_log
-
-
-
-
-def build_events(trace, case_id):
-    case_id_str = f"Case_{case_id}"
-    trace_log = []
-    for activity in trace:
-        event = {
-            "case_id": case_id_str,
-            "activity": activity,
-            "timestamp": datetime.now().isoformat(),
-        }
-        trace_log.append(event)
-    return trace_log
-
-
-def build_log(traces):
-    log = []
-    trace_number = 0
-    for trace in traces:
-        trace_log = build_events(trace, trace_number + 1)
-        trace_number = trace_number + 1
-        log.extend(trace_log)
-    return log
-
-
-def year_plus_one(year):
-    int_year = int(year)
-    int_year = int_year + 1
-    if len(str(int_year)) == 1:
-        return "0" + str(int_year)
-    return str(int_year)
-
-
-def add_one_year(timestamp):
-    day = timestamp[8:10]
-    month = timestamp[5:7]
-    year = timestamp[:4]
-    if int(day) == 28 and int(month) == 12:
-        day = "01"
-        month = "01"
-        year = year_plus_one(year)
-    if int(day) == 28:
-        day = "01"
-        month = year_plus_one(month)
-    else:
-        day = year_plus_one(day)
-    return year + "-" + month + "-" + day
-
-
-def create_train_log(log):
-    timestamp = ''
-    last_case_id = 0
-    list_of_events_for_log = []
-    for event in log:
-        case_id = event.get("case_id")[5:]
-        activity = event.get("activity")
-        if int(case_id) != last_case_id:
-            timestamp = '1700-12-30'
-            last_case_id = int(case_id)
-        else:
-            timestamp = add_one_year(timestamp)
-        event_for_log = case_id + ';' + activity + ';' + timestamp
-        list_of_events_for_log.append([event_for_log])
-    create_csv_file(['case ID;activity;timestamp'], list_of_events_for_log, 'train_log.csv')

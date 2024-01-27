@@ -1,35 +1,13 @@
-# This is a sample Python script.
 import csv
-import operator
-from pm4py.objects.conversion.process_tree import converter as process_tree_converter
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
 import pm4py
-
 import pandas
-
 from datetime import datetime
-
 from pm4py import ProcessTree
-from pm4py.algo.conformance.tokenreplay.variants import token_replay
 from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
-
-from pm4py.algo.evaluation.generalization import algorithm as generalization_evaluator
-
-from pm4py.objects.petri_net.obj import PetriNet, Marking
-
-from pm4py.objects.petri_net.utils import petri_utils
-
 import random
-
 import datetime
-
-import ApplyPonyGuard
 import Decision_Tree_To_Guards
-
-
+import LogSplit
 
 
 def import_csv(file_path, seperator):
@@ -38,11 +16,7 @@ def import_csv(file_path, seperator):
     event_log['activity'] = event_log['activity'].astype(str)
     event_log['timestamp'] = pandas.to_datetime(event_log['timestamp'],format='mixed')
     return event_log
-    # event_log = pandas.read_csv(file_path)
-    # event_log['case ID'] = event_log['case ID'].astype(str)
-    # event_log['activity'] = event_log['activity'].astype(str)
-    # event_log['timestamp'] = pandas.to_datetime(event_log['timestamp'])
-    # return event_log
+
 
 
 def petri_net_by_inductive(log):
@@ -536,46 +510,26 @@ def define_empty_transitions(transitions):
         if transition.label != None and transition.label.startswith("empty transition"):
             transition.label = None
 
+
 if __name__ == "__main__":
 
-    log = import_csv("C:/Users/עידו שפירא/Downloads/Sepsis Cases - Event Log.csv", ",")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv", ",")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
-    Decision_Tree_To_Guards.split_csv_to_train_test(log)
+    LogSplit.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
     test_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/test_log.csv", ",")
     # convert_xes_to_csv("C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.xes","C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.csv")
-    #print_traces_nice(traces)
     process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
     dictionary_for_transitions = {}
     build_dictionary_for_transitions(process_tree_Inductive,dictionary_for_transitions)
-    #print(dictionary_for_transitions)
-    # pm4py.view_process_tree(process_tree_Inductive)
     #pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
     print("Without Guards \n")
     evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
-    #names_of_transitions_not_under_loop = build_names_of_transitions_not_under_loop(process_tree_Inductive)
-    #dictio = build_dict_of_xor_and_not_under_loop(process_tree_Inductive,names_of_transitions_not_under_loop)
-    # print(names_of_transitions_not_under_loop)
-    # print(dictio)
-    #evaluation(train_log,net,im,fm)
-    # pm4py.view_process_tree(process_tree_Inductive)
-    # process_tree_Inductive_before = copy_process_tree(process_tree_Inductive,None)
-    #Decision_Tree_To_Guards.delete_empty_transitions(process_tree_Inductive,  train_log, names_of_transitions)
-    # pm4py.view_process_tree(process_tree_Inductive)
-    names_of_transitions = build_names_of_transitions(net.transitions)
-    # generate_bnf_file(len(names_of_transitions))
-    # ApplyPonyGuard.apply_pony_guard(net, target_name, "np.less(x[:, 5],np.add(1,x[:, 0]))", col_name_copy)
-    #names_of_transitions_under_xor_with_empty_trnasitions = build_names_of_transitions_under_xor_with_empty_trnasitions(process_tree_Inductive)
-    #print(names_of_transitions_under_xor_with_empty_trnasitions)
-    #tree = pm4py.convert_to_process_tree(net, im, fm)
-    #pm4py.view_process_tree(tree)
-    # Decision_Tree_To_Guards.create_ec_kitty_tree(net,train_log,names_of_transitions)
     print("\n==============================================================================================================================\nWith Guards\n")
     Decision_Tree_To_Guards.add_xor_guards_ponyG(process_tree_Inductive,net,train_log,names_of_transitions,im,fm, dictionary_for_transitions)
-    #Decision_Tree_To_Guards.add_xor_guards(tree,net,train_log)
     #print_petri_net(net,im,fm)
     define_empty_transitions(net.transitions)
     evaluation(test_log,net,im,fm)
