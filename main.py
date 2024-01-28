@@ -549,7 +549,7 @@ def add_initialize_to_net(net):
 
 if __name__ == "__main__":
 
-    log = import_csv("C:/Users/עידו שפירא/Downloads/p2p_event_log.csv", ",")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/RequestForPayment.csv", ",")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     LogSplit.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
@@ -558,7 +558,7 @@ if __name__ == "__main__":
     process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
     dictionary_for_transitions = {}
     build_dictionary_for_transitions(process_tree_Inductive,dictionary_for_transitions)
-    #pm4py.view_process_tree(process_tree_Inductive)
+    # pm4py.view_process_tree(process_tree_Inductive)
     net,im,fm = petri_net_by_inductive(train_log)
     print("Without Guards \n")
     evaluation(test_log, net, im, fm)

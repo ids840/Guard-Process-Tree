@@ -595,17 +595,17 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_
     list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses_2(tree, traces, nodes,
                                                                         activities_enables_for_nodes,
                                                                         col_name)
-    columns = builds_all_target(col_name)
-    for column in columns:
-        target_name = column[len(column) - 1]
+    # columns = builds_all_target(col_name)
+    for index in range(len(col_name)):
+        target_name = col_name[index]
         not_relevant_features_for_target = dicitionary_for_transitions[target_name]
-        rows = build_rows_not_relevant(list_of_xor_nodes_and_choses, target_name, column,
+        rows = build_rows_not_relevant(list_of_xor_nodes_and_choses, target_name, col_name,
                                        not_relevant_features_for_target)
+        col_name_copy = col_name.copy()
         for not_relevant_feature_for_target in not_relevant_features_for_target:
-            column.remove(not_relevant_feature_for_target)
+            col_name_copy.remove(not_relevant_feature_for_target)
         # remove_unique_columns(rows,column)
-        generate_bnf_file(len(column))
-        col_name_copy = column.copy()
+        generate_bnf_file(len(col_name_copy))
         col_name_copy.append("choose")
         # build_rows_for_target(list_of_xor_nodes_and_choses, index_of_target)
         # rows = build_rows(list_of_xor_nodes_and_choses, target_name)
@@ -624,8 +624,51 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_
         index_of_end = Phenotype.find("\n")
         Phenotype = Phenotype[:index_of_end]
         if Fitness.startswith("0.0"):
-            # print_guard_of_target(target_name, Phenotype, col_name_copy)
+            print_guard_of_target(target_name, Phenotype, col_name_copy)
             ApplyPonyGuard.apply_pony_guard(net, target_name, Phenotype, col_name_copy)
 
+
+
+
+# def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_marking, dicitionary_for_transitions):
+#     traces = LogSplit.build_traces_from_csv(train_log)
+#     nodes = []
+#     activities_enables_for_nodes = []
+#     build_xor_nodes(tree, nodes, activities_enables_for_nodes)
+#     list_of_xor_nodes_and_choses = build_list_of_xor_nodes_and_choses_2(tree, traces, nodes,
+#                                                                         activities_enables_for_nodes,
+#                                                                         col_name)
+#     columns = builds_all_target(col_name)
+#     for column in columns:
+#         target_name = column[len(column) - 1]
+#         not_relevant_features_for_target = dicitionary_for_transitions[target_name]
+#         rows = build_rows_not_relevant(list_of_xor_nodes_and_choses, target_name, column,
+#                                        not_relevant_features_for_target)
+#         for not_relevant_feature_for_target in not_relevant_features_for_target:
+#             column.remove(not_relevant_feature_for_target)
+#         # remove_unique_columns(rows,column)
+#         generate_bnf_file(len(column))
+#         col_name_copy = column.copy()
+#         col_name_copy.append("choose")
+#         # build_rows_for_target(list_of_xor_nodes_and_choses, index_of_target)
+#         # rows = build_rows(list_of_xor_nodes_and_choses, target_name)
+#         build_csv_for_child_of_xor(rows, col_name_copy)
+#         command = 'ponyge.py'
+#         directory_path = 'C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/src'  # Replace with the actual path
+#
+#         # Run the command in the specified directory
+#         result = subprocess.run(command, shell=True, cwd=directory_path, capture_output=True, text=True)
+#         fitness_str_copy = result.stdout
+#         phenotype_str_copy = result.stdout
+#         index_of_fitness = result.stdout.find("Fitness:")
+#         Fitness = fitness_str_copy[index_of_fitness + 10:]
+#         index_of_phenotype = phenotype_str_copy.find("Phenotype:")
+#         Phenotype = result.stdout[index_of_phenotype + 11:]
+#         index_of_end = Phenotype.find("\n")
+#         Phenotype = Phenotype[:index_of_end]
+#         if Fitness.startswith("0.0"):
+#             print_guard_of_target(target_name, Phenotype, col_name_copy)
+#             ApplyPonyGuard.apply_pony_guard(net, target_name, Phenotype, col_name_copy)
+#
 
 

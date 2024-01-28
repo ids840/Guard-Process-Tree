@@ -1,6 +1,6 @@
 import csv
 from datetime import datetime
-
+from random import random
 
 
 def create_csv_file(headlines, data, csv_name):
@@ -77,6 +77,14 @@ def build_log(traces):
         log.extend(trace_log)
     return log
 
+def build_traces_log(traces, length):
+    traces_copy = traces.copy()
+    traces_built = []
+    for index in range(length):
+        random_trace = random.choice(traces_copy)
+        traces_built.append(random_trace)
+        traces_copy.remove(random_trace)
+    return traces_built
 
 def split_csv_to_train_test(csv):
     traces = build_traces_from_csv(csv)
