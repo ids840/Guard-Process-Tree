@@ -624,7 +624,7 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_
         index_of_end = Phenotype.find("\n")
         Phenotype = Phenotype[:index_of_end]
         if Fitness.startswith("0.0"):
-            print_guard_of_target(target_name, Phenotype, col_name_copy)
+            #print_guard_of_target(target_name, Phenotype, col_name_copy)
             ApplyPonyGuard.apply_pony_guard(net, target_name, Phenotype, col_name_copy)
 
 

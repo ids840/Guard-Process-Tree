@@ -59,11 +59,12 @@ def dfg(log):
     pm4py.view_dfg(dfg, start_activity, end_activity)
 
 def evaluation(log, net, initial_marking, final_marking):
-    replayed_traces = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
-                                              "case ID")
-    for trace in replayed_traces:
-         if trace['missing_tokens'] > 0:
-             print(trace['transitions_with_problems'])
+    # replayed_traces = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
+    #                                           "case ID")
+    # print("\n")
+    # for trace in replayed_traces:
+    #      if trace['missing_tokens'] > 0:
+    #          print(trace['transitions_with_problems'])
     #print(pm4py.analysis.check_is_workflow_net(net))
 #    print(pm4py.analysis.check_soundness(net,initial_marking,final_marking))
     fitness = pm4py.fitness_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
