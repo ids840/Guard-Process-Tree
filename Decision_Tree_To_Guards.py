@@ -504,7 +504,7 @@ def generate_bnf_file(number_of_transitions):
         bnf_file.write('        np.logical_and(<b>,<b>)|\n')
         bnf_file.write('        np.logical_or(<b>,<b>)|\n')
         # bnf_file.write('        np.where(<b>,<e>,<e>)|\n')
-        # bnf_file.write('        np.equal(<e>,<e>)\n\n')
+        bnf_file.write('        np.equal(<e>,<e>)\n\n')
 
         bnf_file.write('<e> ::= x[:, 0]|\n')
         for i in range(1, number_of_transitions):
@@ -625,7 +625,7 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_
         index_of_end = Phenotype.find("\n")
         Phenotype = Phenotype[:index_of_end]
         if Fitness.startswith("0.0\n"):
-            #print_guard_of_target(target_name, Phenotype, col_name_copy)
+            print_guard_of_target(target_name, Phenotype, col_name_copy)
             ApplyPonyGuard.apply_pony_guard(net, target_name, Phenotype, col_name_copy)
 
 

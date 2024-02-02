@@ -4,7 +4,7 @@ from random import random
 
 
 def create_csv_file(headlines, data, csv_name):
-    with open(csv_name, 'w', newline='') as file:
+    with open(csv_name, 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
 
         writer.writerow(headlines)

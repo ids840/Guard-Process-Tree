@@ -41,6 +41,11 @@ def petri_net_by_heuristics(log):
     return net, initial_marking, final_marking
 
 
+def petri_net_by_ilp(log):
+    net, initial_marking, final_marking = pm4py.discovery.discover_petri_net_ilp(log,1.0, "activity",
+                                                                                        "timestamp", "case ID")
+    return net, initial_marking, final_marking
+
 
 
 def print_petri_net(net, initial_marking, final_marking):
@@ -548,21 +553,31 @@ def add_initialize_to_net(net):
     petri_utils.add_arc_from_to(initial_transition,place_of_initialized, net)
 
 
+def change_source_sink_name(net):
+    for place in net.places:
+        if place.name.startswith("source") or place.name.startswith("start"):
+            place.name="source"
+        if place.name.startswith("sink") or place.name.startswith("end"):
+            place.name="sink"
+
+
 if __name__ == "__main__":
 
-    log = import_csv("C:/Users/עידו שפירא/Downloads/Hospital Billing - Event Log.csv", ",")
+    log = import_csv("C:/Users/עידו שפירא/Downloads/ski_log.csv", ",")
     #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
     LogSplit.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
     test_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/test_log.csv", ",")
     # convert_xes_to_csv("C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.xes","C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.csv")
+    net,im,fm = petri_net_by_inductive(train_log)
+    # print_petri_net(net,im,fm)
+    change_source_sink_name(net)
     process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
     dictionary_for_transitions = {}
     build_dictionary_for_transitions(process_tree_Inductive,dictionary_for_transitions)
-    pm4py.view_process_tree(process_tree_Inductive)
-    net,im,fm = petri_net_by_inductive(train_log)
-    print("Without Guards \n")
-    evaluation(test_log, net, im, fm)
+    # pm4py.view_process_tree(process_tree_Inductive)
+    # print("Without Guards \n")
+    # evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     add_initialize_to_net(net)

@@ -65,7 +65,9 @@ def apply_pony_guard(net,target_name,string_guard, features):
         right = left_right_string[1]
         target_transition = found_transition(net,target_name)
         if func_of_guard == "greater":
-            place_of_greater = PetriNet.Place("greater condition to " + target_transition.label)
+            guard_name = "greater condition to " + target_transition.label
+            number_of_guard = found_number_of_guards(net.places,guard_name)
+            place_of_greater = PetriNet.Place(guard_name + number_of_guard)
             net.places.add(place_of_greater)
             apply_pony_guard_greater(net,target_name,left,target_transition, 1, place_of_greater,features)
             apply_pony_guard_greater(net,target_name,right,target_transition, 0, place_of_greater, features)
@@ -73,7 +75,9 @@ def apply_pony_guard(net,target_name,string_guard, features):
             # petri_utils.add_arc_from_to(target_transition, place_of_greater, net)
 
         elif func_of_guard == "less":
-            place_of_less = PetriNet.Place("less condition to " + target_transition.label)
+            guard_name = "less condition to " + target_transition.label
+            number_of_guard = found_number_of_guards(net.places, guard_name)
+            place_of_less = PetriNet.Place(guard_name + number_of_guard)
             net.places.add(place_of_less)
             apply_pony_guard_greater(net, target_name, right, target_transition, 1, place_of_less, features)
             apply_pony_guard_greater(net, target_name, left, target_transition, 0, place_of_less, features)
@@ -83,10 +87,10 @@ def apply_pony_guard(net,target_name,string_guard, features):
             apply_pony_guard(net, target_name, left, features)
             apply_pony_guard(net, target_name, right, features)
         elif func_of_guard == "logical_or":
-            empty_transition_name_1 = "empty transition 1 for " + target_name
+            empty_transition_name_1 = "empty transition 1 for " + target_name + found_number_of_guards(net.places,"empty transition 1 for " + target_name  )
             empty_transition_1 = PetriNet.Transition(empty_transition_name_1, empty_transition_name_1)
             net.transitions.add(empty_transition_1)
-            empty_transition_name_2 = "empty transition 2 for " + target_name
+            empty_transition_name_2 = "empty transition 2 for " + target_name + found_number_of_guards(net.places,"empty transition 2 for " + target_name  )
             empty_transition_2 = PetriNet.Transition(empty_transition_name_2, empty_transition_name_2)
             net.transitions.add(empty_transition_2)
             replace_edges_between_transition_to_empty(net,target_transition, empty_transition_1,empty_transition_2)
@@ -94,37 +98,32 @@ def apply_pony_guard(net,target_name,string_guard, features):
             apply_pony_guard(net,empty_transition_name_2,right,features)
         elif func_of_guard == "equal":
             left_copy = left
+            left_copy = "np.add(" + left_copy + ",1)"
             right_copy = right
-            start_transitions = found_start_transitions(net, found_place(net,"source"))
-            place_of_greater = PetriNet.Place("greater condition to " + target_transition.label)
+            guard_name = "greater condition to " + target_transition.label
+            number_of_guard = found_number_of_guards(net.places, guard_name)
+            place_of_greater = PetriNet.Place(guard_name + number_of_guard)
             net.places.add(place_of_greater)
-            # empty_transition = return_transition_or_None(net, start_transitions, target_transition)
-            # if empty_transition == None:
-            #     for transition in start_transitions:
-            #         petri_utils.add_arc_from_to(transition, place_of_greater, net)
-            # else:
-            #     petri_utils.add_arc_from_to(empty_transition, place_of_greater, net)
             apply_pony_guard_greater(net, target_name, left_copy, target_transition, 1, place_of_greater, features)
             apply_pony_guard_greater(net, target_name, right_copy, target_transition, 0, place_of_greater, features)
             petri_utils.add_arc_from_to(place_of_greater, target_transition, net)
-            # petri_utils.add_arc_from_to(target_transition, place_of_greater, net)
 
-
-            place_of_less = PetriNet.Place("less condition to " + target_transition.label)
+            right = "np.add(" + right + ",1)"
+            guard_name = "less condition to " + target_transition.label
+            number_of_guard = found_number_of_guards(net.places, guard_name)
+            place_of_less = PetriNet.Place(guard_name + number_of_guard)
             net.places.add(place_of_less)
-            # empty_transition = return_transition_or_None(net, start_transitions, target_transition)
-            # if empty_transition == None:
-            #     for transition in start_transitions:
-            #         petri_utils.add_arc_from_to(transition, place_of_less, net)
-            # else:
-            #     petri_utils.add_arc_from_to(empty_transition, place_of_less, net)
             apply_pony_guard_greater(net, target_name, right, target_transition, 1, place_of_less, features)
             apply_pony_guard_greater(net, target_name, left, target_transition, 0, place_of_less, features)
             petri_utils.add_arc_from_to(place_of_less, target_transition, net)
-            # petri_utils.add_arc_from_to(target_transition, place_of_less, net)
 
 
-
+def found_number_of_guards(places,guard):
+    num = 1
+    for place in places:
+        if place.name.startswith(guard):
+            num = num + 1
+    return " : " + str(num)
 def found_arc(net, xor_place, transition):
     for arc in net.arcs:
         if arc.target == transition and arc.source == xor_place:
