@@ -251,7 +251,11 @@ def add_to_transition_enables(pointers, transitions_enabled):
         for name_of_transition in names_of_transitions_enable:
             if not transitions_enabled.__contains__(name_of_transition):
                 transitions_enabled.append(name_of_transition)
-
+def add_to_transition_enables_non_leaves(pointers, transitions_enabled):
+    for pointer in pointers:
+        name_of_pointer = pointer.label
+        if name_of_pointer!= None and not transitions_enabled.__contains__(name_of_pointer):
+            transitions_enabled.append(name_of_pointer)
 
 def get_type_of_node(pointer):
     if pointer.operator.value == "X":
@@ -304,7 +308,66 @@ def fix_backup_pointers_and_pointers(pointers, backup_pointers, backup_indexes, 
         handle_loop_node_backup(backup_indexes, transitions_enabled, pointer, pointer_index)
 
 
-def build_choices_of_train_log_3(pointers, backup_pointers, backup_indexes, transition, transitions_enabled):
+def is_subtree_of(pointer, backup_pointer):
+    if pointer == None:
+        return False
+    if pointer == backup_pointer:
+        return True
+    return is_subtree_of(pointer.parent, backup_pointer)
+
+
+def add_loops_open(pointers, backup_pointers, backup_indexes, transitions_enabled):
+    for i in range(len(backup_pointers)):
+        backup_pointer = backup_pointers[i]
+        backup_index = backup_indexes[i]
+        if backup_pointer.operator.value == "*":
+            contain_son_without_empty = False
+            for pointer in pointers:
+                contain_son_without_empty = contain_son_without_empty or (is_subtree_of(pointer,backup_pointer) and node_without_empty(pointer))
+            if contain_son_without_empty == False:
+                if backup_index == 0:
+                    children = backup_pointer.children[0]
+                    if has_empty_child(children):
+                        add_to_transition_enables([backup_pointer], transitions_enabled)
+                    else:
+                        add_to_transition_enables([children], transitions_enabled)
+                else:
+                    right_side_has_empty = False
+                    for child in backup_pointer.children[1:]:
+                        right_side_has_empty = right_side_has_empty or has_empty_child(child)
+                    if right_side_has_empty:
+                        add_to_transition_enables([backup_pointer], transitions_enabled)
+                    else:
+                        for child in backup_pointer.children[1:]:
+                            add_to_transition_enables([child], transitions_enabled)
+def build_choices_of_train_log_3(pointers, backup_pointers, backup_indexes, transition, transitions_enabled, start):
+    add_to_transition_enables(pointers, transitions_enabled)
+    if start:
+       add_loops_open(pointers,backup_pointers,backup_indexes,transitions_enabled)
+    pointer_index = find_pointer_index(pointers, transition)
+    if pointer_index != -1:
+        pointer = pointers[pointer_index]
+    else:
+        pointer_index = find_pointer_index(backup_pointers, transition)
+        pointer = backup_pointers[pointer_index]
+        fix_backup_pointers_and_pointers(pointers, backup_pointers, backup_indexes, transition, transitions_enabled,pointer)
+    if in_transition(pointer, transition):
+        pointers.remove(pointer)
+        return
+    type_of_node = get_type_of_node(pointer)
+    child_index = find_child_index(pointer, transition)
+    if type_of_node == "seq":
+        handle_seq_node(pointers, backup_pointers, backup_indexes, pointer, child_index)
+    if type_of_node == "parallel":
+        handle_parallel_node(pointers, pointer, child_index)
+    if type_of_node == "xor":
+        handle_xor_node(pointers, pointer, child_index)
+    if type_of_node == "loop":
+        handle_loop_node(pointers, backup_pointers, backup_indexes, pointer, child_index)
+    build_choices_of_train_log_3(pointers, backup_pointers, backup_indexes, transition, transitions_enabled, False)
+
+
+def build_choices_of_train_log_with_non_leaves(pointers, backup_pointers, backup_indexes, transition, transitions_enabled):
     add_to_transition_enables(pointers, transitions_enabled)
     pointer_index = find_pointer_index(pointers, transition)
     if pointer_index != -1:
@@ -331,6 +394,7 @@ def build_choices_of_train_log_3(pointers, backup_pointers, backup_indexes, tran
 
 
 
+
 def build_list_of_xor_nodes_and_choses_2(process_tree, traces, xor_nodes, activities_enables_for_nodes, column):
     rows = []
     for trace in traces:
@@ -342,7 +406,7 @@ def build_list_of_xor_nodes_and_choses_2(process_tree, traces, xor_nodes, activi
             row = build_row(pref[:-1], column)
             transitions_enabled = []
             transition = trace[index]
-            build_choices_of_train_log_3(pointers, list_backup_pointers, list_of_backup_indexes,transition, transitions_enabled)
+            build_choices_of_train_log_3(pointers, list_backup_pointers, list_of_backup_indexes,transition, transitions_enabled, True)
             row_copy = row.copy()
             row_copy.append(trace[index])
             row_copy.append(transitions_enabled)
