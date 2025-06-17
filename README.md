@@ -20,4 +20,31 @@ For more details, see our paper [here](https://github.com/ids840/Guard-Process-T
 git clone https://github.com/PonyGE/PonyGE2.git
 cd PonyGE2
 pip install -e .
+```
 
+---
+
+## Running
+
+#### 1. Clone the repository
+
+```bash
+git clone https://github.com/ids840/Guard-Process-Tree.git
+cd Guard-Process-Tree
+```
+### 2. Prepare your input event log
+
+Your log must be in `.csv` format.
+
+**Required columns:**
+- `activity`
+- `timestamp`
+- `case ID`
+
+Additional columns (e.g., `amount`, `region`, etc.) are optional and will be used for learning guard conditions.
+
+### 3. Update file paths 
+
+Update file paths in `main.py` and `LogSplit.py`.
+
+### 4. Run `main.py`
