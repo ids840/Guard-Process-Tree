@@ -46,9 +46,9 @@ def apply_pony_guard_greater(net, target_name,expression,target_transition, sign
     else:
         transition_for_less_greater = found_transition(net,"initial transition")
         if sign:
-            petri_utils.add_arc_from_to(transition_for_less_greater, place_of_greater, net, int(expression[0]))
+            petri_utils.add_arc_from_to(transition_for_less_greater, place_of_greater, net, int(expression))
         else:
-            petri_utils.add_arc_from_to(transition_for_less_greater, place_of_greater, net, -1 * int(expression[0]))
+            petri_utils.add_arc_from_to(transition_for_less_greater, place_of_greater, net, -1 * int(expression))
 
 
 
@@ -56,7 +56,34 @@ def apply_pony_guard_greater(net, target_name,expression,target_transition, sign
 def apply_pony_guard(net,target_name,string_guard, features):
     if found_start_transitions(net,found_place(net,"source")).__contains__(found_transition(net,target_name)):
         return
-    if string_guard.startswith("np"):
+    if string_guard.startswith("np.not"):
+        string_guard = string_guard[7:]
+        first_index_of_open_bracket = string_guard.index("(")
+        func_of_guard = string_guard[3:first_index_of_open_bracket]
+        string_guard = string_guard[first_index_of_open_bracket:]
+        left_right_string = left_right(string_guard)
+        left = left_right_string[0]
+        right = left_right_string[1]
+        if func_of_guard == "greater":
+            string_guard = "np.less(" + left + "," + right + ")"
+        if func_of_guard == "less":
+            string_guard = "np.greater(" + left + "," + right + ")"
+        if func_of_guard == "equal":
+            left_bigger_string = "np.greater(" + left +"," + right + ")"
+            right_bigger_string = "np.greater(" + right +"," + left + ")"
+            string_guard = "np.logical_or("+ left_bigger_string + "," + right_bigger_string + ")"
+        if func_of_guard == "logical_and":
+            not_left_string = "np.not(" + left + ")"
+            not_right_string = "np.not(" + right + ")"
+            string_guard = "np.logical_or(" + not_left_string + "," + not_right_string + ")"
+        if func_of_guard == "logical_or":
+            not_left_string = "np.not(" + left + ")"
+            not_right_string = "np.not(" + right + ")"
+            string_guard = "np.logical_and(" + not_left_string + "," + not_right_string + ")"
+        if func_of_guard == "not":
+            string_guard = string_guard[7:len(string_guard)-1]
+        apply_pony_guard(net,target_name,string_guard,features)
+    elif string_guard.startswith("np"):
         first_index_of_open_bracket = string_guard.index("(")
         func_of_guard = string_guard[3:first_index_of_open_bracket]
         string_guard = string_guard[first_index_of_open_bracket:]
