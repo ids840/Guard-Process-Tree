@@ -57,6 +57,9 @@ These custom modules enable **Conformance Checking for Guarded Models**. Specifi
 git clone https://github.com/ids840/Guard-Process-Tree.git
 cd Guard-Process-Tree
 ```
+
+---
+
 ### 2. Prepare your input event log
 
 Your log must be in `.csv` format.
@@ -68,8 +71,12 @@ Your log must be in `.csv` format.
 
 Additional columns (e.g., `amount`, `region`, etc.) are optional and will be used for learning guard conditions.
 
+---
+
 ### 3. Update file paths 
 
 Update file paths in `main.py` and `LogSplit.py`.
+
+---
 
 ### 4. Run `main.py`
