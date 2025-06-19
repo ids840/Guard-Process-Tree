@@ -578,7 +578,7 @@ def generate_bnf_file(number_of_transitions):
         bnf_file.write('        np.add(<e>,<e>)|\n')
         bnf_file.write('        <c>\n\n')
 
-        bnf_file.write('<c> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9\n')
+        bnf_file.write('<c> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12\n')
 
 
 def build_good_indexes(column, not_relevant_features_for_target):
@@ -651,8 +651,103 @@ def remove_unique_columns(rows, column):
     for bad_feature in list_of_bad_features:
         column.remove(bad_feature)
 
+def de_morgan(string_guard):
+    string_guard = string_guard[7:]
+    first_index_of_open_bracket = string_guard.index("(")
+    func_of_guard = string_guard[3:first_index_of_open_bracket]
+    string_guard = string_guard[first_index_of_open_bracket:]
+    left_right_string = ApplyPonyGuard.left_right(string_guard)
+    left = left_right_string[0]
+    right = left_right_string[1]
+    if func_of_guard == "greater":
+        string_guard = "np.less(" + left + "," + right + ")"
+    if func_of_guard == "less":
+        string_guard = "np.greater(" + left + "," + right + ")"
+    if func_of_guard == "equal":
+        left_bigger_string = "np.greater(" + left + "," + right + ")"
+        right_bigger_string = "np.greater(" + right + "," + left + ")"
+        string_guard = "np.logical_or(" + left_bigger_string + "," + right_bigger_string + ")"
+    if func_of_guard == "logical_and":
+        not_left_string = "np.not(" + left + ")"
+        not_right_string = "np.not(" + right + ")"
+        string_guard = "np.logical_or(" + not_left_string + "," + not_right_string + ")"
+    if func_of_guard == "logical_or":
+        not_left_string = "np.not(" + left + ")"
+        not_right_string = "np.not(" + right + ")"
+        string_guard = "np.logical_and(" + not_left_string + "," + not_right_string + ")"
+    if func_of_guard == "not":
+        string_guard = string_guard[7:len(string_guard) - 1]
+    return string_guard
 
-def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_marking, dicitionary_for_transitions):
+def is_integer(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+def value_of(string_guard, row, columns):
+    if string_guard.startswith("np"):
+        first_index_of_open_bracket = string_guard.index("(")
+        func_of_guard = string_guard[3:first_index_of_open_bracket]
+        string_guard = string_guard[first_index_of_open_bracket:]
+        left_right_string = ApplyPonyGuard.left_right(string_guard)
+        left = left_right_string[0]
+        right = left_right_string[1]
+        if func_of_guard == "subtract":
+            return value_of(left, row, columns) - value_of(right, row, columns)
+        else:
+            return value_of(left, row, columns) + value_of(right, row, columns)
+    elif is_integer(string_guard):
+        return int(string_guard)
+    else:
+        return row[columns.index(string_guard)]
+def check_guards_on_row(row, string_guard, columns):
+    if string_guard.startswith("np.not"):
+        return check_guards_on_row(row, de_morgan(string_guard), columns)
+    else:
+        first_index_of_open_bracket = string_guard.index("(")
+        func_of_guard = string_guard[3:first_index_of_open_bracket]
+        string_guard = string_guard[first_index_of_open_bracket:]
+        left_right_string = ApplyPonyGuard.left_right(string_guard)
+        left = left_right_string[0]
+        right = left_right_string[1]
+        if func_of_guard == "greater":
+            return value_of(left, row, columns) > value_of(right, row, columns)
+        elif func_of_guard == "less":
+            return value_of(left, row, columns) < value_of(right, row, columns)
+        elif func_of_guard == "equal":
+            return  value_of(left, row, columns) == value_of(right, row, columns)
+        elif func_of_guard == "logical_and":
+            return check_guards_on_row(row, left, columns) and  check_guards_on_row(row, right, columns)
+        else:
+            return check_guards_on_row(row, left, columns) or check_guards_on_row(row, right, columns)
+
+
+def apply_guard(rows, string_guard, col_name_copy):
+    if not string_guard.startswith("np"):
+        return False
+    for row in rows:
+        if not check_guards_on_row(row, string_guard, col_name_copy) and row[-1] == 1:
+            return False
+    return True
+
+def guard_translated(Phenotype, col_name_copy):
+    start_index = Phenotype.find("x")
+    new_phenotype = ""
+    curr_index = 0
+    while start_index != -1:
+        new_phenotype = new_phenotype + Phenotype[curr_index:start_index]
+        first_index_of_close_bracket = Phenotype.index("]", start_index + 1)
+        feature_index = int(Phenotype[start_index + 5:first_index_of_close_bracket])
+        feature = col_name_copy[feature_index]
+        new_phenotype = new_phenotype + feature
+        start_index = Phenotype.find("x", first_index_of_close_bracket + 1)
+        curr_index = first_index_of_close_bracket + 1
+    new_phenotype = new_phenotype + Phenotype[curr_index:]
+    return new_phenotype
+
+
+def add_xor_guards_ponyG(tree, net, train_log, col_name, dicitionary_for_transitions):
     traces = LogSplit.build_traces_from_csv(train_log)
     nodes = []
     activities_enables_for_nodes = []
@@ -675,11 +770,15 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_
         # build_rows_for_target(list_of_xor_nodes_and_choses, index_of_target)
         # rows = build_rows(list_of_xor_nodes_and_choses, target_name)
         build_csv_for_child_of_xor(rows, col_name_copy)
-        command = 'ponyge.py'
-        directory_path = 'C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/src'  # Replace with the actual path
-
-        # Run the command in the specified directory
-        result = subprocess.run(command, shell=True, cwd=directory_path, capture_output=True, text=True)
+        command = ['python', 'ponyge.py']
+        directory_path = 'C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/src'
+        result = subprocess.run(
+            command,
+            cwd=directory_path,
+            capture_output=True,
+            text=True,
+            encoding='utf-8' 
+        )
         fitness_str_copy = result.stdout
         phenotype_str_copy = result.stdout
         index_of_fitness = result.stdout.find("Fitness:")
@@ -688,7 +787,9 @@ def add_xor_guards_ponyG(tree, net, train_log, col_name, initial_marking, final_
         Phenotype = result.stdout[index_of_phenotype + 11:]
         index_of_end = Phenotype.find("\n")
         Phenotype = Phenotype[:index_of_end]
-        if Fitness.startswith("0.0\n"):
+        # print_guard_of_target(target_name, Phenotype, col_name_copy)
+        apply = apply_guard(rows, guard_translated(Phenotype, col_name_copy), col_name_copy)
+        if apply:
             print_guard_of_target(target_name, Phenotype, col_name_copy)
             ApplyPonyGuard.apply_pony_guard(net, target_name, Phenotype, col_name_copy)
 
