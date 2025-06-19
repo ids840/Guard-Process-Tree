@@ -11,6 +11,7 @@ from pm4py.objects.petri_net.utils import petri_utils
 
 import ApplyPonyGuard
 import Decision_Tree_To_Guards
+import Decision_Tree_To_Guards_non_leaves
 import LogSplit
 
 
@@ -64,23 +65,13 @@ def dfg(log):
     pm4py.view_dfg(dfg, start_activity, end_activity)
 
 def evaluation(log, net, initial_marking, final_marking):
-    # replayed_traces = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
-    #                                           "case ID")
-    # print("\n")
-    # for trace in replayed_traces:
-    #      if trace['missing_tokens'] > 0:
-    #          print(trace['transitions_with_problems'])
-    #print(pm4py.analysis.check_is_workflow_net(net))
-#    print(pm4py.analysis.check_soundness(net,initial_marking,final_marking))
     fitness = pm4py.fitness_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
                                             "case ID")
     prec = pm4py.precision_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
                                               "case ID")
-    # gen = generalization_evaluator.apply(log, net, initial_marking, final_marking)
     simp = simplicity_evaluator.apply(net)
     print(fitness)
     print("prec: " + str(prec))
-    # print("gen: " + gen)
     print("simp: " + str(simp))
 
 
@@ -209,18 +200,31 @@ def transition_under_tree(process_tree, transition):
 
 def build_names_of_transitions_under_tree(process_tree):
     list_of_transitions = []
+    if process_tree.label!=None:
+        list_of_transitions.append(process_tree.label)
     if process_tree.children == []:
-        if process_tree.label!=None:
-            return [process_tree.label]
+        return list_of_transitions
     for children in process_tree.children:
         list_of_transitions_for_children = build_names_of_transitions_under_tree(children)
         list_of_transitions.extend(list_of_transitions_for_children)
     return list_of_transitions
 
+def build_names_of_transitions_under_tree_without_special(process_tree):
+    list_of_transitions = []
+    if process_tree.label!=None and process_tree.children == []:
+        list_of_transitions.append(process_tree.label)
+    if process_tree.children == []:
+        return list_of_transitions
+    for children in process_tree.children:
+        list_of_transitions_for_children = build_names_of_transitions_under_tree_without_special(children)
+        list_of_transitions.extend(list_of_transitions_for_children)
+    return list_of_transitions
 
 def not_under_loop(process_tree_Inductive):
     if process_tree_Inductive.parent==None:
         return True
+    if process_tree_Inductive.children==[]:
+        return not_under_loop(process_tree_Inductive.parent)
     if process_tree_Inductive.operator.value == "*":
         return False
     return not_under_loop(process_tree_Inductive.parent)
@@ -228,45 +232,121 @@ def not_under_loop(process_tree_Inductive):
 
 def build_nodes_for_transition(process_tree_Inductive,list_of_xor_and_seq_not_under_loop):
     if process_tree_Inductive.parent !=None:
-        if process_tree_Inductive.parent.operator.value == "->" or process_tree_Inductive.parent.operator.value == "X":
+        if process_tree_Inductive.parent.operator.value == "->" or process_tree_Inductive.parent.operator.value == "X" or process_tree_Inductive.parent.operator.value == "+":
             if not_under_loop(process_tree_Inductive.parent):
                 index = process_tree_Inductive.parent.children.index(process_tree_Inductive)
                 list_of_xor_and_seq_not_under_loop.append((process_tree_Inductive.parent,index))
         build_nodes_for_transition(process_tree_Inductive.parent, list_of_xor_and_seq_not_under_loop)
 
 
-def add_for_list_of_not_depend(list_of_not_depend, list_of_xor_and_seq_not_under_loop):
+def add_for_list_of_not_depend(process_tree,list_of_not_depend, list_of_xor_and_seq_not_under_loop):
     for node in list_of_xor_and_seq_not_under_loop:
         type = node[0]
         child_index = node[1]
-        if type.operator.value == "X":
+        if type.operator.value == "X" or type.operator.value == "+" and not_under_loop(process_tree):
             for index in range(len(type.children)):
-                if child_index!=index:
-                    transitions = build_names_of_transitions_under_tree(type.children[index])
-                    for transition in transitions:
+                # if child_index!=index:
+                transitions = build_names_of_transitions_under_tree_without_special(type.children[index])
+                for transition in transitions:
+                    if not list_of_not_depend.__contains__(transition):
                         list_of_not_depend.append(transition)
         else:
-            for index in range(child_index+1, len(type.children)):
-                transitions = build_names_of_transitions_under_tree(type.children[index])
+            plus_one = (not not_under_loop(process_tree))
+            for index in range(child_index+plus_one, len(type.children)):
+                transitions = build_names_of_transitions_under_tree_without_special(type.children[index])
                 for transition in transitions:
-                    list_of_not_depend.append(transition)
+                    if not list_of_not_depend.__contains__(transition):
+                        list_of_not_depend.append(transition)
 
 
 def build_not_depend_for_transition(transition_node):
     list_of_xor_and_seq_not_under_loop=[]
+    transition_node_copy = transition_node
     build_nodes_for_transition(transition_node,list_of_xor_and_seq_not_under_loop)
     list_of_not_depend=[]
-    add_for_list_of_not_depend(list_of_not_depend,list_of_xor_and_seq_not_under_loop)
+    add_for_list_of_not_depend(transition_node_copy,list_of_not_depend,list_of_xor_and_seq_not_under_loop)
     return list_of_not_depend
 
-def build_dictionary_for_transitions(process_tree, dictionary):
-    if len(process_tree.children) == 0:
-        if process_tree.label != None:
-            list_not_depend = build_not_depend_for_transition(process_tree)
-            dictionary[process_tree.label] = list_not_depend
+
+def build_not_depend_for_node(process_tree):
+    list_of_xor_and_seq_not_under_loop = []
+    process_tree_copy = process_tree
+    build_nodes_for_transition(process_tree, list_of_xor_and_seq_not_under_loop)
+    list_of_not_depend = []
+    if not_under_loop(process_tree):
+        list_of_not_depend.extend(build_names_of_transitions_under_tree_without_special(process_tree))
+    add_for_list_of_not_depend(process_tree_copy,list_of_not_depend, list_of_xor_and_seq_not_under_loop)
+    return list_of_not_depend
+
+
+def build_not_depend_not_under_loop(process_tree):
+    list_of_not_depend = []
+    process_tree_copy = process_tree
+    index_of_child = -1
+    while process_tree_copy.parent!=None:
+        index_of_child = process_tree_copy.parent.children.index(process_tree_copy)
+        process_tree_copy = process_tree_copy.parent
+    if process_tree_copy.operator.value == "->":
+        for children in process_tree_copy.children[index_of_child:]:
+            list_of_transitions_under_children = build_names_of_transitions_under_tree_without_special(children)
+            list_of_not_depend.extend(list_of_transitions_under_children)
     else:
-        for children in process_tree.children:
-            build_dictionary_for_transitions(children,dictionary)
+        for children in process_tree_copy.children:
+            list_of_transitions_under_children = build_names_of_transitions_under_tree_without_special(children)
+            list_of_not_depend.extend(list_of_transitions_under_children)
+    return list_of_not_depend
+
+
+def build_not_depend_under_loop(process_tree):
+    list_not_depend = []
+    process_tree_copy = process_tree
+    while process_tree_copy.parent!=None:
+        index_of_child = process_tree_copy.parent.children.index(process_tree_copy)
+        process_tree_copy = process_tree_copy.parent
+        if process_tree_copy.operator.value == "->" and not_under_loop(process_tree_copy):
+            for children in process_tree_copy.children[index_of_child+1:]:
+                list_of_transitions_under_children = build_names_of_transitions_under_tree_without_special(children)
+                list_not_depend.extend(list_of_transitions_under_children)
+        if process_tree_copy.operator.value == "X" and not_under_loop(process_tree_copy):
+            for index in range(len(process_tree_copy.children)):
+                if index != index_of_child:
+                    children = process_tree_copy.children[index]
+                    list_of_transitions_under_children = build_names_of_transitions_under_tree_without_special(children)
+                    list_not_depend.extend(list_of_transitions_under_children)
+    return list_not_depend
+def build_not_depend_helper(process_tree, under_loop):
+    if not under_loop:
+        list_of_not_depend = build_not_depend_not_under_loop(process_tree)
+    else:
+        list_of_not_depend = build_not_depend_under_loop(process_tree)
+    return list_of_not_depend
+
+def build_not_depend(process_tree):
+    parent_copy = process_tree.parent
+    under_loop = not not_under_loop(parent_copy)
+    list_of_not_depend = build_not_depend_helper(process_tree, under_loop)
+    return list_of_not_depend
+
+
+def build_dictionary_for_transitions(process_tree, dictionary, with_nodes):
+    if with_nodes:
+        if process_tree.label != None:
+            if process_tree.parent != None:
+                list_not_depend = build_not_depend(process_tree)
+            else:
+                list_not_depend = build_names_of_transitions_under_tree_without_special(process_tree)
+            dictionary[process_tree.label] = list_not_depend
+            if len(process_tree.children) != 0:
+                for children in process_tree.children:
+                    build_dictionary_for_transitions(children, dictionary, with_nodes)
+    else:
+        if len(process_tree.children) == 0:
+            if process_tree.label != None:
+                list_not_depend = build_not_depend_for_transition(process_tree)
+                dictionary[process_tree.label] = list_not_depend
+        else:
+            for children in process_tree.children:
+                build_dictionary_for_transitions(children, dictionary,with_nodes)
 
 def build_transition_neighboors_under_loop(process_tree_Inductive, transition_not_under_loop):
     list_of_good_transitions = []
@@ -561,29 +641,55 @@ def change_source_sink_name(net):
             place.name="sink"
 
 
-if __name__ == "__main__":
+def fix_tree_node_name(tree,seq_index, loop_index, parallel_index, xor_index):
+    xor_node = (tree.operator.value == "X")
+    seq_node = (tree.operator.value == "->")
+    loop_node = (tree.operator.value == "*")
+    parallel_node = (tree.operator.value == "+")
+    if seq_node:
+        tree.label = "seq node number " + str(seq_index)
+        seq_index = seq_index+1
+    if loop_node:
+        tree.label = "loop node number " + str(loop_index)
+        loop_index = loop_index + 1
+    if xor_node:
+        tree.label = "xor node number " + str(xor_index)
+        xor_index=xor_index+1
+    if parallel_node:
+        tree.label = "parallel node number " + str(parallel_index)
+        parallel_index = parallel_index + 1
+    return seq_index, loop_index, parallel_index, xor_index
 
-    log = import_csv("C:/Users/עידו שפירא/Downloads/ski_log.csv", ",")
-    #train_log = import_csv("C:/Users/עידו שפירא/Downloads/ski_train_log.csv")
+def fix_tree_node_names(tree, seq_index, loop_index, parallel_index, xor_index):
+    if len(tree.children)!=0:
+        seq_index, loop_index, parallel_index, xor_index = fix_tree_node_name(tree, seq_index, loop_index, parallel_index, xor_index)
+        for children in tree.children:
+            seq_index, loop_index, parallel_index, xor_index= fix_tree_node_names(children, seq_index, loop_index, parallel_index, xor_index)
+    return seq_index, loop_index, parallel_index, xor_index
+
+
+if __name__ == "__main__":
+    log = import_csv("C:/Users/עידו שפירא/Downloads/bank_log.csv", ",")
     LogSplit.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
     test_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/test_log.csv", ",")
-    # convert_xes_to_csv("C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.xes","C:/Users/עידו שפירא/Downloads/PrepaidTravelCost.csv")
-    net,im,fm = petri_net_by_inductive(train_log)
-    # print_petri_net(net,im,fm)
+    net, im, fm = petri_net_by_inductive(train_log)
     change_source_sink_name(net)
-    process_tree_Inductive =  pm4py.discover_process_tree_inductive(train_log,0.0,True,"activity","timestamp","case ID")
+    process_tree_Inductive = pm4py.discover_process_tree_inductive(train_log, 0.0, True, "activity", "timestamp",
+                                                                   "case ID")
     dictionary_for_transitions = {}
-    build_dictionary_for_transitions(process_tree_Inductive,dictionary_for_transitions)
+    build_dictionary_for_transitions(process_tree_Inductive, dictionary_for_transitions, 0)
     # pm4py.view_process_tree(process_tree_Inductive)
     # print("Without Guards \n")
     # evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     add_initialize_to_net(net)
-    print("\n==============================================================================================================================\nWith Guards\n")
-    Decision_Tree_To_Guards.add_xor_guards_ponyG(process_tree_Inductive,net,train_log,names_of_transitions,im,fm, dictionary_for_transitions)
-    #print_petri_net(net,im,fm)
+    print(
+        "\n==============================================================================================================================\nWith Guards\n")
+    Decision_Tree_To_Guards.add_xor_guards_ponyG(process_tree_Inductive, net, train_log, names_of_transitions,
+                                                 dictionary_for_transitions)
+    # print_petri_net(net,im,fm)
     define_empty_transitions(net.transitions)
     add_back_transitions(net)
-    evaluation(test_log,net,im,fm)
+    evaluation(test_log, net, im, fm)
