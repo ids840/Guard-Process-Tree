@@ -1,19 +1,12 @@
 import csv
 import pm4py
 import pandas
-from datetime import datetime
-from pm4py import ProcessTree, PetriNet
+from pm4py import PetriNet
 from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
-import random
-import datetime
-
 from pm4py.objects.petri_net.utils import petri_utils
-
 import ApplyPonyGuard
 import Decision_Tree_To_Guards
-import Decision_Tree_To_Guards_non_leaves
 import LogSplit
-
 
 def import_csv(file_path, seperator):
     event_log = pandas.read_csv(file_path, sep=seperator)
@@ -21,49 +14,25 @@ def import_csv(file_path, seperator):
     event_log['activity'] = event_log['activity'].astype(str)
     event_log['timestamp'] = pandas.to_datetime(event_log['timestamp'],format='mixed')
     return event_log
-
-
-
 def petri_net_by_inductive(log):
     net, initial_marking, final_marking = pm4py.discovery.discover_petri_net_inductive(log, False, 0.0, "activity",
                                                                                        "timestamp", "case ID")
     return net, initial_marking, final_marking
-
-
 def petri_net_by_alpha(log):
     net, initial_marking, final_marking = pm4py.discovery.discover_petri_net_alpha(log, "activity", "timestamp",
                                                                                    "case ID")
     return net, initial_marking, final_marking
-
-
 def petri_net_by_heuristics(log):
     net, initial_marking, final_marking = pm4py.discovery.discover_petri_net_heuristics(log, 0.5, 0.65, 0.5, "activity",
                                                                                         "timestamp", "case ID")
     return net, initial_marking, final_marking
-
-
 def petri_net_by_ilp(log):
     net, initial_marking, final_marking = pm4py.discovery.discover_petri_net_ilp(log,1.0, "activity",
                                                                                         "timestamp", "case ID")
     return net, initial_marking, final_marking
-
-
-
 def print_petri_net(net, initial_marking, final_marking):
     pm4py.write_pnml(net, initial_marking, final_marking, "createdPetriNet1.pnml")
     pm4py.view_petri_net(net, initial_marking, final_marking)
-
-
-def print_confermance(log, net, initial_marking, final_marking):
-    dict_of_results = pm4py.conformance_diagnostics_token_based_replay(log, net, initial_marking, final_marking,
-                                                                       "activity", "timestamp", "case ID")
-    print(dict_of_results)
-
-
-def dfg(log):
-    dfg, start_activity, end_activity = pm4py.discover_directly_follows_graph(log, "activity", "timestamp", "case ID")
-    pm4py.view_dfg(dfg, start_activity, end_activity)
-
 def evaluation(log, net, initial_marking, final_marking):
     fitness = pm4py.fitness_token_based_replay(log, net, initial_marking, final_marking, "activity", "timestamp",
                                             "case ID")
@@ -73,86 +42,6 @@ def evaluation(log, net, initial_marking, final_marking):
     print(fitness)
     print("prec: " + str(prec))
     print("simp: " + str(simp))
-
-
-
-def get_test_log(log_path):
-    file = open(log_path)
-    csvreader = csv.reader(file)
-    rows = []
-    for row in csvreader:
-        rows.append(row)
-    return rows
-
-
-def year_plus_one_hundred(year):
-    int_year = int(year)
-    int_year = int_year + 100
-    return str(int_year)
-
-
-def change_year_in_log(log_path):
-    event_log = pandas.read_csv(log_path, sep=';')
-    index = 0
-    for date in event_log['timestamp']:
-        date = year_plus_one_hundred(date[:4]) + date[4:]
-        event_log.at[index, 'timestamp'] = date
-        index = index + 1
-    event_log.to_csv(log_path, index=False)
-
-
-def count_c(trace):
-    if occurs_in_trace(trace, 'c') < 3:
-        return True
-    return False
-
-
-def less_six(trace):
-    return len(trace) < 6
-
-
-def last_activity_is_c(trace):
-    return len(trace) == 0 or trace[len(trace) - 1] == 'c'
-
-
-def occurs_in_trace(trace, activity):
-    index = 0
-    for action in trace:
-        if action == activity:
-            index = index + 1
-    return index
-
-
-
-def print_traces_nice(traces, min_length, max_length):
-    print("start printing")
-    for i in range(max_length - min_length + 1):
-        counter = 0
-        for trace in traces:
-            length = len(trace)
-            if length == min_length + i:
-                print(trace)
-                counter = counter + 1
-        if counter>0:
-            print("number of traces in length of " + str(min_length + i) + " is: " + str(counter))
-            print("===========================================================================")
-
-
-def count_in_trace(activity, trace):
-    counter = 0
-    for action in trace:
-        if action == activity:
-            counter = counter + 1
-    return counter
-
-def convert_xes_to_csv(input_file_path, output_file_path):
-    # Write to Pandas Dataframe
-    log = pm4py.read_xes(input_file_path)  # Input Filename
-    df = pm4py.convert_to_dataframe(log)
-    df
-    df.to_csv(output_file_path)
-
-
 def build_names_of_transitions(transitions):
     transitions_names = []
     for transition in transitions:
@@ -365,52 +254,11 @@ def build_transition_neighboors_under_loop(process_tree_Inductive, transition_no
         list_of_children_transition = build_transition_neighboors_under_loop(children_with_transition,transition_not_under_loop)
         list_of_good_transitions.extend(list_of_children_transition)
     return list_of_good_transitions
-
-
-def build_dict_of_xor_and_not_under_loop(process_tree_Inductive, names_of_transitions_not_under_loop):
-    dictionary_of_transitions = {}
-    for transition_not_under_loop in names_of_transitions_not_under_loop:
-        dictionary_of_transitions[transition_not_under_loop] = build_transition_neighboors_under_loop(process_tree_Inductive,transition_not_under_loop)
-    return dictionary_of_transitions
-
-
-#
-# def find_transitions_for_xor(process_tree_Inductive):
-#     if process_tree_Inductive.label!=None:
-#         return [process_tree_Inductive.label]
-#     if len(process_tree_Inductive.children) == 0:
-#         return []
-#     transitions_names = []
-#     xor_node = (process_tree_Inductive.operator.value == "X")
-#     xor_loop_node_left_is_empty_transition = (process_tree_Inductive.operator.value =="*" and process_tree_Inductive.children[0].name == "tau")
-#     if xor_loop_node_left_is_empty_transition:
-#         return []
-#     if xor_node and has_empty_child(process_tree_Inductive):
-#         return []
-#     for children in process_tree_Inductive.children:
-#         children_transition_names = find_transitions_for_xor(children)
-#         transitions_names.extend(children_transition_names)
-#     return transitions_names
-#
-#
-#
 def has_empty_child(process_tree_Inductive):
     for children in process_tree_Inductive.children:
         if len(children.children) == 0 and children.label == None:
             return True
     return False
-
-# def build_names_of_transitions_under_xor_with_empty_trnasitions_recursive(process_tree_Inductive, dictionary_of_problematic_nodes):
-#     if len(process_tree_Inductive.children)>0 and process_tree_Inductive.operator.value == "X":
-#         transitions_that_at_least_of_them_happen = find_transitions_for_xor(process_tree_Inductive)
-#         if len(transitions_that_at_least_of_them_happen)>0:
-#             dictionary_of_problematic_nodes[process_tree_Inductive] = transitions_that_at_least_of_them_happen
-#     for children in process_tree_Inductive.children:
-#         build_names_of_transitions_under_xor_with_empty_trnasitions_recursive(children,dictionary_of_problematic_nodes)
-#
-# def build_names_of_transitions_under_xor_with_empty_trnasitions(process_tree_Inductive):
-#     dictionary_of_problematic_nodes = {}
-#     return build_names_of_transitions_under_xor_with_empty_trnasitions_recursive(process_tree_Inductive,dictionary_of_problematic_nodes)
 
 def check_if_has_empty_transition_another_way_helper(process_tree):
     has_empty_transition_another_way = False
@@ -469,100 +317,6 @@ def remove_not_need_nodes(process_tree):
         for children in process_tree.children:
             remove_not_need_nodes(children)
 
-
-def copy_process_tree(process_tree_Inductive, parent):
-    if len(process_tree_Inductive.children) == 0:
-        copy_process_tree_ret = ProcessTree()
-        copy_process_tree_ret.children = []
-        copy_process_tree_ret.label = process_tree_Inductive.label
-        copy_process_tree_ret.operator = process_tree_Inductive.operator
-        copy_process_tree_ret.parent = parent
-        return copy_process_tree_ret
-    else:
-        copy_process_tree_ret = ProcessTree()
-        copy_process_tree_ret.label = None
-        copy_process_tree_ret.operator = process_tree_Inductive.operator
-        copy_process_tree_ret.parent = parent
-        for child in process_tree_Inductive.children:
-            copy_child = copy_process_tree(child,copy_process_tree_ret)
-            copy_process_tree_ret.children.append(copy_child)
-        return copy_process_tree_ret
-
-def build_traces():
-    traces = []
-    for _ in range(500):
-        trace = []
-        for i in range(3):
-            if i<2:
-                random_sign = random.randint(0,1)
-                if random_sign==0:
-                    trace.append("a")
-                else:
-                    trace.append("b")
-            else:
-                if count_in_trace("b",trace) == 2:
-                    trace.append("b")
-                else:
-                    trace.append("a")
-        traces.append(trace)
-    return traces
-
-def build_process_tree_gera_initial_example():
-    process_tree = ProcessTree()
-    process_tree.operator= "->"
-    for i in range(3):
-        xor = ProcessTree()
-        child_a = ProcessTree()
-        child_a.label = "a"
-        child_a.parent = xor
-        child_b = ProcessTree()
-        child_b.label = "b"
-        child_b.parent = xor
-        xor.operator = "X"
-        xor.parent = process_tree
-        xor.children.append(child_a)
-        xor.children.append(child_b)
-        process_tree.children.append(xor)
-    return process_tree
-
-def build_events(trace, case_id):
-    case_id_str = f"Case_{case_id}"
-    trace_log = []
-    for activity in trace:
-        event = {
-            "case_id": case_id_str,
-            "activity": activity,
-            "timestamp": datetime.datetime.now().isoformat(),
-        }
-        trace_log.append(event)
-    return trace_log
-
-def build_log():
-    log = []
-    traces = build_traces()
-    for i in range(len(traces)):
-        trace_log = build_events(traces[i],i+1)
-        log.extend(trace_log)
-    return log
-
-
-def create_train_log(log):
-    timestamp = ''
-    last_case_id = 0
-    list_of_events_for_log = []
-    for event in log:
-        case_id = event.get("case_id")[5:]
-        activity = event.get("activity")
-        if int(case_id) != last_case_id:
-            timestamp = '1700-12-01'
-            last_case_id = int(case_id)
-        else:
-            timestamp = Decision_Tree_To_Guards.add_one_year(timestamp)
-        event_for_log = []
-        event_for_log.append(case_id)
-        event_for_log.append(activity)
-        event_for_log.append(timestamp)
-        list_of_events_for_log.append(event_for_log)
 
 
 def create_csv_file(headlines, data, csv_name):
@@ -640,54 +394,45 @@ def change_source_sink_name(net):
         if place.name.startswith("sink") or place.name.startswith("end"):
             place.name="sink"
 
-
-def fix_tree_node_name(tree,seq_index, loop_index, parallel_index, xor_index):
-    xor_node = (tree.operator.value == "X")
-    seq_node = (tree.operator.value == "->")
-    loop_node = (tree.operator.value == "*")
-    parallel_node = (tree.operator.value == "+")
-    if seq_node:
-        tree.label = "seq node number " + str(seq_index)
-        seq_index = seq_index+1
-    if loop_node:
-        tree.label = "loop node number " + str(loop_index)
-        loop_index = loop_index + 1
-    if xor_node:
-        tree.label = "xor node number " + str(xor_index)
-        xor_index=xor_index+1
-    if parallel_node:
-        tree.label = "parallel node number " + str(parallel_index)
-        parallel_index = parallel_index + 1
-    return seq_index, loop_index, parallel_index, xor_index
-
-def fix_tree_node_names(tree, seq_index, loop_index, parallel_index, xor_index):
-    if len(tree.children)!=0:
-        seq_index, loop_index, parallel_index, xor_index = fix_tree_node_name(tree, seq_index, loop_index, parallel_index, xor_index)
-        for children in tree.children:
-            seq_index, loop_index, parallel_index, xor_index= fix_tree_node_names(children, seq_index, loop_index, parallel_index, xor_index)
-    return seq_index, loop_index, parallel_index, xor_index
-
+def petri_net_by_miner(train_log, miner):
+    if miner == "1":
+        net, im, fm = petri_net_by_inductive(train_log)
+    elif miner == "2":
+        net, im, fm = petri_net_by_heuristics(train_log)
+    elif miner == "3":
+        net, im, fm = petri_net_by_alpha(train_log)
+    elif miner == "4":
+        net, im, fm = petri_net_by_ilp(train_log)
+    else:
+        raise ValueError(f"Unknown miner: {miner}. Choose from 'inductive', 'heuristic', 'alpha' or 'ilp'.")
+    return net, im, fm
 
 if __name__ == "__main__":
     log = import_csv("C:/Users/עידו שפירא/Downloads/bank_log.csv", ",")
     LogSplit.split_csv_to_train_test(log)
     train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
     test_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/test_log.csv", ",")
-    net, im, fm = petri_net_by_inductive(train_log)
+    print("Choose a process mining algorithm:")
+    print("1 - Inductive Miner")
+    print("2 - Heuristic Miner")
+    print("3 - Alpha Miner")
+    print("4 - ILP Miner")
+    choice = input("Enter the number of your choice: ").strip()
+    net, im, fm = petri_net_by_miner(train_log, choice)
     change_source_sink_name(net)
     process_tree_Inductive = pm4py.discover_process_tree_inductive(train_log, 0.0, True, "activity", "timestamp",
                                                                    "case ID")
     dictionary_for_transitions = {}
     build_dictionary_for_transitions(process_tree_Inductive, dictionary_for_transitions, 0)
-    # pm4py.view_process_tree(process_tree_Inductive)
-    # print("Without Guards \n")
-    # evaluation(test_log, net, im, fm)
+    pm4py.view_process_tree(process_tree_Inductive)
+    print("Without Guards \n")
+    evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
     names_of_transitions = build_names_of_transitions(net.transitions)
     add_initialize_to_net(net)
     print(
         "\n==============================================================================================================================\nWith Guards\n")
-    Decision_Tree_To_Guards.add_xor_guards_ponyG(process_tree_Inductive, net, train_log, names_of_transitions,
+    Decision_Tree_To_Guards.add_guards_ponyG(process_tree_Inductive, net, train_log, names_of_transitions,
                                                  dictionary_for_transitions)
     # print_petri_net(net,im,fm)
     define_empty_transitions(net.transitions)
