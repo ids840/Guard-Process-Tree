@@ -1,7 +1,5 @@
 from pm4py import PetriNet
 from pm4py.objects.petri_net.utils import petri_utils
-
-
 def left_right(string_guard):
     number_of_open_brackets = 0
     number_of_close_brackets = 0
@@ -49,10 +47,6 @@ def apply_pony_guard_greater(net, target_name,expression,target_transition, sign
             petri_utils.add_arc_from_to(transition_for_less_greater, place_of_greater, net, int(expression))
         else:
             petri_utils.add_arc_from_to(transition_for_less_greater, place_of_greater, net, -1 * int(expression))
-
-
-
-
 def apply_pony_guard(net,target_name,string_guard, features):
     if found_start_transitions(net,found_place(net,"source")).__contains__(found_transition(net,target_name)):
         return
@@ -143,8 +137,6 @@ def apply_pony_guard(net,target_name,string_guard, features):
             apply_pony_guard_greater(net, target_name, right, target_transition, 1, place_of_less, features)
             apply_pony_guard_greater(net, target_name, left, target_transition, 0, place_of_less, features)
             petri_utils.add_arc_from_to(place_of_less, target_transition, net)
-
-
 def found_number_of_guards(places,guard):
     num = 1
     for place in places:
@@ -171,8 +163,6 @@ def remove_xor_edge_from_option_with_xor(net, pre_places, target_transition,empt
         place.out_arcs.remove(arc)
         petri_utils.add_arc_from_to(place, empty_transition_1, net)
         petri_utils.add_arc_from_to(place, empty_transition_2, net)
-
-
 def find_index(places, or_place_name):
     index = 0
     for place in places:
@@ -194,14 +184,10 @@ def found_transition(net, transition_name):
     for transition in net.transitions:
         if (transition.label == None and transition.name == transition_name) or transition.label == transition_name:
             return transition
-
-
 def found_place(net, place_name):
     for place in net.places:
         if place.name == place_name:
             return place
-
-
 def found_start_transitions(net, source):
     start_transitions = []
     for arc in net.arcs:
