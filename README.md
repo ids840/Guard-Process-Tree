@@ -75,7 +75,7 @@ Additional columns (e.g., `amount`, `region`, etc.) are optional and will be use
 
 ### 3. Update file paths 
 
-Update file paths in `main.py` and `LogSplit.py`.
+Update file paths in `main.py`, `Decision_Tree_To_Guards.py` and `LogSplit.py`.
 
 ---
 
