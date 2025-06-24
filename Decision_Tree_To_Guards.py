@@ -2,8 +2,13 @@ import csv
 import subprocess
 import ApplyPonyGuard
 import LogSplit
+import os
+
+# Get project directory (where this script is located)
+project_dir = os.path.dirname(os.path.abspath(__file__))
 def build_csv_for_target(rows, column):
-    create_csv_file(column, rows, "C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/datasets/decision_tree.csv")
+    csv_output_path = os.path.join(project_dir, "PonyGE2", "datasets", "decision_tree.csv")
+    create_csv_file(column, rows, csv_output_path)
 def count_transition(trace, transition):
     counter = 0
     for action in trace:
@@ -379,7 +384,8 @@ def print_guard_of_target(target_name, Phenotype, col_name_copy):
     new_phenotype = guard_translated(Phenotype, col_name_copy)
     print(new_phenotype)
 def generate_bnf_file(number_of_transitions):
-    with open("C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/grammars/supervised_learning/decision_tree.bnf",
+    grammar_path = os.path.join(project_dir, "PonyGE2", "grammars", "supervised_learning", "decision_tree.bnf")
+    with open(grammar_path,
               'w') as bnf_file:
         bnf_file.write('<b> ::= np.less(<e>,<e>)|\n')
         bnf_file.write('        np.greater(<e>,<e>)|\n')
@@ -530,7 +536,7 @@ def add_guards_ponyG(tree, net, train_log, col_name, dicitionary_for_transitions
         col_name_copy.append("choose")
         build_csv_for_target(rows, col_name_copy)
         command = ['python', 'ponyge.py']
-        directory_path = 'C:/Users/עידו שפירא/PycharmProjects/play/PonyGE2/src'
+        directory_path = os.path.join(project_dir, "PonyGE2", "src")
         result = subprocess.run(
             command,
             cwd=directory_path,
@@ -541,12 +547,10 @@ def add_guards_ponyG(tree, net, train_log, col_name, dicitionary_for_transitions
         fitness_str_copy = result.stdout
         phenotype_str_copy = result.stdout
         index_of_fitness = result.stdout.find("Fitness:")
-        Fitness = fitness_str_copy[index_of_fitness + 10:]
         index_of_phenotype = phenotype_str_copy.find("Phenotype:")
         Phenotype = result.stdout[index_of_phenotype + 11:]
         index_of_end = Phenotype.find("\n")
         Phenotype = Phenotype[:index_of_end]
-        # print_guard_of_target(target_name, Phenotype, col_name_copy)
         apply = apply_guard(rows, guard_translated(Phenotype, col_name_copy), col_name_copy)
         if apply:
             print_guard_of_target(target_name, Phenotype, col_name_copy)
