@@ -14,7 +14,16 @@ For more details, see our paper [here](https://github.com/ids840/Guard-Process-T
 
 ## Requirements
 
-### 1. Clone and install PonyGE2
+#### 1. Clone the repository
+
+```bash
+git clone https://github.com/ids840/Guard-Process-Tree.git
+cd Guard-Process-Tree
+```
+
+---
+
+### 2. Clone and install PonyGE2
 
 ```bash
 git clone https://github.com/PonyGE/PonyGE2.git
@@ -23,7 +32,7 @@ pip install -e .
 ```
 
 ---
-### 2. Set PonyGE2 Parameters
+### 3. Set PonyGE2 Parameters
 
 Configure the parameters of PonyGE2 to align with the structure of your process tree in order to achieve optimal results. This involves:
 
@@ -35,32 +44,7 @@ These settings should reflect the specific structure and constraints of the guar
 
 ---
 
-### 3. Update `semantics.py` and `token_replay.py`
-
-Replace the following files in your local project with the custom versions provided:
-
-- [semantics.py](https://github.com/ids840/Guard-Process-Tree/blob/master/semantics.py).
-- [token_reply.py](https://github.com/ids840/Guard-Process-Tree/blob/master/token_reply.py).
-
-
-These custom modules enable **Conformance Checking for Guarded Models**. Specifically:
-
-- The token replay is applied to the guarded Petri net using the test event log.
-- Tokens left in the additional places (added only to evaluate guard conjunctions) are **ignored**, as they reflect the truth value of conjunctions and do not indicate behavioral deviations.
-
-  ---
-## Running
-
-#### 1. Clone the repository
-
-```bash
-git clone https://github.com/ids840/Guard-Process-Tree.git
-cd Guard-Process-Tree
-```
-
----
-
-### 2. Prepare your input event log
+### 4. Prepare your input event log 
 
 Your log must be in `.csv` format.
 
@@ -73,10 +57,14 @@ Additional columns (e.g., `amount`, `region`, etc.) are optional and will be use
 
 ---
 
-### 3. Update file paths 
-
-Update file paths in `main.py`, `Decision_Tree_To_Guards.py` and `LogSplit.py`.
+### 5. Put the file in the project files
 
 ---
 
-### 4. Run `main.py`
+## Running
+
+### 1. Run `main.py`
+---
+### 1. Enter your file name
+---
+### 1. Choose Miner
