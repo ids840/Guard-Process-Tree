@@ -1,4 +1,6 @@
 import csv
+import os
+
 import pm4py
 import pandas
 from pm4py import PetriNet
@@ -408,10 +410,26 @@ def petri_net_by_miner(train_log, miner):
     return net, im, fm
 
 if __name__ == "__main__":
-    log = import_csv("C:/Users/עידו שפירא/Downloads/bank_log.csv", ",")
+    project_dir = os.path.dirname(os.path.abspath(__file__))
+    # Define file paths relative to project directory
+    # Ask for CSV name, add .csv extension if missing
+    csv_name = input("Enter the name of the file: ").strip()
+    csv_name += ".csv"
+
+    # Build full path
+    log_path = os.path.join(project_dir, csv_name)
+
+    # Optional: check if file exists
+    if not os.path.exists(log_path):
+        raise FileNotFoundError(f"File '{log_path}' not found. Please check the name and try again.")
+    train_log_path = os.path.join(project_dir, "train_log.csv")
+    test_log_path = os.path.join(project_dir, "test_log.csv")
+
+    # Use the paths
+    log = import_csv(log_path, ",")
     LogSplit.split_csv_to_train_test(log)
-    train_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/train_log.csv", ",")
-    test_log = import_csv("C:/Users/עידו שפירא/PycharmProjects/play/test_log.csv", ",")
+    train_log = import_csv(train_log_path, ",")
+    test_log = import_csv(test_log_path, ",")
     print("Choose a process mining algorithm:")
     print("1 - Inductive Miner")
     print("2 - Heuristic Miner")
@@ -424,7 +442,7 @@ if __name__ == "__main__":
                                                                    "case ID")
     dictionary_for_transitions = {}
     build_dictionary_for_transitions(process_tree_Inductive, dictionary_for_transitions, 0)
-    pm4py.view_process_tree(process_tree_Inductive)
+    # pm4py.view_process_tree(process_tree_Inductive)
     print("Without Guards \n")
     evaluation(test_log, net, im, fm)
     remove_not_need_nodes(process_tree_Inductive)
