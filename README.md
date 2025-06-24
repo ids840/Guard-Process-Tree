@@ -59,12 +59,9 @@ Additional columns (e.g., `amount`, `region`, etc.) are optional and will be use
 
 ### 5. Put the file in the project files
 
----
 
 ## Running
 
 ### 1. Run `main.py`
----
-### 1. Enter your file name
----
-### 1. Choose Miner
+### 2. Enter your file name
+### 3. Choose Miner
