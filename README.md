@@ -58,8 +58,7 @@ Additional columns (e.g., `amount`, `region`, etc.) are optional and will be use
 ---
 
 ### 5. Put the file in the project files
-
-
+---
 ## Running
 
 ### 1. Run `main.py`
