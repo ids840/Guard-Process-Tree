@@ -14,6 +14,9 @@ For more details, see our paper [here](https://github.com/ids840/Guard-Process-T
 
 ## Requirements
 
+### 0. Python 3.8+
+---
+
 #### 1. Clone the repository
 
 ```bash
@@ -57,10 +60,32 @@ Additional columns (e.g., `amount`, `region`, etc.) are optional and will be use
 
 ---
 
-### 5. Put the file in the project files
+### 5. Put the csv file in the project files
+Locate the csv file inside the project directory.
+---
+### 6. Install pm4py
+```bash
+pip install pm4py
+```
 ---
 ## Running
 
 ### 1. Run `main.py`
+Run the main script.
+---
 ### 2. Enter your file name
+When prompted, enter the name of your event log file (excluding the .csv extension).
+The file should be located inside the project directory.
+---
 ### 3. Choose Miner
+Next, choose the process discovery algorithm to apply:
+
+1 - Inductive Miner
+
+2 - Heuristics Miner
+
+3 - Alpha Miner
+
+4 - ILP Miner
+
+Type the corresponding number and press Enter.
